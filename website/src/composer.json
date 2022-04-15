@@ -1,0 +1,17 @@
+{
+    "name": "faturaplus/mvc",
+    "description": "Projeto FaturaPlus",
+    "autoload": {
+        "psr-4": {
+            "App\\": "../app/",
+            "Src\\": "../src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "GuilhermeCruzPT",
+            "email": "guilhermecruz128@gmail.com"
+        }
+    ],
+    "require": {}
+}
