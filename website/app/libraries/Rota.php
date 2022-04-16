@@ -14,7 +14,7 @@ class Rota
 
     public function __construct()
     {
-        //Se a url existir manda a funcao url na variavel $url
+        //Se o url existir guarda a funcao url na variavel $url
         $url = $this->url() ? $this->url() : [0];
 
         //Verifica se o controlador existe
@@ -35,7 +35,7 @@ class Rota
         //Verifica se o método existe, segunda parte do url
         if (isset($url[1]))
         {
-            //method_exists - Checa se o método da classe existe
+            //method_exists - Verifica se o método da classe existe
             if (method_exists($this->controlador,$url[1]))
             {
                 $this->metodo = $url[1];
@@ -59,7 +59,7 @@ class Rota
         //echo $_GET['url'];
         //O filtro FILTER_SANITIZE_URL remove todos os caracteres ilegais de uma URL
         $url = filter_input(INPUT_GET,'url',FILTER_SANITIZE_URL);
-        //Verifica se a url existe
+        //Verifica se o url existe
         if (isset($url))
         {
             //trim - Retira espaço no ínicio e final de uma string
