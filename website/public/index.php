@@ -24,8 +24,10 @@ include './../app/libraries/Controller.php';
 </head>
 <body>
     <?php
+        include '../app/views/layout/header.php';
         $rotas = new Rota;
         //$rotas->url();
+        include '../app/views/layout/footer.php';
     ?>
 
     <script src="<?= DIRPAGE ?>public/js/main.js"></script>
