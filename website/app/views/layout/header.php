@@ -1,5 +1,5 @@
-<header class="bg-dark">
-    <div class="container">
+<header class="bg-dark p-3 text-light">
+    <div class="">
         <nav class="navbar navbar-expand-sm navbar-dark">
             <a class="navbar-brand" href="<?= DIRPAGE ?>"><?= APP_NAME ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -18,10 +18,11 @@
                     </li>
                 </ul>
 
-                <span class="navbar-text">
+            </div>
+            <div class="header-right" >
                     <a class="btn btn-info" href="#" data-tooltip="tooltip" title="Não tens uma conta? Regista-te">Registar</a>
                     <a class="btn btn-info" href="#" data-tooltip="tooltip" title="Tem uma conta? Faça login">Entrar</a>
-                </span>
+            </div>
             </div>
         </nav>
     </div>
