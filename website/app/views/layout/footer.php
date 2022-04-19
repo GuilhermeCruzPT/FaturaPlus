@@ -1,4 +1,4 @@
-<footer class="bg-dark p-5 text-light">
+<footer class="bg-dark p-5 text-light" id="footer">
     <div class="container">
         <small>
             Projeto <?= APP_NAME ?>
