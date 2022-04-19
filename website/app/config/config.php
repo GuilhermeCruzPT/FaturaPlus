@@ -7,7 +7,7 @@
 
 
 # Arquivos diretórios raízes
-$PastaInterna = "IPL/FaturaPlus/website/";
+$PastaInterna = "FaturaPlus/website/";
 define('DIRPAGE', "http://{$_SERVER['HTTP_HOST']}/{$PastaInterna}");
 
 if (substr($_SERVER['DOCUMENT_ROOT'], -1) == '/'){
