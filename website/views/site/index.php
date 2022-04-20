@@ -1,5 +1,4 @@
-<?php //echo $dados['teste1'] ?>
-<?php //echo $dados['teste2'] ?>
+<?php require_once './views/layout/header.php'; ?>
 
 <div class="header">
     <div class="inner-header flex">
@@ -45,3 +44,9 @@
         </div>
     </div>
 </div>
+
+
+<!--<a href="http://localhost/pws_202122/MVCTemplate/router.php?c=site&a=show">Show()</a>-->
+<a href="<?= APP_BASE_URL ?>?c=site&a=show">Show()</a>
+
+<?php require_once './views/layout/footer.php'; ?>
