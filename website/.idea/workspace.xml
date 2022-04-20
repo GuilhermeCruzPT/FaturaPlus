@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b84820b7-3fb1-4323-b825-1ad22438e241" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="ProjectId" id="273DAI2sE8Kc68cwOeeKj0xPaOx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/site" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/site" />
+      <recent name="$PROJECT_DIR$/controllers" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b84820b7-3fb1-4323-b825-1ad22438e241" name="Default Changelist" comment="" />
+      <created>1648539730527</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648539730527</updated>
+      <workItem from="1648539731706" duration="66000" />
+      <workItem from="1648540328896" duration="1430000" />
+      <workItem from="1648543215884" duration="267000" />
+      <workItem from="1648548902902" duration="44000" />
+      <workItem from="1648563823464" duration="475000" />
+      <workItem from="1648722397129" duration="29000" />
+      <workItem from="1649323592590" duration="991000" />
+      <workItem from="1649329604160" duration="3898000" />
+      <workItem from="1649343080258" duration="23000" />
+      <workItem from="1650359242858" duration="596000" />
+      <workItem from="1650360641957" duration="657000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="578" y="292" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1650363027326">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="578" y="292" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1650363027326" />
+    <state x="42" y="46" key="SettingsEditor" timestamp="1649331307522">
+      <screen x="0" y="23" width="1024" height="745" />
+    </state>
+    <state x="42" y="46" key="SettingsEditor/0.23.1024.745@0.23.1024.745" timestamp="1649331307522" />
+    <state x="334" y="175" key="SettingsEditor/0.23.1650.1027@0.23.1650.1027" timestamp="1648563834360" />
+    <state x="290" y="118" width="1100" height="932" key="search.everywhere.popup" timestamp="1650360781181">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="177" y="92" width="670" height="676" key="search.everywhere.popup/0.23.1024.745@0.23.1024.745" timestamp="1649332743170" />
+    <state x="290" y="118" width="1100" height="932" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1650360781181" />
+  </component>
+</project>
