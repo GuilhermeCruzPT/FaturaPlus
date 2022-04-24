@@ -4,9 +4,19 @@ html, body {
     height: 100%;
 }
 
-/* ╔════════════════════════╗ */
-/* ║    Image Components    ║ */
-/* ╚════════════════════════╝ */
+
+/* ╔═══════════════════════════╗ */
+/* ║     Navbar Components     ║ */
+/* ╚═══════════════════════════╝ */
+
+.header-right {
+    float: right;
+    margin-right: 25px;
+}
+
+/* ╔══════════════════════════╗ */
+/* ║     Image Components     ║ */
+/* ╚══════════════════════════╝ */
 
 img {
     max-width: 100%;
@@ -36,9 +46,10 @@ img {
 
 /* ***** End of Section ***** */
 
-/* ╔════════════════════════╗ */
-/* ║     Wave Components    ║ */
-/* ╚════════════════════════╝ */
+
+/* ╔═════════════════════════╗ */
+/* ║     Wave Components     ║ */
+/* ╚═════════════════════════╝ */
 
 .header {
     position:relative;
@@ -73,22 +84,27 @@ img {
 .parallax > use {
     animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
 }
+
 .parallax > use:nth-child(1) {
     animation-delay: -2s;
     animation-duration: 7s;
 }
+
 .parallax > use:nth-child(2) {
     animation-delay: -3s;
     animation-duration: 10s;
 }
+
 .parallax > use:nth-child(3) {
     animation-delay: -4s;
     animation-duration: 13s;
 }
+
 .parallax > use:nth-child(4) {
     animation-delay: -5s;
     animation-duration: 20s;
 }
+
 @keyframes move-forever {
     0% {
         transform: translate3d(-90px,0,0);
@@ -99,6 +115,7 @@ img {
 }
 
 /* ■ ■ Shrinking for mobile ■ ■ */
+
 @media (max-width: 768px) {
     .waves {
         height:40px;
@@ -108,13 +125,14 @@ img {
 
 /* ***** End of Section ***** */
 
-/* ╔════════════════════════╗ */
-/* ║     Line Components    ║ */
-/* ╚════════════════════════╝ */
+
+/* ╔═════════════════════════╗ */
+/* ║     Line Components     ║ */
+/* ╚═════════════════════════╝ */
 
 /* ■ ■ Header Line Design ■ ■ */
 
-body:after,#footer:after,#footer:before
+#footer:after,#footer:before
 {
     /* background: linear-gradient(90deg, rgba(190,78,114,1) 0%, rgba(254,117,98,1) 33.33%, rgba(86,72,105,1) 66.66%,  rgba(126,70,99,1) 100%) ;*/
     /* background-image: linear-gradient(90deg, rgba(107,208,228,1) 0%, rgba(96,78,177,1) 33%, rgba(200,142,102,1) 66%, rgba(201,85,169,1) 100%); */ /* w3c */
@@ -129,27 +147,173 @@ body:after,#footer:after,#footer:before
 
 /* ■ ■ Footer Line Design ■ ■ */
 
-#footer
-{
+#footer {
     position:relative;
 }
 
-#footer:before
-{
+#footer:before {
     position:absolute;
     top:0;
     height:3px;
 }
 
-#footer:after
-{
+#footer:after {
     position:absolute;
     bottom:1px;
     top:unset;
     height:3px;
 }
-.header-right{
-    float: right;
+
+/* ***** End of Section ***** */
+
+
+/* ╔══════════════════════════════════╗ */
+/* ║     Reflex Button Components     ║ */
+/* ╚══════════════════════════════════╝ */
+
+.btn-reflex {
+    border: 1px solid;
+    overflow: hidden;
+    position: relative;
+}
+
+.btn-reflex span {
+    z-index: 20;
+}
+
+.btn-reflex:after {
+    background: #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .2;
+    position: absolute;
+    top: -50px;
+    width: 50px;
+    -webkit-transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-transform: rotate(35deg);
+    -ms-transform: rotate(35deg);
+    transform: rotate(35deg);
+    z-index: -10;
+}
+
+.btn-reflex:hover:after {
+    left: 120%;
+    -webkit-transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* ***** End of Section ***** */
+
+
+/* ╔══════════════════════════════════════════╗ */
+/* ║     Authentication Button Components     ║ */
+/* ╚══════════════════════════════════════════╝ */
+
+.btn-box-auth  {
+    box-sizing: border-box;
+    float: left;
+    text-align:center;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: #fff;
+    border: 0;
+    animation: shadowFloat 1.2s linear alternate infinite;
+}
+
+.btn-primary-auth {
+    background: linear-gradient(135deg, rgba(130, 204, 221, 1) 0%, rgba(243, 105, 88, 1) 100%);
+    border-radius: 15px 0px 0px 50px !important;
+}
+
+.btn-secondary-auth {
+    /*background: linear-gradient(45deg, rgba(51, 50, 88, 1) 0%, rgba(140, 148, 204, 1) 100%);*/
+    background: linear-gradient(135deg, rgba(140, 148, 204, 1) 0%, rgba(71, 71, 135, 1) 100%);
+    border-radius: 0px 50px 15px 0px !important;
+}
+
+.split-buttons {
+    margin: 0 auto;
+    position: relative;
+    width: 350px;
+}
+
+.split-buttons span {
+    background: #323740;
+    bottom: 0;
+    color: #FFFFFF;
+    display: block;
+    font-style: italic;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 30px;
+    left: 0;
+    line-height: 30px;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 38px;
+    width: 30px;
+    cursor: default;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    /* border-radius: 50%; */
+    -webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+    animation: shadowFloat-span 1.2s linear alternate infinite;
+}
+
+.split-buttons .btn-box-auth {
+    display: inline-block;
+    margin: 0;
+    font: bold 16px "Arial";
+    font-style: italic;
+    padding: 10px 0;
+    text-transform: uppercase;
+    width: 50%;
+    cursor: default;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+}
+
+.btn-primary-auth:hover {
+    color: #fff;
+    background: linear-gradient(135deg, rgba(243, 105, 88, 1) 0%, rgba(130, 204, 221, 1) 100%);
+}
+
+.btn-secondary-auth:hover {
+    color: #fff;
+    background: linear-gradient(135deg, rgba(71, 71, 135, 1) 0%, rgba(140, 148, 204, 1) 100%);
+}
+
+/* ■ ■ Animation for Auth Button ■ ■ */
+
+@keyframes shadowFloat {
+    0% {
+        box-shadow: 0 5px 9px ghostwhite;
+        transform: translateY(-2px);
+    }
+    100% {
+        box-shadow: 0 2px 2px ghostwhite;
+        transform: translateY(2px);
+    }
+}
+
+@keyframes shadowFloat-span {
+    0% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(2px);
+    }
 }
 
 /* ***** End of Section ***** */
