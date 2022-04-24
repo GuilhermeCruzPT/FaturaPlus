@@ -11,7 +11,9 @@
 <header class="bg-dark p-3 text-light">
     <div class="">
         <nav class="navbar navbar-expand-sm navbar-dark">
-            <a class="navbar-brand" href="<?= DIRPAGE ?>"><?= APP_NAME ?></a>
+            <a class="navbar-brand" href="<?= DIRPAGE ?>">
+                <img src="<?= DIRIMG ?>/FaturaPlus_Logo_Oficial.png" class="d-inline-block align-top nav-logo" alt="logo">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="#navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">

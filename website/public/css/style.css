@@ -9,6 +9,12 @@ html, body {
 /* ║     Navbar Components     ║ */
 /* ╚═══════════════════════════╝ */
 
+.nav-logo {
+    width:100px;
+    height: auto;
+    margin-left: 25px;
+}
+
 .header-right {
     float: right;
     margin-right: 25px;
@@ -236,7 +242,7 @@ img {
 .split-buttons {
     margin: 0 auto;
     position: relative;
-    width: 350px;
+    width: 300px; /* 350 */
 }
 
 .split-buttons span {
@@ -253,7 +259,7 @@ img {
     position: absolute;
     right: 0;
     text-align: center;
-    top: 38px;
+    top: 34px;
     width: 30px;
     cursor: default;
     -webkit-border-radius: 50%;
@@ -274,7 +280,7 @@ img {
     margin: 0;
     font: bold 16px "Arial";
     font-style: italic;
-    padding: 10px 0;
+    padding: 8px 0;
     text-transform: uppercase;
     width: 50%;
     cursor: default;
