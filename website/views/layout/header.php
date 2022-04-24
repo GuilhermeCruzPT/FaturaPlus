@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= APP_NAME ?></title>
-    <link href="<?= DIRPAGE ?>public/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= DIRPAGE ?>public/css/style.css" rel="stylesheet">
 </head>
 <body>
 <header class="bg-dark p-3 text-light">
@@ -29,9 +29,14 @@
                 </ul>
 
             </div>
-            <div class="header-right" >
-                <a class="btn btn-info" href="#" data-tooltip="tooltip" title="Não tens uma conta? Regista-te">Registar</a>
-                <a class="btn btn-info" href="#" data-tooltip="tooltip" title="Tem uma conta? Faça login">Entrar</a>
+            <div class="header-right">
+                <!--<a class="custom-btn btn-5" href="#" data-tooltip="tooltip" title="Não tens uma conta? Regista-te">Registar</a>
+                <a class="btn btn-info" href="#" data-tooltip="tooltip" title="Tem uma conta? Faça login">Entrar</a>-->
+                <div class="split-buttons">
+                    <a class="btn-box-auth btn-primary-auth btn-reflex">Registar</a>
+                    <a class="btn-box-auth btn-secondary-auth btn-reflex">Entrar</a>
+                    <span>ou</span>
+                </div>
             </div>
         </nav>
     </div>
