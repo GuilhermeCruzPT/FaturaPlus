@@ -6,6 +6,7 @@ require_once './startup/boot.php';
 /* Controladores */
 require_once './controllers/SiteController.php';
 require_once './controllers/AuthController.php';
+require_once './controllers/ProductsController.php';
 
 if(!(isset($_GET['c']) && isset($_GET['a']))){
     // Controller e action por omissão
@@ -44,6 +45,16 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     break;
             }
 
+        case 'products':
+            $productsController = new ProductsController();
+            switch ($action) {
+                case 'index':
+                    $productsController->index();
+                    break;
+                case 'create':
+                    $productsController->create();
+                    break;
+            }
             break;
     }
 }
