@@ -5,6 +5,7 @@ require_once './startup/boot.php';
 
 /* Controladores */
 require_once './controllers/SiteController.php';
+require_once './controllers/AuthController.php';
 
 if(!(isset($_GET['c']) && isset($_GET['a']))){
     // Controller e action por omissão
@@ -34,6 +35,15 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $siteController->processa();
                     break;
             }
+
+        case 'auth':
+            $siteController = new AuthController();
+            switch ($action) {
+                case 'sign':
+                    $siteController->sign();
+                    break;
+            }
+
             break;
     }
 }

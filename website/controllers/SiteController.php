@@ -16,7 +16,6 @@ class SiteController
 
         //require once view
         require_once './views/site/show.php';
-
     }
 
     public function name(){
