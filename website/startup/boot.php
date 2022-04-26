@@ -26,10 +26,9 @@ define('DIRJS', DIRPAGE . "public/js/");
 
 # Acesso a Base de Dados
 define('HOST', "localhost");
-define('DB', "faturaplus");
+define('DB', "fatura+");
 define('USER', "root");
 define('PASS', "");
-
 
 # Constantes
 define('APP_NAME', "Fatura Plus");
