@@ -54,6 +54,9 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                 case 'create':
                     $productsController->create();
                     break;
+                case 'delete':
+                    $productsController->delete();
+                    break;
             }
             break;
     }

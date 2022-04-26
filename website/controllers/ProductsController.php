@@ -1,16 +1,13 @@
 <?php
 
-require_once './models/Data.php';
+require_once './models/Products.php';
 
 class ProductsController
 {
     public function index(){
-        $connection = mysqli_connect(HOST, USER, PASS, DB)
-        or
-        die("Could not connect: " . mysql_error());
-        //$sql = select . "products";
-        $sql = "SELECT * FROM products";
-        $result = mysqli_query($connection, $sql);
+
+        $products = new Products();
+        $result = $products->getAll();
         require './views/products/index.php';
 
     }
@@ -18,4 +15,27 @@ class ProductsController
     public function create(){
         // anida a trabalhar
     }
+
+    public function update(){
+        // anida a trabalhar
+    }
+
+    public function delete(){
+
+$id_product = $_GET['id_product'];
+if ($id_product){
+
+    $products1 = new Products();
+    $products1->delete_produto($id_product);
+
+        header("Location: router.php?c=products&a=index");
+
+}else{
+    echo 'ocorreu um erro com o id';
+    header("Location: router.php?c=products&a=index");
+
+}
+
+    }
+
 }
