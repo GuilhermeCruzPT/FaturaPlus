@@ -46,4 +46,8 @@ class SiteController
 
         //Falta enviar a variável para a vista
     }
+
+    public function backoffice(){
+        require_once './views/backoffice/backoffice.php';
+    }
 }
