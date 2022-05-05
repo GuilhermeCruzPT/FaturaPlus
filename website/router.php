@@ -35,6 +35,9 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                 case 'processa':
                     $siteController->processa();
                     break;
+                case 'backoffice':
+                    $siteController->backoffice();
+                    break;
             }
 
         case 'auth':
