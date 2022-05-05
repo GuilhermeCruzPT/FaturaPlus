@@ -48,7 +48,7 @@
             </table>
         <?php } ?>
         <div class="btn btn-success" >
-            <a href="index.php" class="btn btn-success">Create</a>
+            <a href="router.php?c=products&a=create" class="btn btn-success">Create</a>
         </div>
     </div>
 </div>

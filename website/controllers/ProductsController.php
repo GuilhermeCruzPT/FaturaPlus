@@ -13,7 +13,31 @@ class ProductsController
     }
 
     public function create(){
-        // anida a trabalhar
+        require './views/products/create.php';
+    }
+
+    public function save(){
+
+        $referencia = $_POST['referencia'];
+        $descricao = $_POST['descricao'];
+        $preco = $_POST['preco'];
+        $stock = $_POST['stock'];
+        $vigor = $_POST['vigor'];
+
+        $products = new Products();
+        $result = $products->create_produto($referencia,$descricao,$preco,$stock,$vigor);
+
+        if ($result){
+
+                //require 'Location: router.php?c=products&a=index';
+                //require_once $_SERVER['DOCUMENT_ROOT'] . 'website/router.php?c=products&a=index';
+                header('Location: router.php?c=products&a=index');
+
+        }else{
+            header('Location: router.php?c=products&a=create');
+        }
+
+
     }
 
     public function update(){
