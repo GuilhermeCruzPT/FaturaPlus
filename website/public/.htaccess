@@ -1,9 +1,12 @@
-Options -MultiViews
-RewriteEngine On
+#Options -MultiViews
+#RewriteEngine On
 
-RewriteBase /FaturaPlus/website/
+#RewriteBase /FaturaPlus/website/
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^(.*)$ ./startup/boot.php?url=$1 [QSA,L]
+#RewriteRule ^(.*)$ ./startup/boot.php?url=$1 [QSA,L]
+
+order allow,deny
+allow from all
