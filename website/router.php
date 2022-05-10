@@ -4,9 +4,11 @@
 require_once './startup/boot.php';
 
 /* Controladores */
+require_once './controllers/BaseController.php';
 require_once './controllers/SiteController.php';
 require_once './controllers/AuthController.php';
 require_once './controllers/ProductsController.php';
+
 
 if(!(isset($_GET['c']) && isset($_GET['a']))){
     // Controller e action por omissão
@@ -58,10 +60,23 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $productsController->create();
                     break;
                 case 'save':
-                    $productsController->save();
+                    $productsController->store();
+                    break;
+                case 'edit':
+                    $id_product = $_GET[('id_product')];
+                    $productsController->edit($id_product);
+                    break;
+                case 'update':
+                    $id_product = $_GET[('id_product')];
+                    $productsController->update($id_product);
+                    break;
+                case 'show':
+                    $id_product = $_GET[('id_product')];
+                    $productsController->show($id_product);
                     break;
                 case 'delete':
-                    $productsController->delete();
+                    $id_product = $_GET[('id_product')];
+                    $productsController->delete($id_product);
                     break;
             }
             break;
