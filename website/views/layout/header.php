@@ -12,7 +12,7 @@
     <div class="">
         <nav class="navbar navbar-expand-sm navbar-dark">
             <a class="navbar-brand" href="<?= DIRPAGE ?>">
-                <img src="<?= DIRIMG ?>/FaturaPlus_Logo_Oficial.png" class="d-inline-block align-top nav-logo" alt="logo">
+                <img src="<?= DIRIMG ?>FaturaPlus_Logo_Oficial.png" class="d-inline-block align-top nav-logo" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="#navbarSupportedContent"

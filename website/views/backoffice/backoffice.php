@@ -12,35 +12,37 @@
 <body>
 <div class="sidebar">
     <div class="logo-details">
+        <!--<img src="--><?//= DIRIMG ?><!--FaturaPlus_Logo_Oficial.png" alt="LogoImg" class="d-inline-block align-top nav-logo">-->
+        <i class='bx bx-layer-plus icon'></i>
         <div class="logo_name">FaturaPlus</div>
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list">
-        <li>
+        <!--<li>
             <i class='bx bx-search' ></i>
             <input type="text" placeholder="Search...">
             <span class="tooltip">Search</span>
-        </li>
+        </li>-->
         <li>
             <a href="#">
                 <i class='bx bx-grid-alt'></i>
-                <span class="links_name">Dashboard</span>
+                <span class="links_name">Painel Principal</span>
             </a>
-            <span class="tooltip">Dashboard</span>
+            <span class="tooltip">Painel Principal</span>
         </li>
         <li>
             <a href="#">
                 <i class='bx bx-user' ></i>
-                <span class="links_name">User</span>
+                <span class="links_name">Utilizadores</span>
             </a>
-            <span class="tooltip">User</span>
+            <span class="tooltip">Utilizadores</span>
         </li>
         <li>
             <a href="#">
-                <i class='bx bx-chat' ></i>
-                <span class="links_name">Messages</span>
+                <i class='bx bx-spreadsheet' ></i>
+                <span class="links_name">Faturas</span>
             </a>
-            <span class="tooltip">Messages</span>
+            <span class="tooltip">Faturas</span>
         </li>
         <li>
             <a href="#">

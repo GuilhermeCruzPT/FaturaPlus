@@ -26,9 +26,23 @@ define('DIRJS', DIRPAGE . "public/js/");
 
 # Acesso a Base de Dados
 define('HOST', "localhost");
-define('DB', "fatura+");
+define('DB', "faturaplus");
 define('USER', "root");
 define('PASS', "");
 
 # Constantes
 define('APP_NAME', "Fatura Plus");
+
+# Active Record
+
+require '../vendor/autoload.php';
+
+ActiveRecord\Config::initialize(function($cfg)
+{
+    $cfg->set_model_directory('./models');
+    $cfg->set_connections(
+        array(
+            'development' => 'mysql://root@localhost/fatura_plus',
+        )
+    );
+});
