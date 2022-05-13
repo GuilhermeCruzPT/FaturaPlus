@@ -1,7 +1,7 @@
-#options -Indexes
+options -Indexes
 
-options -indexes
-deny from all
-<Files "index.php">
-allow from all
-</Files>
+#options -indexes
+#deny from all
+#<Files "index.php">
+#allow from all
+#</Files>

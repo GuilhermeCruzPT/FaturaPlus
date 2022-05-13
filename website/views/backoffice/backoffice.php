@@ -92,7 +92,7 @@
     </ul>
 </div>
 <section class="home-section">
-    <div class="text">Dashboard</div>
+
 </section>
 <script>
     let sidebar = document.querySelector(".sidebar");
