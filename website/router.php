@@ -8,6 +8,7 @@ require_once './controllers/BaseController.php';
 require_once './controllers/SiteController.php';
 require_once './controllers/AuthController.php';
 require_once './controllers/ProductsController.php';
+require_once './controllers/BillController.php';
 
 
 if(!(isset($_GET['c']) && isset($_GET['a']))){
