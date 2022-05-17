@@ -8,54 +8,55 @@
 <body>
 
 
-
-
-    <div class="container">
+<div class="container">
     <div class="box">
-        <h4 class="display-4 align-text-top">Products</h4><br>
+        <h4 class="display-4 align-text-top">Bill</h4><br>
 
-        <form  method="post" action="router.php?c=products&a=index" >
-            <input type="text" placeholder="Search.." name="search" >
+        <form method="post" action="router.php?c=bill&a=index">
+            <input type="text" placeholder="Search.." name="search">
             <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <br>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">id_product</th>
-                    <th scope="col">referencia</th>
-                    <th scope="col">descricao</th>
-                    <th scope="col">preco</th>
-                    <th scope="col">stock</th>
-                    <th scope="col">vigor</th>
-                    <th scope="col">acções disponiveis</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($products as $product) { ?>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">id_bill</th>
+                <th scope="col">data</th>
+                <th scope="col">valor_total</th>
+                <th scope="col">iva_total</th>
+                <th scope="col">estado</th>
+                <th scope="col">referencia_cliente</th>
+                <th scope="col">referencia_funcionario</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($bill
 
-                        <td><?= $product->id_product?></td>
-                        <td><?= $product->referencia?></td>
-                        <td><?= $product->descricao ?></td>
-                        <td><?= $product->preco ?></td>
-                        <td><?= $product->stock ?></td>
-                        <td><?= $product->vigor ?></td>
+            as $bill) { ?>
 
-                <td>
-                    <a href="router.php?c=products&a=show&id_product=<?= $product->id_product ?>"
-                       class="btn btn-primary">Show</a>
+            <td><?= $bill->id_bill ?></td>
+            <td><?= $bill->data ?></td>
+            <td><?= $bill->valor_total ?></td>
+            <td><?= $bill->iva_total ?></td>
+            <td><?= $bill->estado ?></td>
+            <td><?= $bill->referencia_cliente ?></td>
+            <td><?= $bill->referencia_funcionario ?></td>
 
-                    <a href="router.php?c=products&a=edit&id_product=<?= $product->id_product ?>"
-                       class="btn btn-success">Update</a>
+            <td>
+                <a href="router.php?c=bill&a=show&id_bill=<?= $bill->id_bill ?>"
+                   class="btn btn-primary">Show</a>
 
-                    <a href="router.php?c=products&a=delete&id_product=<?= $product->id_product ?>"
-                       class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-                <?php } ?> </table>
-        <div class="btn btn-success" >
-            <a href="router.php?c=products&a=create" class="btn btn-success">Create</a>
+                <a href="router.php?c=bill&a=edit&id_bill=<?= $bill->id_bill ?>"
+                   class="btn btn-success">Update</a>
+
+                <a href="router.php?c=bill&a=delete&id_bill=<?= $bill->id_bill ?>"
+                   class="btn btn-danger">Delete</a>
+            </td>
+            </tr>
+            </tbody>
+            <?php } ?> </table>
+        <div class="btn btn-success">
+            <a href="router.php?c=bill&a=create" class="btn btn-success">Create</a>
         </div>
     </div>
 </div>

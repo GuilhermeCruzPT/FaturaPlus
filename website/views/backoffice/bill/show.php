@@ -9,7 +9,7 @@
 <div class="container">
     <div class="box" style=" margin: 200px;">
 
-            <form action="router.php?c=products&a=index" method="post" style="
+            <form action="router.php?c=bill&a=index" method="post" style="
     width: 1000px;
 	padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
@@ -17,48 +17,60 @@
                 <h4 class="display-4 text-center">Show</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="name">referencia</label>
-                    <input type="name"
+                    <label for="Data">data</label>
+                    <input type="data"
                            class="form-control"
-                           id="referencia"
-                           name="referencia"
-                           value="<?= $product->referencia ?>">
+                           id="data"
+                           name="data"
+                           value="<?=$bill->data ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">descricao</label>
-                    <input type="text"
+                    <label for="Valor Total">valor_total</label>
+                    <input type="number"
                            class="form-control"
-                           id="descricao"
-                           name="descricao"
-                           value="<?= $product->descricao ?>">
+                           id="valor_total"
+                           name="valor_total"
+                           value="<?= $bill->valor_total ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="preco">preco</label>
-                    <input type="text"
+                    <label for="Iva Total">iva_total</label>
+                    <input type="number"
                            class="form-control"
-                           id="preco"
-                           name="preco"
-                           value="<?= $product->preco ?>">
+                           id="iva_total"
+                           name="iva_total"
+                           value="<?= $bill->iva_total ?>">
                 </div>
                 <div class="form-group">
-                    <label for="preco">stock</label>
+                    <label for="Estado">estado</label>
                     <input type="text"
                            class="form-control"
-                           id="stock"
-                           name="stock"
-                           value="<?= $product->stock ?>">
+                           id="estado"
+                           name="estado"
+                           value="<?= $bill->estado ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="vigor">vigor</label>
+                    <label for="Referencia Cliente">referencia_cliente</label>
                     <input type="text"
                            class="form-control"
-                           id="vigor"
-                           name="vigor"
-                           value="<?= $product->vigor ?>">
+                           id="referencia_cliente"
+                           name="referencia_cliente"
+                           value="<?= $bill->referencia_cliente ?>">
                 </div>
+
+
+                <div class="form-group">
+                    <label for="Referencia Funcionario">referencia_funcionario</label>
+                    <input type="text"
+                           class="form-control"
+                           id="referencia_funcionario"
+                           name="referencia_funcionario"
+                           value="<?= $bill->referencia_funcionario ?>">
+                </div>
+
+
                 <br>
                 <button type="submit"
                         class="btn btn-primary"
