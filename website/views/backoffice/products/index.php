@@ -8,47 +8,47 @@
 <body>
 
 
+<section class="home-section">
 
 
-    <div class="container">
-    <div class="box">
-        <h4 class="display-4 align-text-top">Products</h4><br>
-
-        <form  method="post" action="router.php?c=products&a=index" >
+        <h4 class="display-4 align-text-top" style="text-indent: 50px; padding-top: 25px;">Products</h4><br>
+        <div class="container">
+            <div class="box">
+        <form  method="post" action="router.php?c=product&a=index" >
             <input type="text" placeholder="Search.." name="search" >
             <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <br>
-            <table class="table table-striped">
+            <table class="table table-striped" style="background: white">
                 <thead>
                 <tr>
-                    <th scope="col">id_product</th>
+                    <th scope="col">id</th>
                     <th scope="col">referencia</th>
                     <th scope="col">descricao</th>
                     <th scope="col">preco</th>
                     <th scope="col">stock</th>
-                    <th scope="col">vigor</th>
+                    <th scope="col">iva_id</th>
                     <th scope="col">acções disponiveis</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($products as $product) { ?>
 
-                        <td><?= $product->id_product?></td>
-                        <td><?= $product->referencia?></td>
-                        <td><?= $product->descricao ?></td>
-                        <td><?= $product->preco ?></td>
+                        <td><?= $product->id?></td>
+                        <td><?= $product->reference?></td>
+                        <td><?= $product->description ?></td>
+                        <td><?= $product->price ?></td>
                         <td><?= $product->stock ?></td>
-                        <td><?= $product->vigor ?></td>
+                        <td><?= $product->iva_id ?></td>
 
                 <td>
-                    <a href="router.php?c=products&a=show&id_product=<?= $product->id_product ?>"
+                    <a href="router.php?c=products&a=show&id=<?= $product->id ?>"
                        class="btn btn-primary">Show</a>
 
-                    <a href="router.php?c=products&a=edit&id_product=<?= $product->id_product ?>"
+                    <a href="router.php?c=products&a=edit&id=<?= $product->id ?>"
                        class="btn btn-success">Update</a>
 
-                    <a href="router.php?c=products&a=delete&id_product=<?= $product->id_product ?>"
+                    <a href="router.php?c=products&a=delete&id=<?= $product->id ?>"
                        class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
@@ -59,5 +59,6 @@
         </div>
     </div>
 </div>
+</section>
 </body>
 </html>

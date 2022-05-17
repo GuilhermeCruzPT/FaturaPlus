@@ -7,8 +7,9 @@
     <link href="<?= DIRPAGE ?>public/css/backoffice.css" rel="stylesheet">
 </head>
 <body>
+<section class="home-section">
 <div class="container">
-    <div class="box" style=" margin: 200px;">
+    <div class="box" style=" margin: 200px; background: white;">
 
     <form action="router.php?c=products&a=save" method="post" style="
     width: 1000px;
@@ -25,11 +26,11 @@
         ?>
 
         <div class="form-group">
-            <label for="name">referencia</label>
+            <label for="name">reference</label>
             <input type="name"
                    class="form-control"
                    id="referencia"
-                   name="referencia"
+                   name="reference"
                    placeholder="Enter referencia">
         </div>
 
@@ -38,8 +39,8 @@
             <label for="email">descricao</label>
             <input type="text"
                    class="form-control"
-                   id="descricao"
-                   name="descricao"
+                   id="description"
+                   name="description"
                    placeholder="Enter descricao">
         </div>
 
@@ -49,8 +50,8 @@
             <label for="preco">preco</label>
             <input type="text"
                    class="form-control"
-                   id="preco"
-                   name="preco"
+                   id="price"
+                   name="price"
                    placeholder="Enter preco">
         </div>
 
@@ -71,8 +72,8 @@
             <label for="vigor">vigor</label>
             <input type="text"
                    class="form-control"
-                   id="vigor"
-                   name="vigor"
+                   id="iva_id"
+                   name="iva_id"
                    placeholder="Enter vigor">
         </div>
 
@@ -82,5 +83,6 @@
     </form>
 </div>
 </div>
+</section>
 </body>
 </html>

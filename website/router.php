@@ -7,7 +7,7 @@ require_once './startup/boot.php';
 require_once './controllers/BaseController.php';
 require_once './controllers/SiteController.php';
 require_once './controllers/AuthController.php';
-require_once './controllers/ProductsController.php';
+require_once './controllers/ProductController.php';
 require_once './controllers/BillController.php';
 
 
@@ -51,8 +51,10 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     break;
             }
 
+
+
         case 'products':
-            $productsController = new ProductsController();
+            $productsController = new ProductController();
             switch ($action) {
                 case 'index':
                     $productsController->index();
@@ -64,20 +66,20 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $productsController->store();
                     break;
                 case 'edit':
-                    $id_product = $_GET[('id_product')];
-                    $productsController->edit($id_product);
+                    $id = $_GET[('id')];
+                    $productsController->edit($id);
                     break;
                 case 'update':
-                    $id_product = $_GET[('id_product')];
-                    $productsController->update($id_product);
+                    $id = $_GET[('id')];
+                    $productsController->update($id);
                     break;
                 case 'show':
-                    $id_product = $_GET[('id_product')];
-                    $productsController->show($id_product);
+                    $id = $_GET[('id')];
+                    $productsController->show($id);
                     break;
                 case 'delete':
-                    $id_product = $_GET[('id_product')];
-                    $productsController->delete($id_product);
+                    $id = $_GET[('id')];
+                    $productsController->delete($id);
                     break;
             }
             break;
