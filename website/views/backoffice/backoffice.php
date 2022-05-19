@@ -17,7 +17,7 @@
         <div class="logo_name">FaturaPlus</div>
         <i class='bx bx-menu' id="btn" ></i>
     </div>
-    <ul class="nav-list">
+
         <!--<li>
             <i class='bx bx-search' ></i>
             <input type="text" placeholder="Search...">
@@ -45,11 +45,11 @@
             <span class="tooltip">Faturas</span>
         </li>
         <li>
-            <a href="#">
+            <a href="router.php?c=products&a=index">
                 <i class='bx bx-pie-chart-alt-2' ></i>
-                <span class="links_name">Analytics</span>
+                <span class="links_name">Products</span>
             </a>
-            <span class="tooltip">Analytics</span>
+            <span class="tooltip">Products</span>
         </li>
         <li>
             <a href="#">
@@ -89,11 +89,8 @@
             </div>
             <i class='bx bx-log-out' id="log_out" ></i>
         </li>
-    </ul>
 </div>
-<section class="home-section">
 
-</section>
 <script>
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");

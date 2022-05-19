@@ -7,11 +7,10 @@
     <link href="<?= DIRPAGE ?>public/css/backoffice.css" rel="stylesheet">
 </head>
 <body>
-<section class="home-section">
 <div class="container">
-    <div class="box" style=" margin: 200px; background: white;">
+    <div class="box" style=" margin: 200px;">
 
-    <form action="router.php?c=products&a=save" method="post" style="
+    <form action="router.php?c=bill&a=save" method="post" style="
     width: 1000px;
 	padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
@@ -26,55 +25,65 @@
         ?>
 
         <div class="form-group">
-            <label for="name">reference</label>
-            <input type="name"
+            <label for="Data">data</label>
+            <input type="text"
                    class="form-control"
-                   id="referencia"
-                   name="reference"
-                   placeholder="Enter referencia">
+                   id="data"
+                   name="data"
+                   placeholder="Enter Data">
         </div>
 
 
         <div class="form-group">
-            <label for="email">descricao</label>
+            <label for="Valor">valor_total</label>
             <input type="text"
                    class="form-control"
-                   id="description"
-                   name="description"
-                   placeholder="Enter descricao">
-        </div>
-
-
-
-        <div class="form-group">
-            <label for="preco">preco</label>
-            <input type="text"
-                   class="form-control"
-                   id="price"
-                   name="price"
-                   placeholder="Enter preco">
+                   id="valor_total"
+                   name="valor_total"
+                   placeholder="Enter Valor_total">
         </div>
 
 
 
         <div class="form-group">
-            <label for="stock">stock</label>
+            <label for="IVA">iva_total</label>
             <input type="text"
                    class="form-control"
-                   id="stock"
-                   name="stock"
-                   placeholder="Enter stock">
+                   id="iva_total"
+                   name="iva_total"
+                   placeholder="Enter Iva total">
         </div>
 
 
 
         <div class="form-group">
-            <label for="vigor">vigor</label>
+            <label for="Estado">estado</label>
             <input type="text"
                    class="form-control"
-                   id="iva_id"
-                   name="iva_id"
-                   placeholder="Enter vigor">
+                   id="estado"
+                   name="estado"
+                   placeholder="Enter Estado">
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="Referencia cliente">referencia_cliente</label>
+            <input type="text"
+                   class="form-control"
+                   id="referencia_cliente"
+                   name="referencia_cliente"
+                   placeholder="Enter Referencia cliente">
+        </div>
+
+
+        <div class="form-group">
+            <label for="Referencia funcionario">referencia_funcionario</label>
+            <input type="text"
+                   class="form-control"
+                   id="referencia_cliente"
+                   name="referencia_cliente"
+                   placeholder="Enter referencia funcionario">
         </div>
 
         <button type="submit"
@@ -83,6 +92,5 @@
     </form>
 </div>
 </div>
-</section>
 </body>
 </html>

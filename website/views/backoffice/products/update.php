@@ -5,12 +5,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRPAGE ?>public/css/backoffice.css" rel="stylesheet">
 </head>
+<section class="home-section">
 <body>
 <div class="container">
-    <div class="box" style=" margin: 200px;" >
+    <div class="box" style=" margin: 200px;background: white;" >
 
 
-    <form action="router.php?c=products&a=update&id_product=<?= $product->id_product ?>" method="post"
+    <form action="router.php?c=products&a=update&id=<?= $product->id ?>" method="post"
           style="
     width: 1000px;
 	padding: 20px;
@@ -22,30 +23,30 @@
             <label for="name">referencia</label>
             <input type="name"
                    class="form-control"
-                   id="referencia"
-                   name="referencia"
+                   id="reference"
+                   name="reference"
                    placeholder="Enter referencia"
-                   value="<?= $product->referencia ?>">
+                   value="<?= $product->reference ?>">
         </div>
 
         <div class="form-group">
             <label for="email">descricao</label>
             <input type="text"
                    class="form-control"
-                   id="descricao"
-                   name="descricao"
+                   id="description"
+                   name="description"
                    placeholder="Enter descricao"
-                   value="<?= $product->descricao ?>">
+                   value="<?= $product->description ?>">
         </div>
 
         <div class="form-group">
             <label for="preco">preco</label>
             <input type="text"
                    class="form-control"
-                   id="preco"
-                   name="preco"
+                   id="price"
+                   name="price"
                    placeholder="Enter preco"
-                   value="<?= $product->preco ?>">
+                   value="<?= $product->price ?>">
         </div>
         <div class="form-group">
             <label for="preco">stock</label>
@@ -62,9 +63,9 @@
             <input type="text"
                    class="form-control"
                    id="vigor"
-                   name="vigor"
+                   name="iva_id"
                    placeholder="Enter vigor"
-                   value="<?= $product->vigor ?>">
+                   value="<?= $product->iva_id ?>">
         </div>
 
         <button type="submit"
@@ -74,4 +75,5 @@
 </div>
 </div>
 </body>
+</section>
 </html>

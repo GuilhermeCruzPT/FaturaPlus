@@ -5,9 +5,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRPAGE ?>public/css/backoffice.css" rel="stylesheet">
 </head>
+
+<section class="home-section">
 <body>
 <div class="container">
-    <div class="box" style=" margin: 200px;">
+    <div class="box" style=" margin: 200px; background: white;">
 
             <form action="router.php?c=products&a=index" method="post" style="
     width: 1000px;
@@ -17,30 +19,30 @@
                 <h4 class="display-4 text-center">Show</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="name">referencia</label>
+                    <label for="reference">referencia</label>
                     <input type="name"
                            class="form-control"
-                           id="referencia"
-                           name="referencia"
-                           value="<?= $product->referencia ?>">
+                           id="reference"
+                           name="reference"
+                           value="<?= $product->reference ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="email">descricao</label>
                     <input type="text"
                            class="form-control"
-                           id="descricao"
-                           name="descricao"
-                           value="<?= $product->descricao ?>">
+                           id="description"
+                           name="description"
+                           value="<?= $product->description ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="preco">preco</label>
                     <input type="text"
                            class="form-control"
-                           id="preco"
-                           name="preco"
-                           value="<?= $product->preco ?>">
+                           id="price"
+                           name="price"
+                           value="<?= $product->price ?>">
                 </div>
                 <div class="form-group">
                     <label for="preco">stock</label>
@@ -52,12 +54,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="vigor">vigor</label>
+                    <label for="vigor">iva_id</label>
                     <input type="text"
                            class="form-control"
-                           id="vigor"
-                           name="vigor"
-                           value="<?= $product->vigor ?>">
+                           id="iva_id"
+                           name="iva_id"
+                           value="<?= $product->iva_id ?>">
                 </div>
                 <br>
                 <button type="submit"
@@ -68,4 +70,5 @@
     </div>
 </div>
 </body>
+</section>
 </html>

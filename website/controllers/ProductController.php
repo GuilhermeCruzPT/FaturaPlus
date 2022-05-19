@@ -1,6 +1,6 @@
 <?php
 
-class ProductsController extends BaseController
+class ProductController extends BaseController
 {
     public function index()
     {
@@ -10,7 +10,7 @@ class ProductsController extends BaseController
             //barra de pesquisa
 
             $search = $_POST['search'];
-            $products = Products::find('all',
+            $products = Product::find('all',
                 array('conditions' => "referencia LIKE '%$search%' 
                 or descricao LIKE '%$search%'
                 or preco LIKE '%$search%'
@@ -22,7 +22,7 @@ class ProductsController extends BaseController
             ]);
 
         }else {
-            $products = Products::all();
+            $products = Product::all();
             $this->renderViewBackend('products/index', [
                 'products' => $products,
             ]);
@@ -37,12 +37,12 @@ class ProductsController extends BaseController
     public function store()
     {
 
-        $attributes = array('referencia' => $_POST['referencia'],
-            'descricao' => $_POST['descricao'],
-            'preco' => $_POST['preco'],
+        $attributes = array('reference' => $_POST['reference'],
+            'description' => $_POST['description'],
+            'price' => $_POST['price'],
             'stock' => $_POST['stock'],
-            'vigor' => $_POST['vigor']);
-        $products = new Products($attributes);
+            'iva_id' => $_POST['iva_id']);
+        $products = new Product($attributes);
         if ($products->is_valid()) {
             $products->save();
             header('Location: router.php?c=products&a=index');
@@ -62,9 +62,9 @@ class ProductsController extends BaseController
 
     }
 
-    public function edit($id_product)
+    public function edit($id)
     {
-        $product = Products::find([$id_product]);
+        $product = Product::find([$id]);
         if (is_null($product)) {
             header('Location: router.php?c=products&a=index');
         } else {
@@ -74,17 +74,17 @@ class ProductsController extends BaseController
         }
     }
 
-    public function update($id_product)
+    public function update($id)
     {
         //find resource (activerecord/model) instance where PK = $id
         //your form name fields must match the ones of the table fields
-        $product = Products::find([$id_product]);
+        $product = Product::find([$id]);
 
-        $attributes = array('referencia' => $_POST['referencia'],
-            'descricao' => $_POST['descricao'],
-            'preco' => $_POST['preco'],
+        $attributes = array('reference' => $_POST['reference'],
+            'description' => $_POST['description'],
+            'price' => $_POST['price'],
             'stock' => $_POST['stock'],
-            'vigor' => $_POST['vigor']);
+            'iva_id' => $_POST['iva_id']);
         $product->update_attributes($attributes);
         if($product->is_valid()){
             $product->save();
@@ -96,9 +96,9 @@ class ProductsController extends BaseController
         }
     }
 
-    public function delete($id_product)
+    public function delete($id)
     {
-        $product = Products::find([$id_product]);
+        $product = Product::find([$id]);
         $product->delete();
 
         header('Location: router.php?c=products&a=index');
@@ -109,7 +109,7 @@ class ProductsController extends BaseController
     public function show($id_product)
     {
 
-        $product = Products::find([$id_product]);
+        $product = Product::find([$id_product]);
         if (is_null($product)) {
             header('Location: router.php?c=products&a=index');
         } else {

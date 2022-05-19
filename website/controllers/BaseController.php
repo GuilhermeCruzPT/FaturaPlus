@@ -11,7 +11,6 @@ class BaseController{
 
     public function renderViewBackend($view, $params = []) {
         extract($params);
-        // substituir pela navbar
         require_once "./views/backoffice/backoffice.php";
         require_once "./views/backoffice/$view.php";
     }
