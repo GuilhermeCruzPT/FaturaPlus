@@ -20,21 +20,21 @@ class BusinessController extends BaseController
                 or localidade LIKE '%$search%'"));
 
 
-            $this->renderViewBackend('business/index', [
-                'business' => $business,
+            $this->renderViewBackend('enterprises/index', [
+                'enterprises' => $business,
             ]);
 
         } else {
             $business = Business::all();
-            $this->renderViewBackend('business/index', [
-                'business' => $business,
+            $this->renderViewBackend('enterprises/index', [
+                'enterprises' => $business,
             ]);
         }
     }
 
     public function create()
     {
-        $this->renderViewBackend('business/create');
+        $this->renderViewBackend('enterprises/create');
     }
 
     public function store()
@@ -52,15 +52,15 @@ class BusinessController extends BaseController
         $business = new Business($attributes);
         if ($business->is_valid()) {
             $business->save();
-            header('Location: router.php?c=business&a=index');
+            header('Location: router.php?c=enterprises&a=index');
         } else {
             //retorna os erros presentes no model
 
 
             print_r($business->errors->full_messages());
 
-            $this->renderViewBackend('business/create', [
-                'business' => $business
+            $this->renderViewBackend('enterprises/create', [
+                'enterprises' => $business
             ]);
 
         }
@@ -71,10 +71,10 @@ class BusinessController extends BaseController
     {
         $id_empresa = Business::find([$id_empresa]);
         if (is_null($id_empresa)) {
-            header('Location: router.php?c=business&a=index');
+            header('Location: router.php?c=enterprises&a=index');
         } else {
-            $this->renderViewBackend('business/update', [
-                'business' => $id_empresa,
+            $this->renderViewBackend('enterprises/update', [
+                'enterprises' => $id_empresa,
             ]);
         }
     }
@@ -97,10 +97,10 @@ class BusinessController extends BaseController
         $id_empresa->update_attributes($attributes);
         if ($id_empresa->is_valid()) {
             $id_empresa->save();
-            header('Location: router.php?c=business&a=index');
+            header('Location: router.php?c=enterprises&a=index');
         } else {
-            $this->renderView('business/update', [
-                'business' => $id_empresa,
+            $this->renderView('enterprises/update', [
+                'enterprises' => $id_empresa,
             ]);
         }
     }
@@ -110,7 +110,7 @@ class BusinessController extends BaseController
         $id_empresa = Bill::find([$id_empresa]);
         $id_empresa->delete();
 
-        header('Location: router.php?c=business&a=index');
+        header('Location: router.php?c=enterprises&a=index');
 
     }
 
@@ -119,10 +119,10 @@ class BusinessController extends BaseController
 
         $business = Business::find([$id_empresa]);
         if (is_null($id_empresa)) {
-            header('Location: router.php?c=business&a=index');
+            header('Location: router.php?c=enterprises&a=index');
         } else {
-            $this->renderViewBackend('business/show', [
-                'business' => $business,
+            $this->renderViewBackend('enterprises/show', [
+                'enterprises' => $business,
             ]);
 
 

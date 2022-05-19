@@ -9,6 +9,7 @@ require_once './controllers/SiteController.php';
 require_once './controllers/AuthController.php';
 require_once './controllers/ProductController.php';
 require_once './controllers/BillController.php';
+require_once './controllers/UserController.php';
 
 
 if(!(isset($_GET['c']) && isset($_GET['a']))){
@@ -43,11 +44,14 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     break;
             }
 
+
+
+
         case 'auth':
-            $siteController = new AuthController();
+            $authController = new AuthController();
             switch ($action) {
                 case 'sign':
-                    $siteController->sign();
+                    $authController->sign();
                     break;
             }
 
@@ -119,5 +123,35 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
 
 
 
+        case 'users':
+            $UserController = new UserController();
+            switch ($action) {
+                case 'index':
+                    $UserController->index();
+                    break;
+                case 'create':
+                    $UserController->create();
+                    break;
+                case 'save':
+                    $UserController->store();
+                    break;
+                case 'edit':
+                    $id = $_GET[('id')];
+                    $UserController->edit($id);
+                    break;
+                case 'update':
+                    $id = $_GET[('id')];
+                    $UserController->update($id);
+                    break;
+                case 'show':
+                    $id = $_GET[('id')];
+                    $UserController->show($id);
+                    break;
+                case 'delete':
+                    $id = $_GET[('id')];
+                    $UserController->delete($id);
+                    break;
+            }
+            break;
     }
 }

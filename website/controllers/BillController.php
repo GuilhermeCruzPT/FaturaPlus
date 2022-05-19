@@ -11,12 +11,12 @@ class BillController extends BaseController
 
             $search = $_POST['search'];
             $bill = Bill::find('all',
-                array('conditions' => "data LIKE '%$search%' 
-                or valor_total LIKE '%$search%'
-                or iva_total LIKE '%$search%'
-                or estado LIKE '%$search%'
-                or referencia_cliente LIKE '%$search%'
-                or referencia_funcionario LIKE '%$search%'"));
+                array('conditions' => "date LIKE '%$search%' 
+                or total_value LIKE '%$search%'
+                or total_iva LIKE '%$search%'
+                or state LIKE '%$search%'
+                or client_reference_id LIKE '%$search%'
+                or employee_reference_id LIKE '%$search%'"));
 
 
             $this->renderViewBackend('bill/index', [
@@ -39,12 +39,12 @@ class BillController extends BaseController
     public function store()
     {
 
-        $attributes = array('data' => $_POST['data'],
-            'valor_total' => $_POST['valor_total'],
-            'iva_total' => $_POST['iva_total'],
-            'estado' => $_POST['estado'],
-            'referencia_cliente' => $_POST['referencia_cliente'],
-            'referencia_funcionario' => $_POST['referencia_funcionario']);
+        $attributes = array('date' => $_POST['date'],
+            'total_value' => $_POST['total_value'],
+            'total_iva' => $_POST['total_iva'],
+            'state' => $_POST['state'],
+            'client_reference_id' => $_POST['client_reference_id'],
+            'employee_reference_id' => $_POST['employee_reference_id']);
         $bill = new Bill($attributes);
         if ($bill->is_valid()) {
             $bill->save();
@@ -82,12 +82,14 @@ class BillController extends BaseController
         $bill = Bill::find([$id_bill]);
 
         $attributes = array
-        ('data' => $_POST['data'],
-            'valor_total' => $_POST['valor_total'],
-            'iva_total' => $_POST['iva_total'],
-            'estado' => $_POST['estado'],
-            'referencia_cliente' => $_POST['referencia_cliente'],
-            'referencia_funcionario' => $_POST['referencia_funcionario']);
+        ('date' => $_POST['date'],
+            'total_value' => $_POST['total_value'],
+            'total_iva' => $_POST['total_iva'],
+            'state' => $_POST['state'],
+            'client_reference_id' => $_POST['client_reference_id'],
+            'employee_reference_id' => $_POST['employee_reference_id']);
+
+
         $bill->update_attributes($attributes);
         if ($bill->is_valid()) {
             $bill->save();

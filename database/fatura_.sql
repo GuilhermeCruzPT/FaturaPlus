@@ -55,7 +55,7 @@ CREATE TABLE `bill_line` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `business`
+-- Estrutura da tabela `enterprises`
 --
 
 CREATE TABLE `business` (
@@ -134,7 +134,7 @@ ALTER TABLE `bill_line`
   ADD KEY `valor` (`valor`);
 
 --
--- Índices para tabela `business`
+-- Índices para tabela `enterprises`
 --
 ALTER TABLE `business`
   ADD PRIMARY KEY (`id_empresa`) USING BTREE;
@@ -174,7 +174,7 @@ ALTER TABLE `bill_line`
   MODIFY `id_bill_line` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `business`
+-- AUTO_INCREMENT de tabela `enterprises`
 --
 ALTER TABLE `business`
   MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT;
