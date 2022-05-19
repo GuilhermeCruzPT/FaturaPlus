@@ -43,19 +43,17 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $siteController->backoffice();
                     break;
             }
-
-
-
-
+            
         case 'auth':
             $authController = new AuthController();
             switch ($action) {
                 case 'sign':
                     $authController->sign();
                     break;
+                case 'signin':
+                    $authController->signin();
+                    break;
             }
-
-
 
         case 'products':
             $productsController = new ProductController();
@@ -88,8 +86,6 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
             }
             break;
 
-
-
         case 'bill':
             $BillController = new BillController();
             switch ($action) {
@@ -120,8 +116,6 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     break;
             }
             break;
-
-
 
         case 'users':
             $UserController = new UserController();

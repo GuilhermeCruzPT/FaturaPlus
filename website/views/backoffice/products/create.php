@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html >
 <head>
-    <title >Create</title>
+    <title>Criar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
+    <link href="<?= DIRCSS ?>public/css/backoffice.css" rel="stylesheet">
 </head>
 <body>
 <section class="home-section">
@@ -17,13 +17,6 @@
 
                 <h4 class="display-4 text-center">Create</h4><hr><br>
 
-                <?php
-                /* if (isset($products)){
-                 if ($products->errors->on('referencia')) {
-                     echo "<font color='red'>" . $products->errors->on('referencia') . "</font>";
-                 }}*/
-                ?>
-
                 <div class="form-group">
                     <label for="name">reference</label>
                     <input type="name"
@@ -32,7 +25,18 @@
                            name="reference"
                            placeholder="Enter referencia">
                 </div>
+                <?php
+                if(isset($products->errors)) {
+                    if (is_array($products->errors->on('reference'))) {
+                        foreach ($products->errors->on('reference') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $products->errors->on('reference')."</font>";
+                    }
+                }
 
+                ?>
 
                 <div class="form-group">
                     <label for="email">descricao</label>
@@ -43,39 +47,85 @@
                            placeholder="Enter descricao">
                 </div>
 
+                <?php
+                if(isset($products->errors)) {
+                    if (is_array($products->errors->on('description'))) {
+                        foreach ($products->errors->on('description') as $error) {
+                            echo "<font color='red'>" .$error ."</font>" . '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" .$products->errors->on('description')."</font>";
+                    }
+                }
 
+                ?>
 
                 <div class="form-group">
                     <label for="preco">preco</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="price"
                            name="price"
                            placeholder="Enter preco">
                 </div>
 
+                <?php
+                if(isset($products->errors)) {
+                    if (is_array($products->errors->on('price'))) {
+                        foreach ($products->errors->on('price') as $error) {
+                            echo "<font color='red'>" .$error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" .$products->errors->on('price')."</font>";
+                    }
+                }
 
+                ?>
 
                 <div class="form-group">
                     <label for="stock">stock</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="stock"
                            name="stock"
                            placeholder="Enter stock">
                 </div>
 
+                <?php
+                if(isset($products->errors)) {
+                    if (is_array($products->errors->on('stock'))) {
+                        foreach ($products->errors->on('stock') as $error) {
+                            echo"<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" .$products->errors->on('stock')."</font>";
+                    }
+                }
 
+                ?>
 
                 <div class="form-group">
-                    <label for="vigor">vigor</label>
+                    <label for="iva_id">iva_id</label>
                     <input type="text"
                            class="form-control"
                            id="iva_id"
                            name="iva_id"
-                           placeholder="Enter vigor">
+                           placeholder="Enter iva_id">
                 </div>
 
+                <?php
+                if(isset($products->errors)) {
+                    if (is_array($products->errors->on('iva_id'))) {
+                        foreach ($products->errors->on('iva_id') as $error) {
+                            echo "<font color='red'>". $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>".$products->errors->on('iva_id')."</font>";
+                    }
+                }
+
+                ?>
+                <br>
                 <button type="submit"
                         class="btn btn-primary"
                         name="create">Create</button>

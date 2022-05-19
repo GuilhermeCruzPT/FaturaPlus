@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Update</title>
+    <title>Editar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= DIRPAGE ?>public/css/backoffice.css" rel="stylesheet">
+    <link href="<?= DIRCSS ?>public/css/backoffice.css" rel="stylesheet">
 </head>
 <section class="home-section">
 <body>
@@ -29,6 +29,19 @@
                    value="<?= $product->reference ?>">
         </div>
 
+        <?php
+        if(isset($products->errors)) {
+            if (is_array($products->errors->on('reference'))) {
+                foreach ($products->errors->on('reference') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $products->errors->on('reference');
+            }
+        }
+
+        ?>
+
         <div class="form-group">
             <label for="email">descricao</label>
             <input type="text"
@@ -39,6 +52,19 @@
                    value="<?= $product->description ?>">
         </div>
 
+        <?php
+        if(isset($products->errors)) {
+            if (is_array($products->errors->on('description'))) {
+                foreach ($products->errors->on('description') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $products->errors->on('description');
+            }
+        }
+
+        ?>
+
         <div class="form-group">
             <label for="preco">preco</label>
             <input type="text"
@@ -48,15 +74,41 @@
                    placeholder="Enter preco"
                    value="<?= $product->price ?>">
         </div>
+
+        <?php
+        if(isset($products->errors)) {
+            if (is_array($products->errors->on('price'))) {
+                foreach ($products->errors->on('price') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $products->errors->on('price');
+            }
+        }
+
+        ?>
+
         <div class="form-group">
             <label for="preco">stock</label>
-            <input type="text"
+            <input type="value"
                    class="form-control"
                    id="stock"
                    name="stock"
                    placeholder="Enter stock"
                    value="<?= $product->stock ?>">
         </div>
+        <?php
+        if(isset($products->errors)) {
+            if (is_array($products->errors->on('stock'))) {
+                foreach ($products->errors->on('stock') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $products->errors->on('stock');
+            }
+        }
+
+        ?>
 
         <div class="form-group">
             <label for="vigor">vigor</label>
@@ -64,9 +116,22 @@
                    class="form-control"
                    id="vigor"
                    name="iva_id"
-                   placeholder="Enter vigor"
+                   placeholder="Enter iva_id"
                    value="<?= $product->iva_id ?>">
         </div>
+
+        <?php
+        if(isset($products->errors)) {
+            if (is_array($products->errors->on('iva_id'))) {
+                foreach ($products->errors->on('iva_id') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $products->errors->on('iva_id');
+            }
+        }
+
+        ?>
 
         <button type="submit"
                 class="btn btn-primary"
