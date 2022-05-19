@@ -83,5 +83,41 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     break;
             }
             break;
+
+
+
+        case 'bill':
+            $BillController = new BillController();
+            switch ($action) {
+                case 'index':
+                    $BillController->index();
+                    break;
+                case 'create':
+                    $BillController->create();
+                    break;
+                case 'save':
+                    $BillController->store();
+                    break;
+                case 'edit':
+                    $id = $_GET[('id')];
+                    $BillController->edit($id);
+                    break;
+                case 'update':
+                    $id = $_GET[('id')];
+                    $BillController->update($id);
+                    break;
+                case 'show':
+                    $id = $_GET[('id')];
+                    $BillController->show($id);
+                    break;
+                case 'delete':
+                    $id = $_GET[('id')];
+                    $BillController->delete($id);
+                    break;
+            }
+            break;
+
+
+
     }
 }
