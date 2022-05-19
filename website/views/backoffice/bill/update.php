@@ -19,62 +19,57 @@
         <h4 class="display-4 text-center">Update</h4><hr><br>
 
         <div class="form-group">
-            <label for="Data">data</label>
-            <input type="data"
+            <label for="date">date</label>
+            <input type="text"
                    class="form-control"
-                   id="data"
-                   name="data"
-                   placeholder="Enter data"
-                   value="<?=$bill->data ?>">
+                   id="date"
+                   name="date"
+                   value="<?= $bill->data ?>">
         </div>
 
         <div class="form-group">
-            <label for="Valor Total">valor_total</label>
-            <input type="number"
+            <label for="total_value">total_value</label>
+            <input type="text"
                    class="form-control"
-                   id="valor_total"
-                   name="valor_total"
-                   placeholder="Enter valor total"
+                   id="total_value"
+                   name="total_value"
                    value="<?= $bill->valor_total ?>">
         </div>
 
         <div class="form-group">
-            <label for="Iva Total">iva_total</label>
-            <input type="number"
-                   class="form-control"
-                   id="iva_total"
-                   name="iva_total"
-                   placeholder="Enter iva total"
-                   value="<?= $bill->iva_total ?>">
-        </div>
-        <div class="form-group">
-            <label for="Estado">estado</label>
+            <label for="total_iva">total_iva</label>
             <input type="text"
                    class="form-control"
-                   id="estado"
-                   name="estado"
-                   placeholder="Enter estado"
+                   id="total_iva"
+                   name="total_iva"
+                   value="<?= $bill->iva_total ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="state">state</label>
+            <input type="text"
+                   class="form-control"
+                   id="state"
+                   name="state"
                    value="<?= $bill->estado ?>">
         </div>
 
         <div class="form-group">
-            <label for="Referencia Cliente">referencia_cliente</label>
+            <label for="client_reference_id">client_reference_id</label>
             <input type="text"
                    class="form-control"
-                   id="referencia_cliente"
-                   name="referencia_cliente"
-                   placeholder="Enter referencia_cliente"
+                   id="client_reference_id"
+                   name="client_reference_id"
                    value="<?= $bill->referencia_cliente ?>">
         </div>
 
 
         <div class="form-group">
-            <label for="Referencia Funcionario">referencia_funcionario</label>
+            <label for="employee_reference_id">employee_reference_id</label>
             <input type="text"
                    class="form-control"
-                   id="referencia_funcionario"
-                   name="referencia_funcionario"
-                   placeholder="Enter referencia_funcionario"
+                   id="employee_reference_id"
+                   name="employee_reference_id"
                    value="<?= $bill->referencia_funcionario ?>">
         </div>
 

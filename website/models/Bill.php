@@ -4,12 +4,12 @@ class Bill extends \ActiveRecord\Model
 {
 
     static $validates_presence_of = array(
-        array('data', 'message' => 'It must be provided'),
-        array('valor_total', 'message' => 'It must be provided'),
-        array('iva_total', 'message' => 'It must be provided'),
-        array('estado', 'message' => 'It must be provided'),
-        array('referencia_cliente', 'message' => 'It must be provided'),
-        array('referencia_funcionario', 'message' => 'It must be provided'),
+        array('date', 'message' => 'It must be provided'),
+        array('total_value', 'message' => 'It must be provided'),
+        array('total_iva', 'message' => 'It must be provided'),
+        array('state', 'message' => 'It must be provided'),
+        array('client_reference_id', 'message' => 'It must be provided'),
+        array('employee_reference_id', 'message' => 'It must be provided'),
     );
 
 }

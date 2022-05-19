@@ -21,12 +21,12 @@
             <thead>
             <tr>
                 <th scope="col">id_bill</th>
-                <th scope="col">data</th>
-                <th scope="col">valor_total</th>
-                <th scope="col">iva_total</th>
-                <th scope="col">estado</th>
-                <th scope="col">referencia_cliente</th>
-                <th scope="col">referencia_funcionario</th>
+                <th scope="col">date</th>
+                <th scope="col">total_value</th>
+                <th scope="col">total_iva</th>
+                <th scope="col">state</th>
+                <th scope="col">client_reference_id</th>
+                <th scope="col">employee_reference_id</th>
             </tr>
             </thead>
             <tbody>
@@ -35,12 +35,12 @@
             as $bill) { ?>
 
             <td><?= $bill->id_bill ?></td>
-            <td><?= $bill->data ?></td>
-            <td><?= $bill->valor_total ?></td>
-            <td><?= $bill->iva_total ?></td>
-            <td><?= $bill->estado ?></td>
-            <td><?= $bill->referencia_cliente ?></td>
-            <td><?= $bill->referencia_funcionario ?></td>
+            <td><?= $bill->date ?></td>
+            <td><?= $bill->total_value ?></td>
+            <td><?= $bill->total_iva ?></td>
+            <td><?= $bill->state ?></td>
+            <td><?= $bill->client_reference_id ?></td>
+            <td><?= $bill->employee_reference_id ?></td>
 
             <td>
                 <a href="router.php?c=bill&a=show&id_bill=<?= $bill->id_bill ?>"

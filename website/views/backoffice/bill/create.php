@@ -25,65 +25,65 @@
         ?>
 
         <div class="form-group">
-            <label for="Data">data</label>
+            <label for="date">date</label>
             <input type="text"
                    class="form-control"
-                   id="data"
-                   name="data"
-                   placeholder="Enter Data">
+                   id="date"
+                   name="date"
+                   placeholder="Enter date">
         </div>
 
 
         <div class="form-group">
-            <label for="Valor">valor_total</label>
+            <label for="total_value">total_value</label>
             <input type="text"
                    class="form-control"
-                   id="valor_total"
-                   name="valor_total"
-                   placeholder="Enter Valor_total">
-        </div>
-
-
-
-        <div class="form-group">
-            <label for="IVA">iva_total</label>
-            <input type="text"
-                   class="form-control"
-                   id="iva_total"
-                   name="iva_total"
-                   placeholder="Enter Iva total">
+                   id="total_value"
+                   name="total_value"
+                   placeholder="Enter total_value">
         </div>
 
 
 
         <div class="form-group">
-            <label for="Estado">estado</label>
+            <label for="total_iva">total_iva</label>
             <input type="text"
                    class="form-control"
-                   id="estado"
-                   name="estado"
-                   placeholder="Enter Estado">
+                   id="total_iva"
+                   name="total_iva"
+                   placeholder="Enter total_iva">
         </div>
 
 
 
         <div class="form-group">
-            <label for="Referencia cliente">referencia_cliente</label>
+            <label for="state">state</label>
             <input type="text"
                    class="form-control"
-                   id="referencia_cliente"
-                   name="referencia_cliente"
-                   placeholder="Enter Referencia cliente">
+                   id="state"
+                   name="state"
+                   placeholder="Enter state">
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="client_reference_id">client_reference_id</label>
+            <input type="text"
+                   class="form-control"
+                   id="client_reference_id"
+                   name="client_reference_id"
+                   placeholder="Enter client_reference_id">
         </div>
 
 
         <div class="form-group">
-            <label for="Referencia funcionario">referencia_funcionario</label>
+            <label for="employee_reference_id">employee_reference_id</label>
             <input type="text"
                    class="form-control"
-                   id="referencia_cliente"
-                   name="referencia_cliente"
-                   placeholder="Enter referencia funcionario">
+                   id="employee_reference_id"
+                   name="employee_reference_id"
+                   placeholder="Enter employee_reference_id">
         </div>
 
         <button type="submit"
