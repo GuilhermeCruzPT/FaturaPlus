@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html >
 <head>
+    <style></style>
     <title>Criar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>public/css/backoffice.css" rel="stylesheet">
@@ -103,16 +104,13 @@
                 }
 
                 ?>
-
                 <div class="form-group">
-                    <label for="iva_id">iva_id</label>
-                    <input type="text"
-                           class="form-control"
-                           id="iva_id"
-                           name="iva_id"
-                           placeholder="Enter iva_id">
-                </div>
-
+                <select name="iva_id">
+                    <?php foreach($iva as $ivas){?>
+                        <option value="<?= $ivas->id?>"> <?= $ivas->description; ?></option>
+                    <?php } ?>
+                </select>
+        </div>
                 <?php
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('iva_id'))) {

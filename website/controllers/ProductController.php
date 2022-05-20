@@ -31,7 +31,10 @@ class ProductController extends BaseController
 
     public function create()
     {
-        $this->renderViewBackend('products/create');
+        $iva = Iva::all();
+        $this->renderViewBackend('products/create',[
+            'iva' => $iva
+        ]);
     }
 
     public function store()

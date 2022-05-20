@@ -15,5 +15,9 @@ class BaseController{
         require_once "./views/backoffice/$view.php";
     }
 
+    public function renderViewfrontend($view, $params = []) {
+        extract($params);
+        require_once "./views/$view.php";
+    }
 
 }

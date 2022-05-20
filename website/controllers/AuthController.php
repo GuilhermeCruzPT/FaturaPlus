@@ -9,8 +9,16 @@ class AuthController extends BaseController
         require_once './views/site/auth.php';
     }
 
+    // registo
+
     public function signin(){
-        $this->renderView('site/sigin');
+        //$this->renderView('site/sigin');
+        $this->renderViewfrontend('site/sigin');
+    }
+    public function save_signin(){
+
+
+
     }
 
 }

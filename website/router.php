@@ -25,6 +25,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
             $siteController = new SiteController();
             switch ($action) {
                 case 'index':
+                    $siteController = new SiteController();
                     $siteController->index();
                     break;
                 case 'show':
@@ -43,7 +44,8 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $siteController->backoffice();
                     break;
             }
-            
+            break;
+
         case 'auth':
             $authController = new AuthController();
             switch ($action) {
@@ -54,6 +56,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $authController->signin();
                     break;
             }
+            break;
 
         case 'products':
             $productsController = new ProductController();
