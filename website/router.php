@@ -150,5 +150,36 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     break;
             }
             break;
+
+        case 'ivas':
+            $IvaController = new IvaController();
+            switch ($action) {
+                case 'index':
+                    $IvaController->index();
+                    break;
+                case 'create':
+                    $IvaController->create();
+                    break;
+                case 'save':
+                    $IvaController->store();
+                    break;
+                case 'edit':
+                    $id = $_GET[('id')];
+                    $IvaController->edit($id);
+                    break;
+                case 'update':
+                    $id = $_GET[('id')];
+                    $IvaController->update($id);
+                    break;
+                case 'show.php':
+                    $id = $_GET[('id')];
+                    $IvaController->show($id);
+                    break;
+                case 'delete':
+                    $id = $_GET[('id')];
+                    $IvaController->delete($id);
+                    break;
+            }
+            break;
     }
 }
