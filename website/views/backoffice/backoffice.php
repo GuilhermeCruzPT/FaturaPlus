@@ -13,7 +13,7 @@
 <div class="sidebar">
     <div class="logo-details">
         <!--<img src="--><?//= DIRIMG ?><!--FaturaPlus_Logo_Oficial.png" alt="LogoImg" class="d-inline-block align-top nav-logo">-->
-        <i class='bx bx-layer-plus icon'></i>
+        <i class='bx bx-layer-plus bx-tada icon'></i>
         <div class="logo_name">FaturaPlus</div>
         <i class='bx bx-menu' id="btn" ></i>
     </div>
@@ -23,61 +23,62 @@
             <input type="text" placeholder="Search...">
             <span class="tooltip">Search</span>
         </li>-->
+
         <li>
             <a href="#">
-                <i class='bx bx-grid-alt'></i>
+                <i class='bx bx-grid-alt' ></i>
                 <span class="links_name">Painel Principal</span>
             </a>
             <span class="tooltip">Painel Principal</span>
         </li>
         <li>
-            <a href="#">
+            <a href="router.php?c=users&a=index">
                 <i class='bx bx-user' ></i>
                 <span class="links_name">Utilizadores</span>
             </a>
             <span class="tooltip">Utilizadores</span>
         </li>
         <li>
-            <a href="#">
+            <a href="router.php?c=bills&a=index">
                 <i class='bx bx-spreadsheet' ></i>
                 <span class="links_name">Faturas</span>
             </a>
             <span class="tooltip">Faturas</span>
         </li>
         <li>
+            <a href="router.php?c=lines&a=index">
+                <i class='bx bx-list-plus' ></i>
+                <span class="links_name">Linhas das Faturas</span>
+            </a>
+            <span class="tooltip">Linhas das Faturas</span>
+        </li>
+        <li>
             <a href="router.php?c=products&a=index">
                 <i class='bx bx-pie-chart-alt-2' ></i>
-                <span class="links_name">Products</span>
+                <span class="links_name">Produtos</span>
             </a>
-            <span class="tooltip">Products</span>
+            <span class="tooltip">Produtos</span>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-folder' ></i>
-                <span class="links_name">File Manager</span>
+            <a href="router.php?c=ivas&a=index">
+                <i class='bx bx-coin-stack' ></i>
+                <span class="links_name">Iva</span>
             </a>
-            <span class="tooltip">Files</span>
+            <span class="tooltip">Iva</span>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-cart-alt' ></i>
-                <span class="links_name">Order</span>
+            <a href="router.php?c=enterprises&a=index">
+                <i class='bx bxs-business'></i>
+                <span class="links_name">Empresas</span>
             </a>
-            <span class="tooltip">Order</span>
+            <span class="tooltip">Empresas</span>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-heart' ></i>
-                <span class="links_name">Saved</span>
-            </a>
-            <span class="tooltip">Saved</span>
-        </li>
-        <li>
-            <a href="#">
+            <a href="router.php?c=settings&a=index">
                 <i class='bx bx-cog' ></i>
-                <span class="links_name">Setting</span>
+                <span class="links_name">Definições</span>
             </a>
-            <span class="tooltip">Setting</span>
+            <span class="tooltip">Definições</span>
         </li>
         <li class="profile">
             <div class="profile-details">
