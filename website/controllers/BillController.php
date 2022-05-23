@@ -117,7 +117,7 @@ class BillController extends BaseController
         if (is_null($bill)) {
             header('Location: router.php?c=bill&a=index');
         } else {
-            $this->renderViewBackend('bill/show', [
+            $this->renderViewBackend('bill/show.php', [
                 'bill' => $bill,
             ]);
 

@@ -33,7 +33,7 @@ $pokemon->create_payments(array('amount' => 1.99, 'person_id' => $tito->id));
 $pokemon->create_payments(array('amount' => 4999.50, 'person_id' => $tito->id));
 $pokemon->create_payments(array('amount' => 2.50, 'person_id' => $jax->id));
 
-// reload since we don't want the freebie to show up (because it failed validation)
+// reload since we don't want the freebie to show.php up (because it failed validation)
 $tito->reload();
 
 echo "$tito->name has " . count($tito->orders) . " orders for: " . join(', ',ActiveRecord\collect($tito->orders,'item_name')) . "\n\n";

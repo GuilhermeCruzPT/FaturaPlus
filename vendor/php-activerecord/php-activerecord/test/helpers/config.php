@@ -29,7 +29,7 @@ require_once __DIR__ . '/../../ActiveRecord.php';
 // whether or not to run the slow non-crucial tests
 $GLOBALS['slow_tests'] = false;
 
-// whether or not to show warnings when Log or Memcache is missing
+// whether or not to show.php warnings when Log or Memcache is missing
 $GLOBALS['show_warnings'] = true;
 
 
@@ -58,7 +58,7 @@ ActiveRecord\Config::initialize(function($cfg)
 	if (class_exists('Log_file')) // PEAR Log installed
 	{
 		$logger = new Log_file(dirname(__FILE__) . '/../log/query.log','ident',array('mode' => 0664, 'timeFormat' =>  '%Y-%m-%d %H:%M:%S'));
-	
+
 		$cfg->set_logging(true);
 		$cfg->set_logger($logger);
 	}
@@ -69,7 +69,7 @@ ActiveRecord\Config::initialize(function($cfg)
 
 		DatabaseTest::$log = false;
 	}
-	
+
 	if ($GLOBALS['show_warnings']  && !isset($GLOBALS['show_warnings_done']))
 	{
 		if (!extension_loaded('memcache'))

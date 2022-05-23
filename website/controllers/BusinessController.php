@@ -121,7 +121,7 @@ class BusinessController extends BaseController
         if (is_null($id_empresa)) {
             header('Location: router.php?c=enterprises&a=index');
         } else {
-            $this->renderViewBackend('enterprises/show', [
+            $this->renderViewBackend('enterprises/show.php', [
                 'enterprises' => $business,
             ]);
 

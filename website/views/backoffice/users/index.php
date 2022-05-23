@@ -40,7 +40,7 @@
                 <td><?= $user->role ?></td>
                 <td>
                     <a href="router.php?c=users&a=show&id=<?= $user->id ?>"
-                       class="btn btn-primary">Show</a>
+                       class="btn btn-primary">Mostrar</a>
 
                     <a href="router.php?c=users&a=edit&id=<?= $user->id ?>"
                        class="btn btn-success">Update</a>

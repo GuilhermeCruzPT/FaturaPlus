@@ -114,7 +114,7 @@ class ProductController extends BaseController
         if (is_null($product)) {
             header('Location: router.php?c=products&a=index');
         } else {
-            $this->renderViewBackend('products/show', [
+            $this->renderViewBackend('products/show.php', [
                 'product' => $product,
             ]);
 
