@@ -14,7 +14,7 @@ class SiteController extends BaseController
         $data = $d->getData();
 
         //require once view
-        require_once './views/site/show.php';
+        require_once './views/site/show.php.php';
     }
 
     public function name(){

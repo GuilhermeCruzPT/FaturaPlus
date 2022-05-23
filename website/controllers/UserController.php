@@ -121,17 +121,15 @@ class UserController extends BaseController
         //$this->renderView('product/index');
     }
 
-    public function show($id_product)
+    public function show($id)
     {
-        $product = Product::find([$id_product]);
-        if (is_null($product)) {
-            header('Location: router.php?c=products&a=index');
+        $user = User::find([$id]);
+        if (is_null($user)) {
+            header('Location: router.php?c=users&a=index');
         } else {
-            $this->renderViewBackend('products/show', [
-                'product' => $product,
+            $this->renderViewBackend('users/show.php', [
+                'user' => $user,
             ]);
-
-
         }
     }
 
