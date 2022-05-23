@@ -31,7 +31,10 @@ class ProductController extends BaseController
 
     public function create()
     {
-        $this->renderViewBackend('products/create');
+        $iva = Iva::all();
+        $this->renderViewBackend('products/create',[
+            'iva' => $iva
+        ]);
     }
 
     public function store()
@@ -47,11 +50,8 @@ class ProductController extends BaseController
             $products->save();
             header('Location: router.php?c=products&a=index');
         }else{
-            //retorna os erros presentes no model
-
-          
-
-            print_r($products->errors->full_messages());
+            //retorna os erros todos
+            //print_r($products->errors->full_messages());
 
                 $this->renderViewBackend('products/create', [
                     'products' => $products
@@ -90,7 +90,8 @@ class ProductController extends BaseController
             $product->save();
             header('Location: router.php?c=products&a=index');
         } else {
-            $this->renderView('products/update', [
+            //print_r($product->errors->full_messages());
+            $this->renderViewBackend('products/update', [
                 'product' => $product,
             ]);
         }

@@ -10,8 +10,7 @@
 
 <section class="home-section">
 
-
-        <h4 class="display-4 align-text-top" style="text-indent: 50px; padding-top: 25px;">Products</h4><br>
+        <h4 class="display-4 align-text-top" style="text-indent: 50px; padding-top: 25px;">Productos</h4><br>
         <div class="container">
             <div class="box">
         <form  method="post" action="router.php?c=product&a=index" >
@@ -39,8 +38,7 @@
                         <td><?= $product->description ?></td>
                         <td><?= $product->price ?></td>
                         <td><?= $product->stock ?></td>
-                        <td><?= $product->iva_id ?></td>
-
+                        <td><?= $product->iva->description ?></td>
                 <td>
                     <a href="router.php?c=products&a=show&id=<?= $product->id ?>"
                        class="btn btn-primary">Show</a>

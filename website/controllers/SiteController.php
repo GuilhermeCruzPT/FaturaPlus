@@ -2,11 +2,10 @@
 
 require_once './models/Data.php';
 
-class SiteController
+class SiteController extends BaseController
 {
     public function index(){
-        //require view index;
-        require_once './views/site/index.php';
+        $this->renderView('site/index');
     }
 
     public function demo(){
@@ -48,6 +47,9 @@ class SiteController
     }
 
     public function backoffice(){
-        require_once './views/backoffice/backoffice.php';
+        // tirei o section para o backoffice
+        // não se pode usar neste ficheiro
+        // porque eu faço require
+        $this->renderView('backoffice/backoffice');
     }
 }

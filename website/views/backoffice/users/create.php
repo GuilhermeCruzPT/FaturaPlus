@@ -112,7 +112,7 @@
 
 
                 <div class="form-group">
-                    <label for="birth">código postal</label>
+                    <label for="birth">Data de Nascimento</label>
                     <input type="text"
                            class="form-control"
                            id="birth"
