@@ -3,7 +3,7 @@
 <head>
     <title>Editar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= DIRCSS ?>public/css/backoffice.css" rel="stylesheet">
+    <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <section class="home-section">
 <body>

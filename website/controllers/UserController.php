@@ -80,12 +80,12 @@ class UserController extends BaseController
 
     public function edit($id)
     {
-        $product = Product::find([$id]);
-        if (is_null($product)) {
-            header('Location: router.php?c=products&a=index');
+        $user = User::find([$id]);
+        if (is_null($user)) {
+            header('Location: router.php?c=users&a=index');
         } else {
-            $this->renderViewBackend('products/update', [
-                'product' => $product,
+            $this->renderViewBackend('users/update', [
+                'user' => $user,
             ]);
         }
     }
@@ -94,31 +94,41 @@ class UserController extends BaseController
     {
         //find resource (activerecord/model) instance where PK = $id
         //your form name fields must match the ones of the table fields
-        $product = Product::find([$id]);
+        $user = User::find([$id]);
 
-        $attributes = array('reference' => $_POST['reference'],
-            'description' => $_POST['description'],
-            'price' => $_POST['price'],
-            'stock' => $_POST['stock'],
-            'iva_id' => $_POST['iva_id']);
-        $product->update_attributes($attributes);
-        if($product->is_valid()){
-            $product->save();
-            header('Location: router.php?c=products&a=index');
+        $attributes = array('username' => $_POST['username'],
+            'password' => $_POST['password'],
+            'image' => $_POST['image'],
+            'name' => $_POST['name'],
+            'email' => $_POST['email'],
+            'phone' => $_POST['phone'],
+            'nif' => $_POST['nif'],
+            'postal_code' => $_POST['postal_code'],
+            'birth' => $_POST['birth'],
+            'genre' => $_POST['genre'],
+            'coutry' => $_POST['coutry'],
+            'city' => $_POST['city'],
+            'locale' => $_POST['locale'],
+            'address' => $_POST['address'],
+            'role' => $_POST['role']);
+        $user->update_attributes($attributes);
+        if($user->is_valid()){
+            $user->save();
+            header('Location: router.php?c=users&a=index');
         } else {
-            $this->renderView('products/update', [
-                'product' => $product,
+            $this->renderView('users/update', [
+                'user' => $user,
             ]);
         }
     }
 
     public function delete($id)
     {
-        $product = Product::find([$id]);
-        $product->delete();
+        $user = User::find([$id]);
+        $user->delete();
 
-        header('Location: router.php?c=products&a=index');
-        //$this->renderView('product/index');
+        header('Location: router.php?c=users&a=index');
+        //$this->renderView('user/index');
     }
 
     public function show($id)

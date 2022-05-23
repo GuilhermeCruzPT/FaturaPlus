@@ -43,10 +43,10 @@
                        class="btn btn-primary">Mostrar</a>
 
                     <a href="router.php?c=users&a=edit&id=<?= $user->id ?>"
-                       class="btn btn-success">Update</a>
+                       class="btn btn-success">Atualizar</a>
 
                     <a href="router.php?c=users&a=delete&id=<?= $user->id ?>"
-                       class="btn btn-danger">Delete</a>
+                       class="btn btn-danger">Eliminar</a>
                 </td>
                 </tr>
                 </tbody>

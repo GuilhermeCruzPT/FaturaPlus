@@ -74,7 +74,7 @@
                            class="form-control"
                            id="email"
                            name="email"
-                           placeholder="Inserir Email">
+                           placeholder="Inserir E-mail">
                 </div>
 
                 <br>
