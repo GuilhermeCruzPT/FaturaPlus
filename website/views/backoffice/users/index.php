@@ -13,7 +13,7 @@
     <h4 class="display-4 align-text-top" style="text-indent: 50px; padding-top: 25px;">Users</h4><br>
     <div class="container">
         <div class="box">
-            <form  method="post" action="router.php?c=user&a=index" >
+            <form  method="post" action="router.php?c=users&a=index" >
                 <input type="text" placeholder="Search.." name="search" >
                 <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
             </form>
@@ -36,7 +36,7 @@
                 <td><?= $user->username?></td>
                 <td><?= $user->name ?></td>
                 <td><?= $user->email ?></td>
-                <td><?= $user->genre ?></td>
+                <td><?= $user->genre == 'm' ? 'Masculino' : 'Feminino' ?></td>
                 <td><?= $user->role ?></td>
                 <td>
                     <a href="router.php?c=users&a=show&id=<?= $user->id ?>"
