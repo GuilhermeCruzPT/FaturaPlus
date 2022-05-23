@@ -4,7 +4,6 @@ class UserController extends BaseController
 {
     public function index()
     {
-
         if (isset($_POST[('search_btn')])){
 
             //barra de pesquisa
@@ -47,30 +46,36 @@ class UserController extends BaseController
 
     public function store()
     {
-
-        $attributes = array('reference' => $_POST['reference'],
-            'description' => $_POST['description'],
-            'price' => $_POST['price'],
-            'stock' => $_POST['stock'],
-            'iva_id' => $_POST['iva_id']);
-        $products = new Product($attributes);
-        if ($products->is_valid()) {
-            $products->save();
-            header('Location: router.php?c=products&a=index');
+        $attributes = array('username' => $_POST['username'],
+            'password' => $_POST['password'],
+            'image' => $_POST['image'],
+            'name' => $_POST['name'],
+            'email' => $_POST['email'],
+            'phone' => $_POST['phone'],
+            'nif' => $_POST['nif'],
+            'postal_code' => $_POST['postal_code'],
+            'birth' => $_POST['birth'],
+            'genre' => $_POST['genre'],
+            'coutry' => $_POST['coutry'],
+            'city' => $_POST['city'],
+            'locale' => $_POST['locale'],
+            'address' => $_POST['address'],
+            'role' => $_POST['role']);
+        $users = new User($attributes);
+        if ($users->is_valid()) {
+            $users->save();
+            header('Location: router.php?c=users&a=index');
         }else{
             //retorna os erros presentes no model
 
+            print_r($users->errors->full_messages());
 
-
-            print_r($products->errors->full_messages());
-
-            $this->renderViewBackend('products/create', [
-                'products' => $products
+            $this->renderViewBackend('users/create', [
+                'users' => $users
             ]);
 
             //header('Location: router.php?c=products&a=create');
         }
-
     }
 
     public function edit($id)
@@ -114,12 +119,10 @@ class UserController extends BaseController
 
         header('Location: router.php?c=products&a=index');
         //$this->renderView('product/index');
-
     }
 
     public function show($id_product)
     {
-
         $product = Product::find([$id_product]);
         if (is_null($product)) {
             header('Location: router.php?c=products&a=index');

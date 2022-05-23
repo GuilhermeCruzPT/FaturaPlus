@@ -10,7 +10,7 @@
     <div class="container">
         <div class="box" style=" margin: 200px; background: white;">
 
-            <form action="router.php?c=products&a=save" method="post" style="
+            <form action="router.php?c=users&a=save" method="post" style="
     width: 1000px;
 	padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
@@ -33,6 +33,7 @@
                            placeholder="Enter Username">
                 </div>
 
+                <br>
 
                 <div class="form-group">
                     <label for="password">password</label>
@@ -43,7 +44,7 @@
                            placeholder="Enter Password">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="image">imagem</label>
@@ -54,7 +55,7 @@
                            placeholder="Enter Imagem">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="name">nome</label>
@@ -65,7 +66,7 @@
                            placeholder="Enter Nome">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="email">email</label>
@@ -76,7 +77,7 @@
                            placeholder="Enter Email">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="phone">Número</label>
@@ -87,7 +88,7 @@
                            placeholder="Enter Número">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="nif">nif</label>
@@ -98,7 +99,7 @@
                            placeholder="Enter Nif">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="postal_code">código postal</label>
@@ -109,28 +110,28 @@
                            placeholder="Enter Código Postal">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="birth">Data de Nascimento</label>
-                    <input type="text"
+                    <input type="date"
                            class="form-control"
                            id="birth"
-                           name="postal_code"
+                           name="birth"
                            placeholder="Enter Código Postal">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="genre">género</label>
                     <select class="form-control" id="genre" name="genre">
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
+                        <option value="m">Masculino</option>
+                        <option value="f">Feminino</option>
                     </select>
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="coutry">país</label>
@@ -141,7 +142,7 @@
                            placeholder="Enter País">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="city">cidade</label>
@@ -152,7 +153,7 @@
                            placeholder="Enter Cidade">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="locale">localidade</label>
@@ -163,7 +164,7 @@
                            placeholder="Enter Localidade">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="address">morada</label>
@@ -174,7 +175,7 @@
                            placeholder="Enter Morada">
                 </div>
 
-
+                <br>
 
                 <div class="form-group">
                     <label for="role">permissão</label>
@@ -184,6 +185,8 @@
                            name="role"
                            placeholder="Enter Permissão">
                 </div>
+
+                <br>
 
                 <button type="submit"
                         class="btn btn-primary"
