@@ -1,8 +1,12 @@
-<IfModule mod_rewrite.c>
-    Options -MultiViews
-    RewriteEngine On
-    RewriteBase /IPL/FaturaPlus/website/public
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
-</IfModule>
+#Options -MultiViews
+#RewriteEngine On
+
+#RewriteBase /FaturaPlus/website/
+
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+
+#RewriteRule ^(.*)$ ./startup/boot.php?url=$1 [QSA,L]
+
+order allow,deny
+allow from all

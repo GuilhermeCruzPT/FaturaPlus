@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `bill`
+-- Estrutura da tabela `bills`
 --
 
 CREATE TABLE `bill` (
@@ -55,7 +55,7 @@ CREATE TABLE `bill_line` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `business`
+-- Estrutura da tabela `enterprises`
 --
 
 CREATE TABLE `business` (
@@ -121,7 +121,7 @@ CREATE TABLE `user` (
 --
 
 --
--- Índices para tabela `bill`
+-- Índices para tabela `bills`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id_bill`);
@@ -134,7 +134,7 @@ ALTER TABLE `bill_line`
   ADD KEY `valor` (`valor`);
 
 --
--- Índices para tabela `business`
+-- Índices para tabela `enterprises`
 --
 ALTER TABLE `business`
   ADD PRIMARY KEY (`id_empresa`) USING BTREE;
@@ -162,7 +162,7 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT de tabela `bill`
+-- AUTO_INCREMENT de tabela `bills`
 --
 ALTER TABLE `bill`
   MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT;
@@ -174,7 +174,7 @@ ALTER TABLE `bill_line`
   MODIFY `id_bill_line` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `business`
+-- AUTO_INCREMENT de tabela `enterprises`
 --
 ALTER TABLE `business`
   MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT;

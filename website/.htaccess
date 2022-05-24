@@ -1,16 +1,7 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteRule ^$ public/ [L]
-    RewriteRule (.*) public/$1 [L]
-</IfModule>
+options -Indexes
 
-
-#Options -MultiViews
-#RewriteEngine On
-
-#RewriteBase /IPL/FaturaPlus/website/public/
-
-#RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteCond %{REQUEST_FILENAME} !-f
-
-#RewriteRule ^(.*)$ /public/index.php?url=$1 [QSA,L]
+#options -indexes
+#deny from all
+#<Files "index.php">
+#allow from all
+#</Files>
