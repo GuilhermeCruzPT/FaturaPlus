@@ -44,8 +44,8 @@ class EnterprisesController extends BaseController
         $attributes = array(
             'social_designation' => $_POST['social_designation'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'nif' => $_POST['nif'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
             'postal_code' => $_POST['postal_code'],
             'country' => $_POST['country'],
             'city' => $_POST['city'],
@@ -57,10 +57,6 @@ class EnterprisesController extends BaseController
             $enterprises->save();
             header('Location: router.php?c=enterprises&a=index');
         } else {
-            //retorna os erros presentes no model
-
-            print_r($enterprises->errors->full_messages());
-
             $this->renderViewBackend('enterprises/create', [
                 'enterprises' => $enterprises
             ]);
@@ -88,8 +84,8 @@ class EnterprisesController extends BaseController
         $attributes = array(
             'social_designation' => $_POST['social_designation'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'nif' => $_POST['nif'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
             'postal_code' => $_POST['postal_code'],
             'country' => $_POST['country'],
             'city' => $_POST['city'],
