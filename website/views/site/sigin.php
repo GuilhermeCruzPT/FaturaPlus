@@ -8,66 +8,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
 <div class="container1">
     <div class="title">Registration</div>
     <div class="content1">
-        <form action="#">
+        <form method="post" action="#">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">username</span>
-                    <input type="text" placeholder="Enter your username" required>
+                    <input name="username" type="text" placeholder="Enter your username" >
                 </div>
                 <div class="input-box">
                     <span class="details">nome</span>
-                    <input type="text" placeholder="Enter your nome" required>
+                    <input name="nome" type="text" placeholder="Enter your nome" >
                 </div>
                 <div class="input-box">
                     <span class="details">Email</span>
-                    <input type="text" placeholder="Enter your email" required>
+                    <input name="email" type="text" placeholder="Enter your email" >
                 </div>
                 <div class="input-box">
                     <span class="details">Phone Number</span>
-                    <input type="number" placeholder="Enter your number" required>
+                    <input name="phone" type="number" placeholder="Enter your number" >
                 </div>
                 <div class="input-box">
                     <span class="details">nif</span>
-                    <input type="number" placeholder="Enter your nif" required>
+                    <input name="nif" type="number" placeholder="Enter your nif" >
                 </div>
                 <div class="input-box">
                     <span class="details">birth</span>
-                    <input type="date" placeholder="Enter your birth" required>
+                    <input name="birth" type="date" placeholder="Enter your birth" >
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
-                    <input type="text" placeholder="Enter your password" required>
+                    <input name="password" type="text" placeholder="Enter your password" >
                 </div>
                 <div class="input-box">
                     <span class="details">Confirm Password</span>
-                    <input type="text" placeholder="Confirm your password" required>
+                    <input name="confirm_pass" type="text" placeholder="Confirm your password" >
                 </div>
                 <div class="input-box">
                     <span class="details">postal_code</span>
-                    <input type="text" placeholder="Enter your postal_code" required>
+                    <input name="postal_code" type="text" placeholder="Enter your postal_code" >
                 </div>
                 <div class="input-box">
                     <span class="details">coutry</span>
-                    <input type="text" placeholder="Enter your coutry" required>
+                    <input name="coutry" type="text" placeholder="Enter your coutry" >
                 </div>
                 <div class="input-box">
                     <span class="details">city</span>
-                    <input type="text" placeholder="Enter your city" required>
+                    <input name="city" type="text" placeholder="Enter your city" >
                 </div>
                 <div class="input-box">
                     <span class="details">locale</span>
-                    <input type="text" placeholder="Enter your locale" required>
+                    <input name="locale" type="text" placeholder="Enter your locale" >
+                </div>
+                <div class="input-box">
+                    <span class="details">address</span>
+                    <input name="address" type="text" placeholder="Enter your address" >
                 </div>
             </div>
+
             <div class="gender-details">
                 <input type="radio" name="gender" id="dot-1">
                 <input type="radio" name="gender" id="dot-2">
-                <input type="radio" name="gender" id="dot-3">
-                <span class="gender-title">Gender</span>
+                <span >Gender</span>
+
                 <div class="category">
+
                     <label for="dot-1">
                         <span class="dot one"></span>
                         <span class="gender">Male</span>
@@ -76,10 +83,7 @@
                         <span class="dot two"></span>
                         <span class="gender">Female</span>
                     </label>
-                    <label for="dot-3">
-                        <span class="dot three"></span>
-                        <span class="gender">Prefer not to say</span>
-                    </label>
+
                 </div>
             </div>
             <div class="button">
