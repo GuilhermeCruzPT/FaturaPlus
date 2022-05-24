@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Show</title>
+    <title>Mostrar Produto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRPAGE ?>public/css/backoffice.css" rel="stylesheet">
 </head>
@@ -16,10 +16,10 @@
 	padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                <h4 class="display-4 text-center">Show</h4><hr><br>
+                <h4 class="display-4 text-center">Mostrar Produto</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="reference">referencia</label>
+                    <label for="reference">Referência:</label>
                     <input type="name"
                            class="form-control"
                            id="reference"
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email">descricao</label>
+                    <label for="email">Descrição:</label>
                     <input type="text"
                            class="form-control"
                            id="description"
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="preco">preco</label>
+                    <label for="preco">Preço:</label>
                     <input type="text"
                            class="form-control"
                            id="price"
@@ -45,7 +45,7 @@
                            value="<?= $product->price ?>">
                 </div>
                 <div class="form-group">
-                    <label for="preco">stock</label>
+                    <label for="preco">Stock:</label>
                     <input type="text"
                            class="form-control"
                            id="stock"
@@ -54,12 +54,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="vigor">iva_id</label>
+                    <label for="vigor">Iva:</label>
                     <input type="text"
                            class="form-control"
                            id="iva_id"
                            name="iva_id"
-                           value="<?= $product->iva_id ?>">
+                           value="<?= $product->iva->percentage . "% - " . $product->iva->description?>">
                 </div>
                 <br>
                 <button type="submit"
