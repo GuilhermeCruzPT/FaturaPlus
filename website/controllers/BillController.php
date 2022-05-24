@@ -63,23 +63,23 @@ class BillController extends BaseController
 
     }
 
-    public function edit($id_bill)
+    public function edit($id)
     {
-        $bill = Bill::find([$id_bill]);
-        if (is_null($id_bill)) {
+        $bill = Bill::find([$id]);
+        if (is_null($id)) {
             header('Location: router.php?c=bills&a=index');
         } else {
             $this->renderViewBackend('bills/update', [
-                'bills' => $bill,
+                'bill' => $bill,
             ]);
         }
     }
 
-    public function update($id_bill)
+    public function update($id)
     {
         //find resource (activerecord/model) instance where PK = $id
         //your form name fields must match the ones of the table fields
-        $bill = Bill::find([$id_bill]);
+        $bill = Bill::find([$id]);
 
         $attributes = array
         ('date' => $_POST['date'],
@@ -96,29 +96,29 @@ class BillController extends BaseController
             header('Location: router.php?c=bills&a=index');
         } else {
             $this->renderView('bills/update', [
-                'bills' => $bill,
+                'bill' => $bill,
             ]);
         }
     }
 
-    public function delete($id_bill)
+    public function delete($id)
     {
-        $bill = Bill::find([$id_bill]);
+        $bill = Bill::find([$id]);
         $bill->delete();
 
         header('Location: router.php?c=bills&a=index');
 
     }
 
-    public function show($id_bill)
+    public function show($id)
     {
 
-        $bill = Products::find([$id_bill]);
+        $bill = Bill::find([$id]);
         if (is_null($bill)) {
             header('Location: router.php?c=bills&a=index');
         } else {
-            $this->renderViewBackend('bills/show.php', [
-                'bills' => $bill,
+            $this->renderViewBackend('bills/show', [
+                'bill' => $bill,
             ]);
 
 

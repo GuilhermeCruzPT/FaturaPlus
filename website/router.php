@@ -11,13 +11,14 @@ require_once './controllers/ProductController.php';
 require_once './controllers/BillController.php';
 require_once './controllers/UserController.php';
 require_once './controllers/IvaController.php';
+require_once './controllers/EnterprisesController.php';
 
 
-if(!(isset($_GET['c']) && isset($_GET['a']))){
+if (!(isset($_GET['c']) && isset($_GET['a']))) {
     // Controller e action por omissão
     $siteController = new SiteController();
     $siteController->index();
-}else {
+} else {
     $controller = $_GET['c'];
     $action = $_GET['a'];
 
@@ -29,7 +30,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $siteController = new SiteController();
                     $siteController->index();
                     break;
-                case 'show.php':
+                case 'show':
                     $siteController->demo();
                     break;
                 case 'name':
@@ -113,7 +114,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $BillController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $BillController->show($id);
                     break;
@@ -144,7 +145,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $UserController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $UserController->show($id);
                     break;
@@ -175,13 +176,45 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $IvaController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $IvaController->show($id);
                     break;
                 case 'delete':
                     $id = $_GET[('id')];
                     $IvaController->delete($id);
+                    break;
+            }
+            break;
+
+
+        case 'enterprises':
+            $EnterprisesController = new EnterprisesController();
+            switch ($action) {
+                case 'index':
+                    $EnterprisesController->index();
+                    break;
+                case 'create':
+                    $EnterprisesController->create();
+                    break;
+                case 'save':
+                    $EnterprisesController->store();
+                    break;
+                case 'edit':
+                    $id = $_GET[('id')];
+                    $EnterprisesController->edit($id);
+                    break;
+                case 'update':
+                    $id = $_GET[('id')];
+                    $EnterprisesController->update($id);
+                    break;
+                case 'show':
+                    $id = $_GET[('id')];
+                    $EnterprisesController->show($id);
+                    break;
+                case 'delete':
+                    $id = $_GET[('id')];
+                    $EnterprisesController->delete($id);
                     break;
             }
             break;

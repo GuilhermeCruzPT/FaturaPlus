@@ -41,19 +41,19 @@
                         <td><?= $product->iva->description ?></td>
                 <td>
                     <a href="router.php?c=products&a=show&id=<?= $product->id ?>"
-                       class="btn btn-primary">Show</a>
+                       class="btn btn-primary">Mostrar</a>
 
                     <a href="router.php?c=products&a=edit&id=<?= $product->id ?>"
-                       class="btn btn-success">Update</a>
+                       class="btn btn-success">Editar</a>
 
                     <a href="router.php?c=products&a=delete&id=<?= $product->id ?>"
-                       class="btn btn-danger">Delete</a>
+                       class="btn btn-danger">Apagar</a>
                         </td>
                     </tr>
                 </tbody>
                 <?php } ?> </table>
         <div class="btn btn-success" >
-            <a href="router.php?c=products&a=create" class="btn btn-success">Create</a>
+            <a href="router.php?c=products&a=create" class="btn btn-success">Criar</a>
         </div>
     </div>
 </div>
