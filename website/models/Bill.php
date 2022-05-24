@@ -17,7 +17,7 @@ class Bill extends \ActiveRecord\Model
 
     /* ╔═══════════════════════════════════════╗ */
     /* ║     Verifica se o atributo é nulo     ║ */
-    /* ║       ou uma string em branco         ║ */
+    /* ║            para Númericos             ║ */
     /* ╚═══════════════════════════════════════╝ */
 
     static $validates_numericality_of = array(

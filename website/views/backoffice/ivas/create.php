@@ -17,13 +17,6 @@
 
                 <h4 class="display-4 text-center">Criar Iva</h4><hr><br>
 
-                <?php
-                /* if (isset($products)){
-                 if ($products->errors->on('referencia')) {
-                     echo "<font color='red'>" . $products->errors->on('referencia') . "</font>";
-                 }}*/
-                ?>
-
                 <div class="form-group">
                     <label for="percentage">Percentagem:</label>
                     <input type="text"
@@ -32,6 +25,18 @@
                            name="percentage"
                            placeholder="Inserir Percentagem">
                 </div>
+
+                <?php
+                if(isset($ivas->errors)) {
+                    if (is_array($ivas->errors->on('percentage'))) {
+                        foreach ($ivas->errors->on('percentage') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $ivas->errors->on('percentage')."</font>";
+                    }
+                }
+                ?>
 
                 <br>
 
@@ -44,15 +49,40 @@
                            placeholder="Inserir Descrição">
                 </div>
 
+                <?php
+                if(isset($ivas->errors)) {
+                    if (is_array($ivas->errors->on('description'))) {
+                        foreach ($ivas->errors->on('description') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $ivas->errors->on('description')."</font>";
+                    }
+                }
+                ?>
+
                 <br>
 
                 <div class="form-group">
                     <label for="vigour">Vigor:</label>
                     <select class="form-control" id="vigour" name="vigour">
+                        <option value="2">Nenhum</option>
                         <option value="1">Com Vigor</option>
                         <option value="0">Sem Vigor</option>
                     </select>
                 </div>
+
+                <?php
+                if(isset($ivas->errors)) {
+                    if (is_array($ivas->errors->on('vigour'))) {
+                        foreach ($ivas->errors->on('vigour') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $ivas->errors->on('vigour')."</font>";
+                    }
+                }
+                ?>
 
                 <br>
 
