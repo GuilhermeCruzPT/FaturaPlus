@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
     <title >Criar Utilizador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -191,6 +191,7 @@
                 <button type="submit"
                         class="btn btn-primary"
                         name="create">Criar</button>
+
             </form>
         </div>
     </div>

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
-    <style></style>
-    <title>Criar</title>
+    <title>Criar Produto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= DIRCSS ?>public/css/backoffice.css" rel="stylesheet">
+    <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
 <section class="home-section">
@@ -16,16 +15,17 @@
 	padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                <h4 class="display-4 text-center">Create</h4><hr><br>
+                <h4 class="display-4 text-center">Criar Produto</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="name">reference</label>
-                    <input type="name"
+                    <label for="reference">Referência:</label>
+                    <input type="text"
                            class="form-control"
-                           id="referencia"
+                           id="reference"
                            name="reference"
-                           placeholder="Enter referencia">
+                           placeholder="Inserir Referência">
                 </div>
+
                 <?php
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('reference'))) {
@@ -36,16 +36,17 @@
                         echo "<font color='red'>" . $products->errors->on('reference')."</font>";
                     }
                 }
-
                 ?>
 
+                <br>
+
                 <div class="form-group">
-                    <label for="email">descricao</label>
+                    <label for="description">Descrição:</label>
                     <input type="text"
                            class="form-control"
                            id="description"
                            name="description"
-                           placeholder="Enter descricao">
+                           placeholder="Inserir Descrição">
                 </div>
 
                 <?php
@@ -58,16 +59,17 @@
                         echo "<font color='red'>" .$products->errors->on('description')."</font>";
                     }
                 }
-
                 ?>
 
+                <br>
+
                 <div class="form-group">
-                    <label for="preco">preco</label>
+                    <label for="price">Preço</label>
                     <input type="number"
                            class="form-control"
                            id="price"
                            name="price"
-                           placeholder="Enter preco">
+                           placeholder="Inserir Preço">
                 </div>
 
                 <?php
@@ -80,16 +82,17 @@
                         echo "<font color='red'>" .$products->errors->on('price')."</font>";
                     }
                 }
-
                 ?>
 
+                <br>
+
                 <div class="form-group">
-                    <label for="stock">stock</label>
+                    <label for="stock">Estoque:</label>
                     <input type="number"
                            class="form-control"
                            id="stock"
                            name="stock"
-                           placeholder="Enter stock">
+                           placeholder="Inserir Estoque">
                 </div>
 
                 <?php
@@ -102,15 +105,18 @@
                         echo "<font color='red'>" .$products->errors->on('stock')."</font>";
                     }
                 }
-
                 ?>
+
+                <br>
+
                 <div class="form-group">
-                <select name="iva_id">
-                    <?php foreach($iva as $ivas){?>
-                        <option value="<?= $ivas->id?>"> <?= $ivas->description; ?></option>
-                    <?php } ?>
-                </select>
-        </div>
+                    <select name="iva_id">
+                        <?php foreach($iva as $ivas){?>
+                            <option value="<?= $ivas->id?>"> <?= $ivas->description; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+
                 <?php
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('iva_id'))) {
@@ -121,12 +127,14 @@
                         echo "<font color='red'>".$products->errors->on('iva_id')."</font>";
                     }
                 }
-
                 ?>
+
                 <br>
+
                 <button type="submit"
                         class="btn btn-primary"
-                        name="create">Create</button>
+                        name="create">Criar</button>
+
             </form>
         </div>
     </div>
