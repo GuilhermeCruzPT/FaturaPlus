@@ -12,7 +12,7 @@
     <div class="container">
         <div class="box">
             <form  method="post" action="router.php?c=users&a=index" >
-                <input type="text" placeholder="Search.." name="search" >
+                <input type="text" placeholder="Procurar.." name="search" >
                 <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
             </form>
             <br>

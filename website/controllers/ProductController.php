@@ -43,7 +43,7 @@ class ProductController extends BaseController
         $attributes = array('reference' => $_POST['reference'],
             'description' => $_POST['description'],
             'price' => $_POST['price'],
-            'stock' => $_POST['stock'],
+            'stock' => ((int)$_POST['stock']),
             'iva_id' => $_POST['iva_id']);
         $products = new Product($attributes);
         $iva = Iva::all();
@@ -88,7 +88,7 @@ class ProductController extends BaseController
         $attributes = array('reference' => $_POST['reference'],
             'description' => $_POST['description'],
             'price' => $_POST['price'],
-            'stock' => $_POST['stock'],
+            'stock' => ((int)$_POST['stock']),
             'iva_id' => $_POST['iva_id']);
         $product->update_attributes($attributes);
         if($product->is_valid()){

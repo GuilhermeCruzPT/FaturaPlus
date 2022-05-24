@@ -41,9 +41,6 @@ class IvaController extends BaseController
             $ivas->save();
             header('Location: router.php?c=ivas&a=index');
         }else{
-            //retorna os erros presentes no model
-
-            print_r($ivas->errors->full_messages());
 
             $this->renderViewBackend('ivas/create', [
                 'ivas' => $ivas

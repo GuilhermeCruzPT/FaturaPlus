@@ -12,7 +12,7 @@
             <h4 class="display-4 align-text-top" style="padding-top: 25px;">Empresas</h4><br>
 
             <form method="post" action="router.php?c=enterprises&a=index">
-                <input type="text" placeholder="Search.." name="search">
+                <input type="text" placeholder="Procurar.." name="search">
                 <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
             </form>
             <br>
