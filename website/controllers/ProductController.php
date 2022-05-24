@@ -107,18 +107,15 @@ class ProductController extends BaseController
 
     }
 
-    public function show($id_product)
+    public function show($id)
     {
-
-        $product = Product::find([$id_product]);
+        $product = Product::find([$id]);
         if (is_null($product)) {
             header('Location: router.php?c=products&a=index');
         } else {
-            $this->renderViewBackend('products/show.php', [
+            $this->renderViewBackend('products/show', [
                 'product' => $product,
             ]);
-
-
         }
     }
 
