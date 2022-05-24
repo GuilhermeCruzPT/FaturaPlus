@@ -19,7 +19,7 @@
 
                 <div class="form-group">
                     <label for="reference">Referência:</label>
-                    <input type="name"
+                    <input type="text"
                            class="form-control"
                            id="reference"
                            readonly="true"
@@ -30,7 +30,7 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="email">Descrição:</label>
+                    <label for="description">Descrição:</label>
                     <input type="text"
                            class="form-control"
                            id="description"
@@ -42,7 +42,7 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="preco">Preço:</label>
+                    <label for="price">Preço:</label>
                     <input type="text"
                            class="form-control"
                            id="price"
@@ -54,7 +54,7 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="preco">Stock:</label>
+                    <label for="stock">Stock:</label>
                     <input type="text"
                            class="form-control"
                            id="stock"
@@ -66,7 +66,7 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="vigor">Iva:</label>
+                    <label for="iva_id">Iva:</label>
                     <input type="text"
                            class="form-control"
                            id="iva_id"
