@@ -24,6 +24,7 @@
                     <input type="text"
                            class="form-control"
                            id="username"
+                           readonly="true"
                            name="username"
                            value="<?= $user->username ?>">
                 </div>
@@ -35,6 +36,7 @@
                     <input type="text"
                            class="form-control"
                            id="image"
+                           readonly="true"
                            name="image"
                            value="<?= $user->image ?>">
                 </div>
@@ -46,6 +48,7 @@
                     <input type="text"
                            class="form-control"
                            id="name"
+                           readonly="true"
                            name="name"
                            value="<?= $user->name ?>">
                 </div>
@@ -57,6 +60,7 @@
                     <input type="text"
                            class="form-control"
                            id="email"
+                           readonly="true"
                            name="email"
                            value="<?= $user->email ?>">
                 </div>
@@ -68,6 +72,7 @@
                     <input type="text"
                            class="form-control"
                            id="phone"
+                           readonly="true"
                            name="phone"
                            value="<?= $user->phone ?>">
                 </div>
@@ -79,6 +84,7 @@
                     <input type="text"
                            class="form-control"
                            id="nif"
+                           readonly="true"
                            name="nif"
                            value="<?= $user->nif ?>">
                 </div>
@@ -90,6 +96,7 @@
                     <input type="text"
                            class="form-control"
                            id="postal_code"
+                           readonly="true"
                            name="postal_code"
                            value="<?= $user->postal_code ?>">
                 </div>
@@ -101,6 +108,7 @@
                     <input type="text"
                            class="form-control"
                            id="birth"
+                           readonly="true"
                            name="birth"
                            value="<?= $user->birth ?>">
                 </div>
@@ -112,6 +120,7 @@
                     <input type="text"
                            class="form-control"
                            id="genre"
+                           readonly="true"
                            name="genre"
                            value="<?= $user->genre ?>">
                 </div>
@@ -123,6 +132,7 @@
                     <input type="text"
                            class="form-control"
                            id="coutry"
+                           readonly="true"
                            name="coutry"
                            value="<?= $user->coutry ?>">
                 </div>
@@ -134,6 +144,7 @@
                     <input type="text"
                            class="form-control"
                            id="city"
+                           readonly="true"
                            name="city"
                            value="<?= $user->city ?>">
                 </div>
@@ -145,6 +156,7 @@
                     <input type="text"
                            class="form-control"
                            id="locale"
+                           readonly="true"
                            name="locale"
                            value="<?= $user->locale ?>">
                 </div>
@@ -156,6 +168,7 @@
                     <input type="text"
                            class="form-control"
                            id="address"
+                           readonly="true"
                            name="address"
                            value="<?= $user->address ?>">
                 </div>
@@ -167,6 +180,7 @@
                     <input type="text"
                            class="form-control"
                            id="role"
+                           readonly="true"
                            name="role"
                            value="<?= $user->role ?>">
                 </div>

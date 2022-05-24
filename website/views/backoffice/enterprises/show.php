@@ -22,6 +22,7 @@
                     <input type="text"
                            class="form-control"
                            id="social_designation"
+                           readonly="true"
                            name="designação_social"
                            value="<?=$enterprises->designação_social ?>">
                 </div>
@@ -31,6 +32,7 @@
                     <input type="text"
                            class="form-control"
                            id="email"
+                           readonly="true"
                            name="email"
                            value="<?= $enterprises->email ?>">
                 </div>
@@ -40,6 +42,7 @@
                     <input type="text"
                            class="form-control"
                            id="phone"
+                           readonly="true"
                            name="phone"
                            value="<?= $enterprises->phone ?>">
                 </div>
@@ -49,6 +52,7 @@
                         <input type="text"
                                class="form-control"
                                id="nif"
+                               readonly="true"
                                name="nif"
                            value="<?= $enterprises->nif ?>">
                 </div>
@@ -58,6 +62,7 @@
                     <input type="number"
                            class="form-control"
                            id="postal_code"
+                           readonly="true"
                            name="codigo_postal"
                            value="<?= $enterprises->codigo_postal ?>">
                 </div>
@@ -68,6 +73,7 @@
                     <input type="text"
                            class="form-control"
                            id="country"
+                           readonly="true"
                            name="country"
                            value="<?= $enterprises->País ?>">
                 </div>
@@ -78,11 +84,10 @@
                         <input type="text"
                                class="form-control"
                                id="city"
+                               readonly="true"
                                name="city"
                                value="<?= $enterprises->cidade ?>">
                     </div>
-
-
 
 
                     <div class="form-group">
@@ -90,18 +95,17 @@
                         <input type="text"
                                class="form-control"
                                id="locale"
+                               readonly="true"
                                name="locale"
                                value="<?= $enterprises->Localidade ?>">
                     </div>
-
-
-
 
                     <div class="form-group">
                         <label for="address">Morada</label>
                         <input type="text"
                                class="form-control"
                                id="address"
+                               readonly="true"
                                name="address"
                                value="<?= $enterprises->Morada ?>">
                     </div>
@@ -111,6 +115,7 @@
                         <input type="text"
                                class="form-control"
                                id="social_capital"
+                               readonly="true"
                                name="social_capital"
                                value="<?= $enterprises->Capital_social ?>">
                     </div>

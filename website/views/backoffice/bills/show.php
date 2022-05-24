@@ -24,6 +24,7 @@
                     <input type="text"
                            class="form-control"
                            id="date"
+                           readonly="true"
                            name="date"
                            value="<?= date_format($bill->date, 'Y-m-d') ?>">
                 </div>
@@ -35,6 +36,7 @@
                     <input type="text"
                            class="form-control"
                            id="total_value"
+                           readonly="true"
                            name="total_value"
                            value="<?= $bill->total_value ?>">
                 </div>
@@ -46,6 +48,7 @@
                     <input type="text"
                            class="form-control"
                            id="total_iva"
+                           readonly="true"
                            name="total_iva"
                            value="<?= $bill->total_iva ?>">
                 </div>
@@ -57,6 +60,7 @@
                     <input type="text"
                            class="form-control"
                            id="state"
+                           readonly="true"
                            name="state"
                            value="<?= $bill->state ?>">
                 </div>
@@ -68,6 +72,7 @@
                     <input type="text"
                            class="form-control"
                            id="client_reference_id"
+                           readonly="true"
                            name="client_reference_id"
                            value="<?= $bill->client_reference_id ?>">
                 </div>
@@ -79,6 +84,7 @@
                     <input type="text"
                            class="form-control"
                            id="employee_reference_id"
+                           readonly="true"
                            name="employee_reference_id"
                            value="<?= $bill->employee_reference_id ?>">
                 </div>
