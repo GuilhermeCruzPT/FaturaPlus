@@ -70,7 +70,7 @@ class BillController extends BaseController
             header('Location: router.php?c=bills&a=index');
         } else {
             $this->renderViewBackend('bills/update', [
-                'bills' => $bill,
+                'bill' => $bill,
             ]);
         }
     }
@@ -113,12 +113,12 @@ class BillController extends BaseController
     public function show($id)
     {
 
-        $bill = Products::find([$id]);
+        $bill = Bill::find([$id]);
         if (is_null($bill)) {
             header('Location: router.php?c=bills&a=index');
         } else {
-            $this->renderViewBackend('bills/show.php', [
-                'bills' => $bill,
+            $this->renderViewBackend('bills/show', [
+                'bill' => $bill,
             ]);
 
 

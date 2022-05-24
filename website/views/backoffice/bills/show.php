@@ -25,7 +25,7 @@
                            class="form-control"
                            id="date"
                            name="date"
-                           value="<?= $bill->data ?>">
+                           value="<?= date_format($bill->date, 'Y-m-d') ?>">
                 </div>
 
                 <br>
@@ -36,7 +36,7 @@
                            class="form-control"
                            id="total_value"
                            name="total_value"
-                           value="<?= $bill->valor_total ?>">
+                           value="<?= $bill->total_value ?>">
                 </div>
 
                 <br>
@@ -47,7 +47,7 @@
                            class="form-control"
                            id="total_iva"
                            name="total_iva"
-                           value="<?= $bill->iva_total ?>">
+                           value="<?= $bill->total_iva ?>">
                 </div>
 
                 <br>
