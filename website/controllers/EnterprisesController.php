@@ -13,10 +13,10 @@ class EnterprisesController extends BaseController
             $business = Enterprises::find('all',
                 array('conditions' => "social_designation LIKE '%$search%' 
                 or email LIKE '%$search%'
-                 or phone LIKE '%$search%'
+                or phone LIKE '%$search%'
                 or nif LIKE '%$search%'
                 or postal_code LIKE '%$search%'
-                or coutry LIKE '%$search%'
+                or country LIKE '%$search%'
                 or city LIKE '%$search%'
                 or locale LIKE '%$search%'
                 or address LIKE '%$search%'
@@ -49,7 +49,7 @@ class EnterprisesController extends BaseController
             'phone' => $_POST['phone'],
             'nif' => $_POST['nif'],
             'postal_code' => $_POST['postal_code'],
-            'coutry' => $_POST['coutry'],
+            'country' => $_POST['country'],
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],
@@ -97,7 +97,7 @@ class EnterprisesController extends BaseController
             'phone' => $_POST['phone'],
             'nif' => $_POST['nif'],
             'postal_code' => $_POST['postal_code'],
-            'coutry' => $_POST['coutry'],
+            'country' => $_POST['country'],
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],
