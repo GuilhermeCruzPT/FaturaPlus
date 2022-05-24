@@ -82,7 +82,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $productsController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $productsController->show($id);
                     break;
