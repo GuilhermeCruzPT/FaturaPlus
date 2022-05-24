@@ -11,8 +11,6 @@ class Bill extends \ActiveRecord\Model
         array('date', 'message' => 'O campo Data não pode estar vazio'),
         array('total_iva', 'message' => 'O campo Iva Total não pode estar vazio'),
         array('state', 'message' => 'O campo Estado não pode estar vazio'),
-        array('client_reference_id', 'message' => 'O campo Referência Cliente não pode estar vazio'),
-        array('employee_reference_id', 'message' => 'O campo Referência Funcionário não pode estar vazio'),
     );
 
     /* ╔═══════════════════════════════════════╗ */
