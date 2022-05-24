@@ -9,7 +9,7 @@
     <div class="container">
         <div class="box">
 
-            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Bill</h4><br>
+            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Empresas</h4><br>
 
             <form method="post" action="router.php?c=enterprises&a=index">
                 <input type="text" placeholder="Search.." name="search">
@@ -23,12 +23,7 @@
                     <th scope="col">Designação Social</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Telemóvel</th>
-                    <th scope="col">Nif</th>
-                    <th scope="col">Código Postal</th>
                     <th scope="col">País</th>
-                    <th scope="col">Cidade</th>
-                    <th scope="col">Localidade</th>
-                    <th scope="col">Morada</th>
                     <th scope="col">Capital Social</th>
                 </tr>
                 </thead>
@@ -39,12 +34,7 @@
                 <td><?= $enterprise->social_designation ?></td>
                 <td><?= $enterprise->email ?></td>
                 <td><?= $enterprise->phone ?></td>
-                <td><?= $enterprise->nif ?></td>
-                <td><?= $enterprise->postal_code ?></td>
                 <td><?= $enterprise->country ?></td>
-                <td><?= $enterprise->city ?></td>
-                <td><?= $enterprise->locale ?></td>
-                <td><?= $enterprise->address ?></td>
                 <td><?= $enterprise->social_capital ?></td>
 
                 <td>

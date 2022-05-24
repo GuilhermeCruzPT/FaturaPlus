@@ -128,7 +128,6 @@ class UserController extends BaseController
         $user->delete();
 
         header('Location: router.php?c=users&a=index');
-        //$this->renderView('user/index');
     }
 
     public function show($id)
@@ -137,10 +136,9 @@ class UserController extends BaseController
         if (is_null($user)) {
             header('Location: router.php?c=users&a=index');
         } else {
-            $this->renderViewBackend('users/show.php', [
+            $this->renderViewBackend('users/show', [
                 'user' => $user,
             ]);
         }
     }
-
 }

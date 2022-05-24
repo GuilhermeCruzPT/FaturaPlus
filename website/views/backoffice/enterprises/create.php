@@ -8,7 +8,7 @@
 <body>
 <section class="home-section">
     <div class="container">
-        <div class="box" style=" margin: 200px;">
+        <div class="box" style=" margin: 200px; background: white;">
 
             <form action="router.php?c=enterprises&a=save" method="post" style="
     width: 1000px;

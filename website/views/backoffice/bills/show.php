@@ -6,11 +6,9 @@
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
-
 <section class="home-section">
-
     <div class="container">
-        <div class="box" style=" margin: 200px;">
+        <div class="box" style="margin: 100px; background: white;">
 
             <form action="router.php?c=bills&a=index" method="post" style="
     width: 1000px;
