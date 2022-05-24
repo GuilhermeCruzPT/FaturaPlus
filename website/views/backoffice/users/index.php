@@ -1,12 +1,10 @@
 <html>
 <head>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
-
 
 <section class="home-section">
 
@@ -38,6 +36,7 @@
                 <td><?= $user->email ?></td>
                 <td><?= $user->genre == 'm' ? 'Masculino' : 'Feminino' ?></td>
                 <td><?= $user->role ?></td>
+
                 <td>
                     <a href="router.php?c=users&a=show&id=<?= $user->id ?>"
                        class="btn btn-primary">Mostrar</a>

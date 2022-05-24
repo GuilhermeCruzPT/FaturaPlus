@@ -5,9 +5,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
+<body>
 
 <section class="home-section">
-    <body>
+
     <div class="container">
         <div class="box" style=" margin: 200px; background: white;">
 
@@ -179,6 +180,6 @@
             </form>
         </div>
     </div>
-    </body>
 </section>
+</body>
 </html>

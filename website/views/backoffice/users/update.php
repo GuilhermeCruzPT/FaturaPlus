@@ -5,11 +5,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
+<body>
+
 <section class="home-section">
-    <body>
+
     <div class="container">
         <div class="box" style=" margin: 200px;background: white;" >
-
 
             <form action="router.php?c=users&a=update&id=<?= $user->id ?>" method="post"
                   style="
@@ -30,15 +31,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('username'))) {
-                            foreach ($user->errors->on('username') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('username');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('username'))) {
+                        foreach ($user->errors->on('username') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('username');
                     }
+                }
                 ?>
 
                 <br>
@@ -54,15 +55,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('password'))) {
-                            foreach ($user->errors->on('password') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('password');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('password'))) {
+                        foreach ($user->errors->on('password') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('password');
                     }
+                }
                 ?>
 
                 <br>
@@ -78,15 +79,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('image'))) {
-                            foreach ($user->errors->on('image') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('image');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('image'))) {
+                        foreach ($user->errors->on('image') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('image');
                     }
+                }
                 ?>
 
                 <br>
@@ -102,15 +103,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('name'))) {
-                            foreach ($user->errors->on('name') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('name');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('name'))) {
+                        foreach ($user->errors->on('name') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('name');
                     }
+                }
                 ?>
 
                 <br>
@@ -126,15 +127,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('email'))) {
-                            foreach ($user->errors->on('email') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('email');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('email'))) {
+                        foreach ($user->errors->on('email') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('email');
                     }
+                }
                 ?>
 
                 <br>
@@ -150,15 +151,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('phone'))) {
-                            foreach ($user->errors->on('phone') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('phone');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('phone'))) {
+                        foreach ($user->errors->on('phone') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('phone');
                     }
+                }
                 ?>
 
                 <br>
@@ -174,15 +175,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('nif'))) {
-                            foreach ($user->errors->on('nif') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('nif');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('nif'))) {
+                        foreach ($user->errors->on('nif') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('nif');
                     }
+                }
                 ?>
 
                 <br>
@@ -198,15 +199,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('postal_code'))) {
-                            foreach ($user->errors->on('postal_code') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('postal_code');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('postal_code'))) {
+                        foreach ($user->errors->on('postal_code') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('postal_code');
                     }
+                }
                 ?>
 
                 <br>
@@ -222,15 +223,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('birth'))) {
-                            foreach ($user->errors->on('birth') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('birth');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('birth'))) {
+                        foreach ($user->errors->on('birth') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('birth');
                     }
+                }
                 ?>
 
                 <br>
@@ -244,15 +245,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('genre'))) {
-                            foreach ($user->errors->on('genre') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('genre');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('genre'))) {
+                        foreach ($user->errors->on('genre') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('genre');
                     }
+                }
                 ?>
 
                 <br>
@@ -268,15 +269,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('coutry'))) {
-                            foreach ($user->errors->on('coutry') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('coutry');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('coutry'))) {
+                        foreach ($user->errors->on('coutry') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('coutry');
                     }
+                }
                 ?>
 
                 <br>
@@ -292,15 +293,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('city'))) {
-                            foreach ($user->errors->on('city') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('city');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('city'))) {
+                        foreach ($user->errors->on('city') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('city');
                     }
+                }
                 ?>
 
                 <br>
@@ -316,15 +317,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('locale'))) {
-                            foreach ($user->errors->on('locale') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('locale');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('locale'))) {
+                        foreach ($user->errors->on('locale') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('locale');
                     }
+                }
                 ?>
 
                 <br>
@@ -340,15 +341,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('address'))) {
-                            foreach ($user->errors->on('address') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('address');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('address'))) {
+                        foreach ($user->errors->on('address') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('address');
                     }
+                }
                 ?>
 
                 <br>
@@ -364,15 +365,15 @@
                 </div>
 
                 <?php
-                    if(isset($user->errors)) {
-                        if (is_array($user->errors->on('role'))) {
-                            foreach ($user->errors->on('role') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $user->errors->on('role');
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('role'))) {
+                        foreach ($user->errors->on('role') as $error) {
+                            echo $error . '<br>';
                         }
+                    } else {
+                        echo $user->errors->on('role');
                     }
+                }
                 ?>
 
                 <br>
@@ -380,9 +381,10 @@
                 <button type="submit"
                         class="btn btn-primary"
                         name="update">Atualizar</button>
+
             </form>
         </div>
     </div>
-    </body>
 </section>
+</body>
 </html>

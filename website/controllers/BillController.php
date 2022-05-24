@@ -19,21 +19,21 @@ class BillController extends BaseController
                 or employee_reference_id LIKE '%$search%'"));
 
 
-            $this->renderViewBackend('bill/index', [
-                'bill' => $bill,
+            $this->renderViewBackend('bills/index', [
+                'bills' => $bill,
             ]);
 
         } else {
             $bill = Bill::all();
-            $this->renderViewBackend('bill/index', [
-                'bill' => $bill,
+            $this->renderViewBackend('bills/index', [
+                'bills' => $bill,
             ]);
         }
     }
 
     public function create()
     {
-        $this->renderViewBackend('bill/create');
+        $this->renderViewBackend('bills/create');
     }
 
     public function store()
@@ -48,15 +48,15 @@ class BillController extends BaseController
         $bill = new Bill($attributes);
         if ($bill->is_valid()) {
             $bill->save();
-            header('Location: router.php?c=bill&a=index');
+            header('Location: router.php?c=bills&a=index');
         } else {
             //retorna os erros presentes no model
 
 
             print_r($bill->errors->full_messages());
 
-            $this->renderViewBackend('bill/create', [
-                'bill' => $bill
+            $this->renderViewBackend('bills/create', [
+                'bills' => $bill
             ]);
 
         }
@@ -67,10 +67,10 @@ class BillController extends BaseController
     {
         $bill = Bill::find([$id_bill]);
         if (is_null($id_bill)) {
-            header('Location: router.php?c=bill&a=index');
+            header('Location: router.php?c=bills&a=index');
         } else {
-            $this->renderViewBackend('bill/update', [
-                'bill' => $bill,
+            $this->renderViewBackend('bills/update', [
+                'bills' => $bill,
             ]);
         }
     }
@@ -93,10 +93,10 @@ class BillController extends BaseController
         $bill->update_attributes($attributes);
         if ($bill->is_valid()) {
             $bill->save();
-            header('Location: router.php?c=bill&a=index');
+            header('Location: router.php?c=bills&a=index');
         } else {
-            $this->renderView('bill/update', [
-                'bill' => $bill,
+            $this->renderView('bills/update', [
+                'bills' => $bill,
             ]);
         }
     }
@@ -106,7 +106,7 @@ class BillController extends BaseController
         $bill = Bill::find([$id_bill]);
         $bill->delete();
 
-        header('Location: router.php?c=bill&a=index');
+        header('Location: router.php?c=bills&a=index');
 
     }
 
@@ -115,10 +115,10 @@ class BillController extends BaseController
 
         $bill = Products::find([$id_bill]);
         if (is_null($bill)) {
-            header('Location: router.php?c=bill&a=index');
+            header('Location: router.php?c=bills&a=index');
         } else {
-            $this->renderViewBackend('bill/show.php', [
-                'bill' => $bill,
+            $this->renderViewBackend('bills/show.php', [
+                'bills' => $bill,
             ]);
 
 
