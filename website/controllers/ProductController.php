@@ -46,6 +46,7 @@ class ProductController extends BaseController
             'stock' => $_POST['stock'],
             'iva_id' => $_POST['iva_id']);
         $products = new Product($attributes);
+        $iva = Iva::all();
         if ($products->is_valid()) {
             $products->save();
             header('Location: router.php?c=products&a=index');
@@ -54,7 +55,8 @@ class ProductController extends BaseController
             //print_r($products->errors->full_messages());
 
                 $this->renderViewBackend('products/create', [
-                    'products' => $products
+                    'products' => $products,
+                    'iva' => $iva
                 ]);
 
             //header('Location: router.php?c=products&a=create');
@@ -65,11 +67,13 @@ class ProductController extends BaseController
     public function edit($id)
     {
         $product = Product::find([$id]);
+        $iva = Iva::all();
         if (is_null($product)) {
             header('Location: router.php?c=products&a=index');
         } else {
             $this->renderViewBackend('products/update', [
                 'product' => $product,
+                'iva' => $iva
             ]);
         }
     }
@@ -78,6 +82,7 @@ class ProductController extends BaseController
     {
         //find resource (activerecord/model) instance where PK = $id
         //your form name fields must match the ones of the table fields
+        $iva = Iva::all();
         $product = Product::find([$id]);
 
         $attributes = array('reference' => $_POST['reference'],
@@ -93,6 +98,7 @@ class ProductController extends BaseController
             //print_r($product->errors->full_messages());
             $this->renderViewBackend('products/update', [
                 'product' => $product,
+                'iva' => $iva
             ]);
         }
     }

@@ -114,8 +114,10 @@
                 <div class="form-group">
                     <select name="iva_id">
                         <?php foreach($iva as $ivas){?>
-                            <option value="<?= $ivas->id?>"> <?= $ivas->description; ?></option>
-                        <?php } ?>
+                                <?php if ($ivas->vigour == 1){
+                                    ?>
+                            <option value="<?= $ivas->id?>"> <?= $ivas->percentage . "% - " . $ivas->description;?></option>
+                        <?php  }} ?>
                     </select>
                 </div>
               

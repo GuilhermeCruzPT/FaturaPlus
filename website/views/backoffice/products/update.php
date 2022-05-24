@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Editar</title>
+    <title>Editar Produto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
@@ -17,10 +17,10 @@
 	padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-        <h4 class="display-4 text-center">Update</h4><hr><br>
+        <h4 class="display-4 text-center">Editar</h4><hr><br>
 
         <div class="form-group">
-            <label for="name">referencia</label>
+            <label for="name">Referência:</label>
             <input type="name"
                    class="form-control"
                    id="reference"
@@ -43,7 +43,7 @@
         ?>
 
         <div class="form-group">
-            <label for="email">descricao</label>
+            <label for="email">Descrição:</label>
             <input type="text"
                    class="form-control"
                    id="description"
@@ -66,7 +66,7 @@
         ?>
 
         <div class="form-group">
-            <label for="preco">preco</label>
+            <label for="preco">Preço:</label>
             <input type="text"
                    class="form-control"
                    id="price"
@@ -89,7 +89,7 @@
         ?>
 
         <div class="form-group">
-            <label for="preco">stock</label>
+            <label for="preco">Stock:</label>
             <input type="value"
                    class="form-control"
                    id="stock"
@@ -111,13 +111,15 @@
         ?>
 
         <div class="form-group">
-            <label for="vigor">vigor</label>
-            <input type="text"
-                   class="form-control"
-                   id="vigor"
-                   name="iva_id"
-                   placeholder="Enter iva_id"
-                   value="<?= $product->iva_id ?>">
+            <label for="preco">Iva:</label>
+            <br>
+            <select name="iva_id">
+                <?php foreach($iva as $ivas){?>
+                    <?php if ($ivas->vigour == 1){
+                        ?>
+                        <option value="<?= $ivas->id?>"> <?= $ivas->percentage . "% - " . $ivas->description;?></option>
+                    <?php  }} ?>
+            </select>
         </div>
 
         <?php
@@ -132,10 +134,10 @@
         }
 
         ?>
-
+<br>
         <button type="submit"
                 class="btn btn-primary"
-                name="update">Update</button>
+                name="update">Editar</button>
     </form>
 </div>
 </div>
