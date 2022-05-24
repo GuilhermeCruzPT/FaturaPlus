@@ -93,7 +93,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
             }
             break;
 
-        case 'bill':
+        case 'bills':
             $BillController = new BillController();
             switch ($action) {
                 case 'index':

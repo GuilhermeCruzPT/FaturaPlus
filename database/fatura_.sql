@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `bill`
+-- Estrutura da tabela `bills`
 --
 
 CREATE TABLE `bill` (
@@ -121,7 +121,7 @@ CREATE TABLE `user` (
 --
 
 --
--- Índices para tabela `bill`
+-- Índices para tabela `bills`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id_bill`);
@@ -162,7 +162,7 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT de tabela `bill`
+-- AUTO_INCREMENT de tabela `bills`
 --
 ALTER TABLE `bill`
   MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT;

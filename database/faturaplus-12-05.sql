@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `bill`
+-- Estrutura da tabela `bills`
 --
 
 DROP TABLE IF EXISTS `bill`;
@@ -161,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 --
--- Limitadores para a tabela `bill`
+-- Limitadores para a tabela `bills`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `FK_BILL_CLIENT` FOREIGN KEY (`client_reference_id`) REFERENCES `user` (`id`),
