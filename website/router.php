@@ -29,7 +29,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $siteController = new SiteController();
                     $siteController->index();
                     break;
-                case 'show.php':
+                case 'show':
                     $siteController->demo();
                     break;
                 case 'name':
@@ -82,7 +82,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $productsController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $productsController->show($id);
                     break;
@@ -113,7 +113,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $BillController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $BillController->show($id);
                     break;
@@ -144,7 +144,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $UserController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $UserController->show($id);
                     break;
@@ -175,7 +175,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $IvaController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $IvaController->show($id);
                     break;

@@ -10,7 +10,7 @@
     <div class="box" style=" margin: 200px;" >
 
 
-    <form action="router.php?c=products&a=update&id_product=<?= $product->id_product ?>" method="post"
+    <form action="router.php?c=bills&a=update&id=<?= $bill->id ?>" method="post"
           style="
     width: 1000px;
 	padding: 20px;
