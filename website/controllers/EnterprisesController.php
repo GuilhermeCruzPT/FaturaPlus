@@ -4,19 +4,18 @@ class EnterprisesController extends BaseController
 {
     public function index()
     {
-
         if (isset($_POST[('search_btn')])) {
 
             //barra de pesquisa
 
             $search = $_POST['search'];
-            $business = Enterprises::find('all',
+            $enterprises = Enterprise::find('all',
                 array('conditions' => "social_designation LIKE '%$search%' 
                 or email LIKE '%$search%'
-                 or phone LIKE '%$search%'
+                or phone LIKE '%$search%'
                 or nif LIKE '%$search%'
                 or postal_code LIKE '%$search%'
-                or coutry LIKE '%$search%'
+                or country LIKE '%$search%'
                 or city LIKE '%$search%'
                 or locale LIKE '%$search%'
                 or address LIKE '%$search%'
@@ -24,13 +23,13 @@ class EnterprisesController extends BaseController
 
 
             $this->renderViewBackend('enterprises/index', [
-                'enterprises' => $business,
+                'enterprises' => $enterprises,
             ]);
 
         } else {
-            $business = Enterprises::all();
+            $enterprises = Enterprise::all();
             $this->renderViewBackend('enterprises/index', [
-                'enterprises' => $business,
+                'enterprises' => $enterprises,
             ]);
         }
     }
@@ -42,45 +41,36 @@ class EnterprisesController extends BaseController
 
     public function store()
     {
-
         $attributes = array(
             'social_designation' => $_POST['social_designation'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'nif' => $_POST['nif'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
             'postal_code' => $_POST['postal_code'],
-            'coutry' => $_POST['coutry'],
+            'country' => $_POST['country'],
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],
             'social_capital' => $_POST['social_capital']);
-
-        $business = new Enterprises($attributes);
-        if ($business->is_valid()) {
-            $business->save();
+        $enterprises = new Enterprise($attributes);
+        if ($enterprises->is_valid()) {
+            $enterprises->save();
             header('Location: router.php?c=enterprises&a=index');
         } else {
-            //retorna os erros presentes no model
-
-
-            print_r($business->errors->full_messages());
-
             $this->renderViewBackend('enterprises/create', [
-                'enterprises' => $business
+                'enterprises' => $enterprises
             ]);
-
         }
-
     }
 
     public function edit($id)
     {
-        $id = Enterprises::find([$id]);
-        if (is_null($id)) {
+        $enterprise = Enterprise::find([$id]);
+        if (is_null($enterprise)) {
             header('Location: router.php?c=enterprises&a=index');
         } else {
             $this->renderViewBackend('enterprises/update', [
-                'enterprises' => $id,
+                'enterprise' => $enterprise,
             ]);
         }
     }
@@ -89,53 +79,47 @@ class EnterprisesController extends BaseController
     {
         //find resource (activerecord/model) instance where PK = $id
         //your form name fields must match the ones of the table fields
-        $business = Enterprises::find([$id]);
+        $enterprise = Enterprise::find([$id]);
 
         $attributes = array(
             'social_designation' => $_POST['social_designation'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'nif' => $_POST['nif'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
             'postal_code' => $_POST['postal_code'],
-            'coutry' => $_POST['coutry'],
+            'country' => $_POST['country'],
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],
             'social_capital' => $_POST['social_capital']);
-
-        $id->update_attributes($attributes);
-        if ($id->is_valid()) {
-            $id->save();
+        $enterprise->update_attributes($attributes);
+        if ($enterprise->is_valid()) {
+            $enterprise->save();
             header('Location: router.php?c=enterprises&a=index');
         } else {
             $this->renderView('enterprises/update', [
-                'enterprises' => $id,
+                'enterprise' => $enterprise,
             ]);
         }
     }
 
     public function delete($id)
     {
-        $id = Enterprises::find([$id]);
-        $id->delete();
+        $enterprise = Enterprise::find([$id]);
+        $enterprise->delete();
 
         header('Location: router.php?c=enterprises&a=index');
-
     }
 
     public function show($id)
     {
-
-        $business = Enterprises::find([$id]);
-        if (is_null($id)) {
+        $enterprise = Enterprise::find([$id]);
+        if (is_null($enterprise)) {
             header('Location: router.php?c=enterprises&a=index');
         } else {
             $this->renderViewBackend('enterprises/show', [
-                'enterprises' => $business,
+                'enterprise' => $enterprise,
             ]);
-
-
         }
     }
-
 }

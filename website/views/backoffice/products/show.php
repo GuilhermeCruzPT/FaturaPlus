@@ -3,13 +3,12 @@
 <head>
     <title>Mostrar Produto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= DIRPAGE ?>public/css/backoffice.css" rel="stylesheet">
+    <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
-
-<section class="home-section">
 <body>
-<div class="container">
-    <div class="box" style=" margin: 200px; background: white;">
+<section class="home-section">
+    <div class="container">
+        <div class="box" style="margin: 100px; background: white;">
 
             <form action="router.php?c=products&a=index" method="post" style="
     width: 1000px;
@@ -20,7 +19,7 @@
 
                 <div class="form-group">
                     <label for="reference">Referência:</label>
-                    <input type="name"
+                    <input type="text"
                            class="form-control"
                            id="reference"
                            readonly="true"
@@ -28,8 +27,10 @@
                            value="<?= $product->reference ?>">
                 </div>
 
+                <br>
+
                 <div class="form-group">
-                    <label for="email">Descrição:</label>
+                    <label for="description">Descrição:</label>
                     <input type="text"
                            class="form-control"
                            id="description"
@@ -38,8 +39,10 @@
                            value="<?= $product->description ?>">
                 </div>
 
+                <br>
+
                 <div class="form-group">
-                    <label for="preco">Preço:</label>
+                    <label for="price">Preço:</label>
                     <input type="text"
                            class="form-control"
                            id="price"
@@ -47,8 +50,11 @@
                            name="price"
                            value="<?= $product->price ?>">
                 </div>
+
+                <br>
+
                 <div class="form-group">
-                    <label for="preco">Stock:</label>
+                    <label for="stock">Stock:</label>
                     <input type="text"
                            class="form-control"
                            id="stock"
@@ -57,8 +63,10 @@
                            value="<?= $product->stock ?>">
                 </div>
 
+                <br>
+
                 <div class="form-group">
-                    <label for="vigor">Iva:</label>
+                    <label for="iva_id">Iva:</label>
                     <input type="text"
                            class="form-control"
                            id="iva_id"
@@ -66,14 +74,16 @@
                            name="iva_id"
                            value="<?= $product->iva->percentage . "% - " . $product->iva->description?>">
                 </div>
+
                 <br>
+
                 <button type="submit"
                         class="btn btn-primary"
                         name="return">voltar</button>
 
             </form>
+        </div>
     </div>
-</div>
-</body>
 </section>
+</body>
 </html>

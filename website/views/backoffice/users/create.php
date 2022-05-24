@@ -133,12 +133,12 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="phone">Telemóvel:</label>
+                    <label for="phone">Número de Telemóvel:</label>
                     <input type="number"
                            class="form-control"
                            id="phone"
                            name="phone"
-                           placeholder="Inserir Número">
+                           placeholder="Inserir Número de Telemóvel">
                 </div>
 
                 <?php
@@ -248,11 +248,11 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="coutry">País:</label>
+                    <label for="country">País:</label>
                     <input type="text"
                            class="form-control"
-                           id="coutry"
-                           name="coutry"
+                           id="country"
+                           name="country"
                            placeholder="Inserir País">
                 </div>
 

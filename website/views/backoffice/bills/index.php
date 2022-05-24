@@ -5,7 +5,6 @@
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
-
 <section class="home-section">
 
     <h4 class="display-4 align-text-top" style="text-indent: 50px; padding-top: 25px;">Faturas</h4><br>
@@ -13,7 +12,7 @@
         <div class="box">
 
             <form method="post" action="router.php?c=bills&a=index">
-                <input type="text" placeholder="Search.." name="search">
+                <input type="text" placeholder="Procurar.." name="search">
                 <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
             </form>
             <br>

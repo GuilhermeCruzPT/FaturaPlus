@@ -51,8 +51,8 @@ class UserController extends BaseController
             'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'nif' => $_POST['nif'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
             'postal_code' => $_POST['postal_code'],
             'birth' => $_POST['birth'],
             'genre' => $_POST['genre'],
@@ -66,10 +66,6 @@ class UserController extends BaseController
             $users->save();
             header('Location: router.php?c=users&a=index');
         }else{
-            //retorna os erros presentes no model
-
-            print_r($users->errors->full_messages());
-
             $this->renderViewBackend('users/create', [
                 'users' => $users
             ]);
@@ -101,8 +97,8 @@ class UserController extends BaseController
             'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'nif' => $_POST['nif'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
             'postal_code' => $_POST['postal_code'],
             'birth' => $_POST['birth'],
             'genre' => $_POST['genre'],
@@ -128,7 +124,6 @@ class UserController extends BaseController
         $user->delete();
 
         header('Location: router.php?c=users&a=index');
-        //$this->renderView('user/index');
     }
 
     public function show($id)
@@ -137,10 +132,9 @@ class UserController extends BaseController
         if (is_null($user)) {
             header('Location: router.php?c=users&a=index');
         } else {
-            $this->renderViewBackend('users/show.php', [
+            $this->renderViewBackend('users/show', [
                 'user' => $user,
             ]);
         }
     }
-
 }
