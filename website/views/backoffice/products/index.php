@@ -38,7 +38,7 @@
                         <td><?= $product->description ?></td>
                         <td><?= $product->price ?></td>
                         <td><?= $product->stock ?></td>
-                        <td><?= $product->iva->description ?></td>
+                        <td><?= $product->iva->percentage . "% - " . $product->iva->description ?></td>
                 <td>
                     <a href="router.php?c=products&a=show&id=<?= $product->id ?>"
                        class="btn btn-primary">Mostrar</a>

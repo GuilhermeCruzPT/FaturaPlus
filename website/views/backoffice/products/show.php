@@ -23,6 +23,7 @@
                     <input type="name"
                            class="form-control"
                            id="reference"
+                           readonly="true"
                            name="reference"
                            value="<?= $product->reference ?>">
                 </div>
@@ -32,6 +33,7 @@
                     <input type="text"
                            class="form-control"
                            id="description"
+                           readonly="true"
                            name="description"
                            value="<?= $product->description ?>">
                 </div>
@@ -41,6 +43,7 @@
                     <input type="text"
                            class="form-control"
                            id="price"
+                           readonly="true"
                            name="price"
                            value="<?= $product->price ?>">
                 </div>
@@ -49,6 +52,7 @@
                     <input type="text"
                            class="form-control"
                            id="stock"
+                           readonly="true"
                            name="stock"
                            value="<?= $product->stock ?>">
                 </div>
@@ -58,6 +62,7 @@
                     <input type="text"
                            class="form-control"
                            id="iva_id"
+                           readonly="true"
                            name="iva_id"
                            value="<?= $product->iva->percentage . "% - " . $product->iva->description?>">
                 </div>

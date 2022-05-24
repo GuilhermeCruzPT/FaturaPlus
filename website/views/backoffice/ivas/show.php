@@ -23,6 +23,7 @@
                     <input type="text"
                            class="form-control"
                            id="percentage"
+                           readonly="true"
                            name="percentage"
                            value="<?= $iva->percentage ?>">
                 </div>
@@ -34,6 +35,7 @@
                     <input type="text"
                            class="form-control"
                            id="description"
+                           readonly="true"
                            name="description"
                            value="<?= $iva->description ?>">
                 </div>
@@ -45,6 +47,7 @@
                     <input type="text"
                            class="form-control"
                            id="vigour"
+                           readonly="true"
                            name="vigour"
                            value="<?= $iva->vigour ?>">
                 </div>

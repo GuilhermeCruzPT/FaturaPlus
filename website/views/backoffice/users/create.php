@@ -17,13 +17,6 @@
 
                 <h4 class="display-4 text-center">Criar Utilizador</h4><hr><br>
 
-                <?php
-                /* if (isset($products)){
-                 if ($products->errors->on('referencia')) {
-                     echo "<font color='red'>" . $products->errors->on('referencia') . "</font>";
-                 }}*/
-                ?>
-
                 <div class="form-group">
                     <label for="username">Username:</label>
                     <input type="text"
@@ -32,6 +25,18 @@
                            name="username"
                            placeholder="Inserir Username">
                 </div>
+
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('username'))) {
+                        foreach ($users->errors->on('username') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('username')."</font>";
+                    }
+                }
+                ?>
 
                 <br>
 
@@ -44,6 +49,18 @@
                            placeholder="Inserir Password">
                 </div>
 
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('password'))) {
+                        foreach ($users->errors->on('password') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('password')."</font>";
+                    }
+                }
+                ?>
+
                 <br>
 
                 <div class="form-group">
@@ -54,6 +71,18 @@
                            name="image"
                            placeholder="Inserir Imagem">
                 </div>
+
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('image'))) {
+                        foreach ($users->errors->on('image') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('image')."</font>";
+                    }
+                }
+                ?>
 
                 <br>
 
@@ -66,6 +95,18 @@
                            placeholder="Inserir Nome">
                 </div>
 
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('name'))) {
+                        foreach ($users->errors->on('name') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('name')."</font>";
+                    }
+                }
+                ?>
+
                 <br>
 
                 <div class="form-group">
@@ -77,16 +118,40 @@
                            placeholder="Inserir E-mail">
                 </div>
 
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('email'))) {
+                        foreach ($users->errors->on('email') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('email')."</font>";
+                    }
+                }
+                ?>
+
                 <br>
 
                 <div class="form-group">
-                    <label for="phone">Número:</label>
+                    <label for="phone">Telemóvel:</label>
                     <input type="number"
                            class="form-control"
                            id="phone"
                            name="phone"
                            placeholder="Inserir Número">
                 </div>
+
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('phone'))) {
+                        foreach ($users->errors->on('phone') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('phone')."</font>";
+                    }
+                }
+                ?>
 
                 <br>
 
@@ -99,6 +164,18 @@
                            placeholder="Inserir Nif">
                 </div>
 
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('nif'))) {
+                        foreach ($users->errors->on('nif') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('nif')."</font>";
+                    }
+                }
+                ?>
+
                 <br>
 
                 <div class="form-group">
@@ -109,6 +186,18 @@
                            name="postal_code"
                            placeholder="Inserir Código Postal">
                 </div>
+
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('postal_code'))) {
+                        foreach ($users->errors->on('postal_code') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('postal_code')."</font>";
+                    }
+                }
+                ?>
 
                 <br>
 
@@ -121,15 +210,40 @@
                            placeholder="Inserir Código Postal">
                 </div>
 
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('birth'))) {
+                        foreach ($users->errors->on('birth') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('birth')."</font>";
+                    }
+                }
+                ?>
+
                 <br>
 
                 <div class="form-group">
                     <label for="genre">Género:</label>
                     <select class="form-control" id="genre" name="genre">
+                        <option value="">Nenhum</option>
                         <option value="m">Masculino</option>
                         <option value="f">Feminino</option>
                     </select>
                 </div>
+
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('genre'))) {
+                        foreach ($users->errors->on('genre') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('genre')."</font>";
+                    }
+                }
+                ?>
 
                 <br>
 
@@ -142,6 +256,18 @@
                            placeholder="Inserir País">
                 </div>
 
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('coutry'))) {
+                        foreach ($users->errors->on('coutry') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('coutry')."</font>";
+                    }
+                }
+                ?>
+
                 <br>
 
                 <div class="form-group">
@@ -152,6 +278,18 @@
                            name="city"
                            placeholder="Inserir Cidade">
                 </div>
+
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('city'))) {
+                        foreach ($users->errors->on('city') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('city')."</font>";
+                    }
+                }
+                ?>
 
                 <br>
 
@@ -164,6 +302,18 @@
                            placeholder="Inserir Localidade">
                 </div>
 
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('locale'))) {
+                        foreach ($users->errors->on('locale') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('locale')."</font>";
+                    }
+                }
+                ?>
+
                 <br>
 
                 <div class="form-group">
@@ -175,6 +325,18 @@
                            placeholder="Inserir Morada">
                 </div>
 
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('address'))) {
+                        foreach ($users->errors->on('address') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('address')."</font>";
+                    }
+                }
+                ?>
+
                 <br>
 
                 <div class="form-group">
@@ -185,6 +347,18 @@
                            name="role"
                            placeholder="Inserir Permissão">
                 </div>
+
+                <?php
+                if(isset($users->errors)) {
+                    if (is_array($users->errors->on('role'))) {
+                        foreach ($users->errors->on('role') as $error) {
+                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                        }
+                    } else {
+                        echo "<font color='red'>" . $users->errors->on('role')."</font>";
+                    }
+                }
+                ?>
 
                 <br>
 

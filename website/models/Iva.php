@@ -2,11 +2,22 @@
 
 class Iva extends \ActiveRecord\Model
 {
-    /* verifica a precença
-         não pode ser nulo*/
+    /* ╔═══════════════════════════════════════╗ */
+    /* ║     Verifica se o atributo é nulo     ║ */
+    /* ║       ou uma string em branco         ║ */
+    /* ╚═══════════════════════════════════════╝ */
+
     static $validates_presence_of = array(
-        array('percentage', 'message' => 'A percentage não pode estar vazio'),
-        array('description', 'message' => 'A description não pode estar vazio'),
-        array('vigour', 'message' => 'A vigour não pode estar vazio'),
+        array('percentage', 'message' => 'O campo Percentagem não pode estar vazio'),
+        array('description', 'message' => 'O campo Descrição não pode estar vazio'),
+    );
+
+    /* ╔═══════════════════════════════════════╗ */
+    /* ║     Verifica se o atributo é nulo     ║ */
+    /* ║            para Númericos             ║ */
+    /* ╚═══════════════════════════════════════╝ */
+
+    static $validates_numericality_of = array(
+        array('vigour', 'less_than' => 2,'message' => 'O campo Vigor não pode estar vazio'),
     );
 }
