@@ -25,6 +25,7 @@
                            name="reference"
                            placeholder="Inserir Referência">
                 </div>
+
                 <?php
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('reference'))) {
