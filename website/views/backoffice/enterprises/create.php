@@ -8,7 +8,7 @@
 <body>
 <section class="home-section">
     <div class="container">
-        <div class="box" style=" margin: 200px; background: white;">
+        <div class="box" style="margin: 100px; background: white;">
 
             <form action="router.php?c=enterprises&a=save" method="post" style="
     width: 1000px;
@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                     <label for="email">E-mail:</label>
-                    <input type="text"
+                    <input type="email"
                            class="form-control"
                            id="email"
                            name="email"
@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <label for="phone">Número de Telemóvel:</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="phone"
                            name="phone"
@@ -52,7 +52,7 @@
 
                 <div class="form-group">
                     <label for="nif">Nif:</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="nif"
                            name="nif"
