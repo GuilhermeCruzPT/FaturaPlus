@@ -65,7 +65,7 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="price">Preço</label>
+                    <label for="price">Preço:</label>
 
                     <input type="number"
                            class="form-control"
@@ -113,7 +113,9 @@
                 <br>
 
                 <div class="form-group">
-                    <select name="iva_id">
+                    <label for="iva_id">Iva:</label>
+                    <select class="form-control" id="iva_id" name="iva_id">
+                        <option value="0">Nenhum</option>
                         <?php foreach($iva as $ivas){?>
                                 <?php if ($ivas->vigour == 1){
                                     ?>
