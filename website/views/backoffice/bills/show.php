@@ -25,7 +25,7 @@
                            class="form-control"
                            id="date"
                            name="date"
-                           value="<?= $bill->date ?>">
+                           value="<?= date_format($bill->date, 'Y-m-d') ?>">
                 </div>
 
                 <br>
