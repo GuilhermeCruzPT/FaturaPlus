@@ -25,7 +25,6 @@
                            name="reference"
                            placeholder="Inserir Referência">
                 </div>
-
                 <?php
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('reference'))) {
@@ -42,6 +41,7 @@
 
                 <div class="form-group">
                     <label for="description">Descrição:</label>
+                  
                     <input type="text"
                            class="form-control"
                            id="description"
@@ -65,6 +65,7 @@
 
                 <div class="form-group">
                     <label for="price">Preço</label>
+
                     <input type="number"
                            class="form-control"
                            id="price"
@@ -88,6 +89,7 @@
 
                 <div class="form-group">
                     <label for="stock">Estoque:</label>
+                  
                     <input type="number"
                            class="form-control"
                            id="stock"
@@ -116,7 +118,7 @@
                         <?php } ?>
                     </select>
                 </div>
-
+              
                 <?php
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('iva_id'))) {
