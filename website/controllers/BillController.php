@@ -4,13 +4,14 @@ class BillController extends BaseController
 {
     public function index()
     {
-
         if (isset($_POST[('search_btn')])) {
 
-            //barra de pesquisa
+            /* ╔═══════════════════════════╗ */
+            /* ║     Barra de Pesquisa     ║ */
+            /* ╚═══════════════════════════╝ */
 
             $search = $_POST['search'];
-            $bill = Bill::find('all',
+            $bills = Bill::find('all',
                 array('conditions' => "date LIKE '%$search%' 
                 or total_value LIKE '%$search%'
                 or total_iva LIKE '%$search%'
@@ -18,15 +19,14 @@ class BillController extends BaseController
                 or client_reference_id LIKE '%$search%'
                 or employee_reference_id LIKE '%$search%'"));
 
-
             $this->renderViewBackend('bills/index', [
-                'bills' => $bill,
+                'bills' => $bills,
             ]);
 
         } else {
-            $bill = Bill::all();
+            $bills = Bill::all();
             $this->renderViewBackend('bills/index', [
-                'bills' => $bill,
+                'bills' => $bills,
             ]);
         }
     }
@@ -38,35 +38,32 @@ class BillController extends BaseController
 
     public function store()
     {
-
-        $attributes = array('date' => $_POST['date'],
+        $attributes = array(
+            'date' => $_POST['date'],
             'total_value' => $_POST['total_value'],
             'total_iva' => $_POST['total_iva'],
             'state' => $_POST['state'],
             'client_reference_id' => $_POST['client_reference_id'],
             'employee_reference_id' => $_POST['employee_reference_id']);
-        $bill = new Bill($attributes);
-        if ($bill->is_valid()) {
-            $bill->save();
+        $bills = new Bill($attributes);
+        if ($bills->is_valid()) {
+            $bills->save();
             header('Location: router.php?c=bills&a=index');
         } else {
-            //retorna os erros presentes no model
+            // *** Retorna os erros presentes no model *** \\
 
-
-            print_r($bill->errors->full_messages());
+            //print_r($bills->errors->full_messages());
 
             $this->renderViewBackend('bills/create', [
-                'bills' => $bill
+                'bills' => $bills
             ]);
-
         }
-
     }
 
     public function edit($id)
     {
         $bill = Bill::find([$id]);
-        if (is_null($id)) {
+        if (is_null($bill)) {
             header('Location: router.php?c=bills&a=index');
         } else {
             $this->renderViewBackend('bills/update', [
@@ -77,19 +74,15 @@ class BillController extends BaseController
 
     public function update($id)
     {
-        //find resource (activerecord/model) instance where PK = $id
-        //your form name fields must match the ones of the table fields
         $bill = Bill::find([$id]);
 
-        $attributes = array
-        ('date' => $_POST['date'],
+        $attributes = array(
+            'date' => $_POST['date'],
             'total_value' => $_POST['total_value'],
             'total_iva' => $_POST['total_iva'],
             'state' => $_POST['state'],
             'client_reference_id' => $_POST['client_reference_id'],
             'employee_reference_id' => $_POST['employee_reference_id']);
-
-
         $bill->update_attributes($attributes);
         if ($bill->is_valid()) {
             $bill->save();
@@ -107,12 +100,10 @@ class BillController extends BaseController
         $bill->delete();
 
         header('Location: router.php?c=bills&a=index');
-
     }
 
     public function show($id)
     {
-
         $bill = Bill::find([$id]);
         if (is_null($bill)) {
             header('Location: router.php?c=bills&a=index');
@@ -120,9 +111,6 @@ class BillController extends BaseController
             $this->renderViewBackend('bills/show', [
                 'bill' => $bill,
             ]);
-
-
         }
     }
-
 }

@@ -4,10 +4,11 @@ class ProductController extends BaseController
 {
     public function index()
     {
-
         if (isset($_POST[('search_btn')])){
 
-            //barra de pesquisa
+            /* ╔═══════════════════════════╗ */
+            /* ║     Barra de Pesquisa     ║ */
+            /* ╚═══════════════════════════╝ */
 
             $search = $_POST['search'];
             $products = Product::find('all',
@@ -39,8 +40,8 @@ class ProductController extends BaseController
 
     public function store()
     {
-
-        $attributes = array('reference' => $_POST['reference'],
+        $attributes = array(
+            'reference' => $_POST['reference'],
             'description' => $_POST['description'],
             'price' => $_POST['price'],
             'stock' => ((int)$_POST['stock']),
@@ -50,18 +51,16 @@ class ProductController extends BaseController
         if ($products->is_valid()) {
             $products->save();
             header('Location: router.php?c=products&a=index');
-        }else{
-            //retorna os erros todos
-            //print_r($products->errors->full_messages());
+        } else {
+            // *** Retorna os erros presentes no model *** \\
 
-                $this->renderViewBackend('products/create', [
-                    'products' => $products,
-                    'iva' => $iva
-                ]);
+            //print_r($bills->errors->full_messages());
 
-            //header('Location: router.php?c=products&a=create');
+            $this->renderViewBackend('products/create', [
+                'products' => $products,
+                'iva' => $iva
+            ]);
         }
-
     }
 
     public function edit($id)
@@ -80,12 +79,11 @@ class ProductController extends BaseController
 
     public function update($id)
     {
-        //find resource (activerecord/model) instance where PK = $id
-        //your form name fields must match the ones of the table fields
         $iva = Iva::all();
         $product = Product::find([$id]);
 
-        $attributes = array('reference' => $_POST['reference'],
+        $attributes = array(
+            'reference' => $_POST['reference'],
             'description' => $_POST['description'],
             'price' => $_POST['price'],
             'stock' => ((int)$_POST['stock']),
@@ -109,8 +107,6 @@ class ProductController extends BaseController
         $product->delete();
 
         header('Location: router.php?c=products&a=index');
-        //$this->renderView('product/index');
-
     }
 
     public function show($id)
@@ -124,5 +120,4 @@ class ProductController extends BaseController
             ]);
         }
     }
-
 }
