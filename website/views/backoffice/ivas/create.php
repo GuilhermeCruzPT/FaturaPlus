@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title >Criar Iva</title>
+    <title>Criar Iva</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
 <section class="home-section">
     <div class="container">
-        <div class="box" style=" margin: 200px; background: white;">
+        <div class="box" style="margin: 100px; background: white;">
 
             <form action="router.php?c=ivas&a=save" method="post" style="
     width: 1000px;

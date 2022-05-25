@@ -54,7 +54,7 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="stock">Stock:</label>
+                    <label for="stock">Estoque:</label>
                     <input type="text"
                            class="form-control"
                            id="stock"

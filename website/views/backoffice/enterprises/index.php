@@ -12,8 +12,8 @@
             <h4 class="display-4 align-text-top" style="padding-top: 25px;">Empresas</h4><br>
 
             <form method="post" action="router.php?c=enterprises&a=index">
-                <input type="text" placeholder="Procurar.." name="search">
-                <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="Procurar.." name="search" class="search_bar">
+                <button name="search_btn" type="submit" class="search_btn"><i class="fa fa-search"></i></button>
             </form>
             <br>
             <table class="table table-striped" style="background: white">
@@ -25,6 +25,7 @@
                     <th scope="col">Telemóvel</th>
                     <th scope="col">País</th>
                     <th scope="col">Capital Social</th>
+                    <th scope="col">Ações Disponiveis</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,13 +40,13 @@
 
                 <td>
                     <a href="router.php?c=enterprises&a=show&id=<?= $enterprise->id ?>"
-                       class="btn btn-primary">Mostrar</a>
+                       class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon' ></i></a>
 
                     <a href="router.php?c=enterprises&a=edit&id=<?= $enterprise->id ?>"
-                       class="btn btn-success">Atualizar</a>
+                       class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
                     <a href="router.php?c=enterprises&a=delete&id=<?= $enterprise->id ?>"
-                       class="btn btn-danger">Eliminar</a>
+                       class="btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
                 </td>
                 </tr>
                 </tbody>
