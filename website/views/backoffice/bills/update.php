@@ -8,7 +8,7 @@
 <body>
 <section class="home-section">
     <div class="container">
-        <div class="box" style=" margin: 200px;" >
+        <div class="box" style="margin: 100px; background: white;">
 
             <form action="router.php?c=bills&a=update&id=<?= $bill->id ?>" method="post"
                   style="

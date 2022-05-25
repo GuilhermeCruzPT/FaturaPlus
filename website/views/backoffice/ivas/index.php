@@ -6,21 +6,24 @@
 </head>
 <body>
 <section class="home-section">
-    <h4 class="display-4 align-text-top" style="text-indent: 50px; padding-top: 25px;">Iva</h4><br>
     <div class="container">
         <div class="box">
-            <form  method="post" action="router.php?c=ivas&a=index" >
-                <input type="text" placeholder="Procurar.." name="search" >
-                <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
+
+            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Iva</h4><br>
+
+            <form  method="post" action="router.php?c=ivas&a=index">
+                <input type="text" placeholder="Procurar.." name="search" class="search_bar">
+                <button name="search_btn" type="submit" class="search_btn"><i class="fa fa-search"></i></button>
             </form>
             <br>
             <table class="table table-striped" style="background: white">
                 <thead>
                 <tr>
-                    <th scope="col">id</th>
+                    <th scope="col">Id</th>
                     <th scope="col">Percentagem</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Vigor</th>
+                    <th scope="col">Ações Disponiveis</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,7 +47,7 @@
                 </tbody>
                 <?php } ?> </table>
             <div class="btn btn-success" >
-                <a href="router.php?c=ivas&a=create" class="btn btn-success">Create</a>
+                <a href="router.php?c=ivas&a=create" class="btn btn-success">Criar</a>
             </div>
         </div>
     </div>

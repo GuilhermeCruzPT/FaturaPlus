@@ -6,11 +6,9 @@
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
-
 <section class="home-section">
-
     <div class="container">
-        <div class="box" style=" margin: 200px;background: white;" >
+        <div class="box" style="margin: 100px; background: white;">
 
             <form action="router.php?c=users&a=update&id=<?= $user->id ?>" method="post"
                   style="

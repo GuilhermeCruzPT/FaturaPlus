@@ -6,14 +6,14 @@
 </head>
 <body>
 <section class="home-section">
-
-    <h4 class="display-4 align-text-top" style="text-indent: 50px; padding-top: 25px;">Faturas</h4><br>
     <div class="container">
         <div class="box">
 
+            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Faturas</h4><br>
+
             <form method="post" action="router.php?c=bills&a=index">
-                <input type="text" placeholder="Procurar.." name="search">
-                <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="Procurar.." name="search" class="search_bar">
+                <button name="search_btn" type="submit" class="search_btn"><i class="fa fa-search"></i></button>
             </form>
             <br>
             <table class="table table-striped" style="background: white">

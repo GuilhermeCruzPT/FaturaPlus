@@ -5,26 +5,27 @@
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
-
 <section class="home-section">
-
-    <h4 class="display-4 align-text-top" style="text-indent: 50px; padding-top: 25px;">Users</h4><br>
     <div class="container">
         <div class="box">
-            <form  method="post" action="router.php?c=users&a=index" >
-                <input type="text" placeholder="Procurar.." name="search" >
-                <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
+
+            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Users</h4><br>
+
+            <form  method="post" action="router.php?c=users&a=index">
+                <input type="text" placeholder="Procurar.." name="search" class="search_bar">
+                <button name="search_btn" type="submit" class="search_btn"><i class="fa fa-search"></i></button>
             </form>
             <br>
             <table class="table table-striped" style="background: white">
                 <thead>
                 <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">username</th>
-                    <th scope="col">nome</th>
-                    <th scope="col">email</th>
-                    <th scope="col">género</th>
-                    <th scope="col">permissão</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Género</th>
+                    <th scope="col">Permissão</th>
+                    <th scope="col">Ações Disponiveis</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,7 +52,7 @@
                 </tbody>
                 <?php } ?> </table>
             <div class="btn btn-success" >
-                <a href="router.php?c=users&a=create" class="btn btn-success">Create</a>
+                <a href="router.php?c=users&a=create" class="btn btn-success">Criar</a>
             </div>
         </div>
     </div>
