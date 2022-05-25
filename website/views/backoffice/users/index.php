@@ -40,13 +40,13 @@
 
                 <td>
                     <a href="router.php?c=users&a=show&id=<?= $user->id ?>"
-                       class="btn btn-primary">Mostrar</a>
+                       class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon' ></i></a>
 
                     <a href="router.php?c=users&a=edit&id=<?= $user->id ?>"
-                       class="btn btn-success">Atualizar</a>
+                       class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
                     <a href="router.php?c=users&a=delete&id=<?= $user->id ?>"
-                       class="btn btn-danger">Eliminar</a>
+                       class="btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
                 </td>
                 </tr>
                 </tbody>
