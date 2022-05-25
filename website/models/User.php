@@ -20,7 +20,7 @@ class User extends \ActiveRecord\Model
         array('city', 'message' => 'O campo Cidade não pode estar vazio'),
         array('locale', 'message' => 'O campo Localidade não pode estar vazio'),
         array('address', 'message' => 'O campo Morada não pode estar vazio'),
-        array('role', 'message' => 'O campo Permissão não pode estar vazio'),
+        array('role', 'message' => 'O campo Permissão não pode estar vazio')
     );
 
     /* ╔═══════════════════════════════════════╗ */
@@ -30,7 +30,7 @@ class User extends \ActiveRecord\Model
 
     static $validates_numericality_of = array(
         array('phone', 'greater_than' => 0,'message' => 'O campo Telemóvel não pode estar vazio'),
-        array('nif', 'greater_than' => 0,'message' => 'O campo Nif não pode estar vazio'),
+        array('nif', 'greater_than' => 0,'message' => 'O campo Nif não pode estar vazio')
     );
 
     /* ╔═════════════════════════════════════════╗ */
@@ -40,7 +40,7 @@ class User extends \ActiveRecord\Model
 
     static $validates_uniqueness_of = array(
         array('username', 'message' => 'O Username já existe'),
-        array('phone', 'message' => 'O Número de Telemóvel já existe'),
+        array('phone', 'message' => 'O Número de Telemóvel já existe')
    );
 
     /* ╔════════════════════════════════╗ */

@@ -2,19 +2,58 @@
 
 class Enterprise extends \ActiveRecord\Model
 {
+    /* ╔═══════════════════════════════════════╗ */
+    /* ║     Verifica se o atributo é nulo     ║ */
+    /* ║       ou uma string em branco         ║ */
+    /* ╚═══════════════════════════════════════╝ */
 
     static $validates_presence_of = array(
-        array('social_designation', 'message' => 'It must be provided'),
-        array('email', 'message' => 'It must be provided'),
-        array('phone', 'message' => 'It must be provided'),
-        array('nif', 'message' => 'It must be provided'),
-        array('postal_code', 'message' => 'It must be provided'),
-        array('country', 'message' => 'It must be provided'),
-        array('city', 'message' => 'It must be provided'),
-        array('locale', 'message' => 'It must be provided'),
-        array('address', 'message' => 'It must be provided'),
-        array('social_capital', 'message' => 'It must be provided'),
-
+        array('social_designation', 'message' => 'O campo Designação Social não pode estar vazio'),
+        array('email', 'message' => 'O campo E-mail não pode estar vazio'),
+        array('postal_code', 'message' => 'O campo Código Postal não pode estar vazio'),
+        array('country', 'message' => 'O campo País não pode estar vazio'),
+        array('city', 'message' => 'O campo Cidade não pode estar vazio'),
+        array('locale', 'message' => 'O campo Localidade não pode estar vazio'),
+        array('address', 'message' => 'O campo Morada não pode estar vazio'),
+        array('social_capital', 'message' => 'O campo Capital Social não pode estar vazio')
     );
 
+    /* ╔═══════════════════════════════════════╗ */
+    /* ║     Verifica se o atributo é nulo     ║ */
+    /* ║            para Númericos             ║ */
+    /* ╚═══════════════════════════════════════╝ */
+
+    static $validates_numericality_of = array(
+        array('phone', 'greater_than' => 0,'message' => 'O campo Telemóvel não pode estar vazio'),
+        array('nif', 'greater_than' => 0,'message' => 'O campo Nif não pode estar vazio')
+    );
+
+    /* ╔═════════════════════════════════════════╗ */
+    /* ║     Verifica se o valor do atributo     ║ */
+    /* ║             já existe ou não            ║ */
+    /* ╚═════════════════════════════════════════╝ */
+
+    static $validates_uniqueness_of = array(
+        array('phone', 'message' => 'O Número de Telemóvel já existe')
+    );
+
+    /* ╔════════════════════════════════╗ */
+    /* ║     Verifica se o atributo     ║ */
+    /* ║        tem 9 caracteres        ║ */
+    /* ╚════════════════════════════════╝ */
+
+    static $validates_size_of = array(
+        array('phone', 'maximum' => 9, 'too_long' => 'O Número de Telemóvel é demasiado longo'),
+        array('nif', 'maximum' => 9, 'too_long' => 'O Nif é demasiado longo')
+    );
+
+    /* ╔═══════════════════════════════════════════════╗ */
+    /* ║     Verifica se o atributo tem caracteres     ║ */
+    /* ║              especiais e números              ║ */
+    /* ╚═══════════════════════════════════════════════╝ */
+
+    static $validates_format_of = array(
+        array('email', 'with' =>
+            '/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/', 'message' => 'E-mail com formatação incorreta')
+    );
 }
