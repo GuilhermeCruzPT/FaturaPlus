@@ -48,7 +48,7 @@
                            id="vigour"
                            readonly="true"
                            name="vigour"
-                           value="<?= $iva->vigour ?>">
+                           value="<?= $iva->vigour == '0' ? 'Inativo' : 'Ativo' ?>">
                 </div>
 
                 <br>

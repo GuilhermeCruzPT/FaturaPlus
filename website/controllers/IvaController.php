@@ -99,7 +99,7 @@ class IvaController extends BaseController
         if (is_null($iva)) {
             header('Location: router.php?c=ivas&a=index');
         } else {
-            $this->renderViewBackend('ivas/show.php', [
+            $this->renderViewBackend('ivas/show', [
                 'iva' => $iva,
             ]);
         }
