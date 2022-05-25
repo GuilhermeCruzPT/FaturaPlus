@@ -16,7 +16,7 @@ class User extends \ActiveRecord\Model
         array('postal_code', 'message' => 'O campo Código Postal não pode estar vazio'),
         array('birth', 'message' => 'O campo Data de Nascimento não pode estar vazio'),
         array('genre', 'message' => 'O campo Género não pode estar vazio'),
-        array('coutry', 'message' => 'O campo País não pode estar vazio'),
+        array('country', 'message' => 'O campo País não pode estar vazio'),
         array('city', 'message' => 'O campo Cidade não pode estar vazio'),
         array('locale', 'message' => 'O campo Localidade não pode estar vazio'),
         array('address', 'message' => 'O campo Morada não pode estar vazio'),
