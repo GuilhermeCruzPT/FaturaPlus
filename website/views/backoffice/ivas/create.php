@@ -67,8 +67,8 @@
                     <label for="vigour">Vigor:</label>
                     <select class="form-control" id="vigour" name="vigour">
                         <option value="2">Nenhum</option>
-                        <option value="1">Com Vigor</option>
-                        <option value="0">Sem Vigor</option>
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
                     </select>
                 </div>
 

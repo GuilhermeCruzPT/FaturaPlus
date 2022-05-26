@@ -126,13 +126,13 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="coutry">País:</label>
+                    <label for="country">País:</label>
                     <input type="text"
                            class="form-control"
-                           id="coutry"
+                           id="country"
                            readonly="true"
-                           name="coutry"
-                           value="<?= $user->coutry ?>">
+                           name="country"
+                           value="<?= $user->country ?>">
                 </div>
 
                 <br>

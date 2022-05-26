@@ -258,12 +258,12 @@
 
                 <?php
                 if(isset($users->errors)) {
-                    if (is_array($users->errors->on('coutry'))) {
-                        foreach ($users->errors->on('coutry') as $error) {
+                    if (is_array($users->errors->on('country'))) {
+                        foreach ($users->errors->on('country') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('coutry')."</font>";
+                        echo "<font color='red'>" . $users->errors->on('country')."</font>";
                     }
                 }
                 ?>

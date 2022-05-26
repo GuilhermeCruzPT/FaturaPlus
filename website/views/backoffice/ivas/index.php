@@ -32,7 +32,7 @@
                 <td><?= $iva->id?></td>
                 <td><?= $iva->percentage?></td>
                 <td><?= $iva->description ?></td>
-                <td><?= $iva->vigour ?></td>
+                <td><?= $iva->vigour == '0' ? 'Inativo' : 'Ativo' ?></td>
                 <td>
                     <a href="router.php?c=ivas&a=show&id=<?= $iva->id ?>"
                        class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon' ></i></a>

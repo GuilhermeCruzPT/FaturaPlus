@@ -1,12 +1,14 @@
 <?php
 
-class EnterprisesController extends BaseController
+class EnterpriseController extends BaseController
 {
     public function index()
     {
         if (isset($_POST[('search_btn')])) {
 
-            //barra de pesquisa
+            /* ╔═══════════════════════════╗ */
+            /* ║     Barra de Pesquisa     ║ */
+            /* ╚═══════════════════════════╝ */
 
             $search = $_POST['search'];
             $enterprises = Enterprise::find('all',
@@ -20,7 +22,6 @@ class EnterprisesController extends BaseController
                 or locale LIKE '%$search%'
                 or address LIKE '%$search%'
                 or social_capital LIKE '%$search%'"));
-
 
             $this->renderViewBackend('enterprises/index', [
                 'enterprises' => $enterprises,
@@ -57,6 +58,10 @@ class EnterprisesController extends BaseController
             $enterprises->save();
             header('Location: router.php?c=enterprises&a=index');
         } else {
+            // *** Retorna os erros presentes no model *** \\
+
+            //print_r($bills->errors->full_messages());
+
             $this->renderViewBackend('enterprises/create', [
                 'enterprises' => $enterprises
             ]);
@@ -77,8 +82,6 @@ class EnterprisesController extends BaseController
 
     public function update($id)
     {
-        //find resource (activerecord/model) instance where PK = $id
-        //your form name fields must match the ones of the table fields
         $enterprise = Enterprise::find([$id]);
 
         $attributes = array(

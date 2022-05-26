@@ -6,7 +6,9 @@ class UserController extends BaseController
     {
         if (isset($_POST[('search_btn')])){
 
-            //barra de pesquisa
+            /* ╔═══════════════════════════╗ */
+            /* ║     Barra de Pesquisa     ║ */
+            /* ╚═══════════════════════════╝ */
 
             $search = $_POST['search'];
             $users = User::find('all',
@@ -46,7 +48,8 @@ class UserController extends BaseController
 
     public function store()
     {
-        $attributes = array('username' => $_POST['username'],
+        $attributes = array(
+            'username' => $_POST['username'],
             'password' => $_POST['password'],
             'image' => $_POST['image'],
             'name' => $_POST['name'],
@@ -56,7 +59,7 @@ class UserController extends BaseController
             'postal_code' => $_POST['postal_code'],
             'birth' => $_POST['birth'],
             'genre' => $_POST['genre'],
-            'coutry' => $_POST['coutry'],
+            'country' => $_POST['country'],
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],
@@ -65,12 +68,14 @@ class UserController extends BaseController
         if ($users->is_valid()) {
             $users->save();
             header('Location: router.php?c=users&a=index');
-        }else{
+        } else {
+            // *** Retorna os erros presentes no model *** \\
+
+            //print_r($bills->errors->full_messages());
+
             $this->renderViewBackend('users/create', [
                 'users' => $users
             ]);
-
-            //header('Location: router.php?c=products&a=create');
         }
     }
 
@@ -88,11 +93,10 @@ class UserController extends BaseController
 
     public function update($id)
     {
-        //find resource (activerecord/model) instance where PK = $id
-        //your form name fields must match the ones of the table fields
         $user = User::find([$id]);
 
-        $attributes = array('username' => $_POST['username'],
+        $attributes = array(
+            'username' => $_POST['username'],
             'password' => $_POST['password'],
             'image' => $_POST['image'],
             'name' => $_POST['name'],
@@ -102,7 +106,7 @@ class UserController extends BaseController
             'postal_code' => $_POST['postal_code'],
             'birth' => $_POST['birth'],
             'genre' => $_POST['genre'],
-            'coutry' => $_POST['coutry'],
+            'country' => $_POST['country'],
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],

@@ -257,23 +257,23 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="coutry">País:</label>
+                    <label for="country">País:</label>
                     <input type="text"
                            class="form-control"
-                           id="coutry"
-                           name="coutry"
+                           id="country"
+                           name="country"
                            placeholder="Inserir País"
                            value="<?= $user->coutry ?>">
                 </div>
 
                 <?php
                 if(isset($user->errors)) {
-                    if (is_array($user->errors->on('coutry'))) {
-                        foreach ($user->errors->on('coutry') as $error) {
+                    if (is_array($user->errors->on('country'))) {
+                        foreach ($user->errors->on('country') as $error) {
                             echo $error . '<br>';
                         }
                     } else {
-                        echo $user->errors->on('coutry');
+                        echo $user->errors->on('country');
                     }
                 }
                 ?>

@@ -11,7 +11,7 @@ require_once './controllers/ProductController.php';
 require_once './controllers/BillController.php';
 require_once './controllers/UserController.php';
 require_once './controllers/IvaController.php';
-require_once './controllers/EnterprisesController.php';
+require_once './controllers/EnterpriseController.php';
 
 
 if (!(isset($_GET['c']) && isset($_GET['a']))) {
@@ -189,7 +189,7 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
 
 
         case 'enterprises':
-            $EnterprisesController = new EnterprisesController();
+            $EnterprisesController = new EnterpriseController();
             switch ($action) {
                 case 'index':
                     $EnterprisesController->index();

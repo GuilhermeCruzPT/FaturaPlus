@@ -6,7 +6,9 @@ class IvaController extends BaseController
     {
         if (isset($_POST[('search_btn')])){
 
-            //barra de pesquisa
+            /* ╔═══════════════════════════╗ */
+            /* ║     Barra de Pesquisa     ║ */
+            /* ╚═══════════════════════════╝ */
 
             $search = $_POST['search'];
             $ivas = Iva::find('all',
@@ -33,20 +35,22 @@ class IvaController extends BaseController
 
     public function store()
     {
-        $attributes = array('percentage' => $_POST['percentage'],
+        $attributes = array(
+            'percentage' => $_POST['percentage'],
             'description' => $_POST['description'],
             'vigour' => $_POST['vigour']);
         $ivas = new Iva($attributes);
         if ($ivas->is_valid()) {
             $ivas->save();
             header('Location: router.php?c=ivas&a=index');
-        }else{
+        } else {
+            // *** Retorna os erros presentes no model *** \\
+
+            //print_r($bills->errors->full_messages());
 
             $this->renderViewBackend('ivas/create', [
                 'ivas' => $ivas
             ]);
-
-            //header('Location: router.php?c=ivas&a=create');
         }
     }
 
@@ -64,11 +68,10 @@ class IvaController extends BaseController
 
     public function update($id)
     {
-        //find resource (activerecord/model) instance where PK = $id
-        //your form name fields must match the ones of the table fields
         $iva = Iva::find([$id]);
 
-        $attributes = array('percentage' => $_POST['percentage'],
+        $attributes = array(
+            'percentage' => $_POST['percentage'],
             'description' => $_POST['description'],
             'vigour' => $_POST['vigour']);
         $iva->update_attributes($attributes);
@@ -88,7 +91,6 @@ class IvaController extends BaseController
         $iva->delete();
 
         header('Location: router.php?c=ivas&a=index');
-        //$this->renderView('iva/index');
     }
 
     public function show($id)
@@ -97,7 +99,7 @@ class IvaController extends BaseController
         if (is_null($iva)) {
             header('Location: router.php?c=ivas&a=index');
         } else {
-            $this->renderViewBackend('ivas/show.php', [
+            $this->renderViewBackend('ivas/show', [
                 'iva' => $iva,
             ]);
         }

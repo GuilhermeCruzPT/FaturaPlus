@@ -69,8 +69,8 @@
                 <div class="form-group">
                     <label for="vigour">Vigor:</label>
                     <select class="form-control" id="vigour" name="vigour">
-                        <option value="1" <?= $iva->vigour == '1' ? 'selected' : '' ?>>Com Vigor</option>
-                        <option value="0" <?= $iva->vigour == '0' ? 'selected' : '' ?>>Sem Vigor</option>
+                        <option value="1" <?= $iva->vigour == '1' ? 'selected' : '' ?>>Ativo</option>
+                        <option value="0" <?= $iva->vigour == '0' ? 'selected' : '' ?>>Inativo</option>
                     </select>
                 </div>
 
