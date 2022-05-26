@@ -36,5 +36,4 @@ class AuthController extends BaseController
         var_dump($attributes);
 
     }
-
 }

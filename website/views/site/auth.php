@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="router.php?c=auth&a=save" method="POST">
             <h1>Entrar</h1>
             <div class="sign-in-field-container">
                 <input type="text" placeholder="Username" />
