@@ -26,8 +26,9 @@
         <form action="router.php?c=auth&a=save" method="POST">
             <h1>Entrar</h1>
             <div class="sign-in-field-container">
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
+                <input type="text" placeholder="Username"/>
+                <input type="password" placeholder="Password"/>
+
             </div>
             <a href="#">Esqueceu-se da palavra-passe?</a>
             <button class="button-auth" role="button"><span>Entrar</span></button>
@@ -39,6 +40,7 @@
                 <h1>Bem-vindo<br>de volta!</h1>
                 <p>Para manter-se conectado connosco, entre com os seus dados pessoais</p>
                 <button class="ghost btn-reflex" id="signIn">Entrar</button>
+
             </div>
             <div class="overlay-panel overlay-right">
                 <h1>Olá, Amigo!</h1>
