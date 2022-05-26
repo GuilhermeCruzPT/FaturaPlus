@@ -35,8 +35,8 @@
                 <!--<a class="custom-btn btn-5" href="#" data-tooltip="tooltip" title="Não tens uma conta? Regista-te">Registar</a>
                 <a class="btn btn-info" href="#" data-tooltip="tooltip" title="Tem uma conta? Faça login">Entrar</a>-->
                 <div class="split-buttons">
-                    <a class="btn-box-auth btn-primary-auth btn-reflex">Registar</a>
-                    <a class="btn-box-auth btn-secondary-auth btn-reflex">Entrar</a>
+                    <a class="btn-box-auth btn-primary-auth btn-reflex" href="router.php?c=auth&a=signup">Registar</a>
+                    <a class="btn-box-auth btn-secondary-auth btn-reflex" href="router.php?c=auth&a=sign">Entrar</a>
                     <span>ou</span>
                 </div>
             </div>

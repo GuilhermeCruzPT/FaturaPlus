@@ -54,11 +54,11 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'sign':
                     $authController->sign();
                     break;
-                case 'signin':
-                    $authController->signin();
+                case 'signup':
+                    $authController->signup();
                     break;
-                case 'save_signin':
-                    $authController->save_signin();
+                case 'save_signup':
+                    $authController->save_signup();
                     break;
             }
             break;

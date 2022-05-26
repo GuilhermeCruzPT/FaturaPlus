@@ -10,11 +10,11 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form method="post" action="router.php?c=auth&a=signin">
+        <form method="post" action="router.php?c=auth&a=signup">
             <h1>Criar uma Conta</h1>
             <div class="sign-up-field-container">
                 <p>Ao registar-se, você confirma que concorda com os Termos e Condições e a
-                   Política de Privacidade da Fatura+ </p>
+                    Política de Privacidade da Fatura+ </p>
                 <!--<input type="text" placeholder="Username" />
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />-->
