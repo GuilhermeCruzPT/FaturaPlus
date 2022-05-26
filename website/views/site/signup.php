@@ -7,17 +7,24 @@
     <link href="<?= DIRPAGE ?>public/css/sigin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body style="
+    height: 130vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}">
 
 <div class="container1">
-    <div class="title">Registration</div>
+    <div class="title">Registo</div>
     <div class="content1">
         <form method="post" action="router.php?c=auth&a=save_signup">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">username</span>
-                    <input name="username" type="text" placeholder="Enter your username">
-                </div>
+                    <input name="username" type="text" placeholder="Inserir Username">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('username'))) {
@@ -29,11 +36,11 @@
                     }
                 }
                 ?>
-
+            </div>
                 <div class="input-box">
                     <span class="details">nome</span>
-                    <input name="name" type="text" placeholder="Enter your nome">
-                </div>
+                    <input name="name" type="text" placeholder="Inserir Nome">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('name'))) {
@@ -45,11 +52,12 @@
                     }
                 }
                 ?>
+                </div>
 
                 <div class="input-box">
                     <span class="details">Email</span>
-                    <input name="email" type="text" placeholder="Enter your email">
-                </div>
+                    <input name="email" type="text" placeholder="Inserir E-mail">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('email'))) {
@@ -61,11 +69,11 @@
                     }
                 }
                 ?>
-
+            </div>
                 <div class="input-box">
                     <span class="details">Phone Number</span>
-                    <input name="phone" type="number" placeholder="Enter your number">
-                </div>
+                    <input name="phone" type="number" placeholder="Inserir Número de Telemóvel">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('phone'))) {
@@ -77,11 +85,11 @@
                     }
                 }
                 ?>
-
+            </div>
                 <div class="input-box">
                     <span class="details">nif</span>
-                    <input name="nif" type="number" placeholder="Enter your nif">
-                </div>
+                    <input name="nif" type="number" placeholder="Inserir Nif">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('nif'))) {
@@ -93,11 +101,11 @@
                     }
                 }
                 ?>
-
+            </div>
                 <div class="input-box">
                     <span class="details">birth</span>
-                    <input name="birth" type="date" placeholder="Enter your birth">
-                </div>
+                    <input name="birth" type="date" placeholder="Inserir Código Postal">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('birth'))) {
@@ -109,11 +117,11 @@
                     }
                 }
                 ?>
-
+            </div>
                 <div class="input-box">
                     <span class="details">Password</span>
-                    <input name="password" type="text" placeholder="Enter your password">
-                </div>
+                    <input name="password" type="text" placeholder="Inserir Password">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('password'))) {
@@ -124,16 +132,16 @@
                         echo "<font color='red'>" . $users->errors->on('password') . "</font>";
                     }
                 }
-                ?>
+                ?></div>
 
                 <div class="input-box">
                     <span class="details">Confirm Password</span>
-                    <input name="confirm_pass" type="text" placeholder="Confirm your password">
+                    <input name="confirm_pass" type="text" placeholder="Confirmar Password">
                 </div>
                 <div class="input-box">
                     <span class="details">postal_code</span>
-                    <input name="postal_code" type="text" placeholder="Enter your postal_code">
-                </div>
+                    <input name="postal_code" type="text" placeholder="Inserir Código Postal">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('postal_code'))) {
@@ -145,11 +153,11 @@
                     }
                 }
                 ?>
-
+            </div>
                 <div class="input-box">
                     <span class="details">coutry</span>
-                    <input name="country" type="text" placeholder="Enter your coutry">
-                </div>
+                    <input name="country" type="text" placeholder="Inserir País">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('country'))) {
@@ -161,11 +169,12 @@
                     }
                 }
                 ?>
+                </div>
 
                 <div class="input-box">
                     <span class="details">city</span>
-                    <input name="city" type="text" placeholder="Enter your city">
-                </div>
+                    <input name="city" type="text" placeholder="Inserir Cidade">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('city'))) {
@@ -177,12 +186,12 @@
                     }
                 }
                 ?>
-
+            </div>
 
                 <div class="input-box">
                     <span class="details">locale</span>
-                    <input name="locale" type="text" placeholder="Enter your locale">
-                </div>
+                    <input name="locale" type="text" placeholder="Inserir Localidade">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('locale'))) {
@@ -194,10 +203,10 @@
                     }
                 }
                 ?>
-
+            </div>
                 <div class="input-box">
                     <span class="details">address</span>
-                    <input name="address" type="text" placeholder="Enter your address">
+                    <input name="address" type="text" placeholder="Inserir Morada">
                     <?php
                     if (isset($users->errors)) {
                         if (is_array($users->errors->on('address'))) {
@@ -212,8 +221,8 @@
                 </div>
                 <div class="input-box">
                     <span class="details">imagem</span>
-                    <input name="image" type="text" placeholder="Enter your image">
-                </div>
+                    <input name="image" type="text" placeholder="Inserir Imagem">
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('image'))) {
@@ -225,12 +234,10 @@
                     }
                 }
                 ?>
-
+            </div>
             </div>
 
             <div class="gender-details">
-                <input type="radio" name="gender" id="dot-1">
-                <input type="radio" name="gender" id="dot-2">
                 <span>Gender</span>
 
                 <div class="category">
@@ -246,7 +253,7 @@
                         <input name="genre" type="hidden" value="f">
                     </label>
 
-                </div>
+
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('genre'))) {
@@ -260,10 +267,9 @@
                 }
                 ?>
             </div>
+            </div>
             <div class="button">
                 <input type="submit" value="Register">
-
-
             </div>
         </form>
     </div>
