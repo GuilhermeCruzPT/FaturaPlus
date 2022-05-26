@@ -27,13 +27,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('social_designation'))) {
-                        foreach ($users->errors->on('social_designation') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('social_designation'))) {
+                        foreach ($enterprises->errors->on('social_designation') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('social_designation')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('social_designation')."</font>";
                     }
                 }
                 ?>
@@ -50,13 +50,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('email'))) {
-                        foreach ($users->errors->on('email') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('email'))) {
+                        foreach ($enterprises->errors->on('email') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('email')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('email')."</font>";
                     }
                 }
                 ?>
@@ -73,13 +73,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('phone'))) {
-                        foreach ($users->errors->on('phone') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('phone'))) {
+                        foreach ($enterprises->errors->on('phone') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('phone')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('phone')."</font>";
                     }
                 }
                 ?>
@@ -96,13 +96,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('nif'))) {
-                        foreach ($users->errors->on('nif') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('nif'))) {
+                        foreach ($enterprises->errors->on('nif') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('nif')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('nif')."</font>";
                     }
                 }
                 ?>
@@ -119,13 +119,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('postal_code'))) {
-                        foreach ($users->errors->on('postal_code') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('postal_code'))) {
+                        foreach ($enterprises->errors->on('postal_code') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('postal_code')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('postal_code')."</font>";
                     }
                 }
                 ?>
@@ -142,13 +142,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('country'))) {
-                        foreach ($users->errors->on('country') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('country'))) {
+                        foreach ($enterprises->errors->on('country') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('country')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('country')."</font>";
                     }
                 }
                 ?>
@@ -165,13 +165,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('city'))) {
-                        foreach ($users->errors->on('city') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('city'))) {
+                        foreach ($enterprises->errors->on('city') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('city')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('city')."</font>";
                     }
                 }
                 ?>
@@ -188,13 +188,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('locale'))) {
-                        foreach ($users->errors->on('locale') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('locale'))) {
+                        foreach ($enterprises->errors->on('locale') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('locale')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('locale')."</font>";
                     }
                 }
                 ?>
@@ -211,13 +211,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('address'))) {
-                        foreach ($users->errors->on('address') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('address'))) {
+                        foreach ($enterprises->errors->on('address') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('address')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('address')."</font>";
                     }
                 }
                 ?>
@@ -234,13 +234,13 @@
                 </div>
 
                 <?php
-                if(isset($users->errors)) {
-                    if (is_array($users->errors->on('social_capital'))) {
-                        foreach ($users->errors->on('social_capital') as $error) {
+                if(isset($enterprises->errors)) {
+                    if (is_array($enterprises->errors->on('social_capital'))) {
+                        foreach ($enterprises->errors->on('social_capital') as $error) {
                             echo "<font color='red'>" . $error ."</font>". '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('social_capital')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('social_capital')."</font>";
                     }
                 }
                 ?>
