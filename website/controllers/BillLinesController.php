@@ -48,7 +48,8 @@ class BillLinesController extends BaseController
             'unitary_value' => ((int)$_POST['unitary_value']),
             'iva_value' => ((int)$_POST['iva_value']),
             'product_id' => $_POST['product_id'],
-            'bill_id' => $_POST['bill_id'],);
+            'bill_id' => $_POST['bill_id']
+            );
 
         $bill_lines = new Bill_line($attributes);
         if ($bill_lines->is_valid()) {
@@ -63,6 +64,56 @@ class BillLinesController extends BaseController
 
             ]);
         }
+    }
+    public function edit($id)
+    {
+        $products = Product::all();
+        $bills = Bill::all();
+        $bill_lines = Bill_line::find([$id]);
+
+        if (is_null($bill_lines)) {
+            header('Location: router.php?c=lines&a=index');
+        } else {
+            $this->renderViewBackend('lines/update', [
+                'bill_lines' => $bill_lines,
+                'products' => $products,
+                'bills' => $bills,
+            ]);
+        }
+    }
+
+    public function update($id)
+    {
+        $products = Product::all();
+        $bills = Bill::all();
+        $attributes = array(
+            'quantity' => ((int)$_POST['quantity']),
+            'unitary_value' => ((int)$_POST['unitary_value']),
+            'iva_value' => ((int)$_POST['iva_value']),
+            'product_id' => $_POST['product_id'],
+            'bill_id' => $_POST['bill_id']);
+
+        $bill_lines = Bill_line::find([$id]);
+        $bill_lines->update_attributes($attributes);
+        if ($bill_lines->is_valid()) {
+            $bill_lines->save();
+            header('Location: router.php?c=lines&a=index');
+        } else {
+            $this->renderViewBackend('lines/update', [
+                'bill_lines' => $bill_lines,
+                'products' => $products,
+                'bills' => $bills,
+
+            ]);
+        }
+    }
+
+    public function delete($id)
+    {
+        $bill_lines = Bill_line::find([$id]);
+        $bill_lines->delete();
+
+        header('Location: router.php?c=lines&a=index');
     }
 
 
