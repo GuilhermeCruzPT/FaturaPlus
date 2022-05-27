@@ -10,11 +10,11 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form method="post" action="router.php?c=auth&a=signin">
+        <form method="post" action="router.php?c=auth&a=signup">
             <h1>Criar uma Conta</h1>
             <div class="sign-up-field-container">
                 <p>Ao registar-se, você confirma que concorda com os Termos e Condições e a
-                   Política de Privacidade da Fatura+ </p>
+                    Política de Privacidade da Fatura+ </p>
                 <!--<input type="text" placeholder="Username" />
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />-->
@@ -23,14 +23,14 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="router.php?c=auth&a=save" method="POST">
+        <form action="router.php?c=auth&a=verify_login" method="POST">
             <h1>Entrar</h1>
             <div class="sign-in-field-container">
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
+                <input name="username" type="text" placeholder="Username" />
+                <input name="password" type="password" placeholder="Password" />
             </div>
             <a href="#">Esqueceu-se da palavra-passe?</a>
-            <button class="button-auth" role="button"><span>Entrar</span></button>
+            <button type="submit" class="button-auth" role="button"><span>Entrar</span></button>
         </form>
     </div>
     <div class="overlay-container">
@@ -39,6 +39,7 @@
                 <h1>Bem-vindo<br>de volta!</h1>
                 <p>Para manter-se conectado connosco, entre com os seus dados pessoais</p>
                 <button class="ghost btn-reflex" id="signIn">Entrar</button>
+
             </div>
             <div class="overlay-panel overlay-right">
                 <h1>Olá, Amigo!</h1>

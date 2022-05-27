@@ -51,14 +51,17 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
         case 'auth':
             $authController = new AuthController();
             switch ($action) {
-                case 'sign':
-                    $authController->sign();
-                    break;
                 case 'signin':
                     $authController->signin();
                     break;
-                case 'save_signin':
-                    $authController->save_signin();
+                case 'verify_login':
+                    $authController->verify_login();
+                    break;
+                case 'signup':
+                    $authController->signup();
+                    break;
+                case 'save_signup':
+                    $authController->save_signup();
                     break;
             }
             break;
