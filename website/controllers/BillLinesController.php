@@ -1,4 +1,5 @@
 <?php
+
 class BillLinesController extends BaseController
 {
     public function index()
@@ -33,7 +34,7 @@ class BillLinesController extends BaseController
     {
         $products = Product::all();
         $bills = Bill::all();
-        $this->renderViewBackend('lines/create',[
+        $this->renderViewBackend('lines/create', [
             'products' => $products,
             'bills' => $bills,
         ]);
@@ -49,7 +50,7 @@ class BillLinesController extends BaseController
             'iva_value' => ((int)$_POST['iva_value']),
             'product_id' => $_POST['product_id'],
             'bill_id' => $_POST['bill_id']
-            );
+        );
 
         $bill_lines = new Bill_line($attributes);
         if ($bill_lines->is_valid()) {
@@ -65,6 +66,7 @@ class BillLinesController extends BaseController
             ]);
         }
     }
+
     public function edit($id)
     {
         $products = Product::all();
@@ -114,6 +116,18 @@ class BillLinesController extends BaseController
         $bill_lines->delete();
 
         header('Location: router.php?c=lines&a=index');
+    }
+
+    public function show($id)
+    {
+        $bill_lines = Bill_line::find([$id]);
+        if (is_null($bill_lines)) {
+            header('Location: router.php?c=lines&a=index');
+        } else {
+            $this->renderViewBackend('lines/show', [
+                'bill_lines' => $bill_lines,
+            ]);
+        }
     }
 
 

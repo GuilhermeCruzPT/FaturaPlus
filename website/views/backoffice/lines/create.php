@@ -15,7 +15,9 @@
             padding: 20px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                <h4 class="display-4 text-center">Criar Linha da Fatura</h4><hr><br>
+                <h4 class="display-4 text-center">Criar Linha da Fatura</h4>
+                <hr>
+                <br>
 
                 <div class="form-group">
                     <label for="quantity">Quantidade:</label>
@@ -28,13 +30,13 @@
 
                 <?php
 
-                if(isset($bill_lines->errors)) {
+                if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('quantity'))) {
                         foreach ($bill_lines->errors->on('quantity') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $bill_lines->errors->on('quantity')."</font>";
+                        echo "<font color='red'>" . $bill_lines->errors->on('quantity') . "</font>";
                     }
                 }
                 ?>
@@ -50,13 +52,13 @@
                 </div>
 
                 <?php
-                if(isset($bill_lines->errors)) {
+                if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('unitary_value'))) {
                         foreach ($bill_lines->errors->on('unitary_value') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $bill_lines->errors->on('unitary_value')."</font>";
+                        echo "<font color='red'>" . $bill_lines->errors->on('unitary_value') . "</font>";
                     }
                 }
                 ?>
@@ -73,13 +75,13 @@
                 </div>
 
                 <?php
-                if(isset($bill_lines->errors)) {
+                if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('iva_value'))) {
                         foreach ($bill_lines->errors->on('iva_value') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $bill_lines->errors->on('iva_value')."</font>";
+                        echo "<font color='red'>" . $bill_lines->errors->on('iva_value') . "</font>";
                     }
                 }
                 ?>
@@ -90,20 +92,20 @@
                     <label for="product_id">Referência Produto:</label>
                     <select class="form-control" id="product_id" name="product_id">
                         <option value="0">Nenhum</option>
-                        <?php foreach($products as $product){?>
+                        <?php foreach ($products as $product) { ?>
                             <option value="<?= $product->id ?>">  <?= $product->reference ?> </option>
-                        <?php  } ?>
+                        <?php } ?>
                     </select>
                 </div>
 
                 <?php
-                if(isset($bill_lines->errors)) {
+                if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('product_id'))) {
                         foreach ($bill_lines->errors->on('product_id') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $bill_lines->errors->on('product_id')."</font>";
+                        echo "<font color='red'>" . $bill_lines->errors->on('product_id') . "</font>";
                     }
                 }
                 ?>
@@ -114,20 +116,20 @@
                     <label for="bill_id"> Referência Fatura:</label>
                     <select class="form-control" id="bill_id" name="bill_id">
                         <option value="0">Nenhum</option>
-                        <?php foreach($bills as $bill){?>
-                                <option value="<?= $bill->id ?>">  <?= $bill->id ?> </option>
-                            <?php  } ?>
+                        <?php foreach ($bills as $bill) { ?>
+                            <option value="<?= $bill->id ?>">  <?= $bill->id ?> </option>
+                        <?php } ?>
                     </select>
                 </div>
 
                 <?php
-                if(isset($bill_lines->errors)) {
+                if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('bill_id'))) {
                         foreach ($bill_lines->errors->on('bill_id') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $bill_lines->errors->on('bill_id')."</font>";
+                        echo "<font color='red'>" . $bill_lines->errors->on('bill_id') . "</font>";
                     }
                 }
                 ?>
@@ -136,7 +138,8 @@
 
                 <button type="submit"
                         class="btn btn-primary"
-                        name="create">Criar</button>
+                        name="create">Criar
+                </button>
 
             </form>
         </div>

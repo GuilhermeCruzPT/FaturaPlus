@@ -28,24 +28,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($bill_lines as $bill_line) { ?>
+                <?php foreach ($bill_lines
+
+                as $bill_line) { ?>
 
                 <td><?= $bill_line->id ?></td>
                 <td><?= $bill_line->quantity ?></td>
                 <td><?= $bill_line->unitary_value ?></td>
                 <td><?= $bill_line->iva_value ?></td>
-                <td><?= $bill_line->product->id. " - " . $bill_line->product->reference  ?></td>
+                <td><?= $bill_line->product->id . " - " . $bill_line->product->reference ?></td>
                 <td><?= $bill_line->bill->id ?></td>
 
                 <td>
                     <a href="router.php?c=lines&a=show&id=<?= $bill_line->id ?>"
-                       class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon' ></i></a>
+                       class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon'></i></a>
 
                     <a href="router.php?c=lines&a=edit&id=<?= $bill_line->id ?>"
-                       class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
+                       class="btn btn-warning btn-icon-update btn-icon"><i
+                                class='bx bx-edit-alt bx-tada action-icon'></i></a>
 
                     <a href="router.php?c=lines&a=delete&id=<?= $bill_line->id ?>"
-                       class="btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
+                       class="btn btn-danger btn-icon-delete btn-icon"><i
+                                class='bx bx-trash bx-tada action-icon'></i></a>
                 </td>
                 </tr>
                 </tbody>
