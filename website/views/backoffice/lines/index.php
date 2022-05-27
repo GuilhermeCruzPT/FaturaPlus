@@ -21,7 +21,7 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Quantidade</th>
-                    <th scope="col">Valor Unitario</th>
+                    <th scope="col">Valor Unitário</th>
                     <th scope="col">Valor do Iva</th>
                     <th scope="col">Referência Produto</th>
                     <th scope="col">Referência Fatura</th>
@@ -38,20 +38,20 @@
                 <td><?= $bill_line->bill->id ?></td>
 
                 <td>
-                    <a href="router.php?c=bills&a=show&id=<?= $bill_line->id ?>"
+                    <a href="router.php?c=lines&a=show&id=<?= $bill_line->id ?>"
                        class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon' ></i></a>
 
-                    <a href="router.php?c=bills&a=edit&id=<?= $bill_line->id ?>"
+                    <a href="router.php?c=lines&a=edit&id=<?= $bill_line->id ?>"
                        class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
-                    <a href="router.php?c=bills&a=delete&id=<?= $bill_line->id ?>"
+                    <a href="router.php?c=lines&a=delete&id=<?= $bill_line->id ?>"
                        class="btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
                 </td>
                 </tr>
                 </tbody>
                 <?php } ?> </table>
             <div class="btn btn-success">
-                <a href="router.php?c=bills&a=create" class="btn btn-success">Criar</a>
+                <a href="router.php?c=lines&a=create" class="btn btn-success">Criar</a>
             </div>
         </div>
     </div>
