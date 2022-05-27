@@ -14,7 +14,6 @@ class UserController extends BaseController
             $users = User::find('all',
                 array('conditions' => "referencia LIKE '%$search%' 
                 or username LIKE '%$search%'
-                or password LIKE '%$search%'
                 or image LIKE '%$search%'
                 or name LIKE '%$search%'
                 or email LIKE '%$search%'
@@ -50,7 +49,7 @@ class UserController extends BaseController
     {
         $attributes = array(
             'username' => $_POST['username'],
-            'password' => $_POST['password'],
+            'password' => md5($_POST['password']),
             'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
@@ -97,7 +96,7 @@ class UserController extends BaseController
 
         $attributes = array(
             'username' => $_POST['username'],
-            'password' => $_POST['password'],
+            'password' => md5($_POST['password']),
             'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],

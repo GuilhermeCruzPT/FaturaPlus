@@ -23,14 +23,14 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="router.php?c=auth&a=save" method="POST">
+        <form action="router.php?c=auth&a=verify_login" method="POST">
             <h1>Entrar</h1>
             <div class="sign-in-field-container">
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
+                <input name="username" type="text" placeholder="Username" />
+                <input name="password" type="password" placeholder="Password" />
             </div>
             <a href="#">Esqueceu-se da palavra-passe?</a>
-            <button class="button-auth" role="button"><span>Entrar</span></button>
+            <button type="submit" class="button-auth" role="button"><span>Entrar</span></button>
         </form>
     </div>
     <div class="overlay-container">

@@ -263,7 +263,7 @@
                            id="country"
                            name="country"
                            placeholder="Inserir País"
-                           value="<?= $user->coutry ?>">
+                           value="<?= $user->country ?>">
                 </div>
 
                 <?php

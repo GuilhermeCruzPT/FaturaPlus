@@ -4,21 +4,44 @@ require_once './models/Data.php';
 
 class AuthController extends BaseController
 {
-    public function sign(){
-        //require view index;
-        require_once './views/site/auth.php';
+    public function __construct()
+    {
+        session_start();
+        //if (!isset($_SESSION["username"])) header('Location: router.php?c=users&a=index');
     }
 
-    // registo
-
     public function signin(){
+        if (!isset($_SESSION["username"]))
+            header('Location: router.php?c=users&a=index');
+        else
+            require_once './views/site/auth.php';
+    }
 
+    public function verify_login()
+    {
+        $user = User::find_by_username($_POST['username']);
+        if ($user->username == $_POST['username'] && $user->password == md5($_POST['password'])){
+            $_SESSION["user_id"] = $user->id;
+            $_SESSION["username"] = $user->username;
+            $_SESSION["permission"] = $user->role;
+
+            if ($_SESSION["permission"] == 'c') {
+                $this->renderView('site/index');
+            }
+            else {
+                header('Location: router.php?c=users&a=index');
+            }
+        }
+        else {
+            $error = 'O Username ou a Palavra-Passe não existem!!';
+        }
     }
 
     public function signup(){
         //$this->renderView('site/sigin');
         $this->renderViewfrontend('site/signup');
     }
+
     public function save_signup(){
 
         $role = "utlizador";
@@ -43,14 +66,16 @@ class AuthController extends BaseController
         $users = new User($attributes);
         if ($users->is_valid()) {
             $users->save();
-            header('Location: router.php?c=auth&a=sign');
+            header('Location: router.php?c=auth&a=signin');
         } else {
 
             $this->renderViewfrontend('site/signup', [
                 'users' => $users
             ]);
         }
-
     }
 
+    public function logout(){
+        session_destroy();
+    }
 }
