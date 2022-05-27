@@ -39,6 +39,7 @@
                 <h1>Bem-vindo<br>de volta!</h1>
                 <p>Para manter-se conectado connosco, entre com os seus dados pessoais</p>
                 <button class="ghost btn-reflex" id="signIn">Entrar</button>
+
             </div>
             <div class="overlay-panel overlay-right">
                 <h1>Olá, Amigo!</h1>

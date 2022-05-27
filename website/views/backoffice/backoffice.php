@@ -53,8 +53,8 @@
             <span class="tooltip">Linhas das Faturas</span>
         </li>
         <li>
-            <a href="router.php?c=products&a=index">
-                <i class='bx bx-pie-chart-alt-2' ></i>
+            <a 'href="router.php?c=products&a=index">
+                    <i class='bx bx-pie-chart-alt-2 ></i>
                 <span class="links_name">Produtos</span>
             </a>
             <span class="tooltip">Produtos</span>
