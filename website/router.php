@@ -63,6 +63,9 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'save_signup':
                     $authController->save_signup();
                     break;
+                case 'logout':
+                    $authController->logout();
+                    break;
             }
             break;
 

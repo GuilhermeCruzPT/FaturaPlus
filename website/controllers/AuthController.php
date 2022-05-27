@@ -11,7 +11,7 @@ class AuthController extends BaseController
     }
 
     public function signin(){
-        if (!isset($_SESSION["username"]))
+        if (isset($_SESSION["username"]))
             header('Location: router.php?c=users&a=index');
         else
             require_once './views/site/auth.php';
@@ -77,5 +77,6 @@ class AuthController extends BaseController
 
     public function logout(){
         session_destroy();
+        header('Location: router.php?c=auth&a=signin');
     }
 }
