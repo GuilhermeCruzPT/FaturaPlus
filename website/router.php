@@ -13,6 +13,7 @@ require_once './controllers/UserController.php';
 require_once './controllers/IvaController.php';
 require_once './controllers/EnterpriseController.php';
 require_once './controllers/BillLinesController.php';
+require_once './controllers/PanelController.php';
 
 
 if (!(isset($_GET['c']) && isset($_GET['a']))) {
@@ -24,6 +25,7 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
     $action = $_GET['a'];
 
     switch ($controller) {
+
         case 'site':
             $siteController = new SiteController();
             switch ($action) {
@@ -194,7 +196,6 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
             }
             break;
 
-
         case 'enterprises':
             $EnterprisesController = new EnterpriseController();
             switch ($action) {
@@ -225,6 +226,7 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                     break;
             }
             break;
+
         case 'lines':
             $BillLinesController = new BillLinesController();
             switch ($action) {
@@ -252,6 +254,15 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'delete':
                     $id = $_GET[('id')];
                     $BillLinesController->delete($id);
+                    break;
+            }
+            break;
+
+        case 'panel':
+            $PanelController = new PanelController();
+            switch ($action) {
+                case 'index':
+                    $PanelController->index();
                     break;
             }
             break;

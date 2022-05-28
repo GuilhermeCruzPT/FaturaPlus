@@ -30,7 +30,7 @@
         </li>-->
 
         <li>
-            <a href="#">
+            <a href="router.php?c=panel&a=index">
                 <i class='bx bx-grid-alt' ></i>
                 <span class="links_name">Painel Principal</span>
             </a>
