@@ -1,10 +1,13 @@
 <?php
-    session_start();
-    if (isset($user)) $user = User::find([$_SESSION["user_id"]]);
+    /*if (isset($_SESSION["user_id"])) {
+        if ($_SESSION["permission"] == 'c')
+            header('Location: router.php?c=site&a=index');
+    }
+    else header('Location: router.php?c=auth&a=signin');*/
 ?>
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="pt" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= DIRCSS ?>backoffice.css">
@@ -86,8 +89,8 @@
             <div class="profile-details">
                 <!--<img src="profile.jpg" alt="profileImg">-->
                 <div class="name_job">
-                    <div class="name"><?= $user->name ?></div>
-                    <div class="job"><?= $user->role == 'a' ? 'Administrador' : 'Funcionário' ?></div>
+                    <div class="name"><?= $userName->name ?></div>
+                    <div class="job"><?= $_SESSION["permission"] == 'a' ? 'Administrador' : 'Funcionário' ?></div>
                 </div>
             </div>
             <a href="router.php?c=auth&a=logout">

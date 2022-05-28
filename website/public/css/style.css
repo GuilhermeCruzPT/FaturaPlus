@@ -323,3 +323,70 @@ img {
 }
 
 /* ***** End of Section ***** */
+
+
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown:hover .dropbtn {
+    //background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: linear-gradient(135deg, #ECE9E6 0%, #FFFFFF 100%);
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 15px;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 5px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    color: ghostwhite;
+    background: linear-gradient(135deg, rgba(243, 105, 88, 1) 0%, rgba(130, 204, 221, 1) 100%);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*---------- Green Effect ----------*/
+
+.green-effect:hover{
+    color: #f36958;
+    text-shadow: 0 0 5px #f36958,
+    0 0 10px #f36958,
+    0 0 20px #f36958,
+    0 0 40px #f36958;
+    transition: text-shadow .15s ease-in-out;
+}
+
+ .white-effect:hover{
+     color: #ecf0f1;
+     text-shadow: 0 0 5px #ecf0f1,
+     0 0 10px #ecf0f1,
+     0 0 20px #ecf0f1,
+     0 0 40px #ecf0f1;
+     transition: text-shadow .15s ease-in-out;
+ }#ecf0f1
