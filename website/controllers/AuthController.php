@@ -78,8 +78,8 @@ class AuthController extends BaseController
         if ($users->is_valid()) {
             $users->save();
             header('Location: router.php?c=auth&a=signin');
-        } else {
-
+        }
+        else {
             $this->renderViewfrontend('site/signup', [
                 'users' => $users
             ]);
