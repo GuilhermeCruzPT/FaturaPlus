@@ -341,11 +341,14 @@
 
                 <div class="form-group">
                     <label for="role">Permissão:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="role"
-                           name="role"
-                           placeholder="Inserir Permissão">
+                    <select class="form-control" id="role" name="role">
+                        <option value="">Nenhum</option>
+                        <option value="c">Cliente</option>
+                        <?php if ($_SESSION["permission"] != 'f') { ?>
+                        <option value="f">Funcionário</option>
+                        <option value="a">Administrador</option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <?php

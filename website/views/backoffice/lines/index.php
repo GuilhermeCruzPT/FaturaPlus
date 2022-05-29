@@ -28,9 +28,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($bill_lines
-
-                as $bill_line) { ?>
+                <?php
+                if (empty($bill_lines)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td></td></td>";
+                }else{
+                foreach ($bill_lines as $bill_line) { ?>
 
                 <td><?= $bill_line->id ?></td>
                 <td><?= $bill_line->quantity ?></td>
@@ -53,7 +55,7 @@
                 </td>
                 </tr>
                 </tbody>
-                <?php } ?> </table>
+                <?php }} ?> </table>
             <div class="btn btn-success">
                 <a href="router.php?c=lines&a=create" class="btn btn-success">Criar</a>
             </div>

@@ -92,12 +92,11 @@
 
                 <div class="form-group">
                     <label for="state">Estado:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="state"
-                           name="state"
-                           placeholder="Inserir Estado"
-                           value="<?= $bill->state ?>">
+                    <select class="form-control" id="state" name="state">
+                        <option value="">Nenhum</option>
+                        <option value="f" <?= $bill->state == 'l' ? 'selected' : '' ?>>Em Lançamento</option>
+                        <option value="e" <?= $bill->state == 'e' ? 'selected' : '' ?>>Emitida</option>
+                    </select>
                 </div>
 
                 <?php

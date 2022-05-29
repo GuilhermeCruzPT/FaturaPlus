@@ -22,8 +22,8 @@ class UserController extends BaseController
 
             $search = $_POST['search'];
             $users = User::find('all',
-                array('conditions' => "referencia LIKE '%$search%' 
-                or username LIKE '%$search%'
+                array('conditions' => "
+                username LIKE '%$search%'
                 or image LIKE '%$search%'
                 or name LIKE '%$search%'
                 or email LIKE '%$search%'
@@ -103,29 +103,47 @@ class UserController extends BaseController
     public function update($id)
     {
         $user = User::find([$id]);
-
-        $attributes = array(
-            'username' => $_POST['username'],
-            'password' => md5($_POST['password']),
-            'image' => $_POST['image'],
-            'name' => $_POST['name'],
-            'email' => $_POST['email'],
-            'phone' => ((int)$_POST['phone']),
-            'nif' => ((int)$_POST['nif']),
-            'postal_code' => $_POST['postal_code'],
-            'birth' => $_POST['birth'],
-            'genre' => $_POST['genre'],
-            'country' => $_POST['country'],
-            'city' => $_POST['city'],
-            'locale' => $_POST['locale'],
-            'address' => $_POST['address'],
-            'role' => $_POST['role']);
+        if (isset($_POST['password']) && !empty($_POST['password'])) {
+            $attributes = array(
+                'username' => $_POST['username'],
+                'password' => md5($_POST['password']),
+                'image' => $_POST['image'],
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'phone' => ((int)$_POST['phone']),
+                'nif' => ((int)$_POST['nif']),
+                'postal_code' => $_POST['postal_code'],
+                'birth' => $_POST['birth'],
+                'genre' => $_POST['genre'],
+                'country' => $_POST['country'],
+                'city' => $_POST['city'],
+                'locale' => $_POST['locale'],
+                'address' => $_POST['address'],
+                'role' => $_POST['role']);
+        }
+        else {
+            $attributes = array(
+                'username' => $_POST['username'],
+                'image' => $_POST['image'],
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'phone' => ((int)$_POST['phone']),
+                'nif' => ((int)$_POST['nif']),
+                'postal_code' => $_POST['postal_code'],
+                'birth' => $_POST['birth'],
+                'genre' => $_POST['genre'],
+                'country' => $_POST['country'],
+                'city' => $_POST['city'],
+                'locale' => $_POST['locale'],
+                'address' => $_POST['address'],
+                'role' => $_POST['role']);
+        }
         $user->update_attributes($attributes);
         if($user->is_valid()){
             $user->save();
             header('Location: router.php?c=users&a=index');
         } else {
-            $this->renderView('users/update', [
+            $this->renderViewBackend('users/update', [
                 'user' => $user,
             ]);
         }

@@ -54,12 +54,9 @@ class AuthController extends BaseController
     }
 
     public function save_signup(){
-
-        $role = "utlizador";
-
         $attributes = array(
             'username' => $_POST['username'],
-            'password' => $_POST['password'],
+            'password' => md5($_POST['password']),
             'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
@@ -78,8 +75,8 @@ class AuthController extends BaseController
         if ($users->is_valid()) {
             $users->save();
             header('Location: router.php?c=auth&a=signin');
-        } else {
-
+        }
+        else {
             $this->renderViewfrontend('site/signup', [
                 'users' => $users
             ]);

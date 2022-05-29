@@ -49,17 +49,20 @@
                            id="password"
                            name="password"
                            placeholder="Inserir Password"
-                           value="<?= $user->password ?>">
+                           value="">
                 </div>
 
                 <?php
-                if(isset($user->errors)) {
-                    if (is_array($user->errors->on('password'))) {
-                        foreach ($user->errors->on('password') as $error) {
-                            echo $error . '<br>';
+                if (isset($_POST['password']) && !empty($_POST['password']))
+                {
+                    if(isset($user->errors)) {
+                        if (is_array($user->errors->on('password'))) {
+                            foreach ($user->errors->on('password') as $error) {
+                                echo $error . '<br>';
+                            }
+                        } else {
+                            echo $user->errors->on('password');
                         }
-                    } else {
-                        echo $user->errors->on('password');
                     }
                 }
                 ?>
@@ -354,12 +357,14 @@
 
                 <div class="form-group">
                     <label for="role">Permissão:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="role"
-                           name="role"
-                           placeholder="Inserir Permissão"
-                           value="<?= $user->role ?>">
+                    <select class="form-control" id="role" name="role">
+                        <option value="">Nenhum</option>
+                        <option value="c">Cliente</option>
+                        <?php if ($_SESSION["permission"] != 'f') { ?>
+                            <option value="f">Funcionário</option>
+                            <option value="a">Administrador</option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <?php

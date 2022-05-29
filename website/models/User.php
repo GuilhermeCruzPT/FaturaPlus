@@ -62,6 +62,6 @@ class User extends \ActiveRecord\Model
         array('email', 'with' =>
         '/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/', 'message' => 'E-mail com formatação incorreta'),
         //array('password', 'with' =>
-        //'/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/', 'message' => 'Password é demasiado fraca')
+        //'/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/', 'message' => 'Password é demasiado fraca, tem que possuir Maiscúlas e números')
     );
 }

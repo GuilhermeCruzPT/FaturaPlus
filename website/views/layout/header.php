@@ -1,10 +1,3 @@
-<?php
-    /*if (isset($_SESSION["user_id"])) {
-        if ($_SESSION["permission"] != 'c')
-            header('Location: router.php?c=users&a=index');
-    }*/
-?>
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>

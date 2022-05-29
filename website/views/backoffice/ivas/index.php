@@ -27,7 +27,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($ivas as $iva) { ?>
+                <?php
+                if (empty($ivas)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td></td>";
+                }else{
+                foreach ($ivas as $iva) { ?>
 
                 <td><?= $iva->id?></td>
                 <td><?= $iva->percentage?></td>
@@ -45,7 +49,7 @@
                 </td>
                 </tr>
                 </tbody>
-                <?php } ?> </table>
+                <?php } }?> </table>
             <div class="btn btn-success" >
                 <a href="router.php?c=ivas&a=create" class="btn btn-success">Criar</a>
             </div>

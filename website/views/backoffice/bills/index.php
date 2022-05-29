@@ -30,13 +30,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($bills as $bill) { ?>
+                <?php
+                if (empty($bills)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td><td></td></td></td></td>";
+                }else{
+                foreach ($bills as $bill) { ?>
 
                 <td><?= $bill->id ?></td>
                 <td><?= $bill->date->format('Y-m-d'); ?></td>
                 <td><?= $bill->total_value ?></td>
                 <td><?= $bill->total_iva ?></td>
-                <td><?= $bill->state ?></td>
+                <td><?= $bill->state == 'l' ? 'Em Lançamento' : 'Emitida' ?></td>
                 <td><?= $bill->client_reference_id ?></td>
                 <td><?= $bill->employee_reference_id ?></td>
 
@@ -52,7 +56,7 @@
                 </td>
                 </tr>
                 </tbody>
-                <?php } ?> </table>
+                <?php } }?> </table>
             <div class="btn btn-success">
                 <a href="router.php?c=bills&a=create" class="btn btn-success">Criar</a>
             </div>

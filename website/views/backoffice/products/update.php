@@ -137,7 +137,7 @@
                 <br>
                 <button type="submit"
                         class="btn btn-primary"
-                        name="update">Editar</button>
+                        name="update">Atualizar</button>
             </form>
         </div>
     </div>

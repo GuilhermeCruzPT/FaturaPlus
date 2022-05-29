@@ -29,14 +29,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($users as $user) { ?>
+                <?php
+
+                if (empty($users)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td></td></td></td>";
+                }else{
+
+                foreach ($users as $user) { ?>
 
                 <td><?= $user->id?></td>
                 <td><?= $user->username?></td>
                 <td><?= $user->name ?></td>
                 <td><?= $user->email ?></td>
                 <td><?= $user->genre == 'm' ? 'Masculino' : 'Feminino' ?></td>
-                <td><?= $user->role ?></td>
+                <td><?php if ($user->role == 'c') { echo 'Cliente'; } else if ($user->role == 'f') { echo 'Funcionário'; } else { echo 'Administrador'; } ?></td>
 
                 <td>
                     <a href="router.php?c=users&a=show&id=<?= $user->id ?>"
@@ -50,7 +56,7 @@
                 </td>
                 </tr>
                 </tbody>
-                <?php } ?> </table>
+                <?php }} ?> </table>
             <div class="btn btn-success" >
                 <a href="router.php?c=users&a=create" class="btn btn-success">Criar</a>
             </div>

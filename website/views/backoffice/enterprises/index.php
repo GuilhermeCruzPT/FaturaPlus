@@ -29,7 +29,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($enterprises as $enterprise) { ?>
+                <?php
+                if (empty($enterprises)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td></td></td></td>";
+                }else{
+                foreach ($enterprises as $enterprise) { ?>
 
                 <td><?= $enterprise->id ?></td>
                 <td><?= $enterprise->social_designation ?></td>
@@ -50,7 +54,7 @@
                 </td>
                 </tr>
                 </tbody>
-                <?php } ?> </table>
+                <?php }} ?> </table>
             <div class="btn btn-success">
                 <a href="router.php?c=enterprises&a=create" class="btn btn-success">Criar</a>
             </div>
