@@ -180,7 +180,7 @@
                            id="role"
                            readonly="true"
                            name="role"
-                           value="<?= $user->role ?>">
+                           value="<?php if ($user->role == 'c') { echo 'Cliente'; } else if ($user->role == 'f') { echo 'Funcionário'; } else { echo 'Administrador'; } ?>">
                 </div>
 
                 <br>

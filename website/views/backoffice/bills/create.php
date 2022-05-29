@@ -88,11 +88,11 @@
 
                 <div class="form-group">
                     <label for="state">Estado:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="state"
-                           name="state"
-                           placeholder="Inserir Estado">
+                    <select class="form-control" id="state" name="state">
+                        <option value="">Nenhum</option>
+                        <option value="f">Em Lançamento</option>
+                        <option value="e">Emitida</option>
+                    </select>
                 </div>
 
                 <?php

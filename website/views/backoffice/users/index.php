@@ -42,7 +42,7 @@
                 <td><?= $user->name ?></td>
                 <td><?= $user->email ?></td>
                 <td><?= $user->genre == 'm' ? 'Masculino' : 'Feminino' ?></td>
-                <td><?= $user->role ?></td>
+                <td><?php if ($user->role == 'c') { echo 'Cliente'; } else if ($user->role == 'f') { echo 'Funcionário'; } else { echo 'Administrador'; } ?></td>
 
                 <td>
                     <a href="router.php?c=users&a=show&id=<?= $user->id ?>"

@@ -60,7 +60,7 @@
                            id="state"
                            readonly="true"
                            name="state"
-                           value="<?= $bill->state ?>">
+                           value="<?= $bill->state == 'l' ? 'Em Lançamento' : 'Emitida' ?>">
                 </div>
 
                 <br>
