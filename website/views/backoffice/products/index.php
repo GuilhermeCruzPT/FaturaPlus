@@ -11,7 +11,7 @@
 
             <h4 class="display-4 align-text-top" style="padding-top: 25px;">Productos</h4><br>
 
-            <form  method="post" action="router.php?c=product&a=index">
+            <form  method="post" action="router.php?c=products&a=index">
                 <input type="text" placeholder="Procurar.." name="search" class="search_bar">
                 <button name="search_btn" type="submit" class="search_btn"><i class="fa fa-search"></i></button>
             </form>
@@ -29,7 +29,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($products as $product) { ?>
+                <?php foreach ($products as $product) {
+
+                    if (empty($product)){
+                    echo "dados n disponiveis";
+                    }else{
+                    ?>
+
 
                 <td><?= $product->id?></td>
                 <td><?= $product->reference?></td>
@@ -49,7 +55,7 @@
                 </td>
                 </tr>
                 </tbody>
-                <?php } ?> </table>
+                <?php } }?> </table>
             <div class="btn btn-success" >
                 <a href="router.php?c=products&a=create" class="btn btn-success">Criar</a>
             </div>
