@@ -22,11 +22,11 @@ class ProductController extends BaseController
 
             $search = $_POST['search'];
             $products = Product::find('all',
-                array('conditions' => "referencia LIKE '%$search%' 
-                or descricao LIKE '%$search%'
-                or preco LIKE '%$search%'
+                array('conditions' => "reference LIKE '%$search%' 
+                or description LIKE '%$search%'
+                or price LIKE '%$search%'
                 or stock LIKE '%$search%'
-                or vigor LIKE '%$search%'"));
+                or iva_id LIKE '%$search%'"));
 
             $this->renderViewBackend('products/index', [
                 'products' => $products,

@@ -137,6 +137,17 @@
                 <div class="input-box">
                     <span class="details">Confirm Password</span>
                     <input name="confirm_pass" type="text" placeholder="Confirmar Password">
+                    <?php
+                    if (isset($users->errors)) {
+                        if (is_array($users->errors->on('confirm_pass'))) {
+                            foreach ($users->errors->on('confirm_pass') as $error) {
+                                echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            }
+                        } else {
+                            echo "<font color='red'>" . $users->errors->on('confirm_pass') . "</font>";
+                        }
+                    }
+                    ?>
                 </div>
                 <div class="input-box">
                     <span class="details">postal_code</span>
@@ -238,6 +249,8 @@
             </div>
 
             <div class="gender-details">
+                <input type="radio" name="genre" value="m" id="dot-1">
+                <input type="radio" name="genre" value="f" id="dot-2">
                 <span>Gender</span>
 
                 <div class="category">
@@ -245,15 +258,13 @@
                     <label for="dot-1">
                         <span class="dot one"></span>
                         <span class="gender">Male</span>
-                        <input name="genre" type="hidden" value="m">
                     </label>
                     <label for="dot-2">
                         <span class="dot two"></span>
                         <span class="gender">Female</span>
-                        <input name="genre" type="hidden" value="f">
                     </label>
 
-
+                </div>
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('genre'))) {
@@ -266,8 +277,7 @@
                     }
                 }
                 ?>
-            </div>
-            </div>
+
             <div class="button">
                 <input type="submit" value="Register">
             </div>

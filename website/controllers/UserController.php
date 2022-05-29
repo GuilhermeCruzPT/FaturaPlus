@@ -22,8 +22,8 @@ class UserController extends BaseController
 
             $search = $_POST['search'];
             $users = User::find('all',
-                array('conditions' => "referencia LIKE '%$search%' 
-                or username LIKE '%$search%'
+                array('conditions' => "
+                username LIKE '%$search%'
                 or image LIKE '%$search%'
                 or name LIKE '%$search%'
                 or email LIKE '%$search%'

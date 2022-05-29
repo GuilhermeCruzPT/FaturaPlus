@@ -30,7 +30,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($bills as $bill) { ?>
+                <?php
+                if (empty($bills)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td><td></td></td></td></td>";
+                }else{
+                foreach ($bills as $bill) { ?>
 
                 <td><?= $bill->id ?></td>
                 <td><?= $bill->date->format('Y-m-d'); ?></td>
@@ -52,7 +56,7 @@
                 </td>
                 </tr>
                 </tbody>
-                <?php } ?> </table>
+                <?php } }?> </table>
             <div class="btn btn-success">
                 <a href="router.php?c=bills&a=create" class="btn btn-success">Criar</a>
             </div>

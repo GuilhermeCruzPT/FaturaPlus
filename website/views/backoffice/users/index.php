@@ -29,7 +29,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($users as $user) { ?>
+                <?php
+
+                if (empty($users)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td></td></td></td>";
+                }else{
+
+                foreach ($users as $user) { ?>
 
                 <td><?= $user->id?></td>
                 <td><?= $user->username?></td>
@@ -50,7 +56,7 @@
                 </td>
                 </tr>
                 </tbody>
-                <?php } ?> </table>
+                <?php }} ?> </table>
             <div class="btn btn-success" >
                 <a href="router.php?c=users&a=create" class="btn btn-success">Criar</a>
             </div>
