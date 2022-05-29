@@ -114,6 +114,7 @@ class ProductController extends BaseController
     public function delete($id)
     {
         $product = Product::find([$id]);
+
         $product->delete();
 
         header('Location: router.php?c=products&a=index');

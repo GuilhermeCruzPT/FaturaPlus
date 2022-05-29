@@ -120,7 +120,7 @@
             </div>
                 <div class="input-box">
                     <span class="details">Password</span>
-                    <input name="password" type="text" placeholder="Inserir Password">
+                    <input name="password" type="password" placeholder="Inserir Password">
 
                 <?php
                 if (isset($users->errors)) {
@@ -136,18 +136,8 @@
 
                 <div class="input-box">
                     <span class="details">Confirm Password</span>
-                    <input name="confirm_pass" type="text" placeholder="Confirmar Password">
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('confirm_pass'))) {
-                            foreach ($users->errors->on('confirm_pass') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('confirm_pass') . "</font>";
-                        }
-                    }
-                    ?>
+                    <input name="confirm_pass" type="password" placeholder="Confirmar Password">
+
                 </div>
                 <div class="input-box">
                     <span class="details">postal_code</span>

@@ -75,7 +75,9 @@ class UserController extends BaseController
             'role' => $_POST['role']);
         $users = new User($attributes);
         if ($users->is_valid()) {
-            $users->save();
+            $attributes['password']= md5($_POST['password']);
+            $users->update_attributes($attributes);
+            $users->save(false);
             header('Location: router.php?c=users&a=index');
         } else {
             // *** Retorna os erros presentes no model *** \\
@@ -106,7 +108,7 @@ class UserController extends BaseController
         if (isset($_POST['password']) && !empty($_POST['password'])) {
             $attributes = array(
                 'username' => $_POST['username'],
-                'password' => md5($_POST['password']),
+                'password' => $_POST['password'],
                 'image' => $_POST['image'],
                 'name' => $_POST['name'],
                 'email' => $_POST['email'],
@@ -139,9 +141,16 @@ class UserController extends BaseController
                 'role' => $_POST['role']);
         }
         $user->update_attributes($attributes);
-        if($user->is_valid()){
-            $user->save();
-            header('Location: router.php?c=users&a=index');
+        if ($user->is_valid()) {
+            if (array_key_exists('password', $attributes)) {
+                $attributes['password'] = md5($_POST['password']);
+                $user->update_attributes($attributes);
+                $user->save(false);
+                header('Location: router.php?c=users&a=index');
+            } else {
+                $user->save();
+                header('Location: router.php?c=users&a=index');
+            }
         } else {
             $this->renderViewBackend('users/update', [
                 'user' => $user,
