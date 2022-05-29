@@ -49,17 +49,20 @@
                            id="password"
                            name="password"
                            placeholder="Inserir Password"
-                           value="<?= $user->password ?>">
+                           value="">
                 </div>
 
                 <?php
-                if(isset($user->errors)) {
-                    if (is_array($user->errors->on('password'))) {
-                        foreach ($user->errors->on('password') as $error) {
-                            echo $error . '<br>';
+                if (isset($_POST['password']) && !empty($_POST['password']))
+                {
+                    if(isset($user->errors)) {
+                        if (is_array($user->errors->on('password'))) {
+                            foreach ($user->errors->on('password') as $error) {
+                                echo $error . '<br>';
+                            }
+                        } else {
+                            echo $user->errors->on('password');
                         }
-                    } else {
-                        echo $user->errors->on('password');
                     }
                 }
                 ?>

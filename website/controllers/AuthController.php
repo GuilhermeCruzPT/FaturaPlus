@@ -54,8 +54,6 @@ class AuthController extends BaseController
     }
 
     public function save_signup(){
-
-
         $attributes = array(
             'username' => $_POST['username'],
             'password' => md5($_POST['password']),
