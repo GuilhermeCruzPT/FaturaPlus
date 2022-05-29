@@ -29,11 +29,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($products as $product) {
-
-                    if (empty($product)){
-                    echo "dados n disponiveis";
-                    }else{
+                <?php
+                if (empty($products)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td></td></td></td>";
+                }else{
+                foreach ($products as $product) {
                     ?>
 
 
