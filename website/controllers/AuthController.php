@@ -7,14 +7,23 @@ class AuthController extends BaseController
     public function __construct()
     {
         session_start();
-        //if (!isset($_SESSION["username"])) header('Location: router.php?c=users&a=index');
     }
 
     public function signin(){
-        if (!isset($_SESSION["username"]))
-            header('Location: router.php?c=users&a=index');
+        //session_destroy();
+        if (isset($_SESSION["user_id"])){
+            $user = User::find([$_SESSION["user_id"]]);
+            if ($user->role == 'c') {
+                $this->renderView('site/index', [
+                    'userName' => $user->name,
+                ]);
+            }
+            else {
+                $this->renderViewBackend('panel/index');
+            }
+        }
         else
-            require_once './views/site/auth.php';
+            $this->renderViewfrontend('site/auth');
     }
 
     public function verify_login()
@@ -25,11 +34,13 @@ class AuthController extends BaseController
             $_SESSION["username"] = $user->username;
             $_SESSION["permission"] = $user->role;
 
-            if ($_SESSION["permission"] == 'c') {
-                $this->renderView('site/index');
+            if ($user->role == 'c') {
+                $this->renderView('site/index', [
+                    'userName' => $user->name,
+                ]);
             }
             else {
-                header('Location: router.php?c=users&a=index');
+                $this->renderViewBackend('panel/index');
             }
         }
         else {
@@ -77,5 +88,6 @@ class AuthController extends BaseController
 
     public function logout(){
         session_destroy();
+        header('Location: router.php?c=auth&a=signin');
     }
 }
