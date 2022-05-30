@@ -110,7 +110,7 @@ class EnterpriseController extends BaseController
             $enterprise->save();
             header('Location: router.php?c=enterprises&a=index');
         } else {
-            $this->renderView('enterprises/update', [
+            $this->renderViewBackend('enterprises/update', [
                 'enterprise' => $enterprise,
             ]);
         }

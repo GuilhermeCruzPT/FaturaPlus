@@ -30,10 +30,10 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('social_designation'))) {
                         foreach ($enterprises->errors->on('social_designation') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error ."</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('social_designation')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('social_designation') . "</font>";
                     }
                 }
                 ?>
@@ -53,10 +53,10 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('email'))) {
                         foreach ($enterprises->errors->on('email') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('email')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('email') . "</font>";
                     }
                 }
                 ?>
@@ -69,17 +69,20 @@
                            class="form-control"
                            id="phone"
                            name="phone"
-                           placeholder="Inserir Número de Telemóvel">
+                           maxlength="9"
+                           placeholder="Inserir Número de Telemóvel"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('phone'))) {
                         foreach ($enterprises->errors->on('phone') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('phone')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('phone') . "</font>";
                     }
                 }
                 ?>
@@ -92,17 +95,20 @@
                            class="form-control"
                            id="nif"
                            name="nif"
-                           placeholder="Inserir Nif">
+                           maxlength="9"
+                           placeholder="Inserir Nif"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('nif'))) {
                         foreach ($enterprises->errors->on('nif') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('nif')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('nif') . "</font>";
                     }
                 }
                 ?>
@@ -111,10 +117,11 @@
 
                 <div class="form-group">
                     <label for="postal_code">Código Postal:</label>
-                    <input type="number"
+                    <input type="text"
                            class="form-control"
                            id="postal_code"
                            name="postal_code"
+                           maxlength="8"
                            placeholder="Inserir Código Postal">
                 </div>
 
@@ -122,10 +129,10 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('postal_code'))) {
                         foreach ($enterprises->errors->on('postal_code') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('postal_code')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('postal_code') . "</font>";
                     }
                 }
                 ?>
@@ -145,10 +152,10 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('country'))) {
                         foreach ($enterprises->errors->on('country') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('country')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('country') . "</font>";
                     }
                 }
                 ?>
@@ -168,10 +175,10 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('city'))) {
                         foreach ($enterprises->errors->on('city') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('city')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('city') . "</font>";
                     }
                 }
                 ?>
@@ -191,10 +198,10 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('locale'))) {
                         foreach ($enterprises->errors->on('locale') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('locale')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('locale') . "</font>";
                     }
                 }
                 ?>
@@ -214,10 +221,10 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('address'))) {
                         foreach ($enterprises->errors->on('address') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error ."</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('address')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('address') . "</font>";
                     }
                 }
                 ?>
@@ -230,22 +237,24 @@
                            class="form-control"
                            id="social_capital"
                            name="social_capital"
-                           placeholder="Inserir Capital Social">
+                           maxlength="14"
+                           placeholder="Inserir Capital Social"
+                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                 </div>
 
                 <?php
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('social_capital'))) {
                         foreach ($enterprises->errors->on('social_capital') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>" . '<br>';
                         }
                     } else {
-                        echo "<font color='red'>" . $enterprises->errors->on('social_capital')."</font>";
+                        echo "<font color='red'>" . $enterprises->errors->on('social_capital') . "</font>";
                     }
                 }
                 ?>
 
-                <br>
+                <br><br>
 
                 <button type="submit"
                         class="btn btn-primary"

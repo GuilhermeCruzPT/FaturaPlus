@@ -40,7 +40,7 @@
                 <td><?= $enterprise->email ?></td>
                 <td><?= $enterprise->phone ?></td>
                 <td><?= $enterprise->country ?></td>
-                <td><?= $enterprise->social_capital ?></td>
+                <td><?= $enterprise->social_capital ?>€</td>
 
                 <td>
                     <a href="router.php?c=enterprises&a=show&id=<?= $enterprise->id ?>"
