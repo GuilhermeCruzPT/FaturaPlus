@@ -14,8 +14,7 @@ class Enterprise extends \ActiveRecord\Model
         array('country', 'message' => 'O campo País não pode estar vazio'),
         array('city', 'message' => 'O campo Cidade não pode estar vazio'),
         array('locale', 'message' => 'O campo Localidade não pode estar vazio'),
-        array('address', 'message' => 'O campo Morada não pode estar vazio'),
-        array('social_capital', 'message' => 'O campo Capital Social não pode estar vazio')
+        array('address', 'message' => 'O campo Morada não pode estar vazio')
     );
 
     /* ╔═══════════════════════════════════════╗ */
@@ -25,7 +24,8 @@ class Enterprise extends \ActiveRecord\Model
 
     static $validates_numericality_of = array(
         array('phone', 'greater_than' => 0,'message' => 'O campo Telemóvel não pode estar vazio'),
-        array('nif', 'greater_than' => 0,'message' => 'O campo Nif não pode estar vazio')
+        array('nif', 'greater_than' => 0,'message' => 'O campo Nif não pode estar vazio'),
+        array('social_capital', 'greater_than' => 0,'message' => 'O campo Capital Social não pode estar vazio')
     );
 
     /* ╔═════════════════════════════════════════╗ */
@@ -43,8 +43,8 @@ class Enterprise extends \ActiveRecord\Model
     /* ╚════════════════════════════════╝ */
 
     static $validates_size_of = array(
-        array('phone', 'maximum' => 9, 'too_long' => 'O Número de Telemóvel é demasiado longo'),
-        array('nif', 'maximum' => 9, 'too_long' => 'O Nif é demasiado longo')
+        array('phone', 'minimum' => 9, 'too_short' => 'Número de Telemóvel com formatação incorreta'),
+        array('nif', 'minimum' => 9, 'too_short' => 'Nif com formatação incorreta')
     );
 
     /* ╔═══════════════════════════════════════════════╗ */
@@ -54,6 +54,8 @@ class Enterprise extends \ActiveRecord\Model
 
     static $validates_format_of = array(
         array('email', 'with' =>
-            '/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/', 'message' => 'E-mail com formatação incorreta')
+            '/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/', 'message' => 'E-mail com formatação incorreta'),
+        array('postal_code', 'with' =>
+            '/^\d{4}-\d{3}?$/', 'message' => 'Código Postal com formatação incorreta')
     );
 }

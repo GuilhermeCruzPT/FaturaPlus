@@ -22,9 +22,8 @@
                     <input type="text"
                            class="form-control"
                            id="social_designation"
-                           readonly="true"
                            name="social_designation"
-                           value="<?=$enterprise->social_designation ?>">
+                           value="<?=$enterprise->social_designation ?>" disabled>
                 </div>
 
                 <br>
@@ -34,9 +33,8 @@
                     <input type="text"
                            class="form-control"
                            id="email"
-                           readonly="true"
                            name="email"
-                           value="<?= $enterprise->email ?>">
+                           value="<?= $enterprise->email ?>" disabled>
                 </div>
 
                 <br>
@@ -46,9 +44,8 @@
                     <input type="text"
                            class="form-control"
                            id="phone"
-                           readonly="true"
                            name="phone"
-                           value="<?= $enterprise->phone ?>">
+                           value="<?= $enterprise->phone ?>" disabled>
                 </div>
 
                 <br>
@@ -58,9 +55,8 @@
                     <input type="text"
                            class="form-control"
                            id="nif"
-                           readonly="true"
                            name="nif"
-                           value="<?= $enterprise->nif ?>">
+                           value="<?= $enterprise->nif ?>" disabled>
                 </div>
 
                 <br>
@@ -70,9 +66,8 @@
                     <input type="text"
                            class="form-control"
                            id="postal_code"
-                           readonly="true"
                            name="postal_code"
-                           value="<?= $enterprise->postal_code ?>">
+                           value="<?= $enterprise->postal_code ?>" disabled>
                 </div>
 
                 <br>
@@ -82,9 +77,8 @@
                     <input type="text"
                            class="form-control"
                            id="country"
-                           readonly="true"
                            name="country"
-                           value="<?= $enterprise->country ?>">
+                           value="<?= $enterprise->country ?>" disabled>
                 </div>
 
                 <br>
@@ -94,9 +88,8 @@
                     <input type="text"
                            class="form-control"
                            id="city"
-                           readonly="true"
                            name="city"
-                           value="<?= $enterprise->city ?>">
+                           value="<?= $enterprise->city ?>" disabled>
                 </div>
 
                 <br>
@@ -106,9 +99,8 @@
                     <input type="text"
                            class="form-control"
                            id="locale"
-                           readonly="true"
                            name="locale"
-                           value="<?= $enterprise->locale ?>">
+                           value="<?= $enterprise->locale ?>" disabled>
                 </div>
 
                 <br>
@@ -118,9 +110,8 @@
                     <input type="text"
                            class="form-control"
                            id="address"
-                           readonly="true"
                            name="address"
-                           value="<?= $enterprise->address ?>">
+                           value="<?= $enterprise->address ?>" disabled>
                 </div>
 
                 <br>
@@ -130,16 +121,16 @@
                     <input type="text"
                            class="form-control"
                            id="social_capital"
-                           readonly="true"
                            name="social_capital"
-                           value="<?= $enterprise->social_capital ?>">
+                           value="<?= $enterprise->social_capital ?>€" disabled>
                 </div>
 
-                <br>
+                <br><br>
 
-                <button type="submit"
+                <button type="button"
                         class="btn btn-primary"
-                        name="return">Voltar</button>
+                        name="return"
+                        onClick="history.go(-1)">Voltar</button>
 
             </form>
         </div>

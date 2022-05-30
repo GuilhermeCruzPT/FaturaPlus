@@ -98,7 +98,7 @@ class BillController extends BaseController
             $bill->save();
             header('Location: router.php?c=bills&a=index');
         } else {
-            $this->renderView('bills/update', [
+            $this->renderViewBackend('bills/update', [
                 'bill' => $bill,
             ]);
         }

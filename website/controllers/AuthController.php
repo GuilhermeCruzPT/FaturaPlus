@@ -56,7 +56,7 @@ class AuthController extends BaseController
     public function save_signup(){
         $attributes = array(
             'username' => $_POST['username'],
-            'password' => md5($_POST['password']),
+            'password' => $_POST['password'],
             'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
@@ -73,7 +73,9 @@ class AuthController extends BaseController
 
         $users = new User($attributes);
         if ($users->is_valid()) {
-            $users->save();
+            $attributes['password'] = md5($_POST['password']);
+            $users->update_attributes($attributes);
+            $users->save(false);
             header('Location: router.php?c=auth&a=signin');
         }
         else {
