@@ -33,14 +33,13 @@
                 if (empty($products)){
                     echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td></td></td></td>";
                 }else{
-                foreach ($products as $product) {
-                    ?>
+                foreach ($products as $product) { ?>
 
 
                 <td><?= $product->id?></td>
                 <td><?= $product->reference?></td>
                 <td><?= $product->description ?></td>
-                <td><?= $product->price ?></td>
+                <td><?= $product->price ?>€</td>
                 <td><?= $product->stock ?></td>
                 <td><?= $product->iva->percentage . "% - " . $product->iva->description ?></td>
                 <td>
