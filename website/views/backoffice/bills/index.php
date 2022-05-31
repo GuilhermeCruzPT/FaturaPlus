@@ -37,9 +37,9 @@
                 foreach ($bills as $bill) { ?>
 
                 <td><?= $bill->id ?></td>
-                <td><?= $bill->date->format('Y-m-d'); ?></td>
-                <td><?= $bill->total_value ?></td>
-                <td><?= $bill->total_iva ?></td>
+                <td><?= $bill->date->format('d/m/Y'); ?></td>
+                <td><?= $bill->total_value ?>€</td>
+                <td><?= $bill->total_iva ?>%</td>
                 <td><?= $bill->state == 'l' ? 'Em Lançamento' : 'Emitida' ?></td>
                 <td><?= $bill->client_reference_id ?></td>
                 <td><?= $bill->employee_reference_id ?></td>
