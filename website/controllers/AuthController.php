@@ -49,7 +49,6 @@ class AuthController extends BaseController
     }
 
     public function signup(){
-        //$this->renderView('site/sigin');
         $this->renderViewfrontend('site/signup');
     }
 
@@ -69,7 +68,7 @@ class AuthController extends BaseController
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],
-            'role' => "utlizador");
+            'role' => "c");
 
         $users = new User($attributes);
         if ($users->is_valid()) {
