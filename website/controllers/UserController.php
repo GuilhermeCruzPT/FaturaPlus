@@ -160,7 +160,20 @@ class UserController extends BaseController
 
     public function delete($id)
     {
+        // Faz o delete de varios registos de outras tabelas na base de dados
+        
         $user = User::find([$id]);
+
+        $show = Bill::find('all',array('conditions' => array('client_reference_id = ? OR employee_reference_id = ?', $id,$id)));
+
+        foreach ($show as $show_bill) {
+
+            Bill_line::delete_all(array('conditions' => array('bill_id  = ?', $show_bill->id)));
+
+        }
+
+        Bill::delete_all(array('conditions' => array('client_reference_id  = ? OR employee_reference_id = ?', $id,$id)));
+
         $user->delete();
 
         header('Location: router.php?c=users&a=index');

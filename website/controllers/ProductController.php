@@ -113,7 +113,10 @@ class ProductController extends BaseController
 
     public function delete($id)
     {
+        // Faz o delete de varios registos de outras tabelas na base de dados
+
         $product = Product::find([$id]);
+        Bill_line::delete_all(array('conditions' => array('product_id = ?', $id)));
 
         $product->delete();
 

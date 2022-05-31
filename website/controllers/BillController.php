@@ -115,7 +115,10 @@ class BillController extends BaseController
 
     public function delete($id)
     {
+        // Faz o delete de varios registos de outras tabelas na base de dados
+
         $bill = Bill::find([$id]);
+        Bill_line::delete_all(array('conditions' => array('bill_id  = ?', $id)));
         $bill->delete();
 
         header('Location: router.php?c=bills&a=index');
