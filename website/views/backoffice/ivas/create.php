@@ -19,21 +19,24 @@
 
                 <div class="form-group">
                     <label for="percentage">Percentagem:</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="percentage"
                            name="percentage"
-                           placeholder="Inserir Percentagem">
+                           maxlength="2"
+                           placeholder="Inserir Percentagem"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
                 if(isset($ivas->errors)) {
                     if (is_array($ivas->errors->on('percentage'))) {
                         foreach ($ivas->errors->on('percentage') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" . $ivas->errors->on('percentage')."</font>";
+                        echo "<font color='red'>" . $ivas->errors->on('percentage') . "</font>";
                     }
                 }
                 ?>
@@ -53,10 +56,10 @@
                 if(isset($ivas->errors)) {
                     if (is_array($ivas->errors->on('description'))) {
                         foreach ($ivas->errors->on('description') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" . $ivas->errors->on('description')."</font>";
+                        echo "<font color='red'>" . $ivas->errors->on('description') ."</font>";
                     }
                 }
                 ?>
@@ -76,19 +79,24 @@
                 if(isset($ivas->errors)) {
                     if (is_array($ivas->errors->on('vigour'))) {
                         foreach ($ivas->errors->on('vigour') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error ."</font>";
                         }
                     } else {
-                        echo "<font color='red'>" . $ivas->errors->on('vigour')."</font>";
+                        echo "<font color='red'>" . $ivas->errors->on('vigour') . "</font>";
                     }
                 }
                 ?>
 
-                <br>
+                <br><br>
 
                 <button type="submit"
                         class="btn btn-primary"
                         name="create">Criar</button>
+
+                <button type="button"
+                        class="btn btn-primary"
+                        name="return"
+                        onClick="history.go(-1)">Voltar</button>
 
             </form>
         </div>

@@ -34,7 +34,7 @@
                 foreach ($ivas as $iva) { ?>
 
                 <td><?= $iva->id?></td>
-                <td><?= $iva->percentage?></td>
+                <td><?= $iva->percentage?>%</td>
                 <td><?= $iva->description ?></td>
                 <td><?= $iva->vigour == '0' ? 'Inativo' : 'Ativo' ?></td>
                 <td>

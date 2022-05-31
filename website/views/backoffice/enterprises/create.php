@@ -30,7 +30,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('social_designation'))) {
                         foreach ($enterprises->errors->on('social_designation') as $error) {
-                            echo "<font color='red'>" . $error ."</font>" . '<br>';
+                            echo "<font color='red'>" . $error ."</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('social_designation') . "</font>";
@@ -53,7 +53,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('email'))) {
                         foreach ($enterprises->errors->on('email') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('email') . "</font>";
@@ -79,7 +79,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('phone'))) {
                         foreach ($enterprises->errors->on('phone') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('phone') . "</font>";
@@ -105,7 +105,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('nif'))) {
                         foreach ($enterprises->errors->on('nif') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('nif') . "</font>";
@@ -129,7 +129,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('postal_code'))) {
                         foreach ($enterprises->errors->on('postal_code') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('postal_code') . "</font>";
@@ -152,7 +152,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('country'))) {
                         foreach ($enterprises->errors->on('country') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('country') . "</font>";
@@ -175,7 +175,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('city'))) {
                         foreach ($enterprises->errors->on('city') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('city') . "</font>";
@@ -198,7 +198,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('locale'))) {
                         foreach ($enterprises->errors->on('locale') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('locale') . "</font>";
@@ -221,7 +221,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('address'))) {
                         foreach ($enterprises->errors->on('address') as $error) {
-                            echo "<font color='red'>" . $error ."</font>" . '<br>';
+                            echo "<font color='red'>" . $error ."</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('address') . "</font>";
@@ -246,7 +246,7 @@
                 if(isset($enterprises->errors)) {
                     if (is_array($enterprises->errors->on('social_capital'))) {
                         foreach ($enterprises->errors->on('social_capital') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $enterprises->errors->on('social_capital') . "</font>";
@@ -259,6 +259,11 @@
                 <button type="submit"
                         class="btn btn-primary"
                         name="create">Criar</button>
+
+                <button type="button"
+                        class="btn btn-primary"
+                        name="return"
+                        onClick="history.go(-1)">Voltar</button>
 
             </form>
         </div>
