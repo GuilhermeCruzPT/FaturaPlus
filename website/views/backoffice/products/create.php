@@ -119,8 +119,7 @@
                     <select class="form-control" id="iva_id" name="iva_id">
                         <option value="0">Nenhum</option>
                         <?php foreach($iva as $ivas){?>
-                                <?php if ($ivas->vigour == 1){
-                                    ?>
+                                <?php if ($ivas->vigour == 1){ ?>
                             <option value="<?= $ivas->id?>"> <?= $ivas->percentage . "% - " . $ivas->description;?></option>
                         <?php  }} ?>
                     </select>

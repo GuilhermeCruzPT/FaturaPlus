@@ -15,7 +15,7 @@
 	padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                <h4 class="display-4 text-center">Mostrar Fatura</h4>
+                <h4 class="display-4 text-center">Mostrar Fatura</h4><hr><br>
 
                 <div class="form-group">
                     <label for="date">Data:</label>
@@ -34,7 +34,7 @@
                            class="form-control"
                            id="total_value"
                            name="total_value"
-                           value="<?= $bill->total_value ?>" disabled>
+                           value="<?= $bill->total_value ?>€" disabled>
                 </div>
 
                 <br>
@@ -45,7 +45,7 @@
                            class="form-control"
                            id="total_iva"
                            name="total_iva"
-                           value="<?= $bill->total_iva ?>" disabled>
+                           value="<?= $bill->total_iva ?>%" disabled>
                 </div>
 
                 <br>
@@ -67,7 +67,7 @@
                            class="form-control"
                            id="client_reference_id"
                            name="client_reference_id"
-                           value="<?= $bill->client_reference->username ?>">
+                           value="<?= $bill->client_reference->username ?>" disabled>
                 </div>
 
                 <br>
@@ -78,7 +78,7 @@
                            class="form-control"
                            id="employee_reference_id"
                            name="employee_reference_id"
-                           value="<?= $bill->employee_reference->username ?>">
+                           value="<?= $bill->employee_reference->username ?>" disabled>
                 </div>
 
                 <br><br>

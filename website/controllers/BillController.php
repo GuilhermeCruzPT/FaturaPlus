@@ -43,19 +43,23 @@ class BillController extends BaseController
 
     public function create()
     {
-        $this->renderViewBackend('bills/create');
+        $user = User::all();
+        $this->renderViewBackend('bills/create',[
+            'user' => $user
+        ]);
     }
 
     public function store()
     {
         $attributes = array(
             'date' => $_POST['date'],
-            'total_value' => $_POST['total_value'],
-            'total_iva' => $_POST['total_iva'],
+            'total_value' => ((float)$_POST['total_value']),
+            'total_iva' => ((int)$_POST['total_iva']),
             'state' => $_POST['state'],
             'client_reference_id' => $_POST['client_reference_id'],
             'employee_reference_id' => $_POST['employee_reference_id']);
         $bills = new Bill($attributes);
+        $user = User::all();
         if ($bills->is_valid()) {
             $bills->save();
             header('Location: router.php?c=bills&a=index');
@@ -65,7 +69,8 @@ class BillController extends BaseController
             //print_r($bills->errors->full_messages());
 
             $this->renderViewBackend('bills/create', [
-                'bills' => $bills
+                'bills' => $bills,
+                'user' => $user
             ]);
         }
     }
@@ -73,23 +78,26 @@ class BillController extends BaseController
     public function edit($id)
     {
         $bill = Bill::find([$id]);
+        $user = User::all();
         if (is_null($bill)) {
             header('Location: router.php?c=bills&a=index');
         } else {
             $this->renderViewBackend('bills/update', [
                 'bill' => $bill,
+                'user' => $user
             ]);
         }
     }
 
     public function update($id)
     {
+        $user = User::all();
         $bill = Bill::find([$id]);
 
         $attributes = array(
             'date' => $_POST['date'],
-            'total_value' => $_POST['total_value'],
-            'total_iva' => $_POST['total_iva'],
+            'total_value' => ((float)$_POST['total_value']),
+            'total_iva' => ((int)$_POST['total_iva']),
             'state' => $_POST['state'],
             'client_reference_id' => $_POST['client_reference_id'],
             'employee_reference_id' => $_POST['employee_reference_id']);
@@ -100,6 +108,7 @@ class BillController extends BaseController
         } else {
             $this->renderViewBackend('bills/update', [
                 'bill' => $bill,
+                'user' => $user
             ]);
         }
     }

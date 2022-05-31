@@ -53,7 +53,7 @@ class ProductController extends BaseController
         $attributes = array(
             'reference' => $_POST['reference'],
             'description' => $_POST['description'],
-            'price' => $_POST['price'],
+            'price' => ((float)$_POST['price']),
             'stock' => ((int)$_POST['stock']),
             'iva_id' => $_POST['iva_id']);
         $products = new Product($attributes);
@@ -95,7 +95,7 @@ class ProductController extends BaseController
         $attributes = array(
             'reference' => $_POST['reference'],
             'description' => $_POST['description'],
-            'price' => $_POST['price'],
+            'price' => ((float)$_POST['price']),
             'stock' => ((int)$_POST['stock']),
             'iva_id' => $_POST['iva_id']);
         $product->update_attributes($attributes);
