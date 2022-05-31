@@ -41,8 +41,8 @@
                 <td><?= $bill->total_value ?>€</td>
                 <td><?= $bill->total_iva ?>%</td>
                 <td><?= $bill->state == 'l' ? 'Em Lançamento' : 'Emitida' ?></td>
-                <td><?= $bill->client_reference_id ?></td>
-                <td><?= $bill->employee_reference_id ?></td>
+                <td><?= $bill->client_reference->username ?></td>
+                <td><?= $bill->employee_reference->username ?></td>
 
                 <td>
                     <a href="router.php?c=bills&a=show&id=<?= $bill->id ?>"

@@ -67,7 +67,7 @@
                            class="form-control"
                            id="client_reference_id"
                            name="client_reference_id"
-                           value="<?= $bill->client_reference_id ?>" disabled>
+                           value="<?= $bill->client_reference->username ?>">
                 </div>
 
                 <br>
@@ -78,7 +78,7 @@
                            class="form-control"
                            id="employee_reference_id"
                            name="employee_reference_id"
-                           value="<?= $bill->employee_reference_id ?>" disabled>
+                           value="<?= $bill->employee_reference->username ?>">
                 </div>
 
                 <br><br>
