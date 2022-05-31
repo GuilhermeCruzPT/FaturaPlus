@@ -1,5 +1,14 @@
+<?php
+
+if(!empty($_GET['id']))
+{
+    $id= $_GET['id'];
+
+    $sqlSelect = "SELECT * FROM users WHERE id=$id";
+}
+?>
 <!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
+
 <html lang="pt" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -268,7 +277,7 @@
                 }
                 ?>
 
-                <div class="button" href="index.php?id=$user['id']">
+                <div class="button" href="backoffice\users\index.php?id=$user['id']">
                     <input type="submit" value="Guardar">
                 </div>
         </form>
