@@ -72,7 +72,7 @@
                            id="client_reference_id"
                            readonly="true"
                            name="client_reference_id"
-                           value="<?= $bill->client_reference_id ?>">
+                           value="<?= $bill->client_reference->username ?>">
                 </div>
 
                 <br>
@@ -84,7 +84,7 @@
                            id="employee_reference_id"
                            readonly="true"
                            name="employee_reference_id"
-                           value="<?= $bill->employee_reference_id ?>">
+                           value="<?= $bill->employee_reference->username ?>">
                 </div>
 
                 <br>

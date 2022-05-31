@@ -2,6 +2,7 @@
 
 class Bill extends \ActiveRecord\Model
 {
+
     /* ╔═══════════════════════════════════════╗ */
     /* ║     Verifica se o atributo é nulo     ║ */
     /* ║       ou uma string em branco         ║ */
@@ -30,6 +31,14 @@ class Bill extends \ActiveRecord\Model
     /* ╚═════════════════════════════════╝ */
 
     static $belongs_to = array(
-        array('user')
+        array('client_reference',
+            'foreign_key'=>'client_reference_id',
+            'primary_key'=>'id',
+            'class_name' => 'User'),
+        array('employee_reference',
+            'foreign_key'=>'employee_reference_id',
+            'primary_key'=>'id',
+            'class_name' => 'User')
     );
+
 }
