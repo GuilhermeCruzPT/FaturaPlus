@@ -22,9 +22,8 @@
                     <input type="text"
                            class="form-control"
                            id="percentage"
-                           readonly="true"
                            name="percentage"
-                           value="<?= $iva->percentage ?>">
+                           value="<?= $iva->percentage ?>" disabled>
                 </div>
 
                 <br>
@@ -34,9 +33,8 @@
                     <input type="text"
                            class="form-control"
                            id="description"
-                           readonly="true"
                            name="description"
-                           value="<?= $iva->description ?>">
+                           value="<?= $iva->description ?>" disabled>
                 </div>
 
                 <br>
@@ -46,16 +44,16 @@
                     <input type="text"
                            class="form-control"
                            id="vigour"
-                           readonly="true"
                            name="vigour"
-                           value="<?= $iva->vigour == '0' ? 'Inativo' : 'Ativo' ?>">
+                           value="<?= $iva->vigour == '0' ? 'Inativo' : 'Ativo' ?>" disabled>
                 </div>
 
-                <br>
+                <br><br>
 
-                <button type="submit"
+                <button type="button"
                         class="btn btn-primary"
-                        name="return">Voltar</button>
+                        name="return"
+                        onClick="history.go(-1)">Voltar</button>
 
             </form>
         </div>

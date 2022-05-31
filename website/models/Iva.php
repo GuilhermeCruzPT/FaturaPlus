@@ -8,8 +8,7 @@ class Iva extends \ActiveRecord\Model
     /* ╚═══════════════════════════════════════╝ */
 
     static $validates_presence_of = array(
-        array('percentage', 'message' => 'O campo Percentagem não pode estar vazio'),
-        array('description', 'message' => 'O campo Descrição não pode estar vazio')
+        array('description', 'message' => 'O campo Descrição não pode estar vazio'.'<br>')
     );
 
     /* ╔═══════════════════════════════════════╗ */
@@ -18,6 +17,16 @@ class Iva extends \ActiveRecord\Model
     /* ╚═══════════════════════════════════════╝ */
 
     static $validates_numericality_of = array(
-        array('vigour', 'less_than' => 2,'message' => 'O campo Vigor não pode estar vazio')
+        array('percentage', 'greater_than' => 0,'message' => 'O campo Percentagem não pode estar vazio'.'<br>'),
+        array('vigour', 'less_than' => 2,'message' => 'O campo Vigor não pode estar vazio'.'<br>')
+    );
+
+    /* ╔════════════════════════════════╗ */
+    /* ║     Verifica se o atributo     ║ */
+    /* ║        tem 2 caracteres        ║ */
+    /* ╚════════════════════════════════╝ */
+
+    static $validates_size_of = array(
+        array('percentage', 'minimum' => 2, 'too_short' => 'Percentagem com formatação incorreta'.'<br>')
     );
 }

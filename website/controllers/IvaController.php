@@ -14,7 +14,7 @@ class IvaController extends BaseController
 
     public function index()
     {
-        if (isset($_POST[('search_btn')])){
+        if (isset($_POST[('search_btn')])) {
 
             /* ╔═══════════════════════════╗ */
             /* ║     Barra de Pesquisa     ║ */
@@ -46,7 +46,7 @@ class IvaController extends BaseController
     public function store()
     {
         $attributes = array(
-            'percentage' => $_POST['percentage'],
+            'percentage' => ((int)$_POST['percentage']),
             'description' => $_POST['description'],
             'vigour' => $_POST['vigour']);
         $ivas = new Iva($attributes);
@@ -81,7 +81,7 @@ class IvaController extends BaseController
         $iva = Iva::find([$id]);
 
         $attributes = array(
-            'percentage' => $_POST['percentage'],
+            'percentage' => ((int)$_POST['percentage']),
             'description' => $_POST['description'],
             'vigour' => $_POST['vigour']);
         $iva->update_attributes($attributes);
@@ -89,7 +89,7 @@ class IvaController extends BaseController
             $iva->save();
             header('Location: router.php?c=ivas&a=index');
         } else {
-            $this->renderView('ivas/update', [
+            $this->renderViewBackend('ivas/update', [
                 'iva' => $iva,
             ]);
         }
