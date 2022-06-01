@@ -81,7 +81,7 @@
             <div class="profile-details">
                 <!--<img src="profile.jpg" alt="profileImg">-->
                 <div class="name_job">
-                    <div class="name"><?= $userName->name ?></div>
+                    <div class="name"><?= $_SESSION["username"] ?></div>
                     <div class="job"><?= $_SESSION["permission"] == 'a' ? 'Administrador' : 'Funcionário' ?></div>
                 </div>
             </div>
