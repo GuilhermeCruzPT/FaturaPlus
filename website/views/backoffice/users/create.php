@@ -331,7 +331,7 @@
                     <select class="form-control" id="role" name="role">
                         <option value="">Nenhum</option>
                         <option value="c">Cliente</option>
-                        <?php if ($_SESSION["permission"] != 'f') { ?>
+                        <?php if ($_SESSION["permission"] == 'a') { ?>
                         <option value="f">Funcionário</option>
                         <option value="a">Administrador</option>
                         <?php } ?>

@@ -25,7 +25,8 @@
                            class="form-control"
                            id="quantity"
                            name="quantity"
-                           placeholder="Inserir Quantidade">
+                           placeholder="Inserir Quantidade""
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
@@ -40,9 +41,10 @@
                     }
                 }
                 ?>
+
                 <br>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="unitary_value">Valor Unitário:</label>
                     <input type="number"
                            class="form-control"
@@ -52,7 +54,7 @@
                 </div>
 
                 <?php
-                if (isset($bill_lines->errors)) {
+/*                if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('unitary_value'))) {
                         foreach ($bill_lines->errors->on('unitary_value') as $error) {
                             echo "<font color='red'>" . $error . "</font>" . '<br>';
@@ -61,7 +63,7 @@
                         echo "<font color='red'>" . $bill_lines->errors->on('unitary_value') . "</font>";
                     }
                 }
-                ?>
+                */?>
 
                 <br>
 
@@ -74,8 +76,8 @@
                            placeholder="Inserir Iva">
                 </div>
 
-                <?php
-                if (isset($bill_lines->errors)) {
+                --><?php
+/*                if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('iva_value'))) {
                         foreach ($bill_lines->errors->on('iva_value') as $error) {
                             echo "<font color='red'>" . $error . "</font>" . '<br>';
@@ -84,9 +86,7 @@
                         echo "<font color='red'>" . $bill_lines->errors->on('iva_value') . "</font>";
                     }
                 }
-                ?>
-
-                <br>
+                */?>
 
                 <div class="form-group">
                     <label for="product_id">Referência Produto:</label>

@@ -331,17 +331,25 @@
                 ?>
 
                 <br>
-
+                <?php if ($_SESSION["username"] == $user->username && $_SESSION["permission"] == 'f') { ?>
+                <div class="form-group">
+                    <label for="role">Permissão:</label>
+                    <select class="form-control" id="role" name="role">
+                            <option value="f" <?= $user->role == 'f' ? 'selected' : '' ?>>Funcionário</option>
+                    </select>
+                </div>
+                <?php } else { ?>
                 <div class="form-group">
                     <label for="role">Permissão:</label>
                     <select class="form-control" id="role" name="role">
                         <option value="c" <?= $user->role == 'c' ? 'selected' : '' ?>>Cliente</option>
-                        <?php if ($_SESSION["permission"] != 'f') { ?>
+                        <?php if ($_SESSION["permission"] == 'a') { ?>
                             <option value="f" <?= $user->role == 'f' ? 'selected' : '' ?>>Funcionário</option>
                             <option value="a" <?= $user->role == 'a' ? 'selected' : '' ?>>Administrador</option>
                         <?php } ?>
                     </select>
                 </div>
+                <?php } ?>
 
                 <?php
                 if(isset($user->errors)) {

@@ -24,8 +24,10 @@
                            class="form-control"
                            id="reference"
                            name="reference"
+                           maxlength="6"
                            placeholder="Inserir Referência"
-                           value="<?= $product->reference ?>">
+                           value="<?= $product->reference ?>"
+                           onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
                 </div>
 
                 <?php
@@ -36,6 +38,31 @@
                         }
                     } else {
                         echo "<font color='red'>" . $product->errors->on('reference') . "</font>";;
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="title">Título:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="title"
+                           name="title"
+                           placeholder="Inserir Título"
+                           value="<?= $product->title ?>"
+                           onkeydown="return /[a-zA-Z0-9 ]/i.test(event.key)">
+                </div>
+
+                <?php
+                if(isset($products->errors)) {
+                    if (is_array($products->errors->on('title'))) {
+                        foreach ($products->errors->on('title') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $products->errors->on('title') . "</font>";
                     }
                 }
                 ?>
@@ -93,12 +120,12 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="stock">Estoque:</label>
+                    <label for="stock">Stock:</label>
                     <input type="number"
                            class="form-control"
                            id="stock"
                            name="stock"
-                           placeholder="Inserir Estoque"
+                           placeholder="Inserir Stock"
                            maxlength="6"
                            value="<?= $product->stock ?>"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
