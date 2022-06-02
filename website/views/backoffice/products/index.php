@@ -21,9 +21,9 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Referência</th>
-                    <th scope="col">Descrição</th>
+                    <th scope="col">Título</th>
                     <th scope="col">Preço</th>
-                    <th scope="col">Estoque</th>
+                    <th scope="col">Stock</th>
                     <th scope="col">Iva</th>
                     <th scope="col">Ações Disponiveis</th>
                 </tr>
@@ -33,16 +33,15 @@
                 if (empty($products)){
                     echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td></td></td></td>";
                 }else{
-                foreach ($products as $product) {
-                    ?>
+                foreach ($products as $product) { ?>
 
 
                 <td><?= $product->id?></td>
-                <td><?= $product->reference?></td>
-                <td><?= $product->description ?></td>
-                <td><?= $product->price ?></td>
+                <td>P<?= $product->reference?></td>
+                <td><?= $product->title ?></td>
+                <td><?= $product->price ?>€</td>
                 <td><?= $product->stock ?></td>
-                <td><?= $product->iva->percentage . "% - " . $product->iva->description ?></td>
+                <td><?= $product->iva->percentage ?>%</td>
                 <td>
                     <a href="router.php?c=products&a=show&id=<?= $product->id ?>"
                        class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon' ></i></a>

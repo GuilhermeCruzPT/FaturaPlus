@@ -22,9 +22,19 @@
                     <input type="text"
                            class="form-control"
                            id="reference"
-                           readonly="true"
                            name="reference"
-                           value="<?= $product->reference ?>">
+                           value="P<?= $product->reference ?>" disabled>
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="title">Título:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="title"
+                           name="title"
+                           value="<?= $product->title ?>" disabled>
                 </div>
 
                 <br>
@@ -34,9 +44,8 @@
                     <input type="text"
                            class="form-control"
                            id="description"
-                           readonly="true"
                            name="description"
-                           value="<?= $product->description ?>">
+                           value="<?= $product->description ?>" disabled>
                 </div>
 
                 <br>
@@ -46,21 +55,19 @@
                     <input type="text"
                            class="form-control"
                            id="price"
-                           readonly="true"
                            name="price"
-                           value="<?= $product->price ?>">
+                           value="<?= $product->price ?>€" disabled>
                 </div>
 
                 <br>
 
                 <div class="form-group">
-                    <label for="stock">Estoque:</label>
+                    <label for="stock">Stock:</label>
                     <input type="text"
                            class="form-control"
                            id="stock"
-                           readonly="true"
                            name="stock"
-                           value="<?= $product->stock ?>">
+                           value="<?= $product->stock ?>" disabled>
                 </div>
 
                 <br>
@@ -70,16 +77,16 @@
                     <input type="text"
                            class="form-control"
                            id="iva_id"
-                           readonly="true"
                            name="iva_id"
-                           value="<?= $product->iva->percentage . "% - " . $product->iva->description?>">
+                           value="<?= $product->iva->percentage . "% - " . $product->iva->description?>" disabled>
                 </div>
 
-                <br>
+                <br><br>
 
-                <button type="submit"
-                        class="btn btn-primary"
-                        name="return">voltar</button>
+                <a href="router.php?c=products&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

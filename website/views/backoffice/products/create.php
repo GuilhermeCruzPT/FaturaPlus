@@ -19,21 +19,48 @@
 
                 <div class="form-group">
                     <label for="reference">Referência:</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="reference"
                            name="reference"
-                           placeholder="Inserir Referência">
+                           maxlength="6"
+                           placeholder="Inserir Referência"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('reference'))) {
                         foreach ($products->errors->on('reference') as $error) {
-                            echo "<font color='red'>" . $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" . $products->errors->on('reference')."</font>";
+                        echo "<font color='red'>" . $products->errors->on('reference') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="title">Título:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="title"
+                           name="title"
+                           placeholder="Inserir Título"
+                           onkeydown="return /[a-zA-Z ]/i.test(event.key)">
+                </div>
+
+                <?php
+                if(isset($products->errors)) {
+                    if (is_array($products->errors->on('title'))) {
+                        foreach ($products->errors->on('title') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $products->errors->on('title') . "</font>";
                     }
                 }
                 ?>
@@ -42,7 +69,6 @@
 
                 <div class="form-group">
                     <label for="description">Descrição:</label>
-                  
                     <input type="text"
                            class="form-control"
                            id="description"
@@ -54,10 +80,10 @@
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('description'))) {
                         foreach ($products->errors->on('description') as $error) {
-                            echo "<font color='red'>" .$error ."</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" .$products->errors->on('description')."</font>";
+                        echo "<font color='red'>" . $products->errors->on('description') . "</font>";
                     }
                 }
                 ?>
@@ -66,22 +92,23 @@
 
                 <div class="form-group">
                     <label for="price">Preço:</label>
-
-                    <input type="number"
+                    <input type="text"
                            class="form-control"
                            id="price"
                            name="price"
-                           placeholder="Inserir Preço">
+                           placeholder="Inserir Preço"
+                           maxlength="14"
+                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                 </div>
 
                 <?php
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('price'))) {
                         foreach ($products->errors->on('price') as $error) {
-                            echo "<font color='red'>" .$error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" .$products->errors->on('price')."</font>";
+                        echo "<font color='red'>" . $products->errors->on('price') . "</font>";
                     }
                 }
                 ?>
@@ -89,23 +116,25 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="stock">Estoque:</label>
-                  
+                    <label for="stock">Stock:</label>
                     <input type="number"
                            class="form-control"
                            id="stock"
                            name="stock"
-                           placeholder="Inserir Estoque">
+                           placeholder="Inserir Stock"
+                           maxlength="6"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('stock'))) {
                         foreach ($products->errors->on('stock') as $error) {
-                            echo"<font color='red'>" . $error ."</font>". '<br>';
+                            echo"<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" .$products->errors->on('stock')."</font>";
+                        echo "<font color='red'>" . $products->errors->on('stock') . "</font>";
                     }
                 }
                 ?>
@@ -117,8 +146,7 @@
                     <select class="form-control" id="iva_id" name="iva_id">
                         <option value="0">Nenhum</option>
                         <?php foreach($iva as $ivas){?>
-                                <?php if ($ivas->vigour == 1){
-                                    ?>
+                                <?php if ($ivas->vigour == 1){ ?>
                             <option value="<?= $ivas->id?>"> <?= $ivas->percentage . "% - " . $ivas->description;?></option>
                         <?php  }} ?>
                     </select>
@@ -128,19 +156,24 @@
                 if(isset($products->errors)) {
                     if (is_array($products->errors->on('iva_id'))) {
                         foreach ($products->errors->on('iva_id') as $error) {
-                            echo "<font color='red'>". $error ."</font>". '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>".$products->errors->on('iva_id')."</font>";
+                        echo "<font color='red'>" . $products->errors->on('iva_id') . "</font>";
                     }
                 }
                 ?>
 
-                <br>
+                <br><br>
 
                 <button type="submit"
                         class="btn btn-primary"
                         name="create">Criar</button>
+
+                <a href="router.php?c=products&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

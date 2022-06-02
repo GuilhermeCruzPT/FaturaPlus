@@ -23,6 +23,7 @@ class ProductController extends BaseController
             $search = $_POST['search'];
             $products = Product::find('all',
                 array('conditions' => "reference LIKE '%$search%' 
+                or title LIKE '%$search%'
                 or description LIKE '%$search%'
                 or price LIKE '%$search%'
                 or stock LIKE '%$search%'
@@ -51,9 +52,10 @@ class ProductController extends BaseController
     public function store()
     {
         $attributes = array(
-            'reference' => $_POST['reference'],
+            'reference' => sprintf('%06d', $_POST['reference']),
+            'title' => $_POST['title'],
             'description' => $_POST['description'],
-            'price' => $_POST['price'],
+            'price' => ((float)$_POST['price']),
             'stock' => ((int)$_POST['stock']),
             'iva_id' => $_POST['iva_id']);
         $products = new Product($attributes);
@@ -93,9 +95,10 @@ class ProductController extends BaseController
         $product = Product::find([$id]);
 
         $attributes = array(
-            'reference' => $_POST['reference'],
+            'reference' => sprintf('%06d', $_POST['reference']),
+            'title' => $_POST['title'],
             'description' => $_POST['description'],
-            'price' => $_POST['price'],
+            'price' => ((float)$_POST['price']),
             'stock' => ((int)$_POST['stock']),
             'iva_id' => $_POST['iva_id']);
         $product->update_attributes($attributes);
@@ -113,7 +116,10 @@ class ProductController extends BaseController
 
     public function delete($id)
     {
+        // Faz o delete de varios registos de outras tabelas na base de dados
+
         $product = Product::find([$id]);
+        Bill_line::delete_all(array('conditions' => array('product_id = ?', $id)));
 
         $product->delete();
 

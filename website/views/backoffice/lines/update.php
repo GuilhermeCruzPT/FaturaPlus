@@ -35,7 +35,7 @@
                 if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('quantity'))) {
                         foreach ($bill_lines->errors->on('quantity') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $bill_lines->errors->on('quantity') . "</font>";
@@ -45,18 +45,18 @@
 
                 <br>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="total_value">Valor Unitário:</label>
                     <input type="number"
                            class="form-control"
                            id="unitary_value"
                            name="unitary_value"
                            placeholder="Inserir Valor Total"
-                           value="<?= $bill_lines->unitary_value ?>">
+                           value="<?/*= $bill_lines->unitary_value */?>">
                 </div>
 
                 <?php
-                if (isset($bill_lines->errors)) {
+/*                if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('unitary_value'))) {
                         foreach ($bill_lines->errors->on('unitary_value') as $error) {
                             echo "<font color='red'>" . $error . "</font>" . '<br>';
@@ -65,7 +65,7 @@
                         echo "<font color='red'>" . $bill_lines->errors->on('unitary_value') . "</font>";
                     }
                 }
-                ?>
+                */?>
 
                 <br>
 
@@ -76,11 +76,11 @@
                            id="iva_value"
                            name="iva_value"
                            placeholder="Inserir Iva"
-                           value="<?= $bill_lines->iva_value ?>">
+                           value="<?/*= $bill_lines->iva_value */?>">
                 </div>
 
                 <?php
-                if (isset($bill_lines->errors)) {
+/*                if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('iva_value'))) {
                         foreach ($bill_lines->errors->on('iva_value') as $error) {
                             echo "<font color='red'>" . $error . "</font>" . '<br>';
@@ -89,16 +89,17 @@
                         echo "<font color='red'>" . $bill_lines->errors->on('iva_value') . "</font>";
                     }
                 }
-                ?>
+                */?>
 
-                <br>
+                <br>-->
 
                 <div class="form-group">
                     <label for="product_id">Referência Produto:</label>
                     <select class="form-control" id="product_id" name="product_id">
                         <option value="0">Nenhum</option>
                         <?php foreach ($products as $product) { ?>
-                            <option value="<?= $product->id ?>">  <?= $product->reference ?> </option>
+                            <option value="<?= $product->id ?>" <?= $product->id == $bill_lines->product_id ? 'selected' : '' ?>>
+                                P<?= $product->reference . ' - ' . $product->title ?> </option>
                         <?php } ?>
                     </select>
                 </div>
@@ -107,7 +108,7 @@
                 if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('product_id'))) {
                         foreach ($bill_lines->errors->on('product_id') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $bill_lines->errors->on('product_id') . "</font>";
@@ -122,7 +123,8 @@
                     <select class="form-control" id="bill_id" name="bill_id">
                         <option value="0">Nenhum</option>
                         <?php foreach ($bills as $bill) { ?>
-                            <option value="<?= $bill->id ?>">  <?= $bill->id ?> </option>
+                            <option value="<?= $bill->id ?>" <?= $bill->id == $bill_lines->bill_id ? 'selected' : '' ?>>
+                                F<?= $bill->reference ?> </option>
                         <?php } ?>
                     </select>
                 </div>
@@ -131,7 +133,7 @@
                 if (isset($bill_lines->errors)) {
                     if (is_array($bill_lines->errors->on('bill_id'))) {
                         foreach ($bill_lines->errors->on('bill_id') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $bill_lines->errors->on('bill_id') . "</font>";
@@ -139,12 +141,16 @@
                 }
                 ?>
 
-                <br>
+                <br><br>
 
                 <button type="submit"
                         class="btn btn-primary"
-                        name="update">Atualizar
-                </button>
+                        name="update">Atualizar</button>
+
+                <a href="router.php?c=lines&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

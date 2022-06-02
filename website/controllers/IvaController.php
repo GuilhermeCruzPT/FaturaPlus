@@ -97,7 +97,13 @@ class IvaController extends BaseController
 
     public function delete($id)
     {
+        // Faz o delete de varios registos de outras tabelas na base de dados
+
         $iva = Iva::find([$id]);
+
+        Bill_line::delete_all(array('conditions' => array('bill_id  = ?', $id)));
+        Product::delete_all(array('conditions' => array('iva_id = ?', $id)));
+
         $iva->delete();
 
         header('Location: router.php?c=ivas&a=index');

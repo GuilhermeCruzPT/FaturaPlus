@@ -24,18 +24,20 @@
                            class="form-control"
                            id="username"
                            name="username"
+                           maxlength="10"
                            placeholder="Inserir Username"
-                           value="<?= $user->username ?>">
+                           value="<?= $user->username ?>"
+                           onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
                 </div>
 
                 <?php
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('username'))) {
                         foreach ($user->errors->on('username') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('username');
+                        echo "<font color='red'>" . $user->errors->on('username') . "</font>";
                     }
                 }
                 ?>
@@ -49,46 +51,23 @@
                            id="password"
                            name="password"
                            placeholder="Inserir Password"
-                           value="">
+                           >
                 </div>
 
                 <?php
-                if (isset($_POST['password']) && !empty($_POST['password']))
-                {
-                    if(isset($user->errors)) {
+
+                    if (isset($user->errors)) {
                         if (is_array($user->errors->on('password'))) {
                             foreach ($user->errors->on('password') as $error) {
-                                echo $error . '<br>';
+                                echo "<font color='red'>" . $error . "</font>";
                             }
-                        } else {
-                            echo $user->errors->on('password');
                         }
-                    }
-                }
-                ?>
+                        elseif ($user->errors->on('password')) {
 
-                <br>
-
-                <div class="form-group">
-                    <label for="image">Imagem:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="image"
-                           name="image"
-                           placeholder="Inserir Imagem"
-                           value="<?= $user->image ?>">
-                </div>
-
-                <?php
-                if(isset($user->errors)) {
-                    if (is_array($user->errors->on('image'))) {
-                        foreach ($user->errors->on('image') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $user->errors->on('password') . "</font>";
                         }
-                    } else {
-                        echo $user->errors->on('image');
+
                     }
-                }
                 ?>
 
                 <br>
@@ -107,10 +86,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('name'))) {
                         foreach ($user->errors->on('name') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('name');
+                        echo "<font color='red'>" . $user->errors->on('name') . "</font>";
                     }
                 }
                 ?>
@@ -131,10 +110,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('email'))) {
                         foreach ($user->errors->on('email') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('email');
+                        echo "<font color='red'>" . $user->errors->on('email') . "</font>";
                     }
                 }
                 ?>
@@ -155,10 +134,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('phone'))) {
                         foreach ($user->errors->on('phone') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('phone');
+                        echo "<font color='red'>" . $user->errors->on('phone') . "</font>";
                     }
                 }
                 ?>
@@ -179,10 +158,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('nif'))) {
                         foreach ($user->errors->on('nif') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('nif');
+                        echo "<font color='red'>" . $user->errors->on('nif') . "</font>";
                     }
                 }
                 ?>
@@ -203,10 +182,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('postal_code'))) {
                         foreach ($user->errors->on('postal_code') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('postal_code');
+                        echo "<font color='red'>" . $user->errors->on('postal_code') . "</font>";
                     }
                 }
                 ?>
@@ -227,10 +206,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('birth'))) {
                         foreach ($user->errors->on('birth') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('birth');
+                        echo "<font color='red'>" . $user->errors->on('birth') . "</font>";
                     }
                 }
                 ?>
@@ -249,10 +228,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('genre'))) {
                         foreach ($user->errors->on('genre') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('genre');
+                        echo "<font color='red'>" . $user->errors->on('genre') . "</font>";
                     }
                 }
                 ?>
@@ -273,10 +252,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('country'))) {
                         foreach ($user->errors->on('country') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('country');
+                        echo "<font color='red'>" . $user->errors->on('country') . "</font>";
                     }
                 }
                 ?>
@@ -297,10 +276,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('city'))) {
                         foreach ($user->errors->on('city') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('city');
+                        echo "<font color='red'>" . $user->errors->on('city') . "</font>";
                     }
                 }
                 ?>
@@ -321,10 +300,10 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('locale'))) {
                         foreach ($user->errors->on('locale') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('locale');
+                        echo "<font color='red'>" . $user->errors->on('locale') . "</font>";
                     }
                 }
                 ?>
@@ -345,45 +324,57 @@
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('address'))) {
                         foreach ($user->errors->on('address') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('address');
+                        echo "<font color='red'>" . $user->errors->on('address') . "</font>";
                     }
                 }
                 ?>
 
                 <br>
-
+                <?php if ($_SESSION["username"] == $user->username && $_SESSION["permission"] == 'f') { ?>
                 <div class="form-group">
                     <label for="role">Permissão:</label>
                     <select class="form-control" id="role" name="role">
-                        <option value="">Nenhum</option>
-                        <option value="c">Cliente</option>
-                        <?php if ($_SESSION["permission"] != 'f') { ?>
-                            <option value="f">Funcionário</option>
-                            <option value="a">Administrador</option>
+                            <option value="f" <?= $user->role == 'f' ? 'selected' : '' ?>>Funcionário</option>
+                    </select>
+                </div>
+                <?php } else { ?>
+                <div class="form-group">
+                    <label for="role">Permissão:</label>
+                    <select class="form-control" id="role" name="role">
+                        <option value="c" <?= $user->role == 'c' ? 'selected' : '' ?>>Cliente</option>
+                        <?php if ($_SESSION["permission"] == 'a') { ?>
+                            <option value="f" <?= $user->role == 'f' ? 'selected' : '' ?>>Funcionário</option>
+                            <option value="a" <?= $user->role == 'a' ? 'selected' : '' ?>>Administrador</option>
                         <?php } ?>
                     </select>
                 </div>
+                <?php } ?>
 
                 <?php
                 if(isset($user->errors)) {
                     if (is_array($user->errors->on('role'))) {
                         foreach ($user->errors->on('role') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $user->errors->on('role');
+                        echo "<font color='red'>" . $user->errors->on('role') . "</font>";
                     }
                 }
                 ?>
 
-                <br>
+                <br><br>
 
                 <button type="submit"
                         class="btn btn-primary"
                         name="update">Atualizar</button>
+
+                <a href="router.php?c=users&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

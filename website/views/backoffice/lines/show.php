@@ -37,7 +37,7 @@
                            id="unitary_value"
                            readonly="true"
                            name="unitary_value"
-                           value="<?= $bill_lines->unitary_value ?>">
+                           value="<?= $bill_lines->unitary_value ?>€">
                 </div>
 
                 <br>
@@ -49,7 +49,7 @@
                            id="iva_value"
                            readonly="true"
                            name="iva_value"
-                           value="<?= $bill_lines->iva_value ?>">
+                           value="<?= $bill_lines->iva_value ?>€">
                 </div>
 
                 <br>
@@ -61,7 +61,7 @@
                            id="product_id"
                            readonly="true"
                            name="product_id"
-                           value="<?= $bill_lines->product->id . " - " . $bill_lines->product->reference ?>">
+                           value="P<?= $bill_lines->product->reference ?>">
                 </div>
 
                 <br>
@@ -73,15 +73,15 @@
                            id="bill_id"
                            readonly="true"
                            name="bill_id"
-                           value="<?= $bill_lines->bill->id ?>">
+                           value="F<?= $bill_lines->bill->reference ?>">
                 </div>
 
-                <br>
+                <br><br>
 
-                <button type="submit"
-                        class="btn btn-primary"
-                        name="return">Voltar
-                </button>
+                <a href="router.php?c=lines&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

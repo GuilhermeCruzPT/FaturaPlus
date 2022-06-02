@@ -25,6 +25,7 @@
                     <th scope="col">Valor do Iva</th>
                     <th scope="col">Referência Produto</th>
                     <th scope="col">Referência Fatura</th>
+                    <th scope="col">Ações Disponiveis</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,11 +36,11 @@
                 foreach ($bill_lines as $bill_line) { ?>
 
                 <td><?= $bill_line->id ?></td>
-                <td><?= $bill_line->quantity ?></td>
-                <td><?= $bill_line->unitary_value ?></td>
-                <td><?= $bill_line->iva_value ?></td>
-                <td><?= $bill_line->product->id . " - " . $bill_line->product->reference ?></td>
-                <td><?= $bill_line->bill->id ?></td>
+                <td>Q x <?= $bill_line->quantity ?></td>
+                <td><?= $bill_line->unitary_value ?>€</td>
+                <td><?= $bill_line->iva_value ?>€</td>
+                <td>P<?= $bill_line->product->reference ?></td>
+                <td>F<?= $bill_line->bill->reference ?></td>
 
                 <td>
                     <a href="router.php?c=lines&a=show&id=<?= $bill_line->id ?>"
