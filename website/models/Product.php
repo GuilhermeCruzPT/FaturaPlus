@@ -9,6 +9,7 @@ class Product extends \ActiveRecord\Model
 
     static $validates_presence_of = array(
         array('reference', 'message' => 'O campo Referência não pode estar vazio'.'<br>'),
+        array('title', 'message' => 'O campo Título não pode estar vazio'.'<br>'),
         array('description', 'message' => 'O campo Descrição não pode estar vazio'.'<br>')
     );
 

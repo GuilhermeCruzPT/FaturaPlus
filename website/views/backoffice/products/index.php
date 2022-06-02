@@ -21,9 +21,9 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Referência</th>
-                    <th scope="col">Descrição</th>
+                    <th scope="col">Título</th>
                     <th scope="col">Preço</th>
-                    <th scope="col">Estoque</th>
+                    <th scope="col">Stock</th>
                     <th scope="col">Iva</th>
                     <th scope="col">Ações Disponiveis</th>
                 </tr>
@@ -37,11 +37,11 @@
 
 
                 <td><?= $product->id?></td>
-                <td><?= $product->reference?></td>
-                <td><?= $product->description ?></td>
+                <td>P<?= $product->reference?></td>
+                <td><?= $product->title ?></td>
                 <td><?= $product->price ?>€</td>
                 <td><?= $product->stock ?></td>
-                <td><?= $product->iva->percentage . "% - " . $product->iva->description ?></td>
+                <td><?= $product->iva->percentage ?>%</td>
                 <td>
                     <a href="router.php?c=products&a=show&id=<?= $product->id ?>"
                        class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon' ></i></a>

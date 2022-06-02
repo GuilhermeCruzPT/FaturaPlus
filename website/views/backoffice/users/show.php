@@ -22,9 +22,8 @@
                     <input type="text"
                            class="form-control"
                            id="username"
-                           readonly="true"
                            name="username"
-                           value="<?= $user->username ?>">
+                           value="<?= $user->username ?>" disabled>
                 </div>
 
                 <br>
@@ -34,9 +33,8 @@
                     <input type="text"
                            class="form-control"
                            id="image"
-                           readonly="true"
                            name="image"
-                           value="<?= $user->image ?>">
+                           value="<?= $user->image ?>" disabled>
                 </div>
 
                 <br>
@@ -46,9 +44,8 @@
                     <input type="text"
                            class="form-control"
                            id="name"
-                           readonly="true"
                            name="name"
-                           value="<?= $user->name ?>">
+                           value="<?= $user->name ?>" disabled>
                 </div>
 
                 <br>
@@ -58,9 +55,8 @@
                     <input type="text"
                            class="form-control"
                            id="email"
-                           readonly="true"
                            name="email"
-                           value="<?= $user->email ?>">
+                           value="<?= $user->email ?>" disabled>
                 </div>
 
                 <br>
@@ -70,9 +66,8 @@
                     <input type="text"
                            class="form-control"
                            id="phone"
-                           readonly="true"
                            name="phone"
-                           value="<?= $user->phone ?>">
+                           value="<?= $user->phone ?>" disabled>
                 </div>
 
                 <br>
@@ -82,9 +77,8 @@
                     <input type="text"
                            class="form-control"
                            id="nif"
-                           readonly="true"
                            name="nif"
-                           value="<?= $user->nif ?>">
+                           value="<?= $user->nif ?>" disabled>
                 </div>
 
                 <br>
@@ -94,9 +88,8 @@
                     <input type="text"
                            class="form-control"
                            id="postal_code"
-                           readonly="true"
                            name="postal_code"
-                           value="<?= $user->postal_code ?>">
+                           value="<?= $user->postal_code ?>" disabled>
                 </div>
 
                 <br>
@@ -106,9 +99,8 @@
                     <input type="text"
                            class="form-control"
                            id="birth"
-                           readonly="true"
                            name="birth"
-                           value="<?= $user->birth ?>">
+                           value="<?= date_format($user->birth, 'd/m/Y') ?>" disabled>
                 </div>
 
                 <br>
@@ -118,9 +110,8 @@
                     <input type="text"
                            class="form-control"
                            id="genre"
-                           readonly="true"
                            name="genre"
-                           value="<?= $user->genre ?>">
+                           value="<?= $user->genre == 'm' ? 'Masculino' : 'Feminino' ?>" disabled>
                 </div>
 
                 <br>
@@ -130,9 +121,8 @@
                     <input type="text"
                            class="form-control"
                            id="country"
-                           readonly="true"
                            name="country"
-                           value="<?= $user->country ?>">
+                           value="<?= $user->country ?>" disabled>
                 </div>
 
                 <br>
@@ -142,9 +132,8 @@
                     <input type="text"
                            class="form-control"
                            id="city"
-                           readonly="true"
                            name="city"
-                           value="<?= $user->city ?>">
+                           value="<?= $user->city ?>" disabled>
                 </div>
 
                 <br>
@@ -154,9 +143,8 @@
                     <input type="text"
                            class="form-control"
                            id="locale"
-                           readonly="true"
                            name="locale"
-                           value="<?= $user->locale ?>">
+                           value="<?= $user->locale ?>" disabled>
                 </div>
 
                 <br>
@@ -166,9 +154,8 @@
                     <input type="text"
                            class="form-control"
                            id="address"
-                           readonly="true"
                            name="address"
-                           value="<?= $user->address ?>">
+                           value="<?= $user->address ?>" disabled>
                 </div>
 
                 <br>
@@ -178,16 +165,16 @@
                     <input type="text"
                            class="form-control"
                            id="role"
-                           readonly="true"
                            name="role"
-                           value="<?php if ($user->role == 'c') { echo 'Cliente'; } else if ($user->role == 'f') { echo 'Funcionário'; } else { echo 'Administrador'; } ?>">
+                           value="<?php if ($user->role == 'c') { echo 'Cliente'; } else if ($user->role == 'f') { echo 'Funcionário'; } else { echo 'Administrador'; } ?>" disabled>
                 </div>
 
-                <br>
+                <br><br>
 
-                <button type="submit"
-                        class="btn btn-primary"
-                        name="return">Voltar</button>
+                <a href="router.php?c=users&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

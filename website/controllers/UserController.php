@@ -24,7 +24,6 @@ class UserController extends BaseController
             $users = User::find('all',
                 array('conditions' => "
                 username LIKE '%$search%'
-                or image LIKE '%$search%'
                 or name LIKE '%$search%'
                 or email LIKE '%$search%'
                 or phone LIKE '%$search%'
@@ -60,7 +59,6 @@ class UserController extends BaseController
         $attributes = array(
             'username' => $_POST['username'],
             'password' => md5($_POST['password']),
-            'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
             'phone' => ((int)$_POST['phone']),
@@ -93,13 +91,17 @@ class UserController extends BaseController
     public function edit($id)
     {
         $user = User::find([$id]);
-        if (is_null($user)) {
-            header('Location: router.php?c=users&a=index');
-        } else {
-            $this->renderViewBackend('users/update', [
-                'user' => $user,
-            ]);
+        if ($_SESSION["permission"] == 'a' || $user->role == 'c' || $user->username == $_SESSION["username"]) {
+            if (is_null($user)) {
+                header('Location: router.php?c=users&a=index');
+            } else {
+                $this->renderViewBackend('users/update', [
+                    'user' => $user,
+                ]);
+            }
         }
+        else
+            header('Location: router.php?c=users&a=index');
     }
 
     public function update($id)
@@ -109,7 +111,6 @@ class UserController extends BaseController
             $attributes = array(
                 'username' => $_POST['username'],
                 'password' => $_POST['password'],
-                'image' => $_POST['image'],
                 'name' => $_POST['name'],
                 'email' => $_POST['email'],
                 'phone' => ((int)$_POST['phone']),
@@ -126,7 +127,6 @@ class UserController extends BaseController
         else {
             $attributes = array(
                 'username' => $_POST['username'],
-                'image' => $_POST['image'],
                 'name' => $_POST['name'],
                 'email' => $_POST['email'],
                 'phone' => ((int)$_POST['phone']),
@@ -160,10 +160,25 @@ class UserController extends BaseController
 
     public function delete($id)
     {
+        // Faz o delete de varios registos de outras tabelas na base de dados
+        
         $user = User::find([$id]);
-        $user->delete();
+        if ($_SESSION["permission"] == 'a' || $user->role == 'c' || $user->username == $_SESSION["username"]) {
+            $show = Bill::find('all', array('conditions' => array('client_reference_id = ? OR employee_reference_id = ?', $id, $id)));
 
-        header('Location: router.php?c=users&a=index');
+            foreach ($show as $show_bill) {
+                Bill_line::delete_all(array('conditions' => array('bill_id  = ?', $show_bill->id)));
+            }
+
+            Bill::delete_all(array('conditions' => array('client_reference_id  = ? OR employee_reference_id = ?', $id, $id)));
+
+            $user->delete();
+
+            header('Location: router.php?c=users&a=index');
+        }
+        else {
+            header('Location: router.php?c=users&a=index');
+        }
     }
 
     public function show($id)

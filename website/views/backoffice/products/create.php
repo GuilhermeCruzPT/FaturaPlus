@@ -19,11 +19,14 @@
 
                 <div class="form-group">
                     <label for="reference">Referência:</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="reference"
                            name="reference"
-                           placeholder="Inserir Referência">
+                           maxlength="6"
+                           placeholder="Inserir Referência"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
@@ -34,6 +37,30 @@
                         }
                     } else {
                         echo "<font color='red'>" . $products->errors->on('reference') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="title">Título:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="title"
+                           name="title"
+                           placeholder="Inserir Título"
+                           onkeydown="return /[a-zA-Z ]/i.test(event.key)">
+                </div>
+
+                <?php
+                if(isset($products->errors)) {
+                    if (is_array($products->errors->on('title'))) {
+                        foreach ($products->errors->on('title') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $products->errors->on('title') . "</font>";
                     }
                 }
                 ?>
@@ -89,12 +116,12 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="stock">Estoque:</label>
+                    <label for="stock">Stock:</label>
                     <input type="number"
                            class="form-control"
                            id="stock"
                            name="stock"
-                           placeholder="Inserir Estoque"
+                           placeholder="Inserir Stock"
                            maxlength="6"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
@@ -143,10 +170,10 @@
                         class="btn btn-primary"
                         name="create">Criar</button>
 
-                <button type="button"
-                        class="btn btn-primary"
-                        name="return"
-                        onClick="history.go(-1)">Voltar</button>
+                <a href="router.php?c=products&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>
