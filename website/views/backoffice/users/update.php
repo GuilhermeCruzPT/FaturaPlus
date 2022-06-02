@@ -51,21 +51,23 @@
                            id="password"
                            name="password"
                            placeholder="Inserir Password"
-                           value="">
+                           >
                 </div>
 
                 <?php
-                if (isset($_POST['password']) && !empty($_POST['password'])) {
+
                     if (isset($user->errors)) {
                         if (is_array($user->errors->on('password'))) {
                             foreach ($user->errors->on('password') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
                             }
-                        } else {
-                            echo "<font color='red'>" . $user->errors->on('username') . "</font>";
                         }
+                        elseif ($user->errors->on('password')) {
+
+                            echo "<font color='red'>" . $user->errors->on('password') . "</font>";
+                        }
+
                     }
-                }
                 ?>
 
                 <br>

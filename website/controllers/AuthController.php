@@ -56,7 +56,6 @@ class AuthController extends BaseController
         $attributes = array(
             'username' => $_POST['username'],
             'password' => $_POST['password'],
-            'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
             'phone' => ((int)$_POST['phone']),

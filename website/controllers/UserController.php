@@ -58,7 +58,7 @@ class UserController extends BaseController
     {
         $attributes = array(
             'username' => $_POST['username'],
-            'password' => md5($_POST['password']),
+            'password' => $_POST['password'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
             'phone' => ((int)$_POST['phone']),
@@ -73,7 +73,7 @@ class UserController extends BaseController
             'role' => $_POST['role']);
         $users = new User($attributes);
         if ($users->is_valid()) {
-            $attributes['password']= md5($_POST['password']);
+            $attributes['password'] = md5($_POST['password']);
             $users->update_attributes($attributes);
             $users->save(false);
             header('Location: router.php?c=users&a=index');
@@ -107,56 +107,45 @@ class UserController extends BaseController
     public function update($id)
     {
         $user = User::find([$id]);
-        if (isset($_POST['password']) && !empty($_POST['password'])) {
-            $attributes = array(
-                'username' => $_POST['username'],
-                'password' => $_POST['password'],
-                'name' => $_POST['name'],
-                'email' => $_POST['email'],
-                'phone' => ((int)$_POST['phone']),
-                'nif' => ((int)$_POST['nif']),
-                'postal_code' => $_POST['postal_code'],
-                'birth' => $_POST['birth'],
-                'genre' => $_POST['genre'],
-                'country' => $_POST['country'],
-                'city' => $_POST['city'],
-                'locale' => $_POST['locale'],
-                'address' => $_POST['address'],
-                'role' => $_POST['role']);
-        }
-        else {
-            $attributes = array(
-                'username' => $_POST['username'],
-                'name' => $_POST['name'],
-                'email' => $_POST['email'],
-                'phone' => ((int)$_POST['phone']),
-                'nif' => ((int)$_POST['nif']),
-                'postal_code' => $_POST['postal_code'],
-                'birth' => $_POST['birth'],
-                'genre' => $_POST['genre'],
-                'country' => $_POST['country'],
-                'city' => $_POST['city'],
-                'locale' => $_POST['locale'],
-                'address' => $_POST['address'],
-                'role' => $_POST['role']);
-        }
+
+        $attributes = array(
+            'username' => $_POST['username'],
+            'password' => $_POST['password'],
+            'name' => $_POST['name'],
+            'email' => $_POST['email'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
+            'postal_code' => $_POST['postal_code'],
+            'birth' => $_POST['birth'],
+            'genre' => $_POST['genre'],
+            'country' => $_POST['country'],
+            'city' => $_POST['city'],
+            'locale' => $_POST['locale'],
+            'address' => $_POST['address'],
+            'role' => $_POST['role']);
+
         $user->update_attributes($attributes);
-        if ($user->is_valid()) {
-            if (array_key_exists('password', $attributes)) {
+
+        if (empty($attributes['password'])) {
+            $show = User::find('name',array('conditions' => array('id = ? ',$id)));
+            var_dump($show->password);
+            $attributes['password'] = $show->password;
+
+            $user->save(false);
+            header('Location: router.php?c=users&a=index');
+        } else {
+            if($user->is_valid()){
                 $attributes['password'] = md5($_POST['password']);
                 $user->update_attributes($attributes);
                 $user->save(false);
                 header('Location: router.php?c=users&a=index');
-            } else {
-                $user->save();
-                header('Location: router.php?c=users&a=index');
-            }
-        } else {
+
+
+        }else {
             $this->renderViewBackend('users/update', [
                 'user' => $user,
             ]);
-        }
-    }
+    }}}
 
     public function delete($id)
     {

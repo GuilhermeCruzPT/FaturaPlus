@@ -62,8 +62,8 @@ class User extends \ActiveRecord\Model
     static $validates_format_of = array(
         array('email', 'with' =>
         '/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/', 'message' => 'E-mail com formatação incorreta'.'<br>'),
-        //array('password', 'with' =>
-        //'/^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/', 'message' => 'Password é demasiado fraca, tem que possuir Maiscúlas e números'.'<br>'),
+        array('password', 'with' =>
+        '/^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/', 'message' => 'Password é demasiado fraca, tem que possuir Maiscúlas e números'.'<br>'),
         array('postal_code', 'with' =>
             '/^\d{4}-\d{3}?$/', 'message' => 'Código Postal com formatação incorreta'.'<br>')
     );
