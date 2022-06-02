@@ -37,7 +37,7 @@
 
 
                 <td><?= $product->id?></td>
-                <td><?= $product->reference?></td>
+                <td>P<?= $product->reference?></td>
                 <td><?= $product->title ?></td>
                 <td><?= $product->price ?>€</td>
                 <td><?= $product->stock ?></td>

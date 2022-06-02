@@ -9,11 +9,11 @@ class Bill_line extends \ActiveRecord\Model
     /* ╚═══════════════════════════════════════╝ */
 
     static $validates_numericality_of = array(
-        array('quantity', 'greater_than' => 0,'message' => 'O campo Quantidade não pode estar vazio'),
-        array('unitary_value', 'greater_than' => 0,'message' => 'O campo Valor Unitario não pode estar vazio'),
-        array('iva_value', 'greater_than' => 0,'message' => 'O campo Valor Iva não pode estar vazio'),
-        array('product_id', 'greater_than' => 0,'message' => 'O campo Referência Produto não pode estar vazio'),
-        array('bill_id', 'greater_than' => 0,'message' => 'O campo Referência Fatura não pode estar vazio')
+        array('quantity', 'greater_than' => 0,'message' => 'O campo Quantidade não pode estar vazio'.'<br>'),
+        array('unitary_value', 'greater_than' => 0,'message' => 'O campo Valor Unitario não pode estar vazio'.'<br>'),
+        array('iva_value', 'greater_than' => 0,'message' => 'O campo Valor Iva não pode estar vazio'.'<br>'),
+        array('product_id', 'greater_than' => 0,'message' => 'O campo Referência Produto não pode estar vazio'.'<br>'),
+        array('bill_id', 'greater_than' => 0,'message' => 'O campo Referência Fatura não pode estar vazio'.'<br>')
     );
 
     /* ╔═════════════════════════════════╗ */

@@ -52,7 +52,7 @@ class ProductController extends BaseController
     public function store()
     {
         $attributes = array(
-            'reference' => $_POST['reference'],
+            'reference' => sprintf('%06d', $_POST['reference']),
             'title' => $_POST['title'],
             'description' => $_POST['description'],
             'price' => ((float)$_POST['price']),
@@ -95,7 +95,7 @@ class ProductController extends BaseController
         $product = Product::find([$id]);
 
         $attributes = array(
-            'reference' => $_POST['reference'],
+            'reference' => sprintf('%06d', $_POST['reference']),
             'title' => $_POST['title'],
             'description' => $_POST['description'],
             'price' => ((float)$_POST['price']),

@@ -20,14 +20,15 @@
 
                 <div class="form-group">
                     <label for="reference">Referência:</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="reference"
                            name="reference"
                            maxlength="6"
                            placeholder="Inserir Referência"
                            value="<?= $product->reference ?>"
-                           onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
@@ -52,7 +53,7 @@
                            name="title"
                            placeholder="Inserir Título"
                            value="<?= $product->title ?>"
-                           onkeydown="return /[a-zA-Z0-9 ]/i.test(event.key)">
+                           onkeydown="return /[a-zA-Z ]/i.test(event.key)">
                 </div>
 
                 <?php
@@ -151,7 +152,8 @@
                     <select class="form-control" id="iva_id" name="iva_id">
                         <?php foreach($iva as $ivas){?>
                             <?php if ($ivas->vigour == 1){ ?>
-                                <option value="<?= $ivas->id?>"> <?= $ivas->percentage . "% - " . $ivas->description;?></option>
+                                <option value="<?= $ivas->id?>" <?= $ivas->id == $product->iva_id ? 'selected' : '' ?>>
+                                    <?= $ivas->percentage . "% - " . $ivas->description;?></option>
                             <?php  }} ?>
                     </select>
                 </div>
@@ -174,10 +176,10 @@
                         class="btn btn-primary"
                         name="update">Atualizar</button>
 
-                <button type="button"
-                        class="btn btn-primary"
-                        name="return"
-                        onClick="history.go(-1)">Voltar</button>
+                <a href="router.php?c=products&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

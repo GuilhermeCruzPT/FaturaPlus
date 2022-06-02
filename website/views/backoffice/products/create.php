@@ -19,13 +19,14 @@
 
                 <div class="form-group">
                     <label for="reference">Referência:</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="reference"
                            name="reference"
                            maxlength="6"
                            placeholder="Inserir Referência"
-                           onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
@@ -48,9 +49,8 @@
                            class="form-control"
                            id="title"
                            name="title"
-                           maxlength="10"
                            placeholder="Inserir Título"
-                           onkeydown="return /[a-zA-Z0-9 ]/i.test(event.key)">
+                           onkeydown="return /[a-zA-Z ]/i.test(event.key)">
                 </div>
 
                 <?php
@@ -170,10 +170,10 @@
                         class="btn btn-primary"
                         name="create">Criar</button>
 
-                <button type="button"
-                        class="btn btn-primary"
-                        name="return"
-                        onClick="history.go(-1)">Voltar</button>
+                <a href="router.php?c=products&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

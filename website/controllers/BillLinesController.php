@@ -54,20 +54,35 @@ class BillLinesController extends BaseController
     {
         $products = Product::all();
         $bills = Bill::all();
-        $attributes = array(
-            'quantity' => ((int)$_POST['quantity']),
-            'unitary_value' => ((int)$_POST['unitary_value']),
-            'iva_value' => ((int)$_POST['iva_value']),
-            'product_id' => $_POST['product_id'],
-            'bill_id' => $_POST['bill_id']
-        );
+
+        if (!isset($_POST['quantity']) && !isset($_POST['product_id']) && !isset($_POST['bill_id'])) {
+            $product = Product::find_by_id($_POST['product_id']);
+            $iva = Iva::find_by_id($product->iva_id);
+
+            $ivaEuro = ((float)$product->price) * floatval('0.' . $iva->percentage);
+            $valorUni = ((float)$product->price) - ((float)$ivaEuro);
+
+            $attributes = array(
+                'quantity' => ((int)$_POST['quantity']),
+                'unitary_value' => $valorUni,
+                'iva_value' => $ivaEuro,
+                'product_id' => $_POST['product_id'],
+                'bill_id' => $_POST['bill_id']
+            );
+        }
+        else {
+            $attributes = array(
+                'quantity' => ((int)$_POST['quantity']),
+                'product_id' => $_POST['product_id'],
+                'bill_id' => $_POST['bill_id']
+            );
+        }
 
         $bill_lines = new Bill_line($attributes);
         if ($bill_lines->is_valid()) {
             $bill_lines->save();
             header('Location: router.php?c=lines&a=index');
         } else {
-
             $this->renderViewBackend('lines/create', [
                 'bill_lines' => $bill_lines,
                 'products' => $products,
@@ -98,10 +113,17 @@ class BillLinesController extends BaseController
     {
         $products = Product::all();
         $bills = Bill::all();
+
+        $product = Product::find_by_id($_POST['product_id']);
+        $iva = Iva::find_by_id($product->iva_id);
+
+        $ivaEuro = ((float)$product->price)*floatval('0.'.$iva->percentage);
+        $valorUni = ((float)$product->price)-((float)$ivaEuro);
+
         $attributes = array(
             'quantity' => ((int)$_POST['quantity']),
-            'unitary_value' => ((int)$_POST['unitary_value']),
-            'iva_value' => ((int)$_POST['iva_value']),
+            'unitary_value' => $valorUni,
+            'iva_value' => $ivaEuro,
             'product_id' => $_POST['product_id'],
             'bill_id' => $_POST['bill_id']);
 

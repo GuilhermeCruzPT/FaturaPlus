@@ -23,7 +23,18 @@
                            class="form-control"
                            id="reference"
                            name="reference"
-                           value="<?= $product->reference ?>" disabled>
+                           value="P<?= $product->reference ?>" disabled>
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="title">Título:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="title"
+                           name="title"
+                           value="<?= $product->title ?>" disabled>
                 </div>
 
                 <br>
@@ -45,13 +56,13 @@
                            class="form-control"
                            id="price"
                            name="price"
-                           value="<?= $product->price ?>" disabled>
+                           value="<?= $product->price ?>€" disabled>
                 </div>
 
                 <br>
 
                 <div class="form-group">
-                    <label for="stock">Estoque:</label>
+                    <label for="stock">Stock:</label>
                     <input type="text"
                            class="form-control"
                            id="stock"
@@ -72,10 +83,10 @@
 
                 <br><br>
 
-                <button type="button"
-                        class="btn btn-primary"
-                        name="return"
-                        onClick="history.go(-1)">Voltar</button>
+                <a href="router.php?c=products&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>
