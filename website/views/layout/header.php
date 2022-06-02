@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,11 +34,25 @@
             <div class="header-right">
                 <!--<a class="custom-btn btn-5" href="#" data-tooltip="tooltip" title="Não tens uma conta? Regista-te">Registar</a>
                 <a class="btn btn-info" href="#" data-tooltip="tooltip" title="Tem uma conta? Faça login">Entrar</a>-->
+                <?php if (!isset($_SESSION["user_id"])) { ?>
                 <div class="split-buttons">
-                    <a class="btn-box-auth btn-primary-auth btn-reflex">Registar</a>
-                    <a class="btn-box-auth btn-secondary-auth btn-reflex">Entrar</a>
+                    <a class="btn-box-auth btn-primary-auth btn-reflex" href="router.php?c=auth&a=signup">Registar</a>
+                    <a class="btn-box-auth btn-secondary-auth btn-reflex" href="router.php?c=auth&a=signin">Entrar</a>
                     <span>ou</span>
                 </div>
+                <?php } else { $user = User::find([$_SESSION["user_id"]]);?>
+                    <div class="dropdown">
+                        <button class="dropbtn green-effect"><?= $userName ?>
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content white-effect">
+                            <a href="#">Faturas</a>
+                            <a href="#">Perfil</a>
+                            <a href="router.php?c=auth&a=logout">Logout</a>
+                        </div>
+                    </div>
+
+                <?php } ?>
             </div>
         </nav>
     </div>

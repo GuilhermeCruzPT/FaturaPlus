@@ -5,48 +5,53 @@
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
-
 <section class="home-section">
-
-    <h4 class="display-4 align-text-top" style="text-indent: 50px; padding-top: 25px;">Iva</h4><br>
     <div class="container">
         <div class="box">
-            <form  method="post" action="router.php?c=ivas&a=index" >
-                <input type="text" placeholder="Search.." name="search" >
-                <button name="search_btn" type="submit"><i class="fa fa-search"></i></button>
+
+            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Iva</h4><br>
+
+            <form  method="post" action="router.php?c=ivas&a=index">
+                <input type="text" placeholder="Procurar.." name="search" class="search_bar">
+                <button name="search_btn" type="submit" class="search_btn"><i class="fa fa-search"></i></button>
             </form>
             <br>
             <table class="table table-striped" style="background: white">
                 <thead>
                 <tr>
-                    <th scope="col">id</th>
+                    <th scope="col">Id</th>
                     <th scope="col">Percentagem</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Vigor</th>
+                    <th scope="col">Ações Disponiveis</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($ivas as $iva) { ?>
+                <?php
+                if (empty($ivas)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td></td>";
+                }else{
+                foreach ($ivas as $iva) { ?>
 
                 <td><?= $iva->id?></td>
-                <td><?= $iva->percentage?></td>
+                <td><?= $iva->percentage?>%</td>
                 <td><?= $iva->description ?></td>
-                <td><?= $iva->vigour ?></td>
+                <td><?= $iva->vigour == '0' ? 'Inativo' : 'Ativo' ?></td>
                 <td>
                     <a href="router.php?c=ivas&a=show&id=<?= $iva->id ?>"
-                       class="btn btn-primary">Mostrar</a>
+                       class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon' ></i></a>
 
                     <a href="router.php?c=ivas&a=edit&id=<?= $iva->id ?>"
-                       class="btn btn-success">Atualizar</a>
+                       class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
                     <a href="router.php?c=ivas&a=delete&id=<?= $iva->id ?>"
-                       class="btn btn-danger">Eliminar</a>
+                       class="btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
                 </td>
                 </tr>
                 </tbody>
-                <?php } ?> </table>
+                <?php } }?> </table>
             <div class="btn btn-success" >
-                <a href="router.php?c=ivas&a=create" class="btn btn-success">Create</a>
+                <a href="router.php?c=ivas&a=create" class="btn btn-success">Criar</a>
             </div>
         </div>
     </div>

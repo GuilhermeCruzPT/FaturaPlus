@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
     margin: 0;
@@ -6,18 +5,11 @@
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
 }
-body{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
+
 .container1{
-    max-width: 700px;
+    max-width: 1200px;
     width: 100%;
-    background-color: #fff;
+    background-color: white;
     padding: 25px 30px;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
@@ -66,7 +58,6 @@ form .category{
     display: flex;
     width: 80%;
     margin: 14px 0 ;
-    justify-content: space-between;
 }
 form .category label{
     display: flex;
@@ -81,6 +72,7 @@ form .category label .dot{
     background: #d9d9d9;
     border: 5px solid transparent;
     transition: all 0.3s ease;
+    justify-content: space-between;
 }
 #dot-1:checked ~ .category label .one,
 #dot-2:checked ~ .category label .two,

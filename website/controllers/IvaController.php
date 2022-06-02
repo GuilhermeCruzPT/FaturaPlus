@@ -2,11 +2,23 @@
 
 class IvaController extends BaseController
 {
+    public function __construct()
+    {
+        session_start();
+        if (isset($_SESSION["user_id"])) {
+            if ($_SESSION["permission"] == 'c')
+                header('Location: router.php?c=site&a=index');
+        }
+        else header('Location: router.php?c=auth&a=signin');
+    }
+
     public function index()
     {
-        if (isset($_POST[('search_btn')])){
+        if (isset($_POST[('search_btn')])) {
 
-            //barra de pesquisa
+            /* ╔═══════════════════════════╗ */
+            /* ║     Barra de Pesquisa     ║ */
+            /* ╚═══════════════════════════╝ */
 
             $search = $_POST['search'];
             $ivas = Iva::find('all',
@@ -33,23 +45,22 @@ class IvaController extends BaseController
 
     public function store()
     {
-        $attributes = array('percentage' => $_POST['percentage'],
+        $attributes = array(
+            'percentage' => ((int)$_POST['percentage']),
             'description' => $_POST['description'],
             'vigour' => $_POST['vigour']);
         $ivas = new Iva($attributes);
         if ($ivas->is_valid()) {
             $ivas->save();
             header('Location: router.php?c=ivas&a=index');
-        }else{
-            //retorna os erros presentes no model
+        } else {
+            // *** Retorna os erros presentes no model *** \\
 
-            print_r($ivas->errors->full_messages());
+            //print_r($bills->errors->full_messages());
 
             $this->renderViewBackend('ivas/create', [
                 'ivas' => $ivas
             ]);
-
-            //header('Location: router.php?c=ivas&a=create');
         }
     }
 
@@ -67,11 +78,10 @@ class IvaController extends BaseController
 
     public function update($id)
     {
-        //find resource (activerecord/model) instance where PK = $id
-        //your form name fields must match the ones of the table fields
         $iva = Iva::find([$id]);
 
-        $attributes = array('percentage' => $_POST['percentage'],
+        $attributes = array(
+            'percentage' => ((int)$_POST['percentage']),
             'description' => $_POST['description'],
             'vigour' => $_POST['vigour']);
         $iva->update_attributes($attributes);
@@ -79,7 +89,7 @@ class IvaController extends BaseController
             $iva->save();
             header('Location: router.php?c=ivas&a=index');
         } else {
-            $this->renderView('ivas/update', [
+            $this->renderViewBackend('ivas/update', [
                 'iva' => $iva,
             ]);
         }
@@ -87,11 +97,16 @@ class IvaController extends BaseController
 
     public function delete($id)
     {
+        // Faz o delete de varios registos de outras tabelas na base de dados
+
         $iva = Iva::find([$id]);
+
+        Bill_line::delete_all(array('conditions' => array('bill_id  = ?', $id)));
+        Product::delete_all(array('conditions' => array('iva_id = ?', $id)));
+
         $iva->delete();
 
         header('Location: router.php?c=ivas&a=index');
-        //$this->renderView('iva/index');
     }
 
     public function show($id)
@@ -100,7 +115,7 @@ class IvaController extends BaseController
         if (is_null($iva)) {
             header('Location: router.php?c=ivas&a=index');
         } else {
-            $this->renderViewBackend('ivas/show.php', [
+            $this->renderViewBackend('ivas/show', [
                 'iva' => $iva,
             ]);
         }

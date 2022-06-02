@@ -6,11 +6,9 @@
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
-
 <section class="home-section">
-
     <div class="container">
-        <div class="box" style=" margin: 200px;" >
+        <div class="box" style="margin: 100px; background: white;">
 
             <form action="router.php?c=bills&a=update&id=<?= $bill->id ?>" method="post"
                   style="
@@ -21,23 +19,26 @@
                 <h4 class="display-4 text-center">Editar Fatura</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="date">Data:</label>
-                    <input type="date"
+                    <label for="reference">Referência:</label>
+                    <input type="number"
                            class="form-control"
-                           id="date"
-                           name="date"
-                           placeholder="Inserir Data"
-                           value="<?= date_format($bill->date, 'Y-m-d') ?>">
+                           id="reference"
+                           name="reference"
+                           maxlength="6"
+                           placeholder="Inserir Referência"
+                           value="<?= $bill->reference ?>"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
-                if(isset($bill->errors)) {
-                    if (is_array($bill->errors->on('date'))) {
-                        foreach ($bill->errors->on('date') as $error) {
-                            echo $error . '<br>';
+                if(isset($product->errors)) {
+                    if (is_array($bill->errors->on('reference'))) {
+                        foreach ($bill->errors->on('reference') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $bill->errors->on('date');
+                        echo "<font color='red'>" . $bill->errors->on('reference') . "</font>";;
                     }
                 }
                 ?>
@@ -46,22 +47,24 @@
 
                 <div class="form-group">
                     <label for="total_value">Valor Total:</label>
-                    <input type="number"
+                    <input type="text"
                            class="form-control"
                            id="total_value"
                            name="total_value"
                            placeholder="Inserir Valor Total"
-                           value="<?= $bill->total_value ?>">
+                           value="<?= $bill->total_value ?>"
+                           maxlength="14"
+                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                 </div>
 
                 <?php
                 if(isset($bill->errors)) {
                     if (is_array($bill->errors->on('total_value'))) {
                         foreach ($bill->errors->on('total_value') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $bill->errors->on('total_value');
+                        echo "<font color='red'>" . $bill->errors->on('total_value') . "</font>";;
                     }
                 }
                 ?>
@@ -70,22 +73,25 @@
 
                 <div class="form-group">
                     <label for="total_iva">Iva Total:</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="total_iva"
                            name="total_iva"
+                           maxlength="4"
                            placeholder="Inserir Iva Total"
-                           value="<?= $bill->total_iva ?>">
+                           value="<?= $bill->total_iva ?>"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
                 if(isset($bill->errors)) {
                     if (is_array($bill->errors->on('total_iva'))) {
                         foreach ($bill->errors->on('total_iva') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $bill->errors->on('total_iva');
+                        echo "<font color='red'>" . $bill->errors->on('total_iva') . "</font>";;
                     }
                 }
                 ?>
@@ -94,22 +100,20 @@
 
                 <div class="form-group">
                     <label for="state">Estado:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="state"
-                           name="state"
-                           placeholder="Inserir Estado"
-                           value="<?= $bill->state ?>">
+                    <select class="form-control" id="state" name="state">
+                        <option value="l" <?= $bill->state == 'l' ? 'selected' : '' ?>>Em Lançamento</option>
+                        <option value="e" <?= $bill->state == 'e' ? 'selected' : '' ?>>Emitida</option>
+                    </select>
                 </div>
 
                 <?php
                 if(isset($bill->errors)) {
                     if (is_array($bill->errors->on('state'))) {
                         foreach ($bill->errors->on('state') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $bill->errors->on('state');
+                        echo "<font color='red'>" . $bill->errors->on('state') . "</font>";;
                     }
                 }
                 ?>
@@ -118,22 +122,25 @@
 
                 <div class="form-group">
                     <label for="client_reference_id">Referência Cliente:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="client_reference_id"
-                           name="client_reference_id"
-                           placeholder="Inserir Referência Cliente"
-                           value="<?= $bill->client_reference_id ?>">
+                    <select class="form-control" id="client_reference_id" name="client_reference_id">
+                        <?php foreach($user as $users){?>
+                            <?php if ($users->role == 'c'){ ?>
+                                <?php if ($users->id == $bill->client_reference_id){ ?>
+                                    <option value="<?= $users->id?>" selected> <?= $users->username; ?></option>
+                                <?php  } else { ?>
+                                    <option value="<?= $users->id?>"> <?= $users->username; ?></option>
+                            <?php  }}} ?>
+                    </select>
                 </div>
 
                 <?php
                 if(isset($bill->errors)) {
                     if (is_array($bill->errors->on('client_reference_id'))) {
                         foreach ($bill->errors->on('client_reference_id') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $bill->errors->on('client_reference_id');
+                        echo "<font color='red'>" . $bill->errors->on('client_reference_id') . "</font>";;
                     }
                 }
                 ?>
@@ -142,31 +149,39 @@
 
                 <div class="form-group">
                     <label for="employee_reference_id">Referência Funcionário:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="employee_reference_id"
-                           name="employee_reference_id"
-                           placeholder="Inserir Referência Funcionário"
-                           value="<?= $bill->employee_reference_id ?>">
+                    <select class="form-control" id="employee_reference_id" name="employee_reference_id">
+                        <?php foreach($user as $users){?>
+                            <?php if ($users->role == 'f'){ ?>
+                                <?php if ($users->id == $bill->employee_reference_id){ ?>
+                                    <option value="<?= $users->id?>" selected> <?= $users->username; ?></option>
+                                <?php  } else { ?>
+                                    <option value="<?= $users->id?>"> <?= $users->username; ?></option>
+                                <?php  }}} ?>
+                    </select>
                 </div>
 
                 <?php
                 if(isset($bill->errors)) {
                     if (is_array($bill->errors->on('employee_reference_id'))) {
                         foreach ($bill->errors->on('employee_reference_id') as $error) {
-                            echo $error . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo $bill->errors->on('employee_reference_id');
+                        echo "<font color='red'>" . $bill->errors->on('employee_reference_id') . "</font>";;
                     }
                 }
                 ?>
 
-                <br>
+                <br><br>
 
                 <button type="submit"
                         class="btn btn-primary"
                         name="update">Atualizar</button>
+
+                <button type="button"
+                        class="btn btn-primary"
+                        name="return"
+                        onClick="history.go(-1)">Voltar</button>
 
             </form>
         </div>

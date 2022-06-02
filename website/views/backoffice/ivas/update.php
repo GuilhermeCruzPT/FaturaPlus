@@ -5,11 +5,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
+<body>
 <section class="home-section">
-    <body>
     <div class="container">
-        <div class="box" style=" margin: 200px;background: white;" >
-
+        <div class="box" style="margin: 100px; background: white;">
 
             <form action="router.php?c=ivas&a=update&id=<?= $iva->id ?>" method="post"
                   style="
@@ -21,24 +20,27 @@
 
                 <div class="form-group">
                     <label for="percentage">Percentagem:</label>
-                    <input type="text"
+                    <input type="number"
                            class="form-control"
                            id="percentage"
                            name="percentage"
+                           maxlength="2"
                            placeholder="Inserir Percentagem"
-                           value="<?= $iva->percentage ?>">
+                           value="<?= $iva->percentage ?>"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
-                    if(isset($iva->errors)) {
-                        if (is_array($iva->errors->on('percentage'))) {
-                            foreach ($iva->errors->on('percentage') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $iva->errors->on('percentage');
+                if(isset($iva->errors)) {
+                    if (is_array($iva->errors->on('percentage'))) {
+                        foreach ($iva->errors->on('percentage') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
                         }
+                    } else {
+                        echo "<font color='red'>" . $iva->errors->on('percentage') . "</font>";
                     }
+                }
                 ?>
 
                 <br>
@@ -54,15 +56,15 @@
                 </div>
 
                 <?php
-                    if(isset($iva->errors)) {
-                        if (is_array($iva->errors->on('description'))) {
-                            foreach ($iva->errors->on('description') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $iva->errors->on('description');
+                if(isset($iva->errors)) {
+                    if (is_array($iva->errors->on('description'))) {
+                        foreach ($iva->errors->on('description') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
                         }
+                    } else {
+                        echo "<font color='red'>" . $iva->errors->on('description') . "</font>";
                     }
+                }
                 ?>
 
                 <br>
@@ -70,31 +72,37 @@
                 <div class="form-group">
                     <label for="vigour">Vigor:</label>
                     <select class="form-control" id="vigour" name="vigour">
-                        <option value="1" <?= $iva->vigour == '1' ? 'selected' : '' ?>>Com Vigor</option>
-                        <option value="0" <?= $iva->vigour == '0' ? 'selected' : '' ?>>Sem Vigor</option>
+                        <option value="1" <?= $iva->vigour == '1' ? 'selected' : '' ?>>Ativo</option>
+                        <option value="0" <?= $iva->vigour == '0' ? 'selected' : '' ?>>Inativo</option>
                     </select>
                 </div>
 
                 <?php
-                    if(isset($iva->errors)) {
-                        if (is_array($iva->errors->on('vigour'))) {
-                            foreach ($iva->errors->on('vigour') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $iva->errors->on('vigour');
+                if(isset($iva->errors)) {
+                    if (is_array($iva->errors->on('vigour'))) {
+                        foreach ($iva->errors->on('vigour') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
                         }
+                    } else {
+                        echo "<font color='red'>" . $iva->errors->on('vigour') . "</font>";
                     }
+                }
                 ?>
 
-                <br>
+                <br><br>
 
                 <button type="submit"
                         class="btn btn-primary"
                         name="update">Atualizar</button>
+
+                <button type="button"
+                        class="btn btn-primary"
+                        name="return"
+                        onClick="history.go(-1)">Voltar</button>
+
             </form>
         </div>
     </div>
-    </body>
 </section>
+</body>
 </html>

@@ -4,37 +4,87 @@ require_once './models/Data.php';
 
 class AuthController extends BaseController
 {
-    public function sign(){
-        //require view index;
-        require_once './views/site/auth.php';
+    public function __construct()
+    {
+        session_start();
     }
-
-    // registo
 
     public function signin(){
-        //$this->renderView('site/sigin');
-        $this->renderViewfrontend('site/sigin');
+        //session_destroy();
+        if (isset($_SESSION["user_id"])){
+            $user = User::find([$_SESSION["user_id"]]);
+            if ($user->role == 'c') {
+                $this->renderView('site/index', [
+                    'userName' => $user->name,
+                ]);
+            }
+            else {
+                $this->renderViewBackend('panel/index');
+            }
+        }
+        else
+            $this->renderViewfrontend('site/auth');
     }
-    public function save_signin(){
 
-        $attributes = array('username' => $_POST['username'],
+    public function verify_login()
+    {
+        $user = User::find_by_username($_POST['username']);
+        if ($user->username == $_POST['username'] && $user->password == md5($_POST['password'])){
+            $_SESSION["user_id"] = $user->id;
+            $_SESSION["username"] = $user->username;
+            $_SESSION["permission"] = $user->role;
+
+            if ($user->role == 'c') {
+                $this->renderView('site/index', [
+                    'userName' => $user->name,
+                ]);
+            }
+            else {
+                $this->renderViewBackend('panel/index');
+            }
+        }
+        else {
+            $error = 'O Username ou a Palavra-Passe não existem!!';
+        }
+    }
+
+    public function signup(){
+        $this->renderViewfrontend('site/signup');
+    }
+
+    public function save_signup(){
+        $attributes = array(
+            'username' => $_POST['username'],
             'password' => $_POST['password'],
-            'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'nif' => $_POST['nif'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
             'postal_code' => $_POST['postal_code'],
             'birth' => $_POST['birth'],
             'genre' => $_POST['genre'],
-            'coutry' => $_POST['coutry'],
+            'country' => $_POST['country'],
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],
-            'role' => $_POST['role']);
+            'role' => "c");
 
-        var_dump($attributes);
-
+        $users = new User($attributes);
+        if ($users->is_valid()) {
+            $attributes['password'] = md5($_POST['password']);
+            $users->update_attributes($attributes);
+            $users->save(false);
+            header('Location: router.php?c=auth&a=signin');
+        }
+        else {
+            $this->renderViewfrontend('site/signup', [
+                'users' => $users
+            ]);
+        }
     }
 
+    public function logout(){
+        session_destroy();
+        header('Location: router.php?c=auth&a=signin');
+    }
 }
