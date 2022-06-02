@@ -24,6 +24,15 @@ class Product extends \ActiveRecord\Model
         array('iva_id', 'greater_than' => 0,'message' => 'O campo Iva não pode estar vazio'.'<br>')
     );
 
+    /* ╔═════════════════════════════════════════╗ */
+    /* ║     Verifica se o valor do atributo     ║ */
+    /* ║             já existe ou não            ║ */
+    /* ╚═════════════════════════════════════════╝ */
+
+    static $validates_uniqueness_of = array(
+        array('reference', 'message' => 'A Referência já existe'.'<br>')
+    );
+
     /* ╔═════════════════════════════════╗ */
     /* ║     Vai buscar o valor para     ║ */
     /* ║      da chave estrangeira       ║ */

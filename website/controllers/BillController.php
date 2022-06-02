@@ -22,7 +22,8 @@ class BillController extends BaseController
 
             $search = $_POST['search'];
             $bills = Bill::find('all',
-                array('conditions' => "date LIKE '%$search%' 
+                array('conditions' => "reference LIKE '%$search%'
+                or date LIKE '%$search%'
                 or total_value LIKE '%$search%'
                 or total_iva LIKE '%$search%'
                 or state LIKE '%$search%'
@@ -52,7 +53,8 @@ class BillController extends BaseController
     public function store()
     {
         $attributes = array(
-            'date' => $_POST['date'],
+            'reference' => sprintf('%06d', $_POST['reference']),
+            'date' => date('d-m-Y'),
             'total_value' => ((float)$_POST['total_value']),
             'total_iva' => ((int)$_POST['total_iva']),
             'state' => $_POST['state'],
@@ -95,7 +97,7 @@ class BillController extends BaseController
         $bill = Bill::find([$id]);
 
         $attributes = array(
-            'date' => $_POST['date'],
+            'reference' => sprintf('%06d', $_POST['reference']),
             'total_value' => ((float)$_POST['total_value']),
             'total_iva' => ((int)$_POST['total_iva']),
             'state' => $_POST['state'],

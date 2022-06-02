@@ -18,6 +18,17 @@
                 <h4 class="display-4 text-center">Mostrar Fatura</h4><hr><br>
 
                 <div class="form-group">
+                    <label for="reference">Referência:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="reference"
+                           name="reference"
+                           value="F<?= $bill->reference ?>" disabled>
+                </div>
+
+                <br>
+
+                <div class="form-group">
                     <label for="date">Data:</label>
                     <input type="text"
                            class="form-control"
@@ -83,10 +94,10 @@
 
                 <br><br>
 
-                <button type="button"
-                        class="btn btn-primary"
-                        name="return"
-                        onClick="history.go(-1)">Voltar</button>
+                <a href="router.php?c=bills&a=index"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

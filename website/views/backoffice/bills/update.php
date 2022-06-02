@@ -19,23 +19,26 @@
                 <h4 class="display-4 text-center">Editar Fatura</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="date">Data:</label>
-                    <input type="date"
+                    <label for="reference">Referência:</label>
+                    <input type="number"
                            class="form-control"
-                           id="date"
-                           name="date"
-                           placeholder="Inserir Data"
-                           value="<?= date_format($bill->date, 'Y-m-d') ?>">
+                           id="reference"
+                           name="reference"
+                           maxlength="6"
+                           placeholder="Inserir Referência"
+                           value="<?= $bill->reference ?>"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
-                if(isset($bill->errors)) {
-                    if (is_array($bill->errors->on('date'))) {
-                        foreach ($bill->errors->on('date') as $error) {
+                if(isset($product->errors)) {
+                    if (is_array($bill->errors->on('reference'))) {
+                        foreach ($bill->errors->on('reference') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" . $bill->errors->on('date') . "</font>";;
+                        echo "<font color='red'>" . $bill->errors->on('reference') . "</font>";;
                     }
                 }
                 ?>

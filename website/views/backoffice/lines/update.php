@@ -99,7 +99,7 @@
                         <option value="0">Nenhum</option>
                         <?php foreach ($products as $product) { ?>
                             <option value="<?= $product->id ?>" <?= $product->id == $bill_lines->product_id ? 'selected' : '' ?>>
-                                <?= $product->reference . ' - ' . $product->title ?> </option>
+                                P<?= $product->reference . ' - ' . $product->title ?> </option>
                         <?php } ?>
                     </select>
                 </div>
@@ -123,7 +123,8 @@
                     <select class="form-control" id="bill_id" name="bill_id">
                         <option value="0">Nenhum</option>
                         <?php foreach ($bills as $bill) { ?>
-                            <option value="<?= $bill->id ?>" <?= $bill->id == $bill_lines->bill_id ? 'selected' : '' ?>>  <?= $bill->id ?> </option>
+                            <option value="<?= $bill->id ?>" <?= $bill->id == $bill_lines->bill_id ? 'selected' : '' ?>>
+                                F<?= $bill->reference ?> </option>
                         <?php } ?>
                     </select>
                 </div>

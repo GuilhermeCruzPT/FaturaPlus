@@ -18,22 +18,25 @@
                 <h4 class="display-4 text-center">Criar Fatura</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="date">Data:</label>
-                    <input type="date"
+                    <label for="reference">Referência:</label>
+                    <input type="number"
                            class="form-control"
-                           id="date"
-                           name="date"
-                           placeholder="Inserir Data">
+                           id="reference"
+                           name="reference"
+                           maxlength="6"
+                           placeholder="Inserir Referência"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
                 if(isset($bills->errors)) {
-                    if (is_array($bills->errors->on('date'))) {
-                        foreach ($bills->errors->on('date') as $error) {
+                    if (is_array($bills->errors->on('reference'))) {
+                        foreach ($bills->errors->on('reference') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" . $bills->errors->on('date') . "</font>";
+                        echo "<font color='red'>" . $bills->errors->on('reference') . "</font>";
                     }
                 }
                 ?>
@@ -96,7 +99,6 @@
                     <select class="form-control" id="state" name="state">
                         <option value="">Nenhum</option>
                         <option value="l">Em Lançamento</option>
-                        <option value="e">Emitida</option>
                     </select>
                 </div>
 

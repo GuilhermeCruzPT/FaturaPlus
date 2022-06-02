@@ -20,12 +20,12 @@
                 <thead>
                 <tr>
                     <th scope="col">Id</th>
+                    <th scope="col">Referência</th>
                     <th scope="col">Data</th>
                     <th scope="col">Valor Total</th>
                     <th scope="col">Iva Total</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Referência Cliente</th>
-                    <th scope="col">Referência Funcionário</th>
                     <th scope="col">Ações Disponiveis</th>
                 </tr>
                 </thead>
@@ -36,13 +36,13 @@
                 }else{
                 foreach ($bills as $bill) { ?>
 
-                <td><?= $bill->id ?></td>
+                <td><?= $bill->id ?>
+                <td>F<?= $bill->reference?></td>
                 <td><?= $bill->date->format('d/m/Y'); ?></td>
                 <td><?= $bill->total_value ?>€</td>
                 <td><?= $bill->total_iva ?>%</td>
                 <td><?= $bill->state == 'l' ? 'Em Lançamento' : 'Emitida' ?></td>
                 <td><?= $bill->client_reference->username ?></td>
-                <td><?= $bill->employee_reference->username ?></td>
 
                 <td>
                     <a href="router.php?c=bills&a=show&id=<?= $bill->id ?>"
