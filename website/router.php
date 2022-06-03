@@ -202,12 +202,6 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'index':
                     $EnterprisesController->index();
                     break;
-                case 'create':
-                    $EnterprisesController->create();
-                    break;
-                case 'save':
-                    $EnterprisesController->store();
-                    break;
                 case 'edit':
                     $id = $_GET[('id')];
                     $EnterprisesController->edit($id);
@@ -219,10 +213,6 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'show':
                     $id = $_GET[('id')];
                     $EnterprisesController->show($id);
-                    break;
-                case 'delete':
-                    $id = $_GET[('id')];
-                    $EnterprisesController->delete($id);
                     break;
             }
             break;

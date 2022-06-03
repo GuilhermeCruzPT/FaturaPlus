@@ -48,16 +48,10 @@
 
                     <a href="router.php?c=enterprises&a=edit&id=<?= $enterprise->id ?>"
                        class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
-
-                    <a href="router.php?c=enterprises&a=delete&id=<?= $enterprise->id ?>"
-                       class="btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
                 </td>
                 </tr>
                 </tbody>
                 <?php }} ?> </table>
-            <div class="btn btn-success">
-                <a href="router.php?c=enterprises&a=create" class="btn btn-success">Criar</a>
-            </div>
         </div>
     </div>
 </section>
