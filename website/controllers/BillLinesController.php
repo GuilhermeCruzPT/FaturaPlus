@@ -55,7 +55,7 @@ class BillLinesController extends BaseController
         $products = Product::all();
         $bills = Bill::all();
 
-        if (!isset($_POST['quantity']) && !isset($_POST['product_id']) && !isset($_POST['bill_id'])) {
+        if (isset($_POST['quantity']) && isset($_POST['product_id']) && isset($_POST['bill_id'])) {
             $product = Product::find_by_id($_POST['product_id']);
             $iva = Iva::find_by_id($product->iva_id);
 
@@ -87,7 +87,6 @@ class BillLinesController extends BaseController
                 'bill_lines' => $bill_lines,
                 'products' => $products,
                 'bills' => $bills,
-
             ]);
         }
     }
@@ -113,31 +112,49 @@ class BillLinesController extends BaseController
     {
         $products = Product::all();
         $bills = Bill::all();
+        $lines = Bill_line::all();
+
+        $bill_id = Bill::find_by_id($_POST['bill_id']);
+        $valorTotal = null;
+        $valorIva = null;
+
+        foreach ($lines as $line) {
+            if ($line->bill_id == $bill_id->id) {
+                $valorTotal += $line->unitary_value * $line->quantity;
+                $valorIva += $line->iva_value * $line->quantity;
+            }
+        }
 
         $product = Product::find_by_id($_POST['product_id']);
         $iva = Iva::find_by_id($product->iva_id);
 
-        $ivaEuro = ((float)$product->price)*floatval('0.'.$iva->percentage);
-        $valorUni = ((float)$product->price)-((float)$ivaEuro);
+        $ivaEuro = ((float)$product->price) * floatval('0.' . $iva->percentage);
+        $valorUni = ((float)$product->price) - ((float)$ivaEuro);
 
-        $attributes = array(
+        $attributes_bills = array(
+            'total_value' => ((float)$valorTotal),
+            'total_iva' => ((float)$valorIva));
+
+        $attributes_lines = array(
             'quantity' => ((int)$_POST['quantity']),
             'unitary_value' => $valorUni,
             'iva_value' => $ivaEuro,
             'product_id' => $_POST['product_id'],
             'bill_id' => $_POST['bill_id']);
 
+        $bill = Bill::find([$_POST['bill_id']]);
+        $bill->update_attributes($attributes_bills);
         $bill_lines = Bill_line::find([$id]);
-        $bill_lines->update_attributes($attributes);
-        if ($bill_lines->is_valid()) {
+        $bill_lines->update_attributes($attributes_lines);
+        if ($bill_lines->is_valid() && $bill->is_valid()) {
             $bill_lines->save();
+            $bill->save();
             header('Location: router.php?c=lines&a=index');
         } else {
             $this->renderViewBackend('lines/update', [
                 'bill_lines' => $bill_lines,
                 'products' => $products,
                 'bills' => $bills,
-
             ]);
         }
     }

@@ -20,8 +20,8 @@ class Bill extends \ActiveRecord\Model
     /* ╚═══════════════════════════════════════╝ */
 
     static $validates_numericality_of = array(
-        array('total_value', 'greater_than' => 0,'message' => 'O campo Valor Total não pode estar vazio'.'<br>'),
-        array('total_iva', 'greater_than' => 0,'message' => 'O campo Iva Total não pode estar vazio'.'<br>'),
+        //array('total_value', 'greater_than' => 0,'message' => 'O campo Valor Total não pode estar vazio'.'<br>'),
+        //array('total_iva', 'greater_than' => 0,'message' => 'O campo Iva Total não pode estar vazio'.'<br>'),
         array('client_reference_id', 'greater_than' => 0,'message' => 'O campo Referência Cliente não pode estar vazio'.'<br>'),
         array('employee_reference_id', 'greater_than' => 0,'message' => 'O campo Referência Funcionário não pode estar vazio'.'<br>')
     );

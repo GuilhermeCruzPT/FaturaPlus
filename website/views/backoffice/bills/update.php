@@ -45,20 +45,20 @@
 
                 <br>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="total_value">Valor Total:</label>
                     <input type="text"
                            class="form-control"
                            id="total_value"
                            name="total_value"
                            placeholder="Inserir Valor Total"
-                           value="<?= $bill->total_value ?>"
+                           value="<?/*= $bill->total_value */?>"
                            maxlength="14"
                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                 </div>
 
                 <?php
-                if(isset($bill->errors)) {
+/*                if(isset($bill->errors)) {
                     if (is_array($bill->errors->on('total_value'))) {
                         foreach ($bill->errors->on('total_value') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
@@ -67,7 +67,7 @@
                         echo "<font color='red'>" . $bill->errors->on('total_value') . "</font>";;
                     }
                 }
-                ?>
+                */?>
 
                 <br>
 
@@ -79,13 +79,13 @@
                            name="total_iva"
                            maxlength="4"
                            placeholder="Inserir Iva Total"
-                           value="<?= $bill->total_iva ?>"
+                           value="<?/*= $bill->total_iva */?>"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
-                if(isset($bill->errors)) {
+/*                if(isset($bill->errors)) {
                     if (is_array($bill->errors->on('total_iva'))) {
                         foreach ($bill->errors->on('total_iva') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
@@ -94,9 +94,9 @@
                         echo "<font color='red'>" . $bill->errors->on('total_iva') . "</font>";;
                     }
                 }
-                ?>
+                */?>
 
-                <br>
+                <br>-->
 
                 <div class="form-group">
                     <label for="state">Estado:</label>

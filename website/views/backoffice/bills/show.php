@@ -56,7 +56,7 @@
                            class="form-control"
                            id="total_iva"
                            name="total_iva"
-                           value="<?= $bill->total_iva ?>%" disabled>
+                           value="<?= $bill->total_iva ?>€" disabled>
                 </div>
 
                 <br>

@@ -55,8 +55,8 @@ class BillController extends BaseController
         $attributes = array(
             'reference' => sprintf('%06d', $_POST['reference']),
             'date' => date('d-m-Y'),
-            'total_value' => ((float)$_POST['total_value']),
-            'total_iva' => ((int)$_POST['total_iva']),
+            'total_value' => 0,
+            'total_iva' => 0,
             'state' => $_POST['state'],
             'client_reference_id' => $_POST['client_reference_id'],
             'employee_reference_id' => $_POST['employee_reference_id']);
@@ -98,8 +98,6 @@ class BillController extends BaseController
 
         $attributes = array(
             'reference' => sprintf('%06d', $_POST['reference']),
-            'total_value' => ((float)$_POST['total_value']),
-            'total_iva' => ((int)$_POST['total_iva']),
             'state' => $_POST['state'],
             'client_reference_id' => $_POST['client_reference_id'],
             'employee_reference_id' => $_POST['employee_reference_id']);
