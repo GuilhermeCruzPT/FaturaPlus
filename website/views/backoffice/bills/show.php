@@ -56,7 +56,7 @@
                            class="form-control"
                            id="total_iva"
                            name="total_iva"
-                           value="<?= $bill->total_iva ?>%" disabled>
+                           value="<?= $bill->total_iva ?>€" disabled>
                 </div>
 
                 <br>
@@ -95,7 +95,7 @@
                 <br><br>
 
                 <a href="router.php?c=bills&a=index"
-                   class=" btn btn-primary"
+                   class=" btn btn-primary btn-back"
                    role="button"
                    aria-pressed="true">Voltar</a>
 

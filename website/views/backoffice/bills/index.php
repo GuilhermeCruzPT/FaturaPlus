@@ -22,8 +22,8 @@
                     <th scope="col">Id</th>
                     <th scope="col">Referência</th>
                     <th scope="col">Data</th>
-                    <th scope="col">Valor Total</th>
-                    <th scope="col">Iva Total</th>
+                    <th scope="col">(€ s/IVA)<br>Valor Total</th>
+                    <th scope="col">(€)<br>Iva Total</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Referência Cliente</th>
                     <th scope="col">Ações Disponiveis</th>
@@ -40,7 +40,7 @@
                 <td>F<?= $bill->reference?></td>
                 <td><?= $bill->date->format('d/m/Y'); ?></td>
                 <td><?= $bill->total_value ?>€</td>
-                <td><?= $bill->total_iva ?>%</td>
+                <td><?= $bill->total_iva ?>€</td>
                 <td><?= $bill->state == 'l' ? 'Em Lançamento' : 'Emitida' ?></td>
                 <td><?= $bill->client_reference->username ?></td>
 

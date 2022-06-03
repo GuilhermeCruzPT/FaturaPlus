@@ -29,17 +29,6 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="image">Imagem:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="image"
-                           name="image"
-                           value="<?= $user->image ?>" disabled>
-                </div>
-
-                <br>
-
-                <div class="form-group">
                     <label for="name">Nome:</label>
                     <input type="text"
                            class="form-control"
@@ -172,7 +161,7 @@
                 <br><br>
 
                 <a href="router.php?c=users&a=index"
-                   class=" btn btn-primary"
+                   class=" btn btn-primary btn-back"
                    role="button"
                    aria-pressed="true">Voltar</a>
 

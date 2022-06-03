@@ -372,7 +372,7 @@
                         name="update">Atualizar</button>
 
                 <a href="router.php?c=users&a=index"
-                   class=" btn btn-primary"
+                   class=" btn btn-primary btn-back"
                    role="button"
                    aria-pressed="true">Voltar</a>
 

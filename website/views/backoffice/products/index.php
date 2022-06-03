@@ -9,7 +9,7 @@
     <div class="container">
         <div class="box">
 
-            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Productos</h4><br>
+            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Produtos</h4><br>
 
             <form  method="post" action="router.php?c=products&a=index">
                 <input type="text" placeholder="Procurar.." name="search" class="search_bar">

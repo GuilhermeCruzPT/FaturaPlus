@@ -96,7 +96,6 @@
                 <div class="form-group">
                     <label for="product_id">Referência Produto:</label>
                     <select class="form-control" id="product_id" name="product_id">
-                        <option value="0">Nenhum</option>
                         <?php foreach ($products as $product) { ?>
                             <option value="<?= $product->id ?>" <?= $product->id == $bill_lines->product_id ? 'selected' : '' ?>>
                                 P<?= $product->reference . ' - ' . $product->title ?> </option>
@@ -121,7 +120,6 @@
                 <div class="form-group">
                     <label for="bill_id"> Referência Fatura:</label>
                     <select class="form-control" id="bill_id" name="bill_id">
-                        <option value="0">Nenhum</option>
                         <?php foreach ($bills as $bill) { ?>
                             <option value="<?= $bill->id ?>" <?= $bill->id == $bill_lines->bill_id ? 'selected' : '' ?>>
                                 F<?= $bill->reference ?> </option>
@@ -148,7 +146,7 @@
                         name="update">Atualizar</button>
 
                 <a href="router.php?c=lines&a=index"
-                   class=" btn btn-primary"
+                   class=" btn btn-primary btn-back"
                    role="button"
                    aria-pressed="true">Voltar</a>
 

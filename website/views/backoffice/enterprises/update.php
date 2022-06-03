@@ -271,10 +271,10 @@
                         class="btn btn-primary"
                         name="update">Atualizar</button>
 
-                <button type="button"
-                        class="btn btn-primary"
-                        name="return"
-                        onClick="history.go(-1)">Voltar</button>
+                <a href="router.php?c=enterprises&a=index"
+                   class=" btn btn-primary btn-back"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

@@ -43,7 +43,7 @@
 
                 <br>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="total_value">Valor Total:</label>
                     <input type="text"
                            class="form-control"
@@ -55,7 +55,7 @@
                 </div>
 
                 <?php
-                if(isset($bills->errors)) {
+/*                if(isset($bills->errors)) {
                     if (is_array($bills->errors->on('total_value'))) {
                         foreach ($bills->errors->on('total_value') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
@@ -64,7 +64,7 @@
                         echo "<font color='red'>" . $bills->errors->on('total_value') . "</font>";
                     }
                 }
-                ?>
+                */?>
 
                 <br>
 
@@ -81,7 +81,7 @@
                 </div>
 
                 <?php
-                if(isset($bills->errors)) {
+/*                if(isset($bills->errors)) {
                     if (is_array($bills->errors->on('total_iva'))) {
                         foreach ($bills->errors->on('total_iva') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
@@ -90,9 +90,9 @@
                         echo "<font color='red'>" . $bills->errors->on('total_iva') . "</font>";
                     }
                 }
-                ?>
+                */?>
 
-                <br>
+                <br>-->
 
                 <div class="form-group">
                     <label for="state">Estado:</label>
@@ -170,10 +170,10 @@
                         class="btn btn-primary"
                         name="create">Criar</button>
 
-                <button type="button"
-                        class="btn btn-primary"
-                        name="return"
-                        onClick="history.go(-1)">Voltar</button>
+                <a href="router.php?c=bills&a=index"
+                   class=" btn btn-primary btn-back"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>

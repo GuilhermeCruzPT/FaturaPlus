@@ -124,28 +124,43 @@ class UserController extends BaseController
             'address' => $_POST['address'],
             'role' => $_POST['role']);
 
-        $user->update_attributes($attributes);
 
         if (empty($attributes['password'])) {
-            $show = User::find('name',array('conditions' => array('id = ? ',$id)));
-            var_dump($show->password);
-            $attributes['password'] = $show->password;
 
-            $user->save(false);
-            header('Location: router.php?c=users&a=index');
+            $user_pass = User::find('password', array('conditions' => array('id = ? ', $id)));
+            var_dump($user_pass->password);
+            $attributes['password'] = "P" . $user_pass->password;
+            var_dump($user_pass->password);
+            $user->update_attributes($attributes);
+
+            if ($user->is_valid()) {
+
+                var_dump($attributes['password']);
+                $attributes['password'] = $user_pass->password;
+                $user->update_attributes($attributes);
+                $user->save(false);
+                header('Location: router.php?c=users&a=index');
+
+            } else {
+                $this->renderViewBackend('users/update', [
+                    'user' => $user,
+                ]);
+            }
         } else {
-            if($user->is_valid()){
+            if ($user->is_valid()) {
                 $attributes['password'] = md5($_POST['password']);
                 $user->update_attributes($attributes);
                 $user->save(false);
                 header('Location: router.php?c=users&a=index');
 
 
-        }else {
-            $this->renderViewBackend('users/update', [
-                'user' => $user,
-            ]);
-    }}}
+            } else {
+                $this->renderViewBackend('users/update', [
+                    'user' => $user,
+                ]);
+            }
+        }
+    }
 
     public function delete($id)
     {

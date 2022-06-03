@@ -93,7 +93,8 @@
                     <select class="form-control" id="product_id" name="product_id">
                         <option value="0">Nenhum</option>
                         <?php foreach ($products as $product) { ?>
-                            <option value="<?= $product->id ?>">  <?= $product->reference . ' - ' . $product->title ?> </option>
+                            <option value="<?= $product->id ?>">
+                                P<?= $product->reference . ' - ' . $product->title ?> </option>
                         <?php } ?>
                     </select>
                 </div>
@@ -117,7 +118,8 @@
                     <select class="form-control" id="bill_id" name="bill_id">
                         <option value="0">Nenhum</option>
                         <?php foreach ($bills as $bill) { ?>
-                            <option value="<?= $bill->id ?>">  <?= $bill->id ?> </option>
+                            <option value="<?= $bill->id ?>">
+                                F<?= $bill->reference ?> </option>
                         <?php } ?>
                     </select>
                 </div>
@@ -141,7 +143,7 @@
                         name="create">Criar</button>
 
                 <a href="router.php?c=lines&a=index"
-                   class=" btn btn-primary"
+                   class=" btn btn-primary btn-back"
                    role="button"
                    aria-pressed="true">Voltar</a>
 
