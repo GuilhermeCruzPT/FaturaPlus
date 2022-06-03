@@ -54,40 +54,74 @@ class BillLinesController extends BaseController
     {
         $products = Product::all();
         $bills = Bill::all();
+        $lines = Bill_line::all();
 
-        if (isset($_POST['quantity']) && isset($_POST['product_id']) && isset($_POST['bill_id'])) {
+        if(((int)$_POST['quantity']) != 0 && ((int)$_POST['product_id']) != 0 && ((int)$_POST['bill_id']) != 0) {
+            $bill_id = Bill::find_by_id(((int)$_POST['bill_id']));
+            $valorTotal = null;
+            $valorIva = null;
+
+            foreach ($lines as $line) {
+                if ($line->bill_id == $bill_id->id) {
+                    $valorTotal += $line->unitary_value * $line->quantity;
+                    $valorIva += $line->iva_value * $line->quantity;
+                }
+            }
+
             $product = Product::find_by_id($_POST['product_id']);
             $iva = Iva::find_by_id($product->iva_id);
 
             $ivaEuro = ((float)$product->price) * floatval('0.' . $iva->percentage);
             $valorUni = ((float)$product->price) - ((float)$ivaEuro);
 
-            $attributes = array(
+            $valorTotal += $valorUni * ((int)$_POST['quantity']);
+            $valorIva += $ivaEuro * ((int)$_POST['quantity']);
+
+            $attributes_bills = array(
+                'total_value' => ((float)$valorTotal),
+                'total_iva' => ((float)$valorIva));
+
+            $attributes_lines = array(
                 'quantity' => ((int)$_POST['quantity']),
                 'unitary_value' => $valorUni,
                 'iva_value' => $ivaEuro,
                 'product_id' => $_POST['product_id'],
                 'bill_id' => $_POST['bill_id']
             );
+
+            $bill = Bill::find([$_POST['bill_id']]);
+            $bill->update_attributes($attributes_bills);
+            $bill_lines = new Bill_line($attributes_lines);
+            if ($bill_lines->is_valid() && $bill->is_valid()) {
+                $bill_lines->save();
+                $bill->save();
+                header('Location: router.php?c=lines&a=index');
+            } else {
+                $this->renderViewBackend('lines/create', [
+                    'bill_lines' => $bill_lines,
+                    'products' => $products,
+                    'bills' => $bills,
+                ]);
+            }
         }
         else {
-            $attributes = array(
+            $attributes_lines = array(
                 'quantity' => ((int)$_POST['quantity']),
                 'product_id' => $_POST['product_id'],
                 'bill_id' => $_POST['bill_id']
             );
-        }
 
-        $bill_lines = new Bill_line($attributes);
-        if ($bill_lines->is_valid()) {
-            $bill_lines->save();
-            header('Location: router.php?c=lines&a=index');
-        } else {
-            $this->renderViewBackend('lines/create', [
-                'bill_lines' => $bill_lines,
-                'products' => $products,
-                'bills' => $bills,
-            ]);
+            $bill_lines = new Bill_line($attributes_lines);
+            if ($bill_lines->is_valid()) {
+                $bill_lines->save();
+                header('Location: router.php?c=lines&a=index');
+            } else {
+                $this->renderViewBackend('lines/create', [
+                    'bill_lines' => $bill_lines,
+                    'products' => $products,
+                    'bills' => $bills,
+                ]);
+            }
         }
     }
 
