@@ -45,39 +45,6 @@ class EnterpriseController extends BaseController
         }
     }
 
-    public function create()
-    {
-        $this->renderViewBackend('enterprises/create');
-    }
-
-    public function store()
-    {
-        $attributes = array(
-            'social_designation' => $_POST['social_designation'],
-            'email' => $_POST['email'],
-            'phone' => ((int)$_POST['phone']),
-            'nif' => ((int)$_POST['nif']),
-            'postal_code' => $_POST['postal_code'],
-            'country' => $_POST['country'],
-            'city' => $_POST['city'],
-            'locale' => $_POST['locale'],
-            'address' => $_POST['address'],
-            'social_capital' => $_POST['social_capital']);
-        $enterprises = new Enterprise($attributes);
-        if ($enterprises->is_valid()) {
-            $enterprises->save();
-            header('Location: router.php?c=enterprises&a=index');
-        } else {
-            // *** Retorna os erros presentes no model *** \\
-
-            //print_r($bills->errors->full_messages());
-
-            $this->renderViewBackend('enterprises/create', [
-                'enterprises' => $enterprises
-            ]);
-        }
-    }
-
     public function edit($id)
     {
         $enterprise = Enterprise::find([$id]);
@@ -114,14 +81,6 @@ class EnterpriseController extends BaseController
                 'enterprise' => $enterprise,
             ]);
         }
-    }
-
-    public function delete($id)
-    {
-        $enterprise = Enterprise::find([$id]);
-        $enterprise->delete();
-
-        header('Location: router.php?c=enterprises&a=index');
     }
 
     public function show($id)
