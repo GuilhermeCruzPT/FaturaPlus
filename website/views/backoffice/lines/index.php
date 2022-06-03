@@ -47,12 +47,10 @@
                        class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon'></i></a>
 
                     <a href="router.php?c=lines&a=edit&id=<?= $bill_line->id ?>"
-                       class="btn btn-warning btn-icon-update btn-icon"><i
-                                class='bx bx-edit-alt bx-tada action-icon'></i></a>
+                       class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon'></i></a>
 
                     <a href="router.php?c=lines&a=delete&id=<?= $bill_line->id ?>"
-                       class="btn btn-danger btn-icon-delete btn-icon"><i
-                                class='bx bx-trash bx-tada action-icon'></i></a>
+                       class="btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon'></i></a>
                 </td>
                 </tr>
                 </tbody>
