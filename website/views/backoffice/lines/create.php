@@ -40,53 +40,13 @@
                         echo "<font color='red'>" . $bill_lines->errors->on('quantity') . "</font>";
                     }
                 }
+
+                if (isset($error_quantity)) {
+                    echo "<font color='red'>" . $error_quantity . "</font>";
+                }
                 ?>
 
                 <br>
-
-                <!--<div class="form-group">
-                    <label for="unitary_value">Valor Unitário:</label>
-                    <input type="number"
-                           class="form-control"
-                           id="unitary_value"
-                           name="unitary_value"
-                           placeholder="Inserir Valor Total">
-                </div>
-
-                <?php
-/*                if (isset($bill_lines->errors)) {
-                    if (is_array($bill_lines->errors->on('unitary_value'))) {
-                        foreach ($bill_lines->errors->on('unitary_value') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
-                        }
-                    } else {
-                        echo "<font color='red'>" . $bill_lines->errors->on('unitary_value') . "</font>";
-                    }
-                }
-                */?>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="iva_value">Iva:</label>
-                    <input type="number"
-                           class="form-control"
-                           id="iva_value"
-                           name="iva_value"
-                           placeholder="Inserir Iva">
-                </div>
-
-                --><?php
-/*                if (isset($bill_lines->errors)) {
-                    if (is_array($bill_lines->errors->on('iva_value'))) {
-                        foreach ($bill_lines->errors->on('iva_value') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
-                        }
-                    } else {
-                        echo "<font color='red'>" . $bill_lines->errors->on('iva_value') . "</font>";
-                    }
-                }
-                */?>
 
                 <div class="form-group">
                     <label for="product_id">Referência Produto:</label>

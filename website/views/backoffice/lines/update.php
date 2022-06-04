@@ -45,54 +45,6 @@
 
                 <br>
 
-                <!--<div class="form-group">
-                    <label for="total_value">Valor Unitário:</label>
-                    <input type="number"
-                           class="form-control"
-                           id="unitary_value"
-                           name="unitary_value"
-                           placeholder="Inserir Valor Total"
-                           value="<?/*= $bill_lines->unitary_value */?>">
-                </div>
-
-                <?php
-/*                if (isset($bill_lines->errors)) {
-                    if (is_array($bill_lines->errors->on('unitary_value'))) {
-                        foreach ($bill_lines->errors->on('unitary_value') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
-                        }
-                    } else {
-                        echo "<font color='red'>" . $bill_lines->errors->on('unitary_value') . "</font>";
-                    }
-                }
-                */?>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="total_iva">Iva Total:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="iva_value"
-                           name="iva_value"
-                           placeholder="Inserir Iva"
-                           value="<?/*= $bill_lines->iva_value */?>">
-                </div>
-
-                <?php
-/*                if (isset($bill_lines->errors)) {
-                    if (is_array($bill_lines->errors->on('iva_value'))) {
-                        foreach ($bill_lines->errors->on('iva_value') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
-                        }
-                    } else {
-                        echo "<font color='red'>" . $bill_lines->errors->on('iva_value') . "</font>";
-                    }
-                }
-                */?>
-
-                <br>-->
-
                 <div class="form-group">
                     <label for="product_id">Referência Produto:</label>
                     <select class="form-control" id="product_id" name="product_id">
