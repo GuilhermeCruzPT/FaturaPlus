@@ -57,51 +57,87 @@ class BillLinesController extends BaseController
         $lines = Bill_line::all();
 
         if(((int)$_POST['quantity']) != 0 && ((int)$_POST['product_id']) != 0 && ((int)$_POST['bill_id']) != 0) {
+
+            $product_id = Product::find_by_id(((int)$_POST['product_id']));
             $bill_id = Bill::find_by_id(((int)$_POST['bill_id']));
+
             $valorTotal = null;
             $valorIva = null;
 
-            foreach ($lines as $line) {
-                if ($line->bill_id == $bill_id->id) {
-                    $valorTotal += $line->unitary_value * $line->quantity;
-                    $valorIva += $line->iva_value * $line->quantity;
+            if (((int)$_POST['quantity']) <= ((int)$product_id->stock)) {
+
+                $stock = (((int)$product_id->stock) - ((int)$_POST['quantity']));
+
+                foreach ($lines as $line) {
+                    if ($line->bill_id == $bill_id->id) {
+                        $valorTotal += $line->unitary_value * $line->quantity;
+                        $valorIva += $line->iva_value * $line->quantity;
+                    }
+                }
+
+                $product = Product::find_by_id($_POST['product_id']);
+                $iva = Iva::find_by_id($product->iva_id);
+
+                $ivaEuro = ((float)$product->price) * floatval('0.' . $iva->percentage);
+                $valorUni = ((float)$product->price) - ((float)$ivaEuro);
+
+                $valorTotal += $valorUni * ((int)$_POST['quantity']);
+                $valorIva += $ivaEuro * ((int)$_POST['quantity']);
+
+                $attributes_bills = array(
+                    'total_value' => ((float)$valorTotal),
+                    'total_iva' => ((float)$valorIva));
+
+                $attributes_lines = array(
+                    'quantity' => ((int)$_POST['quantity']),
+                    'unitary_value' => $valorUni,
+                    'iva_value' => $ivaEuro,
+                    'product_id' => $_POST['product_id'],
+                    'bill_id' => $_POST['bill_id']
+                );
+
+                $attributes_products = array(
+                    'stock' => $stock,
+                );
+
+                $bill = Bill::find([$_POST['bill_id']]);
+                $bill->update_attributes($attributes_bills);
+                $product->update_attributes($attributes_products);
+                $bill_lines = new Bill_line($attributes_lines);
+                if ($bill_lines->is_valid() && $bill->is_valid() && $product->is_valid()) {
+                    $bill_lines->save();
+                    $bill->save();
+                    $product->save();
+                    header('Location: router.php?c=lines&a=index');
+                } else {
+                    $this->renderViewBackend('lines/create', [
+                        'bill_lines' => $bill_lines,
+                        'products' => $products,
+                        'bills' => $bills,
+                    ]);
                 }
             }
+            else {
+                $error_quantity = "Quantidate maior que o stock do Produto<br>";
 
-            $product = Product::find_by_id($_POST['product_id']);
-            $iva = Iva::find_by_id($product->iva_id);
+                $attributes_lines = array(
+                    'quantity' => ((int)$_POST['quantity']),
+                    'product_id' => $_POST['product_id'],
+                    'bill_id' => $_POST['bill_id']
+                );
 
-            $ivaEuro = ((float)$product->price) * floatval('0.' . $iva->percentage);
-            $valorUni = ((float)$product->price) - ((float)$ivaEuro);
-
-            $valorTotal += $valorUni * ((int)$_POST['quantity']);
-            $valorIva += $ivaEuro * ((int)$_POST['quantity']);
-
-            $attributes_bills = array(
-                'total_value' => ((float)$valorTotal),
-                'total_iva' => ((float)$valorIva));
-
-            $attributes_lines = array(
-                'quantity' => ((int)$_POST['quantity']),
-                'unitary_value' => $valorUni,
-                'iva_value' => $ivaEuro,
-                'product_id' => $_POST['product_id'],
-                'bill_id' => $_POST['bill_id']
-            );
-
-            $bill = Bill::find([$_POST['bill_id']]);
-            $bill->update_attributes($attributes_bills);
-            $bill_lines = new Bill_line($attributes_lines);
-            if ($bill_lines->is_valid() && $bill->is_valid()) {
-                $bill_lines->save();
-                $bill->save();
-                header('Location: router.php?c=lines&a=index');
-            } else {
-                $this->renderViewBackend('lines/create', [
-                    'bill_lines' => $bill_lines,
-                    'products' => $products,
-                    'bills' => $bills,
-                ]);
+                $bill_lines = new Bill_line($attributes_lines);
+                if ($bill_lines->is_valid()) {
+                    $bill_lines->save();
+                    header('Location: router.php?c=lines&a=index');
+                } else {
+                    $this->renderViewBackend('lines/create', [
+                        'bill_lines' => $bill_lines,
+                        'products' => $products,
+                        'bills' => $bills,
+                        'error_quantity' => $error_quantity,
+                    ]);
+                }
             }
         }
         else {
@@ -212,6 +248,4 @@ class BillLinesController extends BaseController
             ]);
         }
     }
-
-
 }
