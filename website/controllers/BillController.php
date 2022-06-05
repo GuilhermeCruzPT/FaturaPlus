@@ -81,14 +81,19 @@ class BillController extends BaseController
     {
         $bill = Bill::find([$id]);
         $user = User::all();
-        if (is_null($bill)) {
-            header('Location: router.php?c=bills&a=index');
-        } else {
-            $this->renderViewBackend('bills/update', [
-                'bill' => $bill,
-                'user' => $user
-            ]);
+
+        if ($bill->state == 'l') {
+            if (is_null($bill)) {
+                header('Location: router.php?c=bills&a=index');
+            } else {
+                $this->renderViewBackend('bills/update', [
+                    'bill' => $bill,
+                    'user' => $user
+                ]);
+            }
         }
+        else
+            header('Location: router.php?c=bills&a=index');
     }
 
     public function update($id)
