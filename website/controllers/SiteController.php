@@ -148,4 +148,29 @@ class SiteController extends BaseController
             'bills' => $bills,
         ]);
     }
+
+    public function pdfshow()
+    {
+        //Instancia do DOMPDF
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml("<h1>Fatura</h1>");
+
+        $dompdf->setPaper("A4", "landscape");
+
+        $dompdf->render();
+        $dompdf->stream("file.pdf", ["Attachment" => false]);
+
+        //header('Content-type: application/pdf');
+        //echo $dompdf->output();
+
+
+
+        /*$user = User::find([$id]);
+        $bills = Bill::all();
+        $this->renderViewDetalhe('bills/index', [
+            'user' => $user,
+            'bills' => $bills,
+        ]);*/
+    }
 }

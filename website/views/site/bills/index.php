@@ -39,12 +39,12 @@
                 <td><?= $bill->employee_reference->username ?></td>
 
                 <td>
-                    <a href="router.php?c=bills&a=index"
+                    <a href="router.php?c=site&a=pdfshow"
                        class=" btn btn-primary"
                        role="button"
                        aria-pressed="true">Mostrar</a>
 
-                    <a href="router.php?c=bills&a=index"
+                    <a href=""
                        class=" btn btn-primary btn-back"
                        role="button"
                        aria-pressed="true">Transferir</a>

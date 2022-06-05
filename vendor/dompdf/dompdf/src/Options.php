@@ -68,12 +68,12 @@ class Options
     private $logOutputFile;
 
     /**
-     * html target media view which should be rendered into pdf.
+     * html target media view which should be rendered into pdf.html.
      * List of types and parsing rules for future extensions:
      * http://www.w3.org/TR/REC-html40/types.html
      *   screen, tty, tv, projection, handheld, print, braille, aural, all
      * Note: aural is deprecated in CSS 2.1 because it is replaced by speech in CSS 3.
-     * Note, even though the generated pdf file is intended for print output,
+     * Note, even though the generated pdf.html file is intended for print output,
      * the desired content might be different (e.g. screen or projection view of html file).
      * Therefore allow specification of content here.
      *
@@ -126,7 +126,7 @@ class Options
      * This adjusts the relative sizes to be similar to the rendering of the
      * html page in a reference browser.
      *
-     * In pdf, always 1 pt = 1/72 inch
+     * In pdf.html, always 1 pt = 1/72 inch
      *
      * @var int
      */

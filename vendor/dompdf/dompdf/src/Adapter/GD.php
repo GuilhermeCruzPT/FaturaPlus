@@ -711,7 +711,7 @@ class GD implements Canvas
     }
 
     /**
-     * Add an image to the pdf.
+     * Add an image to the pdf.html.
      * The image is placed at the specified x and y coordinates with the
      * given width and height.
      *
@@ -816,7 +816,7 @@ class GD implements Canvas
     }
 
     /**
-     * Add a link to the pdf
+     * Add a link to the pdf.html
      *
      * @param string $url The url to link to
      * @param float $x The x position of the link

@@ -44,7 +44,7 @@ class Page extends AbstractFrameDecorator
     protected $_in_table;
 
     /**
-     * The pdf renderer
+     * The pdf.html renderer
      *
      * @var Renderer
      */
@@ -74,7 +74,7 @@ class Page extends AbstractFrameDecorator
     }
 
     /**
-     * Set the renderer used for this pdf
+     * Set the renderer used for this pdf.html
      *
      * @param Renderer $renderer the renderer to use
      */
@@ -84,7 +84,7 @@ class Page extends AbstractFrameDecorator
     }
 
     /**
-     * Return the renderer used for this pdf
+     * Return the renderer used for this pdf.html
      *
      * @return Renderer
      */

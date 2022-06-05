@@ -64,6 +64,9 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                     $id = $_GET[('id')];
                     $siteController->pdfindex($id);
                     break;
+                case 'pdfshow':
+                    $siteController->pdfshow();
+                    break;
             }
             break;
 

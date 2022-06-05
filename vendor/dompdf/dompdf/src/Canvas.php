@@ -134,7 +134,7 @@ interface Canvas
      * Processes a callback on every page
      *
      * The callback function receives the four parameters `$pageNumber`,
-     * `$pageCount`, `$pdf`, and `$fontMetrics`, in that order.
+     * `$pageCount`, `$pdf.html`, and `$fontMetrics`, in that order.
      *
      * This function can be used to add page numbers to all pages after the
      * first one, for example.
@@ -284,7 +284,7 @@ interface Canvas
     function circle($x, $y, $r, $color, $width = null, $style = null, $fill = false);
 
     /**
-     * Add an image to the pdf.
+     * Add an image to the pdf.html.
      *
      * The image is placed at the specified x and y coordinates with the
      * given width and height.
@@ -338,7 +338,7 @@ interface Canvas
     function add_named_dest($anchorname);
 
     /**
-     * Add a link to the pdf
+     * Add a link to the pdf.html
      *
      * @param string $url The url to link to
      * @param float $x The x position of the link
@@ -349,7 +349,7 @@ interface Canvas
     function add_link($url, $x, $y, $width, $height);
 
     /**
-     * Add meta information to the pdf
+     * Add meta information to the pdf.html
      *
      * @param string $name Label of the value (Creator, Producer, etc.)
      * @param string $value The text to set
