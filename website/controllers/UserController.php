@@ -125,9 +125,7 @@ class UserController extends BaseController
             'address' => $_POST['address'],
             'role' => $_POST['role']);
 
-
         if (empty($attributes['password'])) {
-
             $user_pass = User::find('password', array('conditions' => array('id = ? ', $id)));
             var_dump($user_pass->password);
             $attributes['password'] = "P" . $user_pass->password;
@@ -135,13 +133,11 @@ class UserController extends BaseController
             $user->update_attributes($attributes);
 
             if ($user->is_valid()) {
-
                 var_dump($attributes['password']);
                 $attributes['password'] = $user_pass->password;
                 $user->update_attributes($attributes);
                 $user->save(false);
                 header('Location: router.php?c=users&a=index');
-
             } else {
                 $this->renderViewBackend('users/update', [
                     'user' => $user,
@@ -153,8 +149,6 @@ class UserController extends BaseController
                 $user->update_attributes($attributes);
                 $user->save(false);
                 header('Location: router.php?c=users&a=index');
-
-
             } else {
                 $this->renderViewBackend('users/update', [
                     'user' => $user,
