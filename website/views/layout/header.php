@@ -46,7 +46,7 @@
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content white-effect">
-                            <a href="#">Faturas</a>
+                            <a href="router.php?c=site&a=pdfindex&id=<?= $user->id ?>">Faturas</a>
                             <a href="router.php?c=site&a=show&id=<?= $user->id ?>">Perfil</a>
                             <a href="router.php?c=auth&a=logout">Logout</a>
                         </div>
