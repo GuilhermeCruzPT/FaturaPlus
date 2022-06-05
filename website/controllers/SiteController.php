@@ -60,4 +60,8 @@ class SiteController extends BaseController
         // porque eu faço require
         $this->renderView('backoffice/backoffice');
     }
+
+    public function editperfil(){
+        
+    }
 }
