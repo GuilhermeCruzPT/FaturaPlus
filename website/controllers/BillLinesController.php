@@ -167,15 +167,19 @@ class BillLinesController extends BaseController
         $bills = Bill::all();
         $bill_lines = Bill_line::find([$id]);
 
-        if (is_null($bill_lines)) {
-            header('Location: router.php?c=lines&a=index');
-        } else {
-            $this->renderViewBackend('lines/update', [
-                'bill_lines' => $bill_lines,
-                'products' => $products,
-                'bills' => $bills,
-            ]);
+        if ($bill_lines->bill->state == 'l') {
+            if (is_null($bill_lines)) {
+                header('Location: router.php?c=lines&a=index');
+            } else {
+                $this->renderViewBackend('lines/update', [
+                    'bill_lines' => $bill_lines,
+                    'products' => $products,
+                    'bills' => $bills,
+                ]);
+            }
         }
+        else
+            header('Location: router.php?c=lines&a=index');
     }
 
     public function update($id)

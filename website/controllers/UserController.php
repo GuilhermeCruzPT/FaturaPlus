@@ -102,7 +102,7 @@ class UserController extends BaseController
             }
         }
         else
-            $this->renderView('site/editperfil');
+            header('Location: router.php?c=users&a=index');
     }
 
     public function update($id)

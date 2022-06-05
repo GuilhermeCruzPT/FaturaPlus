@@ -50,23 +50,19 @@
                            class="form-control"
                            id="password"
                            name="password"
-                           placeholder="Inserir Password"
-                           >
+                           placeholder="Inserir Password">
                 </div>
 
                 <?php
-
                     if (isset($user->errors)) {
                         if (is_array($user->errors->on('password'))) {
                             foreach ($user->errors->on('password') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
                             }
                         }
-                        elseif ($user->errors->on('password')) {
-
+                        else if ($user->errors->on('password')) {
                             echo "<font color='red'>" . $user->errors->on('password') . "</font>";
                         }
-
                     }
                 ?>
 
