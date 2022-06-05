@@ -6,7 +6,7 @@
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
 <body>
-<section class="home-section">
+<section class="home-section-front">
     <div class="container">
         <div class="box" style="margin: 100px; background: white;">
 
@@ -16,7 +16,7 @@
 	padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                <h4 class="display-4 text-center">Editar o meu perfil</h4><hr><br>
+                <h4 class="display-4 text-center">Editar Perfil</h4><hr><br>
 
                 <div class="form-group">
                     <label for="username">Username:</label>
@@ -50,25 +50,19 @@
                            class="form-control"
                            id="password"
                            name="password"
-                           placeholder="Inserir Password"
-
-                    />
-
+                           placeholder="Inserir Password">
                 </div>
 
                 <?php
-
                 if (isset($user->errors)) {
                     if (is_array($user->errors->on('password'))) {
                         foreach ($user->errors->on('password') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
                         }
                     }
-                    elseif ($user->errors->on('password')) {
-
+                    else if ($user->errors->on('password')) {
                         echo "<font color='red'>" . $user->errors->on('password') . "</font>";
                     }
-
                 }
                 ?>
 
@@ -216,6 +210,30 @@
                 }
                 ?>
 
+                <br>
+
+                <div class="form-group">
+                    <label for="genre">Género:</label>
+                    <select class="form-control" id="genre" name="genre">
+                        <option value="m" <?= $user->genre == 'm' ? 'selected' : '' ?>>Masculino</option>
+                        <option value="f" <?= $user->genre == 'f' ? 'selected' : '' ?>>Feminino</option>
+                    </select>
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('genre'))) {
+                        foreach ($user->errors->on('genre') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('genre') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
                 <div class="form-group">
                     <label for="country">País:</label>
                     <input type="text"
@@ -310,27 +328,13 @@
                 }
                 ?>
 
-                <br>
-
-                <?php
-                if(isset($user->errors)) {
-                    if (is_array($user->errors->on('role'))) {
-                        foreach ($user->errors->on('role') as $error) {
-                            echo "<font color='red'>" . $error . "</font>";
-                        }
-                    } else {
-                        echo "<font color='red'>" . $user->errors->on('role') . "</font>";
-                    }
-                }
-                ?>
-
                 <br><br>
 
                 <button type="submit"
                         class="btn btn-primary"
                         name="update">Atualizar</button>
 
-                <a href="router.php?c=users&a=index"
+                <a href="router.php?c=site&a=index"
                    class=" btn btn-primary btn-back"
                    role="button"
                    aria-pressed="true">Voltar</a>
