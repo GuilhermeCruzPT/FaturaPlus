@@ -1,288 +1,343 @@
-<?php
-
-if(!empty($_GET['id']))
-{
-    $id= $_GET['id'];
-
-    $sqlSelect = "SELECT * FROM users WHERE id=$id";
-}
-?>
 <!DOCTYPE html>
-
-<html lang="pt" dir="ltr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <!---<title> Responsive Registration Form | CodingLab </title>--->
-    <link href="<?= DIRPAGE ?>public/css/editperfil.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Utilizador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
-<body style="
-    height: 130vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}">
+<body>
+<section class="home-section">
+    <div class="container">
+        <div class="box" style="margin: 100px; background: white;">
 
-<div class="container1">
-    <div class="title">Editar perfil</div>
-    <div class="content1">
-        <form method="post" action="router.php?c=auth&a=save_editperfil">
-            <div class="user-details">
-                <div class="input-box">
-                    <span class="details">username</span>
-                    <input name="username" type="text" placeholder="Inserir Username">
+            <form action="router.php?c=site&a=update&id=<?= $user->id ?>" method="post"
+                  style="
+    width: 1000px;
+	padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('username'))) {
-                            foreach ($users->errors->on('username') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('username') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-                <div class="input-box">
-                    <span class="details">nome</span>
-                    <input name="name" type="text" placeholder="Inserir Nome">
+                <h4 class="display-4 text-center">Editar o meu perfil</h4><hr><br>
 
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('name'))) {
-                            foreach ($users->errors->on('name') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('name') . "</font>";
-                        }
-                    }
-                    ?>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="username"
+                           name="username"
+                           maxlength="10"
+                           placeholder="Inserir Username"
+                           value="<?= $user->username ?>"
+                           onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
                 </div>
 
-                <div class="input-box">
-                    <span class="details">Email</span>
-                    <input name="email" type="text" placeholder="Inserir E-mail">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('email'))) {
-                            foreach ($users->errors->on('email') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('email') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-                <div class="input-box">
-                    <span class="details">Phone Number</span>
-                    <input name="phone" type="number" placeholder="Inserir Número de Telemóvel">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('phone'))) {
-                            foreach ($users->errors->on('phone') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('phone') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-                <div class="input-box">
-                    <span class="details">nif</span>
-                    <input name="nif" type="number" placeholder="Inserir Nif">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('nif'))) {
-                            foreach ($users->errors->on('nif') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('nif') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-                <div class="input-box">
-                    <span class="details">birth</span>
-                    <input name="birth" type="date" placeholder="Inserir Código Postal">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('birth'))) {
-                            foreach ($users->errors->on('birth') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('birth') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-                <div class="input-box">
-                    <span class="details">Password</span>
-                    <input name="password" type="password" placeholder="Inserir Password">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('password'))) {
-                            foreach ($users->errors->on('password') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('password') . "</font>";
-                        }
-                    }
-                    ?></div>
-
-                <div class="input-box">
-                    <span class="details">Confirm Password</span>
-                    <input name="confirm_pass" type="password" placeholder="Confirmar Password">
-
-                </div>
-                <div class="input-box">
-                    <span class="details">postal_code</span>
-                    <input name="postal_code" type="text" placeholder="Inserir Código Postal">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('postal_code'))) {
-                            foreach ($users->errors->on('postal_code') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('postal_code') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-                <div class="input-box">
-                    <span class="details">coutry</span>
-                    <input name="country" type="text" placeholder="Inserir País">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('country'))) {
-                            foreach ($users->errors->on('country') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('country') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-
-                <div class="input-box">
-                    <span class="details">city</span>
-                    <input name="city" type="text" placeholder="Inserir Cidade">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('city'))) {
-                            foreach ($users->errors->on('city') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('city') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-
-                <div class="input-box">
-                    <span class="details">locale</span>
-                    <input name="locale" type="text" placeholder="Inserir Localidade">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('locale'))) {
-                            foreach ($users->errors->on('locale') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('locale') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-                <div class="input-box">
-                    <span class="details">address</span>
-                    <input name="address" type="text" placeholder="Inserir Morada">
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('address'))) {
-                            foreach ($users->errors->on('address') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('address') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-                <div class="input-box">
-                    <span class="details">imagem</span>
-                    <input name="image" type="text" placeholder="Inserir Imagem">
-
-                    <?php
-                    if (isset($users->errors)) {
-                        if (is_array($users->errors->on('image'))) {
-                            foreach ($users->errors->on('image') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
-                            }
-                        } else {
-                            echo "<font color='red'>" . $users->errors->on('image') . "</font>";
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
-
-            <div class="gender-details">
-                <input type="radio" name="genre" value="m" id="dot-1">
-                <input type="radio" name="genre" value="f" id="dot-2">
-                <span>Gender</span>
-
-                <div class="category">
-
-                    <label for="dot-1">
-                        <span class="dot one"></span>
-                        <span class="gender">Male</span>
-                    </label>
-                    <label for="dot-2">
-                        <span class="dot two"></span>
-                        <span class="gender">Female</span>
-                    </label>
-
-                </div>
                 <?php
-                if (isset($users->errors)) {
-                    if (is_array($users->errors->on('genre'))) {
-                        foreach ($users->errors->on('genre') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('username'))) {
+                        foreach ($user->errors->on('username') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" . $users->errors->on('genre') . "</font>";
-
+                        echo "<font color='red'>" . $user->errors->on('username') . "</font>";
                     }
                 }
                 ?>
 
-                <div class="button" href="backoffice\users\index.php?id=$user['id']">
-                    <input type="submit" value="Guardar">
-                </div>
-        </form>
-    </div>
-</div>
+                <br>
 
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password"
+                           class="form-control"
+                           id="password"
+                           name="password"
+                           placeholder="Inserir Password"
+
+                    />
+
+                </div>
+
+                <?php
+
+                if (isset($user->errors)) {
+                    if (is_array($user->errors->on('password'))) {
+                        foreach ($user->errors->on('password') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    }
+                    elseif ($user->errors->on('password')) {
+
+                        echo "<font color='red'>" . $user->errors->on('password') . "</font>";
+                    }
+
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="name"
+                           name="name"
+                           placeholder="Inserir Nome"
+                           value="<?= $user->name ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('name'))) {
+                        foreach ($user->errors->on('name') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('name') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email"
+                           class="form-control"
+                           id="email"
+                           name="email"
+                           placeholder="Inserir E-mail"
+                           value="<?= $user->email ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('email'))) {
+                        foreach ($user->errors->on('email') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('email') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="phone">Número:</label>
+                    <input type="number"
+                           class="form-control"
+                           id="phone"
+                           name="phone"
+                           placeholder="Inserir Número"
+                           value="<?= $user->phone ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('phone'))) {
+                        foreach ($user->errors->on('phone') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('phone') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="nif">Nif:</label>
+                    <input type="number"
+                           class="form-control"
+                           id="nif"
+                           name="nif"
+                           placeholder="Inserir Nif"
+                           value="<?= $user->nif ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('nif'))) {
+                        foreach ($user->errors->on('nif') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('nif') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="postal_code">Código Postal:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="postal_code"
+                           name="postal_code"
+                           placeholder="Inserir Código Postal"
+                           value="<?= $user->postal_code ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('postal_code'))) {
+                        foreach ($user->errors->on('postal_code') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('postal_code') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="birth">Data de Nascimento:</label>
+                    <input type="date"
+                           class="form-control"
+                           id="birth"
+                           name="birth"
+                           placeholder="Inserir Data de Nascimento"
+                           value="<?= date_format($user->birth, 'Y-m-d') ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('birth'))) {
+                        foreach ($user->errors->on('birth') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('birth') . "</font>";
+                    }
+                }
+                ?>
+
+                <div class="form-group">
+                    <label for="country">País:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="country"
+                           name="country"
+                           placeholder="Inserir País"
+                           value="<?= $user->country ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('country'))) {
+                        foreach ($user->errors->on('country') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('country') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="city">Cidade:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="city"
+                           name="city"
+                           placeholder="Inserir Cidade"
+                           value="<?= $user->city ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('city'))) {
+                        foreach ($user->errors->on('city') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('city') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="locale">Localidade:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="locale"
+                           name="locale"
+                           placeholder="Inserir Localidade"
+                           value="<?= $user->locale ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('locale'))) {
+                        foreach ($user->errors->on('locale') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('locale') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="address">Morada:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="address"
+                           name="address"
+                           placeholder="Inserir Morada"
+                           value="<?= $user->address ?>">
+                </div>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('address'))) {
+                        foreach ($user->errors->on('address') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('address') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <?php
+                if(isset($user->errors)) {
+                    if (is_array($user->errors->on('role'))) {
+                        foreach ($user->errors->on('role') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $user->errors->on('role') . "</font>";
+                    }
+                }
+                ?>
+
+                <br><br>
+
+                <button type="submit"
+                        class="btn btn-primary"
+                        name="update">Atualizar</button>
+
+                <a href="router.php?c=users&a=index"
+                   class=" btn btn-primary btn-back"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
+
+            </form>
+        </div>
+    </div>
+</section>
 </body>
 </html>
