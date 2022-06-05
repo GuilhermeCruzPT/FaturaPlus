@@ -20,4 +20,8 @@ class BaseController{
         require_once "./views/$view.php";
     }
 
+    public function renderViewPerfil($view, $params = []) {
+        extract($params);
+        require_once "./views/site/$view.php";
+    }
 }

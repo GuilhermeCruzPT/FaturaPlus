@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= APP_NAME ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= DIRPAGE ?>public/css/style.css" rel="stylesheet">
+    <link href="<?= DIRCSS ?>style.css" rel="stylesheet">
 </head>
 <body>
 <header class="bg-dark p-3 text-light">
@@ -47,7 +47,7 @@
                         </button>
                         <div class="dropdown-content white-effect">
                             <a href="#">Faturas</a>
-                            <a href="router.php?c=site&a=editperfil&id=<?= $user->id?>" >Perfil</a>
+                            <a href="router.php?c=site&a=show&id=<?= $user->id ?>">Perfil</a>
                             <a href="router.php?c=auth&a=logout">Logout</a>
                         </div>
                     </div>

@@ -67,12 +67,12 @@ class SiteController extends BaseController
         $this->renderView('backoffice/backoffice');
     }
 
-    public function editperfil($id)
+    public function edit($id)
     {
         $user = User::find([$id]);
-        $this->renderViewfrontend('site/editperfil', [
-            'user' => $user,]);
-
+        $this->renderViewPerfil('perfil/update', [
+            'user' => $user,
+        ]);
     }
 
     public function update($id)
@@ -93,10 +93,7 @@ class SiteController extends BaseController
             'locale' => $_POST['locale'],
             'address' => $_POST['address']);
 
-
-
         if (empty($attributes['password'])) {
-
             $user_pass = User::find('password', array('conditions' => array('id = ? ', $id)));
             var_dump($user_pass->password);
             $attributes['password'] = "P" . $user_pass->password;
@@ -104,15 +101,13 @@ class SiteController extends BaseController
             $user->update_attributes($attributes);
 
             if ($user->is_valid()) {
-
                 var_dump($attributes['password']);
                 $attributes['password'] = $user_pass->password;
                 $user->update_attributes($attributes);
                 $user->save(false);
-                header('Location: router.php?c=site&a=index');
-
+                header('Location: router.php?c=site&a=show&id='.$user->id);
             } else {
-                $this->renderViewfrontend('site/editperfil', [
+                $this->renderViewPerfil('perfil/update', [
                     'user' => $user,
                 ]);
             }
@@ -122,15 +117,23 @@ class SiteController extends BaseController
                 $user->update_attributes($attributes);
                 $user->save(false);
                 header('Location: router.php?c=site&a=index');
-
-
             } else {
-                $this->renderViewfrontend('site/editperfil', [
+                $this->renderViewPerfil('perfil/update', [
                     'user' => $user,
                 ]);
             }
         }
     }
 
-
+    public function show($id)
+    {
+        $user = User::find([$id]);
+        if (is_null($user)) {
+            header('Location: router.php?c=site&a=index');
+        } else {
+            $this->renderViewPerfil('perfil/show', [
+                'user' => $user,
+            ]);
+        }
+    }
 }

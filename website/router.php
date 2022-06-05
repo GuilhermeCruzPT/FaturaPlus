@@ -33,9 +33,9 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                     $siteController = new SiteController();
                     $siteController->index();
                     break;
-                case 'show':
+                /*case 'show':
                     $siteController->demo();
-                    break;
+                    break;*/
                 case 'name':
                     $siteController->name();
                     break;
@@ -48,14 +48,17 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'backoffice':
                     $siteController->backoffice();
                     break;
-                case 'editperfil':
+                case 'edit':
                     $id = $_GET[('id')];
-                    $siteController->editperfil($id);
+                    $siteController->edit($id);
                     break;
-
                 case 'update':
                     $id = $_GET[('id')];
                     $siteController->update($id);
+                    break;
+                case 'show':
+                    $id = $_GET[('id')];
+                    $siteController->show($id);
                     break;
             }
             break;
