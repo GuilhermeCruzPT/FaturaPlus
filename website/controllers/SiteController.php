@@ -105,7 +105,7 @@ class SiteController extends BaseController
                 $attributes['password'] = $user_pass->password;
                 $user->update_attributes($attributes);
                 $user->save(false);
-                header('Location: router.php?c=site&a=index');
+                header('Location: router.php?c=site&a=show&id='.$user->id);
             } else {
                 $this->renderViewPerfil('perfil/update', [
                     'user' => $user,
@@ -122,6 +122,18 @@ class SiteController extends BaseController
                     'user' => $user,
                 ]);
             }
+        }
+    }
+
+    public function show($id)
+    {
+        $user = User::find([$id]);
+        if (is_null($user)) {
+            header('Location: router.php?c=site&a=index');
+        } else {
+            $this->renderViewPerfil('perfil/show', [
+                'user' => $user,
+            ]);
         }
     }
 }

@@ -47,7 +47,7 @@
                         </button>
                         <div class="dropdown-content white-effect">
                             <a href="#">Faturas</a>
-                            <a href="router.php?c=site&a=edit&id=<?= $user->id?>" >Perfil</a>
+                            <a href="router.php?c=site&a=show&id=<?= $user->id ?>">Perfil</a>
                             <a href="router.php?c=auth&a=logout">Logout</a>
                         </div>
                     </div>

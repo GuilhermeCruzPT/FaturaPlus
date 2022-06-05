@@ -33,9 +33,9 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                     $siteController = new SiteController();
                     $siteController->index();
                     break;
-                case 'show':
+                /*case 'show':
                     $siteController->demo();
-                    break;
+                    break;*/
                 case 'name':
                     $siteController->name();
                     break;
@@ -55,6 +55,10 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'update':
                     $id = $_GET[('id')];
                     $siteController->update($id);
+                    break;
+                case 'show':
+                    $id = $_GET[('id')];
+                    $siteController->show($id);
                     break;
             }
             break;
