@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
-<html lang="en" dir="ltr">
+<html lang="pt" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" href="<?= DIRCSS ?>backoffice.css">
-    <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -25,7 +22,7 @@
         </li>-->
 
         <li>
-            <a href="#">
+            <a href="router.php?c=panel&a=index">
                 <i class='bx bx-grid-alt' ></i>
                 <span class="links_name">Painel Principal</span>
             </a>
@@ -84,11 +81,13 @@
             <div class="profile-details">
                 <!--<img src="profile.jpg" alt="profileImg">-->
                 <div class="name_job">
-                    <div class="name">Utilizador</div>
-                    <div class="job">Funcionario</div>
+                    <div class="name"><?= $_SESSION["username"] ?></div>
+                    <div class="job"><?= $_SESSION["permission"] == 'a' ? 'Administrador' : 'Funcionário' ?></div>
                 </div>
             </div>
-            <i class='bx bx-log-out' id="log_out" ></i>
+            <a href="router.php?c=auth&a=logout">
+                <i class='bx bx-log-out logout' id="log_out" ></i>
+            </a>
         </li>
 </div>
 
@@ -99,20 +98,19 @@
 
     closeBtn.addEventListener("click", ()=>{
         sidebar.classList.toggle("open");
-        menuBtnChange();//calling the function(optional)
+        menuBtnChange();
     });
 
-    searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    searchBtn.addEventListener("click", ()=>{
         sidebar.classList.toggle("open");
-        menuBtnChange(); //calling the function(optional)
+        menuBtnChange();
     });
 
-    // following are the code to change sidebar button(optional)
     function menuBtnChange() {
         if(sidebar.classList.contains("open")){
-            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
         }else {
-            closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+            closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
         }
     }
 </script>

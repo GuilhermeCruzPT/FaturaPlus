@@ -5,11 +5,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 </head>
-
+<body>
 <section class="home-section">
-    <body>
     <div class="container">
-        <div class="box" style=" margin: 200px; background: white;">
+        <div class="box" style="margin: 100px; background: white;">
 
             <form action="router.php?c=ivas&a=index" method="post" style="
     width: 1000px;
@@ -24,7 +23,7 @@
                            class="form-control"
                            id="percentage"
                            name="percentage"
-                           value="<?= $iva->percentage ?>">
+                           value="<?= $iva->percentage ?>" disabled>
                 </div>
 
                 <br>
@@ -35,7 +34,7 @@
                            class="form-control"
                            id="description"
                            name="description"
-                           value="<?= $iva->description ?>">
+                           value="<?= $iva->description ?>" disabled>
                 </div>
 
                 <br>
@@ -46,18 +45,19 @@
                            class="form-control"
                            id="vigour"
                            name="vigour"
-                           value="<?= $iva->vigour ?>">
+                           value="<?= $iva->vigour == '0' ? 'Inativo' : 'Ativo' ?>" disabled>
                 </div>
 
-                <br>
+                <br><br>
 
-                <button type="submit"
-                        class="btn btn-primary"
-                        name="return">Voltar</button>
+                <a href="router.php?c=ivas&a=index"
+                   class=" btn btn-primary btn-back"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
 
             </form>
         </div>
     </div>
-    </body>
 </section>
+</body>
 </html>

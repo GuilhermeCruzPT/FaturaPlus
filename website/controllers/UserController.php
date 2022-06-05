@@ -2,18 +2,28 @@
 
 class UserController extends BaseController
 {
+    public function __construct()
+    {
+        session_start();
+        if (isset($_SESSION["user_id"])) {
+            if ($_SESSION["permission"] == 'c')
+                header('Location: router.php?c=site&a=index');
+        }
+        else header('Location: router.php?c=auth&a=signin');
+    }
+
     public function index()
     {
         if (isset($_POST[('search_btn')])){
 
-            //barra de pesquisa
+            /* ╔═══════════════════════════╗ */
+            /* ║     Barra de Pesquisa     ║ */
+            /* ╚═══════════════════════════╝ */
 
             $search = $_POST['search'];
             $users = User::find('all',
-                array('conditions' => "referencia LIKE '%$search%' 
-                or username LIKE '%$search%'
-                or password LIKE '%$search%'
-                or image LIKE '%$search%'
+                array('conditions' => "
+                username LIKE '%$search%'
                 or name LIKE '%$search%'
                 or email LIKE '%$search%'
                 or phone LIKE '%$search%'
@@ -46,89 +56,133 @@ class UserController extends BaseController
 
     public function store()
     {
-        $attributes = array('username' => $_POST['username'],
+        $attributes = array(
+            'username' => $_POST['username'],
             'password' => $_POST['password'],
-            'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'nif' => $_POST['nif'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
             'postal_code' => $_POST['postal_code'],
             'birth' => $_POST['birth'],
             'genre' => $_POST['genre'],
-            'coutry' => $_POST['coutry'],
+            'country' => $_POST['country'],
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],
             'role' => $_POST['role']);
         $users = new User($attributes);
         if ($users->is_valid()) {
-            $users->save();
+            $attributes['password'] = md5($_POST['password']);
+            $users->update_attributes($attributes);
+            $users->save(false);
             header('Location: router.php?c=users&a=index');
-        }else{
-            //retorna os erros presentes no model
+        } else {
+            // *** Retorna os erros presentes no model *** \\
 
-            print_r($users->errors->full_messages());
+            //print_r($bills->errors->full_messages());
 
             $this->renderViewBackend('users/create', [
                 'users' => $users
             ]);
-
-            //header('Location: router.php?c=products&a=create');
         }
     }
 
     public function edit($id)
     {
         $user = User::find([$id]);
-        if (is_null($user)) {
-            header('Location: router.php?c=users&a=index');
-        } else {
-            $this->renderViewBackend('users/update', [
-                'user' => $user,
-            ]);
+        if ($_SESSION["permission"] == 'a' || $user->role == 'c' || $user->username == $_SESSION["username"]) {
+            if (is_null($user)) {
+                header('Location: router.php?c=users&a=index');
+            } else {
+                $this->renderViewBackend('users/update', [
+                    'user' => $user,
+                ]);
+            }
         }
+        else
+            header('Location: router.php?c=users&a=index');
     }
 
     public function update($id)
     {
-        //find resource (activerecord/model) instance where PK = $id
-        //your form name fields must match the ones of the table fields
         $user = User::find([$id]);
 
-        $attributes = array('username' => $_POST['username'],
+        $attributes = array(
+            'username' => $_POST['username'],
             'password' => $_POST['password'],
-            'image' => $_POST['image'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'nif' => $_POST['nif'],
+            'phone' => ((int)$_POST['phone']),
+            'nif' => ((int)$_POST['nif']),
             'postal_code' => $_POST['postal_code'],
             'birth' => $_POST['birth'],
             'genre' => $_POST['genre'],
-            'coutry' => $_POST['coutry'],
+            'country' => $_POST['country'],
             'city' => $_POST['city'],
             'locale' => $_POST['locale'],
             'address' => $_POST['address'],
             'role' => $_POST['role']);
-        $user->update_attributes($attributes);
-        if($user->is_valid()){
-            $user->save();
-            header('Location: router.php?c=users&a=index');
+
+
+        if (empty($attributes['password'])) {
+
+            $user_pass = User::find('password', array('conditions' => array('id = ? ', $id)));
+            var_dump($user_pass->password);
+            $attributes['password'] = "P" . $user_pass->password;
+            var_dump($user_pass->password);
+            $user->update_attributes($attributes);
+
+            if ($user->is_valid()) {
+
+                var_dump($attributes['password']);
+                $attributes['password'] = $user_pass->password;
+                $user->update_attributes($attributes);
+                $user->save(false);
+                header('Location: router.php?c=users&a=index');
+
+            } else {
+                $this->renderViewBackend('users/update', [
+                    'user' => $user,
+                ]);
+            }
         } else {
-            $this->renderView('users/update', [
-                'user' => $user,
-            ]);
+            if ($user->is_valid()) {
+                $attributes['password'] = md5($_POST['password']);
+                $user->update_attributes($attributes);
+                $user->save(false);
+                header('Location: router.php?c=users&a=index');
+
+
+            } else {
+                $this->renderViewBackend('users/update', [
+                    'user' => $user,
+                ]);
+            }
         }
     }
 
     public function delete($id)
     {
+        // Faz o delete de varios registos de outras tabelas na base de dados
+        
         $user = User::find([$id]);
-        $user->delete();
+        if ($_SESSION["permission"] == 'a' || $user->role == 'c' || $user->username == $_SESSION["username"]) {
+            $show = Bill::find('all', array('conditions' => array('client_reference_id = ? OR employee_reference_id = ?', $id, $id)));
 
-        header('Location: router.php?c=users&a=index');
-        //$this->renderView('user/index');
+            foreach ($show as $show_bill) {
+                Bill_line::delete_all(array('conditions' => array('bill_id  = ?', $show_bill->id)));
+            }
+
+            Bill::delete_all(array('conditions' => array('client_reference_id  = ? OR employee_reference_id = ?', $id, $id)));
+
+            $user->delete();
+
+            header('Location: router.php?c=users&a=index');
+        }
+        else {
+            header('Location: router.php?c=users&a=index');
+        }
     }
 
     public function show($id)
@@ -137,10 +191,9 @@ class UserController extends BaseController
         if (is_null($user)) {
             header('Location: router.php?c=users&a=index');
         } else {
-            $this->renderViewBackend('users/show.php', [
+            $this->renderViewBackend('users/show', [
                 'user' => $user,
             ]);
         }
     }
-
 }

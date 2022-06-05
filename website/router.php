@@ -11,17 +11,21 @@ require_once './controllers/ProductController.php';
 require_once './controllers/BillController.php';
 require_once './controllers/UserController.php';
 require_once './controllers/IvaController.php';
+require_once './controllers/EnterpriseController.php';
+require_once './controllers/BillLinesController.php';
+require_once './controllers/PanelController.php';
 
 
-if(!(isset($_GET['c']) && isset($_GET['a']))){
+if (!(isset($_GET['c']) && isset($_GET['a']))) {
     // Controller e action por omissão
     $siteController = new SiteController();
     $siteController->index();
-}else {
+} else {
     $controller = $_GET['c'];
     $action = $_GET['a'];
 
     switch ($controller) {
+
         case 'site':
             $siteController = new SiteController();
             switch ($action) {
@@ -29,7 +33,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $siteController = new SiteController();
                     $siteController->index();
                     break;
-                case 'show.php':
+                case 'show':
                     $siteController->demo();
                     break;
                 case 'name':
@@ -50,14 +54,20 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
         case 'auth':
             $authController = new AuthController();
             switch ($action) {
-                case 'sign':
-                    $authController->sign();
-                    break;
                 case 'signin':
                     $authController->signin();
                     break;
-                case 'save_signin':
-                    $authController->save_signin();
+                case 'verify_login':
+                    $authController->verify_login();
+                    break;
+                case 'signup':
+                    $authController->signup();
+                    break;
+                case 'save_signup':
+                    $authController->save_signup();
+                    break;
+                case 'logout':
+                    $authController->logout();
                     break;
             }
             break;
@@ -113,7 +123,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $BillController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $BillController->show($id);
                     break;
@@ -144,7 +154,7 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $UserController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $UserController->show($id);
                     break;
@@ -175,13 +185,74 @@ if(!(isset($_GET['c']) && isset($_GET['a']))){
                     $id = $_GET[('id')];
                     $IvaController->update($id);
                     break;
-                case 'show.php':
+                case 'show':
                     $id = $_GET[('id')];
                     $IvaController->show($id);
                     break;
                 case 'delete':
                     $id = $_GET[('id')];
                     $IvaController->delete($id);
+                    break;
+            }
+            break;
+
+        case 'enterprises':
+            $EnterprisesController = new EnterpriseController();
+            switch ($action) {
+                case 'index':
+                    $EnterprisesController->index();
+                    break;
+                case 'edit':
+                    $id = $_GET[('id')];
+                    $EnterprisesController->edit($id);
+                    break;
+                case 'update':
+                    $id = $_GET[('id')];
+                    $EnterprisesController->update($id);
+                    break;
+                case 'show':
+                    $id = $_GET[('id')];
+                    $EnterprisesController->show($id);
+                    break;
+            }
+            break;
+
+        case 'lines':
+            $BillLinesController = new BillLinesController();
+            switch ($action) {
+                case 'index':
+                    $BillLinesController->index();
+                    break;
+                case 'create':
+                    $BillLinesController->create();
+                    break;
+                case 'save':
+                    $BillLinesController->store();
+                    break;
+                case 'edit':
+                    $id = $_GET[('id')];
+                    $BillLinesController->edit($id);
+                    break;
+                case 'update':
+                    $id = $_GET[('id')];
+                    $BillLinesController->update($id);
+                    break;
+                case 'show':
+                    $id = $_GET[('id')];
+                    $BillLinesController->show($id);
+                    break;
+                case 'delete':
+                    $id = $_GET[('id')];
+                    $BillLinesController->delete($id);
+                    break;
+            }
+            break;
+
+        case 'panel':
+            $PanelController = new PanelController();
+            switch ($action) {
+                case 'index':
+                    $PanelController->index();
                     break;
             }
             break;
