@@ -2,6 +2,8 @@
 
 require_once './models/Data.php';
 
+use Dompdf\Dompdf;
+
 class SiteController extends BaseController
 {
     public function __construct()
@@ -70,7 +72,7 @@ class SiteController extends BaseController
     public function edit($id)
     {
         $user = User::find([$id]);
-        $this->renderViewPerfil('perfil/update', [
+        $this->renderViewDetalhe('profile/update', [
             'user' => $user,
         ]);
     }
@@ -105,9 +107,9 @@ class SiteController extends BaseController
                 $attributes['password'] = $user_pass->password;
                 $user->update_attributes($attributes);
                 $user->save(false);
-                header('Location: router.php?c=site&a=show&id='.$user->id);
+                header('Location: router.php?c=site&a=show&id=' . $user->id);
             } else {
-                $this->renderViewPerfil('perfil/update', [
+                $this->renderViewDetalhe('profile/update', [
                     'user' => $user,
                 ]);
             }
@@ -118,7 +120,7 @@ class SiteController extends BaseController
                 $user->save(false);
                 header('Location: router.php?c=site&a=index');
             } else {
-                $this->renderViewPerfil('perfil/update', [
+                $this->renderViewDetalhe('profile/update', [
                     'user' => $user,
                 ]);
             }
@@ -131,9 +133,19 @@ class SiteController extends BaseController
         if (is_null($user)) {
             header('Location: router.php?c=site&a=index');
         } else {
-            $this->renderViewPerfil('perfil/show', [
+            $this->renderViewDetalhe('profile/show', [
                 'user' => $user,
             ]);
         }
+    }
+
+    public function pdfindex($id)
+    {
+        $user = User::find([$id]);
+        $bills = Bill::all();
+        $this->renderViewDetalhe('bills/index', [
+            'user' => $user,
+            'bills' => $bills,
+        ]);
     }
 }
