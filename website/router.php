@@ -48,6 +48,15 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'backoffice':
                     $siteController->backoffice();
                     break;
+                case 'editperfil':
+                    $id = $_GET[('id')];
+                    $siteController->editperfil($id);
+                    break;
+
+                case 'update':
+                    $id = $_GET[('id')];
+                    $siteController->update($id);
+                    break;
             }
             break;
 
