@@ -5,7 +5,8 @@ class UserController extends BaseController
     public function __construct()
     {
         session_start();
-        if (isset($_SESSION["user_id"])) {
+        if (isset($_SESSION["user_id"]))
+        {
             if ($_SESSION["permission"] == 'c')
                 header('Location: router.php?c=site&a=index');
         }
@@ -101,7 +102,7 @@ class UserController extends BaseController
             }
         }
         else
-            header('Location: router.php?c=users&a=index');
+            $this->renderView('site/editperfil');
     }
 
     public function update($id)

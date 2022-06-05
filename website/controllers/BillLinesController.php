@@ -206,7 +206,7 @@ class BillLinesController extends BaseController
             else
                 $validation_quantity = false;
 
-            if ($bill_id->id != $bill_line_old->id)
+            if ($bill_id->id != $bill_line_old->bill_id)
                 $validation_bill = true;
             else
                 $validation_bill = false;
@@ -221,17 +221,25 @@ class BillLinesController extends BaseController
             }
 
             foreach ($lines as $line) {
-                if ($line->bill_id == $bill_id->id) {
-                    $valorTotal_new += $line->unitary_value * $line->quantity;
-                    $valorIva_new += $line->iva_value * $line->quantity;
+                if ($line->bill_id == $bill_id->id || $line->id == $id) {
+                    if ($line->id == $id && $validation_quantity == true){
+                        $valorTotal_new += $line->unitary_value * ((int)$_POST['quantity']);
+                        $valorIva_new += $line->iva_value * ((int)$_POST['quantity']);
+                    }
+                    else {
+                        $valorTotal_new += $line->unitary_value * $line->quantity;
+                        $valorIva_new += $line->iva_value * $line->quantity;
+                    }
                 }
             }
 
             if ($validation_bill == true){
                 foreach ($lines as $line) {
-                    if ($line->bill_id == $bill_line_old->id) {
-                        $valorTotal_old += $line->unitary_value * $line->quantity;
-                        $valorIva_old += $line->iva_value * $line->quantity;
+                    if ($line->bill_id == $bill_line_old->bill_id) {
+                        if ($line->id != $id) {
+                            $valorTotal_old += $line->unitary_value * $line->quantity;
+                            $valorIva_old += $line->iva_value * $line->quantity;
+                        }
                     }
                 }
             }
@@ -276,8 +284,10 @@ class BillLinesController extends BaseController
 
             $bill_new = Bill::find([$_POST['bill_id']]);
             $bill_new->update_attributes($attributes_bills_new);
-            $bill_old = Bill::find($bill_line_old->bill_id);
-            $bill_old->update_attributes($attributes_bills_old);
+            if ($validation_bill == true) {
+                $bill_old = Bill::find($bill_line_old->bill_id);
+                $bill_old->update_attributes($attributes_bills_old);
+            }
             $bill_lines = Bill_line::find([$id]);
             $bill_lines->update_attributes($attributes_lines);
             if ($validation_product == true) {
@@ -305,6 +315,7 @@ class BillLinesController extends BaseController
                 }
             }
             else if ($validation_quantity == true) {
+                var_dump("Hello");
                 if (((int)$_POST['quantity']) != 0)
                     $product_id_new->update_attributes($attributes_products_new);
                 if ($bill_lines->is_valid() && $bill_new->is_valid() && $product_id_new->is_valid() && $validation_bill == false) {
