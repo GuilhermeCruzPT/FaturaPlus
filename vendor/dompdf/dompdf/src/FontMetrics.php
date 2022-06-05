@@ -602,7 +602,7 @@ class FontMetrics
     public function setCanvas(Canvas $canvas)
     {
         $this->canvas = $canvas;
-        // Still write deprecated pdf for now. It might be used by a parent class.
+        // Still write deprecated pdf.html for now. It might be used by a parent class.
         $this->pdf = $canvas;
         return $this;
     }

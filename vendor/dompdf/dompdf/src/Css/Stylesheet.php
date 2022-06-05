@@ -145,7 +145,7 @@ class Stylesheet
      *   screen, tty, tv, projection, handheld, print, braille, aural, all
      * The following are non standard extensions for undocumented specific environments.
      *   static, visual, bitmap, paged, dompdf
-     * Note, even though the generated pdf file is intended for print output,
+     * Note, even though the generated pdf.html file is intended for print output,
      * the desired content might be different (e.g. screen or projection view of html file).
      * Therefore allow specification of content by dompdf setting Options::defaultMediaType.
      * If given, replace media "print" by Options::defaultMediaType.

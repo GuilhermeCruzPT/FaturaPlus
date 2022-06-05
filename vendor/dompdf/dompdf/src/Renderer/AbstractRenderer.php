@@ -441,7 +441,7 @@ abstract class AbstractRenderer
         $this->_canvas->clipping_rectangle($x, $y, $box_width, $box_height);
 
         // When using cpdf and optimization to direct png creation from gd object is available,
-        // don't create temp file, but place gd object directly into the pdf
+        // don't create temp file, but place gd object directly into the pdf.html
         if ($cpdfFromGd && $this->_canvas instanceof CPDF) {
             // Note: CPDF_Adapter image converts y position
             $this->_canvas->get_cpdf()->addImagePng($bg, $cpdfKey, $x, $this->_canvas->get_height() - $y - $height, $width, $height);

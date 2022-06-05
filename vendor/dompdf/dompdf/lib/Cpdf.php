@@ -1,12 +1,12 @@
 <?php
 /**
- * A PHP class to provide the basic functionality to create a pdf document without
+ * A PHP class to provide the basic functionality to create a pdf.html document without
  * any requirement for additional modules.
  *
  * Extended by Orion Richardson to support Unicode / UTF-8 characters using
  * TCPDF and others as a guide.
  *
- * @author  Wayne Munro <pdf@ros.co.nz>
+ * @author  Wayne Munro <pdf.html@ros.co.nz>
  * @author  Orion Richardson <orionr@yahoo.com>
  * @author  Helmut Tischer <htischer@weihenstephan.org>
  * @author  Ryan H. Masten <ryan.masten@gmail.com>
@@ -49,12 +49,12 @@ class Cpdf
     const XOBJECT_SUBTYPE_FORM = 'Form';
 
     /**
-     * @var integer The current number of pdf objects in the document
+     * @var integer The current number of pdf.html objects in the document
      */
     public $numObj = 0;
 
     /**
-     * @var array This array contains all of the pdf objects, ready for final assembly
+     * @var array This array contains all of the pdf.html objects, ready for final assembly
      */
     public $objects = [];
 
@@ -287,7 +287,7 @@ class Cpdf
     public $arc4_objnum = 0;
 
     /**
-     * @var string The file identifier, used to uniquely identify a pdf document
+     * @var string The file identifier, used to uniquely identify a pdf.html document
      */
     public $fileIdentifier = '';
 
@@ -433,16 +433,16 @@ class Cpdf
     /**
      * Document object methods (internal use only)
      *
-     * There is about one object method for each type of object in the pdf document
+     * There is about one object method for each type of object in the pdf.html document
      * Each function has the same call list ($id,$action,$options).
      * $id = the object ID of the object, or what it is to be if it is being created
      * $action = a string specifying the action to be performed, though ALL must support:
      *           'new' - create the object with the id $id
-     *           'out' - produce the output for the pdf object
+     *           'out' - produce the output for the pdf.html object
      * $options = optional, a string or array containing the various parameters for the object
      *
      * These, in conjunction with the output function are the ONLY way for output to be produced
-     * within the pdf 'file'.
+     * within the pdf.html 'file'.
      */
 
     /**
@@ -1172,7 +1172,7 @@ class Cpdf
             }
 
             // load the pfb file, and put that into an object too.
-            // note that pdf supports only binary format type 1 font files, though there is a
+            // note that pdf.html supports only binary format type 1 font files, though there is a
             // simple utility to convert them from pfa to pfb.
             if (!$font['isSubsetting']) {
                 $data = file_get_contents($fbfile);
@@ -3170,7 +3170,7 @@ EOT;
     }
 
     /**
-     * return the pdf stream as a string returned from the function
+     * return the pdf.html stream as a string returned from the function
      *
      * @param bool $debug
      * @return string
@@ -4704,10 +4704,10 @@ EOT;
      * @param string $filename The filename to present to the client.
      * @param array $options Associative array: 'compress' => 1 or 0 (default 1); 'Attachment' => 1 or 0 (default 1).
      */
-    function stream($filename = "document.pdf", $options = [])
+    function stream($filename = "document.pdf.html", $options = [])
     {
         if (headers_sent()) {
-            die("Unable to stream pdf: headers already sent");
+            die("Unable to stream pdf.html: headers already sent");
         }
 
         if (!isset($options["compress"])) $options["compress"] = true;
@@ -4717,10 +4717,10 @@ EOT;
         $tmp = ltrim($this->output($debug));
 
         header("Cache-Control: private");
-        header("Content-Type: application/pdf");
+        header("Content-Type: application/pdf.html");
         header("Content-Length: " . mb_strlen($tmp, "8bit"));
 
-        $filename = str_replace(["\n", "'"], "", basename($filename, ".pdf")) . ".pdf";
+        $filename = str_replace(["\n", "'"], "", basename($filename, ".pdf.html")) . ".pdf.html";
         $attachment = $options["Attachment"] ? "attachment" : "inline";
 
         $encoding = mb_detect_encoding($filename);
@@ -4800,7 +4800,7 @@ EOT;
     /**
      * return the font descender, this will normally return a negative number
      * if you add this number to the baseline, you get the level of the bottom of the font
-     * it is in the pdf user units
+     * it is in the pdf.html user units
      *
      * @param $size
      * @return float|int
@@ -4819,7 +4819,7 @@ EOT;
     }
 
     /**
-     * filter the text, this is applied to all text just before being inserted into the pdf document
+     * filter the text, this is applied to all text just before being inserted into the pdf.html document
      * it escapes the various things that need to be escaped, and so on
      *
      * @access private
@@ -5546,7 +5546,7 @@ EOT;
     }
 
     /**
-     * Check if image already added to pdf image directory.
+     * Check if image already added to pdf.html image directory.
      * If yes, need not to create again (pass empty data)
      *
      * @param string $imgname
@@ -5592,7 +5592,7 @@ EOT;
             // blending mode (literal/blending) on drawing into current image. not relevant when not saved or not drawn
             //imagealphablending($img, true);
 
-            //default, but explicitely set to ensure pdf compatibility
+            //default, but explicitely set to ensure pdf.html compatibility
             imagesavealpha($img, false/*!$is_mask && !$mask*/);
 
             $error = 0;
@@ -5859,7 +5859,7 @@ EOT;
             }
 
             //png files typically contain an alpha channel.
-            //pdf file format or class.pdf does not support alpha blending.
+            //pdf.html file format or class.pdf.html does not support alpha blending.
             //on alpha blended images, more transparent areas have a color near black.
             //This appears in the result on not storing the alpha channel.
             //Correct would be the box background image or its parent when transparent.
@@ -6113,10 +6113,10 @@ EOT;
 
                     //debugpng
                     if (defined("DEBUGPNG") && DEBUGPNG) {
-                        print '[addPngFromFile no support for interlaced images in pdf ' . $file . ']';
+                        print '[addPngFromFile no support for interlaced images in pdf.html ' . $file . ']';
                     }
 
-                    $errormsg = 'There appears to be no support for interlaced images in pdf.';
+                    $errormsg = 'There appears to be no support for interlaced images in pdf.html.';
                 }
             }
 

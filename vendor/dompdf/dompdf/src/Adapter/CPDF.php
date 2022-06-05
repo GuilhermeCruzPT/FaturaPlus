@@ -328,7 +328,7 @@ class CPDF implements Canvas
      */
     public function serialize_object($id)
     {
-        // Serialize the pdf object's current state for retrieval later
+        // Serialize the pdf.html object's current state for retrieval later
         return $this->_pdf->serializeObject($id);
     }
 
@@ -968,7 +968,7 @@ class CPDF implements Canvas
     }
 
     /**
-     * Add a link to the pdf
+     * Add a link to the pdf.html
      *
      * @param string $url The url to link to
      * @param float $x The x position of the link
@@ -1064,8 +1064,8 @@ class CPDF implements Canvas
      * Processes a callback or script on every page
      *
      * The callback function receives the four parameters `$pageNumber`,
-     * `$pageCount`, `$pdf`, and `$fontMetrics`, in that order. If a script is
-     * passed as string, the variables `$PAGE_NUM`, `$PAGE_COUNT`, `$pdf`, and
+     * `$pageCount`, `$pdf.html`, and `$fontMetrics`, in that order. If a script is
+     * passed as string, the variables `$PAGE_NUM`, `$PAGE_COUNT`, `$pdf.html`, and
      * `$fontMetrics` are available instead.
      *
      * This function can be used to add page numbers to all pages after the
@@ -1153,10 +1153,10 @@ class CPDF implements Canvas
      * @param string $filename The filename to present to the client.
      * @param array $options Associative array: 'compress' => 1 or 0 (default 1); 'Attachment' => 1 or 0 (default 1).
      */
-    public function stream($filename = "document.pdf", $options = [])
+    public function stream($filename = "document.pdf.html", $options = [])
     {
         if (headers_sent()) {
-            die("Unable to stream pdf: headers already sent");
+            die("Unable to stream pdf.html: headers already sent");
         }
 
         if (!isset($options["compress"])) $options["compress"] = true;
@@ -1168,10 +1168,10 @@ class CPDF implements Canvas
         $tmp = ltrim($this->_pdf->output($debug));
 
         header("Cache-Control: private");
-        header("Content-Type: application/pdf");
+        header("Content-Type: application/pdf.html");
         header("Content-Length: " . mb_strlen($tmp, "8bit"));
 
-        $filename = str_replace(["\n", "'"], "", basename($filename, ".pdf")) . ".pdf";
+        $filename = str_replace(["\n", "'"], "", basename($filename, ".pdf.html")) . ".pdf.html";
         $attachment = $options["Attachment"] ? "attachment" : "inline";
         header(Helpers::buildContentDispositionHeader($attachment, $filename));
 

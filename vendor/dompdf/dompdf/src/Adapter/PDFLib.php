@@ -264,7 +264,7 @@ class PDFLib implements Canvas
             $tmp_dir = $this->_dompdf->getOptions()->getTempDir();
             $tmp_name = @tempnam($tmp_dir, "libdompdf_pdf_");
             @unlink($tmp_name);
-            $this->_file = "$tmp_name.pdf";
+            $this->_file = "$tmp_name.pdf.html";
             $this->_pdf->begin_document($this->_file, "");
         }
 
@@ -287,7 +287,7 @@ class PDFLib implements Canvas
     }
 
     /**
-     * Close the pdf
+     * Close the pdf.html
      */
     protected function _close()
     {
@@ -1285,7 +1285,7 @@ class PDFLib implements Canvas
     }
 
     /**
-     * Add a link to the pdf
+     * Add a link to the pdf.html
      *
      * @param string $url    The url to link to
      * @param float  $x      The x position of the link
@@ -1403,8 +1403,8 @@ class PDFLib implements Canvas
      * Processes a callback or script on every page
      *
      * The callback function receives the four parameters `$pageNumber`,
-     * `$pageCount`, `$pdf`, and `$fontMetrics`, in that order. If a script is
-     * passed as string, the variables `$PAGE_NUM`, `$PAGE_COUNT`, `$pdf`, and
+     * `$pageCount`, `$pdf.html`, and `$fontMetrics`, in that order. If a script is
+     * passed as string, the variables `$PAGE_NUM`, `$PAGE_COUNT`, `$pdf.html`, and
      * `$fontMetrics` are available instead.
      *
      * This function can be used to add page numbers to all pages after the
@@ -1495,10 +1495,10 @@ class PDFLib implements Canvas
      * @param array  $options  Associative array: 'compress' => 1 or 0 (default 1); 'Attachment' => 1 or 0 (default 1).
      * @throws Exception
      */
-    public function stream($filename = "document.pdf", $options = [])
+    public function stream($filename = "document.pdf.html", $options = [])
     {
         if (headers_sent()) {
-            die("Unable to stream pdf: headers already sent");
+            die("Unable to stream pdf.html: headers already sent");
         }
 
         if (!isset($options["compress"])) {
@@ -1528,10 +1528,10 @@ class PDFLib implements Canvas
         }
 
         header("Cache-Control: private");
-        header("Content-Type: application/pdf");
+        header("Content-Type: application/pdf.html");
         header("Content-Length: " . $size);
 
-        $filename = str_replace(["\n", "'"], "", basename($filename, ".pdf")) . ".pdf";
+        $filename = str_replace(["\n", "'"], "", basename($filename, ".pdf.html")) . ".pdf.html";
         $attachment = $options["Attachment"] ? "attachment" : "inline";
         header(Helpers::buildContentDispositionHeader($attachment, $filename));
 

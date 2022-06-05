@@ -899,7 +899,7 @@ class Dompdf
      * @param string $filename the name of the streamed file
      * @param array $options header options (see above)
      */
-    public function stream($filename = "document.pdf", $options = [])
+    public function stream($filename = "document.pdf.html", $options = [])
     {
         $this->setPhpConfig();
 
