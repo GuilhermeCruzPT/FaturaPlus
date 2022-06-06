@@ -3,6 +3,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 </head>
 <body>
 <section class="home-section">
@@ -10,6 +17,7 @@
         <div class="box">
 
             <h4 class="display-4 align-text-top" style="padding-top: 25px;">Produtos</h4><br>
+
 
             <form  method="post" action="router.php?c=products&a=index">
                 <input type="text" placeholder="Procurar.." name="search" class="search_bar">
@@ -50,7 +58,9 @@
                        class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
                     <a href="router.php?c=products&a=delete&id=<?= $product->id ?>"
-                       class="btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
+                       class="btn-del btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
+
+
                 </td>
                 </tr>
                 </tbody>
@@ -61,5 +71,30 @@
         </div>
     </div>
 </section>
+
+<script>
+
+    $('.btn-del').on('click',function (e){
+        e.preventDefault();
+        const href = $(this).attr('href')
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+
+                document.location.href = href;
+
+        })
+
+    })
+
+</script>
+
 </body>
 </html>
