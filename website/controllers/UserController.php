@@ -115,6 +115,10 @@ class UserController extends BaseController
 
     public function update($id)
     {
+
+        if (isset($_POST['username'], $_POST['password'], $_POST['name'], $_POST['email'], $_POST['phone'], $_POST['nif'],
+            $_POST['postal_code'], $_POST['birth'], $_POST['genre'], $_POST['country'], $_POST['city'], $_POST['locale'],
+            $_POST['address'], $_POST['role'])) {
         $user = User::find([$id]);
 
         $attributes = array(
@@ -162,6 +166,12 @@ class UserController extends BaseController
                     'user' => $user,
                 ]);
             }
+        }
+        } else {
+            $user = User::find([$id]);
+            $this->renderViewBackend('users/update', [
+                'user' => $user,
+            ]);
         }
     }
 

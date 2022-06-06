@@ -106,6 +106,8 @@ class BillController extends BaseController
 
     public function update($id)
     {
+
+        if (isset($_POST['reference'], $_POST['state'], $_POST['client_reference_id'], $_POST['employee_reference_id'])) {
         $user = User::all();
         $bill = Bill::find([$id]);
 
@@ -119,6 +121,14 @@ class BillController extends BaseController
             $bill->save();
             header('Location: router.php?c=bills&a=index');
         } else {
+            $this->renderViewBackend('bills/update', [
+                'bill' => $bill,
+                'user' => $user
+            ]);
+        }
+        } else {
+            $bill = Bill::find([$id]);
+            $user = User::all();
             $this->renderViewBackend('bills/update', [
                 'bill' => $bill,
                 'user' => $user

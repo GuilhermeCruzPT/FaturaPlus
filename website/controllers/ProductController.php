@@ -99,6 +99,7 @@ class ProductController extends BaseController
 
     public function update($id)
     {
+        if (isset($_POST['reference'], $_POST['title'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['iva_id'])) {
         $iva = Iva::all();
         $product = Product::find([$id]);
 
@@ -116,6 +117,14 @@ class ProductController extends BaseController
         } else {
             //print_r($product->errors->full_messages());
             $this->renderViewBackend('products/update', [
+                'product' => $product,
+                'iva' => $iva
+            ]);
+        }
+        } else {
+            $product = Product::find([$id]);
+            $iva = Iva::all();
+            $this->renderViewBackend('products/update',[
                 'product' => $product,
                 'iva' => $iva
             ]);

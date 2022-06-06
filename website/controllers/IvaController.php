@@ -82,6 +82,8 @@ class IvaController extends BaseController
 
     public function update($id)
     {
+
+        if (isset($_POST['percentage'],$_POST['description'],$_POST['vigour'])){
         $iva = Iva::find([$id]);
 
         $attributes = array(
@@ -93,6 +95,12 @@ class IvaController extends BaseController
             $iva->save();
             header('Location: router.php?c=ivas&a=index');
         } else {
+            $this->renderViewBackend('ivas/update', [
+                'iva' => $iva,
+            ]);
+        }
+        } else {
+            $iva = Iva::find([$id]);
             $this->renderViewBackend('ivas/update', [
                 'iva' => $iva,
             ]);
