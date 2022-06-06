@@ -14,6 +14,17 @@ class PanelController extends BaseController
 
     public function index()
     {
-        $this->renderViewBackend('panel/index');
+        $users = User::all();
+        $bills = Bill::all();
+        $lines = Bill_line::all();
+        $products = Product::all();
+        $ivas = Iva::all();
+        $this->renderViewBackend('panel/index',[
+            'users' => $users,
+            'bills' => $bills,
+            'lines' => $lines,
+            'products' => $products,
+            'ivas' => $ivas
+        ]);
     }
 }
