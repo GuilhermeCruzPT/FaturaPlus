@@ -3,6 +3,7 @@
 require_once './models/Data.php';
 
 use Dompdf\Dompdf;
+require_once '../vendor/autoload.php';
 
 class SiteController extends BaseController
 {
@@ -151,15 +152,49 @@ class SiteController extends BaseController
 
     public function pdfshow()
     {
-        //Instancia do DOMPDF
+
+
+
+// reference the Dompdf namespace
+// use Dompdf\Dompdf;
+
+// instantiate and use the dompdf class
         $dompdf = new Dompdf();
+        //$dompdf->loadHtml('Hello World!');
+        $dompdf->loadHtml(file_get_contents('pdf.html'));
 
-        $dompdf->loadHtml("<h1>Fatura</h1>");
+// (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
 
-        $dompdf->setPaper("A4", "landscape");
-
+// Render the HTML as PDF
         $dompdf->render();
-        $dompdf->stream("file.pdf", ["Attachment" => false]);
+
+// Get the generated PDF file contents
+        $pdf = $dompdf->output();
+
+// Output the generated PDF to Browser
+        $dompdf->stream("file");
+
+        //Instancia do DOMPDF
+        //$dompdf = new Dompdf();
+
+        //$dompdf->load_html("<h1>Fatura</h1>");
+        //$dompdf->setPaper("A4", "portrait");
+        //$dompdf->render();
+        //$dompdf->stream("file.pdf", array("Attachment" => false));
+
+        //$dompdf->loadHtml("<h1>Fatura</h1>");
+
+        //ob_start();
+        //$pdf = ob_get_clean();
+        //require 'C:\wamp64\www\FaturaPlus\website\views\site\bills\pdf.html';
+        //$dompdf->loadHtml(ob_get_clean());
+
+        //$dompdf->setPaper("A4", "landscape");
+        //$dompdf->setPaper("A4");
+
+        //$dompdf->render();
+        //$dompdf->stream("file.pdf", ["Attachment" => false]);
 
         //header('Content-type: application/pdf');
         //echo $dompdf->output();
