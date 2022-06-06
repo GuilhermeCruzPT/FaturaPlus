@@ -57,8 +57,8 @@
                     <a href="router.php?c=bills&a=edit&id=<?= $bill->id ?>"
                        class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
-                    <a href="router.php?c=bills&a=delete&id=<?= $bill->id ?>"
-                       class="btn-del-bills btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
+                    <a href="router.php?c=bills&a=delete&"
+                       class="btn-del-bills btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
                     <?php } ?>
                 </td>
                 </tr>
@@ -77,17 +77,17 @@
         const href = $(this).attr('href')
 
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Tem a certeza que deseja continuar?',
+            text: "Esta ação irá apagar dados nas linhas da fatura Não será possivel voltar atrás!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Sim'
         }).then((result) => {
-
-            document.location.href = href;
-
+            if (result.value) {
+                document.location.href = href;
+            }
         })
 
     })

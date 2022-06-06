@@ -55,8 +55,8 @@
                     <a href="router.php?c=products&a=edit&id=<?= $product->id ?>"
                        class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
-                    <a href="router.php?c=products&a=delete&id=<?= $product->id ?>"
-                       class="btn-del-products btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
+                    <a href="tua mae"
+                       class="btn-del-products btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
 
 
                 </td>
@@ -72,21 +72,22 @@
 
 <script>
 
-    $('.btn-del-products').on('click', function (e) {
+    $('.btn-del-products').on('click',function (e){
         e.preventDefault();
         const href = $(this).attr('href')
 
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Tem a certeza que deseja continuar?',
+            text: "Esta ação irá apagar dados nos produtos. Não será possivel voltar atrás!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Sim'
         }).then((result) => {
-
-            document.location.href = href;
+            if (result.isConfirmed) {
+                document.location.href = href;
+            }
 
         })
 

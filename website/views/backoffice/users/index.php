@@ -58,7 +58,7 @@
                        class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
                     <a href="router.php?c=users&a=delete&id=<?= $user->id ?>"
-                       class="btn-del-users btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
+                       class="btn-del-users btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
                     <?php } ?>
                 </td>
                 </tr>
@@ -78,19 +78,18 @@
         const href = $(this).attr('href')
 
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Tem a certeza que deseja continuar?',
+            text: "Esta ação irá apagar dados nas linhas da fatura e na propria fatura. Não será possivel voltar atrás!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Sim'
         }).then((result) => {
-
-            document.location.href = href;
-
+            if (result.value) {
+                document.location.href = href;
+            }
         })
-
     })
 
 </script>
