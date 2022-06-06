@@ -4,11 +4,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
 
-
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 
 </head>
 <body>
@@ -58,7 +56,7 @@
                        class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
                     <a href="router.php?c=products&a=delete&id=<?= $product->id ?>"
-                       class="btn-del btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
+                       class="btn-del-products btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
 
 
                 </td>
@@ -74,7 +72,7 @@
 
 <script>
 
-    $('.btn-del').on('click',function (e){
+    $('.btn-del-products').on('click', function (e) {
         e.preventDefault();
         const href = $(this).attr('href')
 
@@ -88,7 +86,7 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
 
-                document.location.href = href;
+            document.location.href = href;
 
         })
 
