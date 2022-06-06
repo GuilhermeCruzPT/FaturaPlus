@@ -57,35 +57,43 @@ class UserController extends BaseController
 
     public function store()
     {
-        $attributes = array(
-            'username' => $_POST['username'],
-            'password' => $_POST['password'],
-            'name' => $_POST['name'],
-            'email' => $_POST['email'],
-            'phone' => ((int)$_POST['phone']),
-            'nif' => ((int)$_POST['nif']),
-            'postal_code' => $_POST['postal_code'],
-            'birth' => $_POST['birth'],
-            'genre' => $_POST['genre'],
-            'country' => $_POST['country'],
-            'city' => $_POST['city'],
-            'locale' => $_POST['locale'],
-            'address' => $_POST['address'],
-            'role' => $_POST['role']);
-        $users = new User($attributes);
-        if ($users->is_valid()) {
-            $attributes['password'] = md5($_POST['password']);
-            $users->update_attributes($attributes);
-            $users->save(false);
-            header('Location: router.php?c=users&a=index');
+        if (isset($_POST['username'], $_POST['password'], $_POST['name'], $_POST['email'], $_POST['phone'], $_POST['nif'],
+            $_POST['postal_code'], $_POST['birth'], $_POST['genre'], $_POST['country'], $_POST['city'], $_POST['locale'],
+            $_POST['address'], $_POST['role'])) {
+
+            $attributes = array(
+                'username' => $_POST['username'],
+                'password' => $_POST['password'],
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'phone' => ((int)$_POST['phone']),
+                'nif' => ((int)$_POST['nif']),
+                'postal_code' => $_POST['postal_code'],
+                'birth' => $_POST['birth'],
+                'genre' => $_POST['genre'],
+                'country' => $_POST['country'],
+                'city' => $_POST['city'],
+                'locale' => $_POST['locale'],
+                'address' => $_POST['address'],
+                'role' => $_POST['role']);
+            $users = new User($attributes);
+            if ($users->is_valid()) {
+                $attributes['password'] = md5($_POST['password']);
+                $users->update_attributes($attributes);
+                $users->save(false);
+                header('Location: router.php?c=users&a=index');
+            } else {
+                // *** Retorna os erros presentes no model *** \\
+
+                //print_r($bills->errors->full_messages());
+
+                $this->renderViewBackend('users/create', [
+                    'users' => $users
+                ]);
+            }
         } else {
-            // *** Retorna os erros presentes no model *** \\
-
-            //print_r($bills->errors->full_messages());
-
-            $this->renderViewBackend('users/create', [
-                'users' => $users
-            ]);
+            $iva = Iva::all();
+            $this->renderViewBackend('users/create');
         }
     }
 

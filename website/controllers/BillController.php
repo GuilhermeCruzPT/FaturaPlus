@@ -45,33 +45,41 @@ class BillController extends BaseController
     public function create()
     {
         $user = User::all();
-        $this->renderViewBackend('bills/create',[
+        $this->renderViewBackend('bills/create', [
             'user' => $user
         ]);
     }
 
     public function store()
     {
-        $attributes = array(
-            'reference' => sprintf('%06d', $_POST['reference']),
-            'date' => date('d-m-Y'),
-            'total_value' => 0,
-            'total_iva' => 0,
-            'state' => $_POST['state'],
-            'client_reference_id' => $_POST['client_reference_id'],
-            'employee_reference_id' => $_POST['employee_reference_id']);
-        $bills = new Bill($attributes);
-        $user = User::all();
-        if ($bills->is_valid()) {
-            $bills->save();
-            header('Location: router.php?c=bills&a=index');
+        if (isset($_POST['reference'], $_POST['state'], $_POST['client_reference_id'], $_POST['employee_reference_id'])) {
+
+            $attributes = array(
+                'reference' => sprintf('%06d', $_POST['reference']),
+                'date' => date('d-m-Y'),
+                'total_value' => 0,
+                'total_iva' => 0,
+                'state' => $_POST['state'],
+                'client_reference_id' => $_POST['client_reference_id'],
+                'employee_reference_id' => $_POST['employee_reference_id']);
+            $bills = new Bill($attributes);
+            $user = User::all();
+            if ($bills->is_valid()) {
+                $bills->save();
+                header('Location: router.php?c=bills&a=index');
+            } else {
+                // *** Retorna os erros presentes no model *** \\
+
+                //print_r($bills->errors->full_messages());
+
+                $this->renderViewBackend('bills/create', [
+                    'bills' => $bills,
+                    'user' => $user
+                ]);
+            }
         } else {
-            // *** Retorna os erros presentes no model *** \\
-
-            //print_r($bills->errors->full_messages());
-
+            $user = User::all();
             $this->renderViewBackend('bills/create', [
-                'bills' => $bills,
                 'user' => $user
             ]);
         }
