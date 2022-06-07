@@ -155,11 +155,25 @@ class SiteController extends BaseController
 
     public function pdfshow()
     {
+        $enterprise = Enterprise::all([1]);
+
         // Instantiate and use the dompdf class
         $dompdf = new Dompdf();
 
+        // Fatura em Html
+
+        $html = '<h1>'.$enterprise->social_designation.'</h1><br>';
+        $html .= '<h4>E-Mail: </h4>'.$enterprise->email;
+        $html .= '<h4>Telefone: </h4>'.$enterprise->phone;
+        $html .= '<h4>Nif: </h4>'.$enterprise->nif;
+        $html .= '<h4>Código Postal: </h4>'.$enterprise->postal_code;
+        $html .= '<h4>País: </h4>'.$enterprise->country;
+        $html .= '<h4>Cidade: </h4>'.$enterprise->city;
+        $html .= '<br>';
+        $html .= '<hr>';
+
         // Load HTML content
-        $dompdf->loadHtml('<h1>Welcome</h1>');
+        $dompdf->loadHtml($html);
 
         // (Optional) Setup the paper size and orientation
         $dompdf->setPaper('A4', 'portrait');
@@ -259,5 +273,10 @@ class SiteController extends BaseController
             'user' => $user,
             'bills' => $bills,
         ]);*/
+    }
+
+    public function teste()
+    {
+        $this->renderViewDetalhe('pdf/pdf');
     }
 }

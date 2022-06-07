@@ -67,6 +67,9 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'pdfshow':
                     $siteController->pdfshow();
                     break;
+                case 'teste':
+                    $siteController->teste();
+                    break;
             }
             break;
 

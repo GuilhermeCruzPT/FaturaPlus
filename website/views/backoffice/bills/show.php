@@ -84,7 +84,7 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="employee_reference_id">Referência Funcionário</label>
+                    <label for="employee_reference_id">Referência Funcionário:</label>
                     <input type="text"
                            class="form-control"
                            id="employee_reference_id"
