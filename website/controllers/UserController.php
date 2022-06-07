@@ -115,58 +115,57 @@ class UserController extends BaseController
 
     public function update($id)
     {
-
         if (isset($_POST['username'], $_POST['password'], $_POST['name'], $_POST['email'], $_POST['phone'], $_POST['nif'],
             $_POST['postal_code'], $_POST['birth'], $_POST['genre'], $_POST['country'], $_POST['city'], $_POST['locale'],
             $_POST['address'], $_POST['role'])) {
-        $user = User::find([$id]);
+            $user = User::find([$id]);
 
-        $attributes = array(
-            'username' => $_POST['username'],
-            'password' => $_POST['password'],
-            'name' => $_POST['name'],
-            'email' => $_POST['email'],
-            'phone' => ((int)$_POST['phone']),
-            'nif' => ((int)$_POST['nif']),
-            'postal_code' => $_POST['postal_code'],
-            'birth' => $_POST['birth'],
-            'genre' => $_POST['genre'],
-            'country' => $_POST['country'],
-            'city' => $_POST['city'],
-            'locale' => $_POST['locale'],
-            'address' => $_POST['address'],
-            'role' => $_POST['role']);
+            $attributes = array(
+                'username' => $_POST['username'],
+                'password' => $_POST['password'],
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'phone' => ((int)$_POST['phone']),
+                'nif' => ((int)$_POST['nif']),
+                'postal_code' => $_POST['postal_code'],
+                'birth' => $_POST['birth'],
+                'genre' => $_POST['genre'],
+                'country' => $_POST['country'],
+                'city' => $_POST['city'],
+                'locale' => $_POST['locale'],
+                'address' => $_POST['address'],
+                'role' => $_POST['role']);
 
-        if (empty($attributes['password'])) {
-            $user_pass = User::find('password', array('conditions' => array('id = ? ', $id)));
-            var_dump($user_pass->password);
-            $attributes['password'] = "P" . $user_pass->password;
-            var_dump($user_pass->password);
-            $user->update_attributes($attributes);
-
-            if ($user->is_valid()) {
-                var_dump($attributes['password']);
-                $attributes['password'] = $user_pass->password;
+            if (empty($attributes['password'])) {
+                $user_pass = User::find('password', array('conditions' => array('id = ? ', $id)));
+                var_dump($user_pass->password);
+                $attributes['password'] = "P" . $user_pass->password;
+                var_dump($user_pass->password);
                 $user->update_attributes($attributes);
-                $user->save(false);
-                header('Location: router.php?c=users&a=index');
+
+                if ($user->is_valid()) {
+                    var_dump($attributes['password']);
+                    $attributes['password'] = $user_pass->password;
+                    $user->update_attributes($attributes);
+                    $user->save(false);
+                    header('Location: router.php?c=users&a=index');
+                } else {
+                    $this->renderViewBackend('users/update', [
+                        'user' => $user,
+                    ]);
+                }
             } else {
-                $this->renderViewBackend('users/update', [
-                    'user' => $user,
-                ]);
+                if ($user->is_valid()) {
+                    $attributes['password'] = md5($_POST['password']);
+                    $user->update_attributes($attributes);
+                    $user->save(false);
+                    header('Location: router.php?c=users&a=index');
+                } else {
+                    $this->renderViewBackend('users/update', [
+                        'user' => $user,
+                    ]);
+                }
             }
-        } else {
-            if ($user->is_valid()) {
-                $attributes['password'] = md5($_POST['password']);
-                $user->update_attributes($attributes);
-                $user->save(false);
-                header('Location: router.php?c=users&a=index');
-            } else {
-                $this->renderViewBackend('users/update', [
-                    'user' => $user,
-                ]);
-            }
-        }
         } else {
             $user = User::find([$id]);
             $this->renderViewBackend('users/update', [
@@ -180,7 +179,7 @@ class UserController extends BaseController
         // Faz o delete de varios registos de outras tabelas na base de dados
         
         $user = User::find([$id]);
-        if ($_SESSION["permission"] == 'a' || $user->role == 'c' || $user->username == $_SESSION["username"]) {
+        if ($_SESSION["permission"] != 'f') {
             $show = Bill::find('all', array('conditions' => array('client_reference_id = ? OR employee_reference_id = ?', $id, $id)));
 
             foreach ($show as $show_bill) {

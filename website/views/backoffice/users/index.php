@@ -56,10 +56,10 @@
                     <?php if ($_SESSION["permission"] == 'a' || $user->role == 'c' || $user->username == $_SESSION["username"]) { ?>
                     <a href="router.php?c=users&a=edit&id=<?= $user->id ?>"
                        class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
-
+                    <?php if ($user->username != $_SESSION["username"]) { ?>
                     <a href="router.php?c=users&a=delete&id=<?= $user->id ?>"
                        class="btn-del-users btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
-                    <?php } ?>
+                    <?php } } ?>
                 </td>
                 <script src="<?= DIRJS ?>Delete_message.js"></script>
                 </tr>
