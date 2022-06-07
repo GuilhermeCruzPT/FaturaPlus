@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+table {
+    width: 100%;
+}
+.invoice {
+    padding: 2rem;
+}
+.invoice__header {
+    border-bottom: 4px solid black;
+    padding-bottom: 2rem;
+}
+.invoice__header:before, .invoice__header:after {
+    content: " ";
+    display: table;
+}
+.invoice__header:after {
+    clear: both;
+}
+.invoice__header-item {
+    width: 25%;
+    float: left;
+    padding: 0 0.5rem;
+}
+.invoice__body {
+    padding: 2rem 0;
+    border-bottom: 2px solid black;
+}
+.invoice__body thead {
+    font-weight: bold;
+}
+.invoice__body thead td {
+    padding-bottom: 1rem;
+}
+.invoice__body td {
+    padding: 0 0.5rem;
+}
+.invoice__totals {
+    width: 25%;
+    float: right;
+}
+.invoice__subtotals, .invoice__grandtotal {
+    padding: 2rem 0.5rem;
+}
+.invoice__subtotals {
+    border-bottom: 4px solid black;
+}
+.invoice__grandtotal {
+    font-size: 150%;
+    font-weight: bold;
+}
+.text-right {
+    text-align: right;
+}

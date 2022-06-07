@@ -153,30 +153,130 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function pdfshow()
+    public function pdfshow($id)
     {
         $enterprise = Enterprise::all([1]);
+        //$bill = Bill::find([$id]);
+        //$client = User::find_by_id(((int)$bill->client_reference));
 
         // Instantiate and use the dompdf class
         $dompdf = new Dompdf();
 
         // Fatura em Html
-
-        $html = '<h1>'.$enterprise->social_designation.'</h1><br>';
-        $html .= '<h4>E-Mail: </h4>'.$enterprise->email;
-        $html .= '<h4>Telefone: </h4>'.$enterprise->phone;
-        $html .= '<h4>Nif: </h4>'.$enterprise->nif;
-        $html .= '<h4>Código Postal: </h4>'.$enterprise->postal_code;
-        $html .= '<h4>País: </h4>'.$enterprise->country;
-        $html .= '<h4>Cidade: </h4>'.$enterprise->city;
+        $html = '<style>
+        * {box-sizing: border-box;}
+        table {width: 100%;}
+        .invoice {padding: 2rem;}
+        .invoice__header {border-bottom: 4px solid black;padding-bottom: 2rem;}
+        .invoice__header:before, .invoice__header:after {content: " ";display: table;}
+        .invoice__header:after {clear: both;}
+        .invoice__header-item {width: 25%;float: left;padding: 0 0.5rem;}
+        .invoice__body {padding: 2rem 0;border-bottom: 2px solid black;}
+        .invoice__body thead {font-weight: bold;}
+        .invoice__body thead td {padding-bottom: 1rem;}
+        .invoice__body td {padding: 0 0.5rem;}
+        .invoice__totals {width: 25%;float: right;}
+        .invoice__subtotals, .invoice__grandtotal {padding: 2rem 0.5rem;}
+        .invoice__subtotals {border-bottom: 4px solid black;}
+        .invoice__grandtotal {font-size: 150%;font-weight: bold;}
+        .text-right {text-align: right;}
+        </style>';
+        $html .= '<div class="invoice">';
+        $html .= '<header class="invoice__header">';
+        $html .= '<div class="invoice__header-item"><h2>Fatura Plus<h2></div>';
+        $html .= '<div class="invoice__header-item">';
+        $html .= '<p>';
+        $html .= '<strong>'.$enterprise->social_designation.'</strong>';
+        $html .= '<br>E-mail: '.$enterprise->email;
+        $html .= '<br>Telefone: '.$enterprise->phone;
+        $html .= '<br>Nif: '.$enterprise->nif;
+        $html .= '<br>Código Postal: '.$enterprise->postal_code;
+        $html .= '<br>País: '.$enterprise->country;
+        $html .= '<br>Cidade: '.$enterprise->city;
+        $html .= '<br>Localidade: '.$enterprise->locale;
+        $html .= '<br>Morada: '.$enterprise->address;
+        $html .= '</p>';
+        $html .= '</div>';
+        $html .= '<div class="invoice__header-item">';
+        $html .= '<p>';
+        $html .= '<strong>Cliente</strong>';
         $html .= '<br>';
-        $html .= '<hr>';
+        $html .= '<br>CORSO V. EMANUELE, 195';
+        $html .= '<br>70059 Trani';
+        $html .= '<br>Bari';
+        $html .= '<br>Italy';
+        $html .= '<br>CORSO V.';
+        $html .= '<br>dsfeefgesf';
+        $html .= '<br>70059 Trani';
+        $html .= '</p>';
+        $html .= '</div>';
+        $html .= '<div class="invoice__header-item">';
+        $html .= '<p>';
+        $html .= '<strong>Data:</strong> 15/16/1520<br><br>';
+        $html .= '<strong>Referência Cliente:</strong> ABCDEFGH3843<br><br>';
+        $html .= '<strong>Referência Funcionário:</strong> ABCDEFGH3843';
+        $html .= '</p>';
+        $html .= '</div>';
+        $html .= '</header>';
+        $html .= '<div class="invoice__body">';
+        $html .= '<table>';
+        $html .= '<thead>';
+        $html .= '<tr>';
+        $html .= '<td>Referência do Produto</td>';
+        $html .= '<td>Título</td>';
+        $html .= '<td class="text-right">Qtd</td>';
+        $html .= '<td class="text-right">Valor<br>(€ s/IVA)</td>';
+        $html .= '<td class="text-right">IVA (%)</td>';
+        $html .= '<td class="text-right">IVA (€)</td>';
+        $html .= '<td class="text-right">Valor<br>(€ c/IVA)</td>';
+        $html .= '</tr>';
+        $html .= '</thead>';
+        $html .= '<tbody>';
+        $html .= '<tr>';
+        $html .= '<td>FHABHBJUJ</td>';
+        $html .= '<td>Runner 3.0 Low Fuse Grey</td>';
+        $html .= '<td class="text-right">1</td>';
+        $html .= '<td class="text-right">10</td>';
+        $html .= '<td class="text-right">888,90</td>';
+        $html .= '<td class="text-right">30</td>';
+        $html .= '<td class="text-right">266,67</td>';
+        $html .= '</tr>';
+        $html .= '</tbody>';
+        $html .= '</table>';
+        $html .= '</div>';
+        $html .= '<div class="invoice__totals">';
+        $html .= '<div class="invoice__subtotals">';
+        $html .= '<table>';
+        $html .= '<tbody>';
+        $html .= '<tr>';
+        $html .= '<td><strong>Valor Total</strong></td>';
+        $html .= '<td class="text-right">800,01</td>';
+        $html .= '</tr>';
+        $html .= '<tr>';
+        $html .= '<td><strong>Iva Total</strong></td>';
+        $html .= '<td class="text-right">0,00</td>';
+        $html .= '</tr>';
+        $html .= '</tbody>';
+        $html .= '</table>';
+        $html .= '</div>';
+        $html .= '<div class="invoice__grandtotal">';
+        $html .= '<table>';
+        $html .= '<tbody>';
+        $html .= '<tr>';
+        $html .= '<td><strong>Total</strong></td>';
+        $html .= '<td class="text-right">800,01</td>';
+        $html .= '</tr>';
+        $html .= '</tbody>';
+        $html .= '</table>';
+        $html .= '</div>';
+        $html .= '</div>';
+        $html .= '</div>';
 
         // Load HTML content
         $dompdf->loadHtml($html);
 
         // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->setPaper('A4', 'landscape');
 
         // Render the HTML as PDF
         $dompdf->render();

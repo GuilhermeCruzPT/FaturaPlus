@@ -39,7 +39,7 @@
                 <td><?= $bill->employee_reference->username ?></td>
 
                 <td>
-                    <a href="router.php?c=site&a=pdfshow"
+                    <a href="router.php?c=site&a=pdfshow&id=<?= $bill->id ?>"
                        class=" btn btn-primary"
                        role="button"
                        aria-pressed="true">Mostrar</a>
