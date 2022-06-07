@@ -61,6 +61,7 @@
                        class="btn-del-users btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
                     <?php } ?>
                 </td>
+                <script src="<?= DIRJS ?>Delete_message.js"></script>
                 </tr>
                 </tbody>
                 <?php }} ?> </table>
@@ -70,29 +71,6 @@
         </div>
     </div>
 </section>
-
-<script>
-
-    $('.btn-del-users').on('click',function (e){
-        e.preventDefault();
-        const href = $(this).attr('href')
-
-        Swal.fire({
-            title: 'Tem a certeza que deseja continuar?',
-            text: "Esta ação irá apagar dados nas linhas da fatura e na propria fatura. Não será possivel voltar atrás!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim'
-        }).then((result) => {
-            if (result.value) {
-                document.location.href = href;
-            }
-        })
-    })
-
-</script>
 
 </body>
 </html>

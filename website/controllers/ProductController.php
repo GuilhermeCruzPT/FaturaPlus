@@ -51,30 +51,38 @@ class ProductController extends BaseController
 
     public function store()
     {
-        $attributes = array(
-            'reference' => sprintf('%06d', $_POST['reference']),
-            'title' => $_POST['title'],
-            'description' => $_POST['description'],
-            'price' => ((float)$_POST['price']),
-            'stock' => ((int)$_POST['stock']),
-            'iva_id' => $_POST['iva_id']);
-        $products = new Product($attributes);
-        $iva = Iva::all();
-        if ($products->is_valid()) {
-            $products->save();
-            header('Location: router.php?c=products&a=index');
+
+        if (isset($_POST['reference'], $_POST['title'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['iva_id'])) {
+            $attributes = array(
+                'reference' => sprintf('%06d', $_POST['reference']),
+                'title' => $_POST['title'],
+                'description' => $_POST['description'],
+                'price' => ((float)$_POST['price']),
+                'stock' => ((int)$_POST['stock']),
+                'iva_id' => $_POST['iva_id']);
+
+            $products = new Product($attributes);
+            $iva = Iva::all();
+            if ($products->is_valid()) {
+                $products->save();
+                header('Location: router.php?c=products&a=index');
+            } else {
+                // *** Retorna os erros presentes no model *** \\
+
+                //print_r($bills->errors->full_messages());
+
+                $this->renderViewBackend('products/create', [
+                    'products' => $products,
+                    'iva' => $iva
+                ]);
+            }
         } else {
-            // *** Retorna os erros presentes no model *** \\
-
-            //print_r($bills->errors->full_messages());
-
-            $this->renderViewBackend('products/create', [
-                'products' => $products,
+            $iva = Iva::all();
+            $this->renderViewBackend('products/create',[
                 'iva' => $iva
             ]);
         }
     }
-
     public function edit($id)
     {
         $product = Product::find([$id]);
@@ -91,6 +99,7 @@ class ProductController extends BaseController
 
     public function update($id)
     {
+        if (isset($_POST['reference'], $_POST['title'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['iva_id'])) {
         $iva = Iva::all();
         $product = Product::find([$id]);
 
@@ -108,6 +117,14 @@ class ProductController extends BaseController
         } else {
             //print_r($product->errors->full_messages());
             $this->renderViewBackend('products/update', [
+                'product' => $product,
+                'iva' => $iva
+            ]);
+        }
+        } else {
+            $product = Product::find([$id]);
+            $iva = Iva::all();
+            $this->renderViewBackend('products/update',[
                 'product' => $product,
                 'iva' => $iva
             ]);

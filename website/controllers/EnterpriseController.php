@@ -59,24 +59,33 @@ class EnterpriseController extends BaseController
 
     public function update($id)
     {
-        $enterprise = Enterprise::find([$id]);
+        if (isset($_POST['social_designation'],$_POST['email'],$_POST['phone'],$_POST['nif'],$_POST['postal_code'],$_POST['country'],
+            $_POST['city'],$_POST['locale'],$_POST['address'],$_POST['social_capital'])) {
 
-        $attributes = array(
-            'social_designation' => $_POST['social_designation'],
-            'email' => $_POST['email'],
-            'phone' => ((int)$_POST['phone']),
-            'nif' => ((int)$_POST['nif']),
-            'postal_code' => $_POST['postal_code'],
-            'country' => $_POST['country'],
-            'city' => $_POST['city'],
-            'locale' => $_POST['locale'],
-            'address' => $_POST['address'],
-            'social_capital' => $_POST['social_capital']);
-        $enterprise->update_attributes($attributes);
-        if ($enterprise->is_valid()) {
-            $enterprise->save();
-            header('Location: router.php?c=enterprises&a=index');
+            $enterprise = Enterprise::find([$id]);
+
+            $attributes = array(
+                'social_designation' => $_POST['social_designation'],
+                'email' => $_POST['email'],
+                'phone' => ((int)$_POST['phone']),
+                'nif' => ((int)$_POST['nif']),
+                'postal_code' => $_POST['postal_code'],
+                'country' => $_POST['country'],
+                'city' => $_POST['city'],
+                'locale' => $_POST['locale'],
+                'address' => $_POST['address'],
+                'social_capital' => $_POST['social_capital']);
+            $enterprise->update_attributes($attributes);
+            if ($enterprise->is_valid()) {
+                $enterprise->save();
+                header('Location: router.php?c=enterprises&a=index');
+            } else {
+                $this->renderViewBackend('enterprises/update', [
+                    'enterprise' => $enterprise,
+                ]);
+            }
         } else {
+            $enterprise = Enterprise::find([$id]);
             $this->renderViewBackend('enterprises/update', [
                 'enterprise' => $enterprise,
             ]);

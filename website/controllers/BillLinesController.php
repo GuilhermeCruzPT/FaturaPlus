@@ -52,6 +52,9 @@ class BillLinesController extends BaseController
 
     public function store()
     {
+
+        if (isset($_POST['quantity'],$_POST['product_id'],$_POST['bill_id'])){
+
         $products = Product::all();
         $bills = Bill::all();
         $lines = Bill_line::all();
@@ -157,7 +160,15 @@ class BillLinesController extends BaseController
                     'products' => $products,
                     'bills' => $bills,
                 ]);
+                }
             }
+        } else {
+            $products = Product::all();
+            $bills = Bill::all();
+            $this->renderViewBackend('lines/create', [
+                'products' => $products,
+                'bills' => $bills,
+            ]);
         }
     }
 
@@ -184,6 +195,7 @@ class BillLinesController extends BaseController
 
     public function update($id)
     {
+        if (isset($_POST['quantity'],$_POST['product_id'],$_POST['bill_id'])){
         $products = Product::all();
         $bills = Bill::all();
         $lines = Bill_line::all();
@@ -382,7 +394,18 @@ class BillLinesController extends BaseController
                 ]);
             }
         }
+        } else {
+            $products = Product::all();
+            $bills = Bill::all();
+            $bill_lines = Bill_line::find([$id]);
+            $this->renderViewBackend('lines/update',[
+                'bill_lines' => $bill_lines,
+                'products' => $products,
+                'bills' => $bills,
+            ]);
+        }
     }
+
 
     public function delete($id)
     {

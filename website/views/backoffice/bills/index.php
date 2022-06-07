@@ -7,7 +7,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <script src="<?= DIRJS ?>myscripts.js"></script>
 </head>
 <body>
 <section class="home-section">
@@ -57,10 +57,11 @@
                     <a href="router.php?c=bills&a=edit&id=<?= $bill->id ?>"
                        class="btn btn-warning btn-icon-update btn-icon"><i class='bx bx-edit-alt bx-tada action-icon' ></i></a>
 
-                    <a href="router.php?c=bills&a=delete&"
+                    <a href="router.php?c=bills&a=delete&id=<?= $bill->id ?>"
                        class="btn-del-bills btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon' ></i></a>
                     <?php } ?>
                 </td>
+                <script src="<?= DIRJS ?>Delete_message.js"></script>
                 </tr>
                 </tbody>
                 <?php } }?> </table>
@@ -70,28 +71,5 @@
         </div>
     </div>
 </section>
-<script>
-
-    $('.btn-del-bills').on('click',function (e){
-        e.preventDefault();
-        const href = $(this).attr('href')
-
-        Swal.fire({
-            title: 'Tem a certeza que deseja continuar?',
-            text: "Esta ação irá apagar dados nas linhas da fatura Não será possivel voltar atrás!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim'
-        }).then((result) => {
-            if (result.value) {
-                document.location.href = href;
-            }
-        })
-
-    })
-
-</script>
 </body>
 </html>

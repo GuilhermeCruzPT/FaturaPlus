@@ -45,22 +45,26 @@ class IvaController extends BaseController
 
     public function store()
     {
-        $attributes = array(
-            'percentage' => ((int)$_POST['percentage']),
-            'description' => $_POST['description'],
-            'vigour' => $_POST['vigour']);
-        $ivas = new Iva($attributes);
-        if ($ivas->is_valid()) {
-            $ivas->save();
-            header('Location: router.php?c=ivas&a=index');
+        if (isset($_POST['percentage'],$_POST['description'],$_POST['vigour'])){
+            $attributes = array(
+                'percentage' => ((int)$_POST['percentage']),
+                'description' => $_POST['description'],
+                'vigour' => $_POST['vigour']);
+            $ivas = new Iva($attributes);
+            if ($ivas->is_valid()) {
+                $ivas->save();
+                header('Location: router.php?c=ivas&a=index');
+            } else {
+                // *** Retorna os erros presentes no model *** \\
+
+                //print_r($bills->errors->full_messages());
+
+                $this->renderViewBackend('ivas/create', [
+                    'ivas' => $ivas
+                ]);
+            }
         } else {
-            // *** Retorna os erros presentes no model *** \\
-
-            //print_r($bills->errors->full_messages());
-
-            $this->renderViewBackend('ivas/create', [
-                'ivas' => $ivas
-            ]);
+            $this->renderViewBackend('ivas/create');
         }
     }
 
@@ -78,6 +82,8 @@ class IvaController extends BaseController
 
     public function update($id)
     {
+
+        if (isset($_POST['percentage'],$_POST['description'],$_POST['vigour'])){
         $iva = Iva::find([$id]);
 
         $attributes = array(
@@ -89,6 +95,12 @@ class IvaController extends BaseController
             $iva->save();
             header('Location: router.php?c=ivas&a=index');
         } else {
+            $this->renderViewBackend('ivas/update', [
+                'iva' => $iva,
+            ]);
+        }
+        } else {
+            $iva = Iva::find([$id]);
             $this->renderViewBackend('ivas/update', [
                 'iva' => $iva,
             ]);
