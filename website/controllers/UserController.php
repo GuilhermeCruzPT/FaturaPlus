@@ -32,7 +32,7 @@ class UserController extends BaseController
                 or postal_code LIKE '%$search%'
                 or birth LIKE '%$search%'
                 or genre LIKE '%$search%'
-                or coutry LIKE '%$search%'
+                or country LIKE '%$search%'
                 or city LIKE '%$search%'
                 or locale LIKE '%$search%'
                 or address LIKE '%$search%'
@@ -42,7 +42,16 @@ class UserController extends BaseController
                 'users' => $users,
             ]);
 
-        }else {
+        }elseif(isset($_GET[('role')])){
+
+            $role = $_GET['role'];
+            $users = User::find('all',
+                array('conditions' => "role LIKE '%$role%'"));
+
+            $this->renderViewBackend('users/index', [
+                'users' => $users,
+            ]);
+        }else{
             $users = User::all();
             $this->renderViewBackend('users/index', [
                 'users' => $users,

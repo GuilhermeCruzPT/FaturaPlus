@@ -44,7 +44,7 @@
 
                     <div class="row">
                         <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card">
+                            <div class="card"><a href="router.php?c=users&a=index">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="media d-flex">
@@ -56,13 +56,13 @@
                                                 <i class='bx bx-user bx-tada success font-large-2 float-right' ></i>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card">
+                            <div class="card"><a href="router.php?c=users&a=index&role=a">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="media d-flex">
@@ -75,12 +75,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card">
+                            <div class="card"><a href="router.php?c=users&a=index&role=f">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="media d-flex">
@@ -93,12 +93,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card">
+                            <div class="card"><a href="router.php?c=users&a=index&role=c">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="media d-flex">
@@ -111,12 +111,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card">
+                            <div class="card"><a href="router.php?c=bills&a=index">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="media d-flex">
@@ -129,12 +129,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card">
+                            <div class="card"><a href="router.php?c=lines&a=index">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="media d-flex">
@@ -147,12 +147,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card">
+                            <div class="card"><a href="router.php?c=products&a=index">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="media d-flex">
@@ -165,12 +165,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card">
+                            <div class="card"><a href="router.php?c=ivas&a=index">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="media d-flex">
@@ -183,7 +183,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
                         </div>
                     </div>
