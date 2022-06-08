@@ -40,7 +40,8 @@ class AuthController extends BaseController
                 ]);
             }
             else {
-                $this->renderViewBackend('panel/index');
+                header('Location: router.php?c=panel&a=index');
+                //$this->renderViewBackend('panel/index');
             }
         }
         else {

@@ -1,8 +1,8 @@
 <?php
 
 
-class Data {
-	
+class Data
+{
 	public function getData(){
 		return 'Sample Data';
 	}

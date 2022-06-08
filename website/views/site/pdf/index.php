@@ -29,7 +29,7 @@
                     echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td><td></td></td></td></td>";
                 }else{
                 foreach ($bills as $bill) {
-                    if ($user == $bill->client_reference) {?>
+                    if ($user == $bill->client_reference && $bill->state == 'e') {?>
 
                 <td><?= $bill->id ?>
                 <td>F<?= $bill->reference?></td>

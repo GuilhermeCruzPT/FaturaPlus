@@ -22,8 +22,11 @@
         <form method="post" action="router.php?c=auth&a=save_signup">
             <div class="user-details">
                 <div class="input-box">
-                    <span class="details">username</span>
-                    <input name="username" type="text" placeholder="Inserir Username">
+                    <span class="details">Username:</span>
+                    <input name="username" type="text"
+                           maxlength="10"
+                           placeholder="Inserir Username"
+                           onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
 
                 <?php
                 if (isset($users->errors)) {
@@ -38,8 +41,10 @@
                 ?>
             </div>
                 <div class="input-box">
-                    <span class="details">nome</span>
-                    <input name="name" type="text" placeholder="Inserir Nome">
+                    <span class="details">Nome:</span>
+                    <input name="name" type="text"
+                           placeholder="Inserir Nome"
+                           onkeydown="return /[a-zA-Z ]/i.test(event.key)">
 
                 <?php
                 if (isset($users->errors)) {
@@ -55,7 +60,7 @@
                 </div>
 
                 <div class="input-box">
-                    <span class="details">Email</span>
+                    <span class="details">E-mail:</span>
                     <input name="email" type="text" placeholder="Inserir E-mail">
 
                 <?php
@@ -71,8 +76,11 @@
                 ?>
             </div>
                 <div class="input-box">
-                    <span class="details">Phone Number</span>
-                    <input name="phone" type="number" placeholder="Inserir Número de Telemóvel">
+                    <span class="details">Número de Telemóvel:</span>
+                    <input name="phone" type="number"
+                           maxlength="9" placeholder="Inserir Número de Telemóvel"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
 
                 <?php
                 if (isset($users->errors)) {
@@ -87,10 +95,14 @@
                 ?>
             </div>
                 <div class="input-box">
-                    <span class="details">nif</span>
-                    <input name="nif" type="number" placeholder="Inserir Nif">
+                    <span class="details">Nif:</span>
+                    <input name="nif" type="number" maxlength="9"
+                           placeholder="Inserir Nif"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
 
-                <?php
+
+                    <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('nif'))) {
                         foreach ($users->errors->on('nif') as $error) {
@@ -103,7 +115,7 @@
                 ?>
             </div>
                 <div class="input-box">
-                    <span class="details">birth</span>
+                    <span class="details">Data de Nascimento:</span>
                     <input name="birth" type="date" placeholder="Inserir Código Postal">
 
                 <?php
@@ -119,7 +131,7 @@
                 ?>
             </div>
                 <div class="input-box">
-                    <span class="details">Password</span>
+                    <span class="details">Password:</span>
                     <input name="password" type="password" placeholder="Inserir Password">
 
                 <?php
@@ -135,13 +147,23 @@
                 ?></div>
 
                 <div class="input-box">
-                    <span class="details">Confirm Password</span>
+                    <span class="details">Confirmar Password:</span>
                     <input name="confirm_pass" type="password" placeholder="Confirmar Password">
-
+                    <?php
+                    if (isset($users->errors)) {
+                        if (is_array($users->errors->on('confirm_pass'))) {
+                            foreach ($users->errors->on('confirm_pass') as $error) {
+                                echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            }
+                        } else {
+                            echo "<font color='red'>" . $users->errors->on('confirm_pass') . "</font>";
+                        }
+                    }
+                    ?>
                 </div>
                 <div class="input-box">
-                    <span class="details">postal_code</span>
-                    <input name="postal_code" type="text" placeholder="Inserir Código Postal">
+                    <span class="details">Código Postal:</span>
+                    <input name="postal_code" type="text" maxlength="8" placeholder="Inserir Código Postal">
 
                 <?php
                 if (isset($users->errors)) {
@@ -156,7 +178,7 @@
                 ?>
             </div>
                 <div class="input-box">
-                    <span class="details">coutry</span>
+                    <span class="details">País:</span>
                     <input name="country" type="text" placeholder="Inserir País">
 
                 <?php
@@ -173,7 +195,7 @@
                 </div>
 
                 <div class="input-box">
-                    <span class="details">city</span>
+                    <span class="details">Cidade:</span>
                     <input name="city" type="text" placeholder="Inserir Cidade">
 
                 <?php
@@ -190,7 +212,7 @@
             </div>
 
                 <div class="input-box">
-                    <span class="details">locale</span>
+                    <span class="details">Localidade:</span>
                     <input name="locale" type="text" placeholder="Inserir Localidade">
 
                 <?php
@@ -206,7 +228,7 @@
                 ?>
             </div>
                 <div class="input-box">
-                    <span class="details">address</span>
+                    <span class="details">Morada:</span>
                     <input name="address" type="text" placeholder="Inserir Morada">
                     <?php
                     if (isset($users->errors)) {
@@ -220,28 +242,12 @@
                     }
                     ?>
                 </div>
-                <div class="input-box">
-                    <span class="details">imagem</span>
-                    <input name="image" type="text" placeholder="Inserir Imagem">
-
-                <?php
-                if (isset($users->errors)) {
-                    if (is_array($users->errors->on('image'))) {
-                        foreach ($users->errors->on('image') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
-                        }
-                    } else {
-                        echo "<font color='red'>" . $users->errors->on('image') . "</font>";
-                    }
-                }
-                ?>
-            </div>
             </div>
 
             <div class="gender-details">
                 <input type="radio" name="genre" value="m" id="dot-1">
                 <input type="radio" name="genre" value="f" id="dot-2">
-                <span>Gender</span>
+                <span>Género:</span>
 
                 <div class="category">
 

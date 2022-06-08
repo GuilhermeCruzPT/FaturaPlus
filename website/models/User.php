@@ -67,4 +67,18 @@ class User extends \ActiveRecord\Model
         array('postal_code', 'with' =>
             '/^\d{4}-\d{3}?$/', 'message' => 'Código Postal com formatação incorreta'.'<br>')
     );
+
+    /* ╔═══════════════════════════════════════════════╗ */
+    /* ║     Custom error check and message            ║ */
+    /* ║                                               ║ */
+    /* ╚═══════════════════════════════════════════════╝ */
+
+    public function validate()
+    {
+        if (isset($_POST['confirm_pass'])) {
+            if ($this->password != $_POST['confirm_pass']) {
+                $this->errors->add('password', "A confirmação da password falhou");
+            }
+        }
+    }
 }

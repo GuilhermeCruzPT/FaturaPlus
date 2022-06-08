@@ -110,16 +110,62 @@ class ProductController extends BaseController
             'price' => ((float)$_POST['price']),
             'stock' => ((int)$_POST['stock']),
             'iva_id' => $_POST['iva_id']);
-        $product->update_attributes($attributes);
-        if($product->is_valid()){
-            $product->save();
-            header('Location: router.php?c=products&a=index');
-        } else {
-            //print_r($product->errors->full_messages());
-            $this->renderViewBackend('products/update', [
-                'product' => $product,
-                'iva' => $iva
-            ]);
+
+
+
+        $product_reference = Product::find('reference',array('conditions' => array('reference = ? ', $_POST['reference'])));
+
+            //var_dump( $product_reference->reference);
+        if ($product_reference->reference == $_POST['reference']) {
+            $FiveDigitRandomNumber = rand(10000,99999);
+            if ($_POST['reference'] == $FiveDigitRandomNumber){
+
+                $FiveDigitRandomNumber2 = rand(10000,99999);
+
+                $attributes['reference'] = $FiveDigitRandomNumber2;
+                $product->update_attributes($attributes);
+                if ($product->is_valid()) {
+
+                    $attributes['reference'] = $product_reference->reference;
+                    $product->update_attributes($attributes);
+                    $product->save(false);
+
+                    header('Location: router.php?c=products&a=index');
+                } else {
+                    $this->renderViewBackend('products/update', [
+                        'product' => $product,
+                        'iva' => $iva
+                    ]);
+                }
+            }else {
+                $attributes['reference'] = $FiveDigitRandomNumber;
+                $product->update_attributes($attributes);
+                if ($product->is_valid()) {
+
+                    $attributes['reference'] = $product_reference->reference;
+                    $product->update_attributes($attributes);
+                    $product->save(false);
+
+                    header('Location: router.php?c=products&a=index');
+                } else {
+                    $this->renderViewBackend('products/update', [
+                        'product' => $product,
+                        'iva' => $iva
+                    ]);
+                }
+            }
+        }else{
+            if ($product->is_valid()) {
+
+                $product->save();
+
+                header('Location: router.php?c=products&a=index');
+            } else {
+                $this->renderViewBackend('products/update', [
+                    'product' => $product,
+                    'iva' => $iva
+                ]);
+            }
         }
         } else {
             $product = Product::find([$id]);
