@@ -155,6 +155,14 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                     $id = $_GET[('id')];
                     $BillController->delete($id);
                     break;
+                case 'pdfshow':
+                    $id = $_GET[('id')];
+                    $BillController->pdfshow($id);
+                    break;
+                case 'pdftrans':
+                    $id = $_GET[('id')];
+                    $BillController->pdftrans($id);
+                    break;
             }
             break;
 
