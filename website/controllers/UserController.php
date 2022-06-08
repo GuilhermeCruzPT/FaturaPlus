@@ -101,7 +101,6 @@ class UserController extends BaseController
                 ]);
             }
         } else {
-            $iva = Iva::all();
             $this->renderViewBackend('users/create');
         }
     }

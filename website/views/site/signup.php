@@ -26,13 +26,17 @@
                     <input name="username" type="text"
                            maxlength="10"
                            placeholder="Inserir Username"
-                           onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
+                           onkeydown="return /[a-zA-Z0-9]/i.test(event.key)"
+                    <?php
+                    if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['username']);} ?>">
 
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('username'))) {
                         foreach ($users->errors->on('username') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>" ;
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('username') . "</font>";
@@ -44,13 +48,17 @@
                     <span class="details">Nome:</span>
                     <input name="name" type="text"
                            placeholder="Inserir Nome"
-                           onkeydown="return /[a-zA-Z ]/i.test(event.key)">
+                           onkeydown="return /[a-zA-Z ]/i.test(event.key)"
+                           <?php
+                           if(isset($users->errors)) {?>
+                                   value="<?php
+                    print_r($attributes['name']);} ?>">
 
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('name'))) {
                         foreach ($users->errors->on('name') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('name') . "</font>";
@@ -61,13 +69,17 @@
 
                 <div class="input-box">
                     <span class="details">E-mail:</span>
-                    <input name="email" type="text" placeholder="Inserir E-mail">
+                    <input name="email" type="text" placeholder="Inserir E-mail"
+                        <?php
+                    if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['email']);} ?>">
 
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('email'))) {
                         foreach ($users->errors->on('email') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('email') . "</font>";
@@ -80,13 +92,17 @@
                     <input name="phone" type="number"
                            maxlength="9" placeholder="Inserir Número de Telemóvel"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
-                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['phone']);} ?>">
 
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('phone'))) {
                         foreach ($users->errors->on('phone') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('phone') . "</font>";
@@ -99,14 +115,18 @@
                     <input name="nif" type="number" maxlength="9"
                            placeholder="Inserir Nif"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
-                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['nif']);} ?>">
 
 
                     <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('nif'))) {
                         foreach ($users->errors->on('nif') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('nif') . "</font>";
@@ -116,13 +136,17 @@
             </div>
                 <div class="input-box">
                     <span class="details">Data de Nascimento:</span>
-                    <input name="birth" type="date" placeholder="Inserir Código Postal">
+                    <input name="birth" type="date" placeholder="Inserir Código Postal"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['birth']);} ?>">
 
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('birth'))) {
                         foreach ($users->errors->on('birth') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('birth') . "</font>";
@@ -138,7 +162,7 @@
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('password'))) {
                         foreach ($users->errors->on('password') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>" ;
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('password') . "</font>";
@@ -153,7 +177,7 @@
                     if (isset($users->errors)) {
                         if (is_array($users->errors->on('confirm_pass'))) {
                             foreach ($users->errors->on('confirm_pass') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
+                                echo "<font color='red'>" . $error . "</font>" ;
                             }
                         } else {
                             echo "<font color='red'>" . $users->errors->on('confirm_pass') . "</font>";
@@ -163,13 +187,17 @@
                 </div>
                 <div class="input-box">
                     <span class="details">Código Postal:</span>
-                    <input name="postal_code" type="text" maxlength="8" placeholder="Inserir Código Postal">
+                    <input name="postal_code" type="text" maxlength="8" placeholder="Inserir Código Postal"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['postal_code']);} ?>">
 
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('postal_code'))) {
                         foreach ($users->errors->on('postal_code') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>" ;
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('postal_code') . "</font>";
@@ -179,13 +207,17 @@
             </div>
                 <div class="input-box">
                     <span class="details">País:</span>
-                    <input name="country" type="text" placeholder="Inserir País">
+                    <input name="country" type="text" placeholder="Inserir País"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['country']);} ?>">
 
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('country'))) {
                         foreach ($users->errors->on('country') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>" ;
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('country') . "</font>";
@@ -196,13 +228,17 @@
 
                 <div class="input-box">
                     <span class="details">Cidade:</span>
-                    <input name="city" type="text" placeholder="Inserir Cidade">
+                    <input name="city" type="text" placeholder="Inserir Cidade"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['city']);} ?>">
 
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('city'))) {
                         foreach ($users->errors->on('city') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>" ;
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('city') . "</font>";
@@ -213,13 +249,17 @@
 
                 <div class="input-box">
                     <span class="details">Localidade:</span>
-                    <input name="locale" type="text" placeholder="Inserir Localidade">
+                    <input name="locale" type="text" placeholder="Inserir Localidade"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['locale']);} ?>">
 
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('locale'))) {
                         foreach ($users->errors->on('locale') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>" ;
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('locale') . "</font>";
@@ -229,12 +269,16 @@
             </div>
                 <div class="input-box">
                     <span class="details">Morada:</span>
-                    <input name="address" type="text" placeholder="Inserir Morada">
+                    <input name="address" type="text" placeholder="Inserir Morada"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['address']);} ?>">
                     <?php
                     if (isset($users->errors)) {
                         if (is_array($users->errors->on('address'))) {
                             foreach ($users->errors->on('address') as $error) {
-                                echo "<font color='red'>" . $error . "</font>" . '<br>';
+                                echo "<font color='red'>" . $error . "</font>" ;
                             }
                         } else {
                             echo "<font color='red'>" . $users->errors->on('address') . "</font>";
@@ -242,38 +286,41 @@
                     }
                     ?>
                 </div>
-            </div>
 
-            <div class="gender-details">
-                <input type="radio" name="genre" value="m" id="dot-1">
-                <input type="radio" name="genre" value="f" id="dot-2">
+
+
+                <div class="input-box">
                 <span>Género:</span>
+<br>
+                    <select style=" height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+border-color: #9b59b6;" class="form-control" id="genre" name="genre">
+                        <option value="">não pode estar vazio</option>
+                        <option value="m">Masculino</option>
+                        <option value="f">Feminino</option>
+                    </select>
 
-                <div class="category">
-
-                    <label for="dot-1">
-                        <span class="dot one"></span>
-                        <span class="gender">Male</span>
-                    </label>
-                    <label for="dot-2">
-                        <span class="dot two"></span>
-                        <span class="gender">Female</span>
-                    </label>
-
-                </div>
+<br>
                 <?php
                 if (isset($users->errors)) {
                     if (is_array($users->errors->on('genre'))) {
                         foreach ($users->errors->on('genre') as $error) {
-                            echo "<font color='red'>" . $error . "</font>" . '<br>';
+                            echo "<font color='red'>" . $error . "</font>" ;
                         }
                     } else {
                         echo "<font color='red'>" . $users->errors->on('genre') . "</font>";
 
                     }
                 }
-                ?>
-
+                ?></div>
+                </div>
             <div class="button">
                 <input type="submit" value="Register">
             </div>
