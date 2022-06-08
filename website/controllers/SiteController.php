@@ -156,11 +156,7 @@ class SiteController extends BaseController
 
     public function pdfshow($id)
     {
-        $enterprise = Enterprise::all([1]);
         $bill = Bill::find([$id]);
-        $lines = Bill_line::all();
-        $client = User::find_by_id($bill->client_reference_id);
-        $employee = User::find_by_id($bill->employee_reference_id);
 
         $options = new Options();
         $options->set('isRemoteEnabled', TRUE);
@@ -169,6 +165,54 @@ class SiteController extends BaseController
         $dompdf = new Dompdf($options);
 
         // Fatura em Html
+        $html = $this->pdf($bill);
+
+        // Load HTML content
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream('F'.$bill->reference.' - '.APP_NAME, ["Attachment" => false]);
+    }
+
+    public function pdftrans($id)
+    {
+        $bill = Bill::find([$id]);
+
+        $options = new Options();
+        $options->set('isRemoteEnabled', TRUE);
+
+        // Instantiate and use the dompdf class
+        $dompdf = new Dompdf($options);
+
+        // Fatura em Html
+        $html = $this->pdf($bill);
+
+        // Load HTML content
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream('F'.$bill->reference.' - '.APP_NAME, ["Attachment" => true]);
+    }
+
+    public function pdf($bill)
+    {
+        $enterprise = Enterprise::all([1]);
+        $lines = Bill_line::all();
+        $client = User::find_by_id($bill->client_reference_id);
+        $employee = User::find_by_id($bill->employee_reference_id);
+
         $html = '<style>
         * {box-sizing: border-box;}
         table {width: 100%;}
@@ -284,51 +328,6 @@ class SiteController extends BaseController
         $html .= '</div>';
         $html .= '</div>';
 
-        // Load HTML content
-        $dompdf->loadHtml($html);
-
-        // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser
-        $dompdf->stream("file.pdf", ["Attachment" => false]);
-
-
-
-
-
-        //Instancia do DOMPDF
-        //$dompdf = new Dompdf();
-
-        //$dompdf->load_html("<h1>Fatura</h1>");
-        //$dompdf->setPaper("A4", "portrait");
-        //$dompdf->render();
-        //$dompdf->stream("file.pdf", array("Attachment" => false));
-
-        //$dompdf->loadHtml("<h1>Fatura</h1>");
-
-        //ob_start();
-        //$pdf = ob_get_clean();
-        //require 'C:\wamp64\www\FaturaPlus\website\views\site\bills\pdf.html';
-        //$dompdf->loadHtml(ob_get_clean());
-
-        //$dompdf->setPaper("A4", "landscape");
-        //$dompdf->setPaper("A4");
-
-        //$dompdf->render();
-        //$dompdf->stream("file.pdf", ["Attachment" => false]);
-
-        //header('Content-type: application/pdf');
-        //echo $dompdf->output();
-
-
-    }
-
-    public function teste()
-    {
-        $this->renderViewDetalhe('pdf/pdf');
+        return $html;
     }
 }

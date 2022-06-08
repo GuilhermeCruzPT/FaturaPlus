@@ -44,7 +44,7 @@
                        role="button"
                        aria-pressed="true">Mostrar</a>
 
-                    <a href=""
+                    <a href="router.php?c=site&a=pdftrans&id=<?= $bill->id ?>"
                        class=" btn btn-primary btn-back"
                        role="button"
                        aria-pressed="true">Transferir</a>
