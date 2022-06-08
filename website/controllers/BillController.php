@@ -81,7 +81,8 @@ class BillController extends BaseController
 
                 $this->renderViewBackend('bills/create', [
                     'bills' => $bills,
-                    'user' => $user
+                    'user' => $user,
+                    'attributes' => $attributes
                 ]);
             }
         } else {

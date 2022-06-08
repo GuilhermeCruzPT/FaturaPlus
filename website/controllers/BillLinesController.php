@@ -159,6 +159,7 @@ class BillLinesController extends BaseController
                     'bill_lines' => $bill_lines,
                     'products' => $products,
                     'bills' => $bills,
+                    'attributes_lines' => $attributes_lines
                 ]);
                 }
             }

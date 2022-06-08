@@ -60,7 +60,8 @@ class IvaController extends BaseController
                 //print_r($bills->errors->full_messages());
 
                 $this->renderViewBackend('ivas/create', [
-                    'ivas' => $ivas
+                    'ivas' => $ivas,
+                    'attributes' => $attributes
                 ]);
             }
         } else {

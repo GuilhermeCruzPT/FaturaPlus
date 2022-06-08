@@ -73,7 +73,8 @@ class ProductController extends BaseController
 
                 $this->renderViewBackend('products/create', [
                     'products' => $products,
-                    'iva' => $iva
+                    'iva' => $iva,
+                    'attributes' => $attributes
                 ]);
             }
         } else {

@@ -26,7 +26,11 @@
                            maxlength="6"
                            placeholder="Inserir Referência"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
-                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['reference']);} ?>">
                 </div>
 
                 <?php
@@ -50,7 +54,11 @@
                            id="title"
                            name="title"
                            placeholder="Inserir Título"
-                           onkeydown="return /[a-zA-Z ]/i.test(event.key)">
+                           onkeydown="return /[a-zA-Z ]/i.test(event.key)"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['title']);} ?>">
                 </div>
 
                 <?php
@@ -73,7 +81,11 @@
                            class="form-control"
                            id="description"
                            name="description"
-                           placeholder="Inserir Descrição">
+                           placeholder="Inserir Descrição"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['description']);} ?>">
                 </div>
 
                 <?php
@@ -98,7 +110,11 @@
                            name="price"
                            placeholder="Inserir Preço"
                            maxlength="14"
-                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['price']);} ?>">
                 </div>
 
                 <?php
@@ -124,7 +140,11 @@
                            placeholder="Inserir Stock"
                            maxlength="6"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
-                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['stock']);} ?>">
                 </div>
 
                 <?php
