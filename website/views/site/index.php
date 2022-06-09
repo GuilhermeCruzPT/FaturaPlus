@@ -1,7 +1,6 @@
-
 <div class="header">
     <div class="inner-header flex">
-        <img class="img-fit" src="<?= DIRPAGE ?>public/img/FaturaPlus_Oficial.png" alt="<?= APP_NAME ?>">
+        <img class="img-fit" src="<?= DIRIMG ?>FaturaPlus_Oficial.png" alt="<?= APP_NAME ?>">
     </div>
 
     <!--Waves Container-->
@@ -22,6 +21,10 @@
     <!--Waves end-->
 </div>
 
+
+
+
+
 <div class="container p-5">
     <div class="row">
         <div class="col-md-8">
@@ -38,7 +41,7 @@
         </div>
         <div class="col-md-4 text-center">
             <div class="img-fluid logo">
-                <img class="rounded-circle img-fit" src="<?= DIRPAGE ?>public/img/FaturaPlus.png" alt="<?= APP_NAME ?>" title="<?= APP_NAME ?>" >
+                <img class="rounded-circle img-fit" src="<?= DIRIMG ?>FaturaPlus.png" alt="<?= APP_NAME ?>" title="<?= APP_NAME ?>" >
             </div>
         </div>
     </div>
@@ -47,4 +50,3 @@
 
 <!--<a href="http://localhost/pws_202122/MVCTemplate/router.php?c=site&a=show">Show()</a>-->
 <a href="<?= APP_BASE_URL ?>?c=site&a=show">Show()</a>
-

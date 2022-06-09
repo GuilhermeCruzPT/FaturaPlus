@@ -122,6 +122,53 @@
 
                 <div class="form-group">
                     <label for="client_reference_id">Referência Cliente:</label>
+                    <datalist id="client_reference_id">
+                            <?php foreach($user as $users){?>
+                            <?php if ($users->role == 'c'){ ?>
+                        <option value="<?= $users->username ?>">
+                            <?php  }} ?>
+                    </datalist>
+                    <input placeholder="Nenhum" class="form-control" autoComplete="on" list="client_reference_id"/>
+                </div>
+
+                <a href=""
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Adicionar</a>
+
+                <a href=""
+                   class=" btn btn-primary btn-back"
+                   role="button"
+                   aria-pressed="true">Criar</a>
+
+                <br><br><br>
+
+                <div class="form-group">
+                    <label for="employee_reference_id">Referência Funcionário:</label>
+                    <datalist id="employee_reference_id">
+                        <?php foreach($user as $users){?>
+                            <?php if ($users->role == 'f'){ ?>
+                                <option value="<?= $users->username ?>">
+                            <?php  }} ?>
+                    </datalist>
+                    <input placeholder="Nenhum" class="form-control" autoComplete="on" list="employee_reference_id"/>
+                </div>
+
+                <a href=""
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Adicionar</a>
+
+                <a href=""
+                   class=" btn btn-primary btn-back"
+                   role="button"
+                   aria-pressed="true">Criar</a>
+
+                <br><br><br>
+
+
+                <div class="form-group">
+                    <label for="client_reference_id">Referência Cliente:</label>
                     <select class="form-control" id="client_reference_id" name="client_reference_id">
                         <option value="0">Nenhum</option>
                         <?php foreach($user as $users){?>
