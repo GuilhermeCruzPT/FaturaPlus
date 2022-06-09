@@ -16,7 +16,7 @@
     <div class="container">
         <div class="box">
 
-            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Painel Principal</h4><br>
+            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Painel Geral</h4><br>
 
             <?php
             $client = 0;
@@ -30,6 +30,26 @@
                     $employee += 1;
                 else
                     $admin += 1;
+            }
+
+            $emitida= 0;
+            $lancamento = 0;
+            $totalUnitEmitida = 0;
+            $totalIvaEmitida = 0;
+            $totalUnitLancamento = 0;
+            $totalIvaLancamento = 0;
+
+            foreach ($bills as $bill) {
+                if ($bill->state == 'e'){
+                    $emitida += 1;
+                    $totalUnitEmitida += $bill->total_value;
+                    $totalIvaEmitida += $bill->total_iva;
+                }
+                else {
+                    $lancamento += 1;
+                    $totalUnitLancamento += $bill->total_value;
+                    $totalIvaLancamento += $bill->total_iva;
+                }
             }
             ?>
 
@@ -190,6 +210,7 @@
                 </section>
 
                 <section id="stats-subtitle">
+
                     <div class="row">
                         <div class="col-12 mt-3 mb-1">
                             <h4 class="text-uppercase">Outras Estatisticas</h4>
@@ -198,20 +219,22 @@
                     </div>
 
                     <div class="row">
+
                         <div class="col-xl-6 col-md-12">
                             <div class="card overflow-hidden">
                                 <div class="card-content">
                                     <div class="card-body cleartfix">
                                         <div class="media align-items-stretch">
                                             <div class="align-self-center">
-                                                <i class="icon-pencil primary font-large-2 mr-2"></i>
+                                                <i class='bx bx-coin bx-tada primary font-large-2 mr-2' ></i>
                                             </div>
                                             <div class="media-body">
-                                                <h4>Total Posts</h4>
-                                                <span>Monthly blog posts</span>
+                                                <h4>Valor Total</h4>
+                                                <span>Unitário (€)</span><br>
+                                                <span>Fat. Emitida</span>
                                             </div>
                                             <div class="align-self-center">
-                                                <h1>18,000</h1>
+                                                <h1><?= number_format($totalUnitEmitida, 2, '.', '') ?>€</h1>
                                             </div>
                                         </div>
                                     </div>
@@ -220,42 +243,46 @@
                         </div>
 
                         <div class="col-xl-6 col-md-12">
-                            <div class="card">
+                            <div class="card overflow-hidden">
                                 <div class="card-content">
                                     <div class="card-body cleartfix">
                                         <div class="media align-items-stretch">
                                             <div class="align-self-center">
-                                                <i class="icon-speech warning font-large-2 mr-2"></i>
+                                                <i class='bx bx-coin bx-tada primary font-large-2 mr-2' ></i>
                                             </div>
                                             <div class="media-body">
-                                                <h4>Total Comments</h4>
-                                                <span>Monthly blog comments</span>
+                                                <h4>Valor Total</h4>
+                                                <span>Unitário (€)</span><br>
+                                                <span>Fat. em Lançamento</span>
                                             </div>
                                             <div class="align-self-center">
-                                                <h1>84,695</h1>
+                                                <h1><?= number_format($totalUnitLancamento, 2, '.', '') ?>€</h1>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <div class="row">
+
                         <div class="col-xl-6 col-md-12">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body cleartfix">
                                         <div class="media align-items-stretch">
                                             <div class="align-self-center">
-                                                <h1 class="mr-2">$76,456.00</h1>
+                                                <i class='bx bx-credit-card bx-tada warning font-large-2 mr-2' ></i>
                                             </div>
                                             <div class="media-body">
-                                                <h4>Total Sales</h4>
-                                                <span>Monthly Sales Amount</span>
+                                                <h4>Valor Total</h4>
+                                                <span>Iva (€)</span><br>
+                                                <span>Fat. Emitida</span>
                                             </div>
                                             <div class="align-self-center">
-                                                <i class="icon-heart danger font-large-2"></i>
+                                                <h1><?= number_format($totalIvaEmitida, 2, '.', '') ?>€</h1>
                                             </div>
                                         </div>
                                     </div>
@@ -269,21 +296,72 @@
                                     <div class="card-body cleartfix">
                                         <div class="media align-items-stretch">
                                             <div class="align-self-center">
-                                                <h1 class="mr-2">$36,000.00</h1>
+                                                <i class='bx bx-credit-card bx-tada warning font-large-2 mr-2' ></i>
                                             </div>
                                             <div class="media-body">
-                                                <h4>Total Cost</h4>
-                                                <span>Monthly Cost</span>
+                                                <h4>Valor Total</h4>
+                                                <span>Iva (€)</span><br>
+                                                <span>Fat. em Lançamento</span>
                                             </div>
                                             <div class="align-self-center">
-                                                <i class="icon-wallet success font-large-2"></i>
+                                                <h1><?= number_format($totalIvaLancamento, 2, '.', '') ?>€</h1>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
+                    <div class="row">
+
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body cleartfix">
+                                        <div class="media align-items-stretch">
+                                            <div class="align-self-center">
+                                                <i class='bx bx-wallet bx-tada success font-large-2 mr-2' ></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>Valor Total</h4>
+                                                <span>Unitário e Iva</span><br>
+                                                <span>Fat. Emitida</span>
+                                            </div>
+                                            <div class="align-self-center">
+                                                <h1><?= number_format($totalUnitEmitida + $totalIvaEmitida, 2, '.', '') ?>€</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body cleartfix">
+                                        <div class="media align-items-stretch">
+                                            <div class="align-self-center">
+                                                <i class='bx bx-wallet bx-tada danger font-large-2 mr-2' ></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>Valor Total</h4>
+                                                <span>Unitário e Iva</span><br>
+                                                <span>Fat. em Lançamento</span>
+                                            </div>
+                                            <div class="align-self-center">
+                                                <h1><?= number_format($totalUnitLancamento + $totalIvaLancamento, 2, '.', '') ?>€</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </section>
             </div>
         </div>

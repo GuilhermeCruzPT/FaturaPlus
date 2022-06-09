@@ -9,7 +9,7 @@
     <div class="container">
         <div class="box">
 
-            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Faturas</h4><br>
+            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Histórico de Faturas</h4><br>
             <br>
             <table class="table table-striped" style="background: white">
                 <thead>
@@ -29,7 +29,7 @@
                     echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td><td></td></td></td></td>";
                 }else{
                 foreach ($bills as $bill) {
-                    if ($user == $bill->client_reference && $bill->state == 'e') {?>
+                    if ($user == $bill->client_reference && $bill->state == 'e') { ?>
 
                 <td><?= $bill->id ?>
                 <td>F<?= $bill->reference?></td>
@@ -44,7 +44,7 @@
                        role="button"
                        aria-pressed="true">Mostrar</a>
 
-                    <a href=""
+                    <a href="router.php?c=site&a=pdftrans&id=<?= $bill->id ?>"
                        class=" btn btn-primary btn-back"
                        role="button"
                        aria-pressed="true">Transferir</a>

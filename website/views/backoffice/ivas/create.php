@@ -26,7 +26,11 @@
                            maxlength="2"
                            placeholder="Inserir Percentagem"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
-                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['percentage']);} ?>">
                 </div>
 
                 <?php
@@ -49,7 +53,11 @@
                            class="form-control"
                            id="description"
                            name="description"
-                           placeholder="Inserir Descrição">
+                           placeholder="Inserir Descrição"
+                        <?php
+                        if(isset($users->errors)) {?>
+                           value="<?php
+                           print_r($attributes['description']);} ?>">
                 </div>
 
                 <?php

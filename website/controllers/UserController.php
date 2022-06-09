@@ -97,11 +97,11 @@ class UserController extends BaseController
                 //print_r($bills->errors->full_messages());
 
                 $this->renderViewBackend('users/create', [
-                    'users' => $users
+                    'users' => $users,
+                    'attributes' => $attributes
                 ]);
             }
         } else {
-            $iva = Iva::all();
             $this->renderViewBackend('users/create');
         }
     }
@@ -147,9 +147,9 @@ class UserController extends BaseController
 
             if (empty($attributes['password'])) {
                 $user_pass = User::find('password', array('conditions' => array('id = ? ', $id)));
-                var_dump($user_pass->password);
+
                 $attributes['password'] = "P" . $user_pass->password;
-                var_dump($user_pass->password);
+
                 $user->update_attributes($attributes);
 
                 if ($user->is_valid()) {

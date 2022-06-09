@@ -99,6 +99,20 @@
                    role="button"
                    aria-pressed="true">Voltar</a>
 
+                <?php if ($bill->state == 'e') { ?>
+
+                <a href="router.php?c=bills&a=pdfshow&id=<?= $bill->id ?>"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Visualizar em PDF</a>
+
+                <a href="router.php?c=bills&a=pdftrans&id=<?= $bill->id ?>"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Transferir em PDF</a>
+
+                <?php } ?>
+
             </form>
         </div>
     </div>

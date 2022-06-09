@@ -28,24 +28,26 @@ class AuthController extends BaseController
 
     public function verify_login()
     {
-        $user = User::find_by_username($_POST['username']);
-        if ($user->username == $_POST['username'] && $user->password == md5($_POST['password'])){
-            $_SESSION["user_id"] = $user->id;
-            $_SESSION["username"] = $user->username;
-            $_SESSION["permission"] = $user->role;
+        if (isset($_POST['username'], $_POST['password'])) {
+            $user = User::find_by_username($_POST['username']);
+            if ($user->username == $_POST['username'] && $user->password == md5($_POST['password'])) {
+                $_SESSION["user_id"] = $user->id;
+                $_SESSION["username"] = $user->username;
+                $_SESSION["permission"] = $user->role;
 
-            if ($user->role == 'c') {
-                $this->renderView('site/index', [
-                    'userName' => $user->name,
-                ]);
+                if ($user->role == 'c') {
+                    $this->renderView('site/index', [
+                        'userName' => $user->name,
+                    ]);
+                } else {
+                    header('Location: router.php?c=panel&a=index');
+                    //$this->renderViewBackend('panel/index');
+                }
+            } else {
+                $error = 'O Username ou a Palavra-Passe não existem!!';
             }
-            else {
-                header('Location: router.php?c=panel&a=index');
-                //$this->renderViewBackend('panel/index');
-            }
-        }
-        else {
-            $error = 'O Username ou a Palavra-Passe não existem!!';
+        }else{
+            $this->renderViewfrontend('site/auth');
         }
     }
 
@@ -53,37 +55,46 @@ class AuthController extends BaseController
         $this->renderViewfrontend('site/signup');
     }
 
-    public function save_signup(){
-        $attributes = array(
-            'username' => $_POST['username'],
-            'password' => $_POST['password'],
-            'name' => $_POST['name'],
-            'email' => $_POST['email'],
-            'phone' => ((int)$_POST['phone']),
-            'nif' => ((int)$_POST['nif']),
-            'postal_code' => $_POST['postal_code'],
-            'birth' => $_POST['birth'],
-            'genre' => $_POST['genre'],
-            'country' => $_POST['country'],
-            'city' => $_POST['city'],
-            'locale' => $_POST['locale'],
-            'address' => $_POST['address'],
-            'role' => "c");
+    public function save_signup()
+    {
 
-        $users = new User($attributes);
-        if ($users->is_valid()) {
-            $attributes['password'] = md5($_POST['password']);
-            $users->update_attributes($attributes);
-            $users->save(false);
-            header('Location: router.php?c=auth&a=signin');
-        }
-        else {
-            $this->renderViewfrontend('site/signup', [
-                'users' => $users
-            ]);
+        if (isset($_POST['username'], $_POST['password'], $_POST['name'], $_POST['email'], $_POST['phone'], $_POST['nif'],
+            $_POST['postal_code'], $_POST['birth'],  $_POST['country'], $_POST['city'], $_POST['locale'],
+            $_POST['address'])) {
+
+
+            $attributes = array(
+                'username' => $_POST['username'],
+                'password' => $_POST['password'],
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'phone' => ((int)$_POST['phone']),
+                'nif' => ((int)$_POST['nif']),
+                'postal_code' => $_POST['postal_code'],
+                'birth' => $_POST['birth'],
+                'genre' => $_POST['genre'],
+                'country' => $_POST['country'],
+                'city' => $_POST['city'],
+                'locale' => $_POST['locale'],
+                'address' => $_POST['address'],
+                'role' => "c");
+
+            $users = new User($attributes);
+            if ($users->is_valid()) {
+                $attributes['password'] = md5($_POST['password']);
+                $users->update_attributes($attributes);
+                $users->save(false);
+                header('Location: router.php?c=auth&a=signin');
+            } else {
+                $this->renderViewfrontend('site/signup', [
+                    'users' => $users,
+                    'attributes' => $attributes
+                ]);
+            }
+        } else {
+            $this->renderViewfrontend('site/signup');
         }
     }
-
     public function logout(){
         session_destroy();
         header('Location: router.php?c=auth&a=signin');

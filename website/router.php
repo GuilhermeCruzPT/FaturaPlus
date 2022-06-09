@@ -68,8 +68,9 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                     $id = $_GET[('id')];
                     $siteController->pdfshow($id);
                     break;
-                case 'teste':
-                    $siteController->teste();
+                case 'pdftrans':
+                    $id = $_GET[('id')];
+                    $siteController->pdftrans($id);
                     break;
             }
             break;
@@ -153,6 +154,14 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'delete':
                     $id = $_GET[('id')];
                     $BillController->delete($id);
+                    break;
+                case 'pdfshow':
+                    $id = $_GET[('id')];
+                    $BillController->pdfshow($id);
+                    break;
+                case 'pdftrans':
+                    $id = $_GET[('id')];
+                    $BillController->pdftrans($id);
                     break;
             }
             break;
