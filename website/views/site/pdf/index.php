@@ -9,7 +9,7 @@
     <div class="container">
         <div class="box">
 
-            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Faturas</h4><br>
+            <h4 class="display-4 align-text-top" style="padding-top: 25px;">Histórico de Faturas</h4><br>
             <br>
             <table class="table table-striped" style="background: white">
                 <thead>

@@ -24,9 +24,9 @@
         <li>
             <a href="router.php?c=panel&a=index">
                 <i class='bx bx-grid-alt' ></i>
-                <span class="links_name">Painel Principal</span>
+                <span class="links_name">Painel Geral</span>
             </a>
-            <span class="tooltip">Painel Principal</span>
+            <span class="tooltip">Painel Geral</span>
         </li>
         <li>
             <a href="router.php?c=users&a=index">
