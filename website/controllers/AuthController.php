@@ -28,25 +28,63 @@ class AuthController extends BaseController
 
     public function verify_login()
     {
-        if (isset($_POST['username'], $_POST['password'])) {
-            $user = User::find_by_username($_POST['username']);
-            if ($user->username == $_POST['username'] && $user->password == md5($_POST['password'])) {
-                $_SESSION["user_id"] = $user->id;
-                $_SESSION["username"] = $user->username;
-                $_SESSION["permission"] = $user->role;
 
-                if ($user->role == 'c') {
-                    $this->renderView('site/index', [
-                        'userName' => $user->name,
-                    ]);
-                } else {
-                    header('Location: router.php?c=panel&a=index');
-                    //$this->renderViewBackend('panel/index');
-                }
+        if (isset($_POST['username_login']) && isset($_POST['password_login'])) {
+
+            if ($_POST['username_login'] == '' && $_POST['password_login'] == '') {
+                $user_username = 'O Username não pode estar vazio!';
+                $user_password = 'A Password não pode estar vazio!';
+                $this->renderViewfrontend('site/auth', [
+                    'user_username' => $user_username,
+                    'user_password' => $user_password
+                ]);
+
+            } elseif ($_POST['username_login'] == '') {
+                $user_username = 'O Username não pode estar vazio!';
+                $this->renderViewfrontend('site/auth', [
+                    'user_username' => $user_username
+                ]);
+
+            } elseif ($_POST['password_login'] == '') {
+                $user_password = 'A Password não pode estar vazio!';
+                $this->renderViewfrontend('site/auth', [
+                    'user_password' => $user_password
+                ]);
+
             } else {
-                $error = 'O Username ou a Palavra-Passe não existem!!';
+                $user = User::find_by_username($_POST['username_login']);
+
+
+                if (!is_null($user) && $user->username == $_POST['username_login'] && $user->password == md5($_POST['password_login'])) {
+
+
+                    $_SESSION["user_id"] = $user->id;
+                    $_SESSION["username"] = $user->username;
+                    $_SESSION["permission"] = $user->role;
+
+                    if ($user->role == 'c') {
+                        $this->renderView('site/index', [
+                            'userName' => $user->name,
+                        ]);
+                    } else {
+                        header('Location: router.php?c=panel&a=index');
+                        //$this->renderViewBackend('panel/index');
+                    }
+                } else if (is_null($user)) {
+
+                    $user_password = 'O Username ou a Palavra-Passe não existem!!';
+
+                    $this->renderViewfrontend('site/auth', [
+                        'user_password' => $user_password
+                    ]);
+                } elseif ($user->username == $_POST['username_login'] && $user->password != md5($_POST['password_login'])) {
+                    $user_password = 'O Password não corresponde ao nome do utilizador';
+                    $this->renderViewfrontend('site/auth', [
+                        'user_password' => $user_password
+                    ]);
+                }
             }
-        }else{
+        } else {
             $this->renderViewfrontend('site/auth');
         }
     }

@@ -26,8 +26,35 @@
         <form action="router.php?c=auth&a=verify_login" method="POST">
             <h1>Entrar</h1>
             <div class="sign-in-field-container">
-                <input name="username" type="text" placeholder="Username" />
-                <input name="password" type="password" placeholder="Password" />
+                <input name="username_login" type="text" placeholder="Username" />
+                <?php
+                if (isset($user_username)) {
+                    if (is_array($user_username)) {
+                        foreach ($user_username as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+
+                        echo "<font color='red'>" . $user_username . "</font>";
+
+                    }
+
+                }
+                ?>
+                <input name="password_login" type="password" placeholder="Password" />
+                <?php
+                if (isset($user_password)) {
+                    if (is_array($user_password)) {
+                        foreach ($user_password as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+
+                        echo "<font color='red'>" . $user_password . "</font>";
+
+                    }
+                }
+                ?>
             </div>
             <a href="#">Esqueceu-se da palavra-passe?</a>
             <button type="submit" class="button-auth" role="button"><span>Entrar</span></button>
