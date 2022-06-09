@@ -51,9 +51,11 @@ class BillController extends BaseController
 
     public function create()
     {
-        $user = User::all();
+        $users = User::all();
+        $products = Product::all();
         $this->renderViewBackend('bills/create', [
-            'user' => $user
+            'users' => $users,
+            'products' => $products
         ]);
     }
 
@@ -70,7 +72,7 @@ class BillController extends BaseController
                 'client_reference_id' => $_POST['client_reference_id'],
                 'employee_reference_id' => $_POST['employee_reference_id']);
             $bills = new Bill($attributes);
-            $user = User::all();
+            $users = User::all();
             if ($bills->is_valid()) {
                 $bills->save();
                 header('Location: router.php?c=bills&a=index');
@@ -81,14 +83,14 @@ class BillController extends BaseController
 
                 $this->renderViewBackend('bills/create', [
                     'bills' => $bills,
-                    'user' => $user,
+                    'users' => $users,
                     'attributes' => $attributes
                 ]);
             }
         } else {
-            $user = User::all();
+            $users = User::all();
             $this->renderViewBackend('bills/create', [
-                'user' => $user
+                'users' => $users
             ]);
         }
     }
