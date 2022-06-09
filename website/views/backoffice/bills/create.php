@@ -16,6 +16,105 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
                 <h4 class="display-4 text-center">Criar Fatura</h4><hr><br>
+                <div class="form-group">
+                    <label for="client_reference_id">Referência Cliente:</label>
+                    <datalist id="client_reference_id">
+                        <?php foreach($users as $user){?>
+                        <?php if ($user->role == 'c'){ ?>
+                        <option value="<?= $user->username ?>">
+                            <?php  }} ?>
+                    </datalist>
+                    <input placeholder="Nenhum" class="form-control" autoComplete="on" list="client_reference_id"/>
+                </div>
+
+                <?php
+                if(isset($bills->errors)) {
+                    if (is_array($bills->errors->on('client_reference_id'))) {
+                        foreach ($bills->errors->on('client_reference_id') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $bills->errors->on('client_reference_id') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <a href=""
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Adicionar</a>
+
+                <a href=""
+                   class=" btn btn-primary btn-back"
+                   role="button"
+                   aria-pressed="true">Criar</a>
+
+                <br><br><br>
+
+                <div class="form-group">
+                    <label for="product_id">Referência Produto:</label>
+                    <datalist id="product_id">
+                        <?php foreach($products as $product){?>
+                        <?php if ($product->stock != 0){ ?>
+                        <option value="P<?= $product->reference . ' - ' . $product->title ?>">
+                            <?php  }} ?>
+                    </datalist>
+                    <input placeholder="Nenhum" class="form-control" autoComplete="on" list="product_id"/>
+                </div>
+
+                <?php
+                if(isset($bills->errors)) {
+                    if (is_array($bills->errors->on('employee_reference_id'))) {
+                        foreach ($bills->errors->on('employee_reference_id') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
+                        }
+                    } else {
+                        echo "<font color='red'>" . $bills->errors->on('employee_reference_id') . "</font>";
+                    }
+                }
+                ?>
+
+                <br>
+
+                <a href=""
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Adicionar</a>
+
+                <a href=""
+                   class=" btn btn-primary btn-back"
+                   role="button"
+                   aria-pressed="true">Criar</a>
+
+                <br><br><br>
+                <br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <div class="form-group">
                     <label for="reference">Referência:</label>
@@ -28,7 +127,7 @@
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                         <?php
-                        if(isset($users->errors)) {?>
+                        if(isset($user->errors)) {?>
                            value="<?php
                            print_r($attributes['reference']);} ?>">
                 </div>
@@ -124,9 +223,9 @@
                     <label for="client_reference_id">Referência Cliente:</label>
                     <select class="form-control" id="client_reference_id" name="client_reference_id">
                         <option value="0">Nenhum</option>
-                        <?php foreach($user as $users){?>
-                            <?php if ($users->role == 'c'){ ?>
-                                <option value="<?= $users->id?>"> <?= $users->username; ?></option>
+                        <?php foreach($users as $user){?>
+                            <?php if ($user->role == 'c'){ ?>
+                                <option value="<?= $user->id?>"> <?= $user->username; ?></option>
                             <?php  }} ?>
                     </select>
                 </div>
@@ -149,9 +248,9 @@
                     <label for="employee_reference_id">Referência Funcionário:</label>
                     <select class="form-control" id="employee_reference_id" name="employee_reference_id">
                         <option value="0">Nenhum</option>
-                        <?php foreach($user as $users){?>
-                            <?php if ($users->role == 'f'){ ?>
-                                <option value="<?= $users->id?>"> <?= $users->username; ?></option>
+                        <?php foreach($users as $user){?>
+                            <?php if ($user->role == 'f'){ ?>
+                                <option value="<?= $user->id?>"> <?= $user->username; ?></option>
                             <?php  }} ?>
                     </select>
                 </div>
