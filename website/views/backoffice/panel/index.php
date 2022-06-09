@@ -34,6 +34,14 @@
 
             $emitida= 0;
             $lancamento = 0;
+            $lineEmitido = 0;
+            $lineLancamento = 0;
+
+            $produtoEmitido = 0;
+            $produtoLancamento = 0;
+            $produtoStock = 0;
+            $produtoHistorico = 0;
+
             $totalUnitEmitida = 0;
             $totalIvaEmitida = 0;
             $totalUnitLancamento = 0;
@@ -44,12 +52,30 @@
                     $emitida += 1;
                     $totalUnitEmitida += $bill->total_value;
                     $totalIvaEmitida += $bill->total_iva;
+
+                    foreach ($lines as $line) {
+                        if ($bill->id == $line->bill_id) {
+                            $lineEmitido += 1;
+                            $produtoEmitido += $line->quantity;
+                            $produtoHistorico += $line->quantity;
+                        }
+                        else {
+                            $lineLancamento += 1;
+                            $produtoLancamento += $line->quantity;
+                            $produtoHistorico += $line->quantity;
+                        }
+                    }
                 }
                 else {
                     $lancamento += 1;
                     $totalUnitLancamento += $bill->total_value;
                     $totalIvaLancamento += $bill->total_iva;
                 }
+            }
+
+            foreach ($products as $product) {
+                $produtoStock += $product->stock;
+                $produtoHistorico += $product->stock;
             }
             ?>
 
@@ -207,6 +233,170 @@
                             </div>
                         </div>
                     </div>
+                </section>
+
+                <section id="minimal-statistics">
+
+                    <div class="row">
+                        <div class="col-12 mt-3 mb-1">
+                            <h4 class="text-uppercase">Estatisticas Específicas</h4>
+                            <p>Dados sempre atualizados</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <div class="align-self-center">
+                                                <i class='bx bx-receipt bx-tada primary font-large-2 float-left' ></i>
+                                            </div>
+                                            <div class="media-body text-right">
+                                                <h3><?= $emitida ?></h3>
+                                                <span>Fataturas<br>Emitidas</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <div class="align-self-center">
+                                                <i class='bx bx-receipt bx-tada warning font-large-2 float-left' ></i>
+                                            </div>
+                                            <div class="media-body text-right">
+                                                <h3><?= $lancamento ?></h3>
+                                                <span>Fataturas em<br>Lançamento</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <div class="align-self-center">
+                                                <i class="bx bx-list-plus bx-tada success font-large-2 float-left"></i>
+                                            </div>
+                                            <div class="media-body text-right">
+                                                <h3><?= $lineEmitido ?></h3>
+                                                <span>Linhas Fat.<br>Emitidas</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <div class="align-self-center"
+                                                <i class="icon-pointer danger font-large-2 float-left"></i>
+                                                <i class="bx bx-list-plus bx-tada danger font-large-2 float-left"></i>
+                                            </div>
+                                            <div class="media-body text-right">
+                                                <h3><?= $lineLancamento ?></h3>
+                                                <span>Linhas Fat. em<br>Lançamento</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <div class="align-self-center">
+                                                <i class="icon-graph success font-large-2 float-left"></i>
+                                            </div>
+                                            <div class="media-body text-right">
+                                                <h3><?= $produtoEmitido ?></h3>
+                                                <span>Produtos<br>Vendidos</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <div class="align-self-center">
+                                                <i class="icon-pointer danger font-large-2 float-left"></i>
+                                            </div>
+                                            <div class="media-body text-right">
+                                                <h3><?= $produtoLancamento ?></h3>
+                                                <span>Produtos<br>Retidos</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <div class="align-self-center">
+                                                <i class='bx bx-purchase-tag-alt bx-tada warning font-large-2 float-left' ></i>
+                                            </div>
+                                            <div class="media-body text-right">
+                                                <h3><?= $produtoStock ?></h3>
+                                                <span>Produtos<br>Stock</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <div class="align-self-center">
+                                                <i class='bx bx-history bx-tada primary font-large-2 float-left' ></i>
+                                            </div>
+                                            <div class="media-body text-right">
+                                                <h3><?= $produtoHistorico ?></h3>
+                                                <span>Produtos<br>Histórico</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </section>
 
                 <section id="stats-subtitle">
