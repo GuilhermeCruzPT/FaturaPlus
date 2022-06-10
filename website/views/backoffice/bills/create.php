@@ -47,11 +47,11 @@
                    aria-pressed="true">Adicionar</a>
 
                 <a href=""
-                   class=" btn btn-primary btn-back"
+                   class=" btn btn-success"
                    role="button"
                    aria-pressed="true">Criar</a>
 
-                <br><br><br>
+                <br><br>
 
                 <div class="form-group">
                     <label for="product_id">Referência Produto:</label>
@@ -84,12 +84,11 @@
                    aria-pressed="true">Adicionar</a>
 
                 <a href=""
-                   class=" btn btn-primary btn-back"
+                   class=" btn btn-success"
                    role="button"
                    aria-pressed="true">Criar</a>
 
                 <br><br><br>
-                <br><br><br>
 
 
 
@@ -116,7 +115,7 @@
 
 
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="reference">Referência:</label>
                     <input type="number"
                            class="form-control"
@@ -127,13 +126,13 @@
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                         <?php
-                        if(isset($user->errors)) {?>
+/*                        if(isset($user->errors)) {*/?>
                            value="<?php
-                           print_r($attributes['reference']);} ?>">
+/*                           print_r($attributes['reference']);} */?>">
                 </div>
 
                 <?php
-                if(isset($bills->errors)) {
+/*                if(isset($bills->errors)) {
                     if (is_array($bills->errors->on('reference'))) {
                         foreach ($bills->errors->on('reference') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
@@ -142,9 +141,17 @@
                         echo "<font color='red'>" . $bills->errors->on('reference') . "</font>";
                     }
                 }
-                ?>
+                */?>
 
-                <br>
+                <br>-->
+
+
+
+
+
+
+
+
 
                 <!--<div class="form-group">
                     <label for="total_value">Valor Total:</label>
@@ -197,7 +204,16 @@
 
                 <br>-->
 
-                <div class="form-group">
+
+
+
+
+
+
+
+
+
+                <!--<div class="form-group">
                     <label for="state">Estado:</label>
                     <select class="form-control" id="state" name="state">
                         <option value="">Nenhum</option>
@@ -206,7 +222,7 @@
                 </div>
 
                 <?php
-                if(isset($bills->errors)) {
+/*                if(isset($bills->errors)) {
                     if (is_array($bills->errors->on('state'))) {
                         foreach ($bills->errors->on('state') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
@@ -215,7 +231,7 @@
                         echo "<font color='red'>" . $bills->errors->on('state') . "</font>";
                     }
                 }
-                ?>
+                */?>
 
                 <br>
 
@@ -223,15 +239,15 @@
                     <label for="client_reference_id">Referência Cliente:</label>
                     <select class="form-control" id="client_reference_id" name="client_reference_id">
                         <option value="0">Nenhum</option>
-                        <?php foreach($users as $user){?>
-                            <?php if ($user->role == 'c'){ ?>
-                                <option value="<?= $user->id?>"> <?= $user->username; ?></option>
-                            <?php  }} ?>
+                        <?php /*foreach($users as $user){*/?>
+                            <?php /*if ($user->role == 'c'){ */?>
+                                <option value="<?/*= $user->id*/?>"> <?/*= $user->username; */?></option>
+                            <?php /* }} */?>
                     </select>
                 </div>
 
                 <?php
-                if(isset($bills->errors)) {
+/*                if(isset($bills->errors)) {
                     if (is_array($bills->errors->on('client_reference_id'))) {
                         foreach ($bills->errors->on('client_reference_id') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
@@ -240,7 +256,7 @@
                         echo "<font color='red'>" . $bills->errors->on('client_reference_id') . "</font>";
                     }
                 }
-                ?>
+                */?>
 
                 <br>
 
@@ -248,15 +264,15 @@
                     <label for="employee_reference_id">Referência Funcionário:</label>
                     <select class="form-control" id="employee_reference_id" name="employee_reference_id">
                         <option value="0">Nenhum</option>
-                        <?php foreach($users as $user){?>
-                            <?php if ($user->role == 'f'){ ?>
-                                <option value="<?= $user->id?>"> <?= $user->username; ?></option>
-                            <?php  }} ?>
+                        <?php /*foreach($users as $user){*/?>
+                            <?php /*if ($user->role == 'f'){ */?>
+                                <option value="<?/*= $user->id*/?>"> <?/*= $user->username; */?></option>
+                            <?php /* }} */?>
                     </select>
                 </div>
 
-                <?php
-                if(isset($bills->errors)) {
+                --><?php
+/*                if(isset($bills->errors)) {
                     if (is_array($bills->errors->on('employee_reference_id'))) {
                         foreach ($bills->errors->on('employee_reference_id') as $error) {
                             echo "<font color='red'>" . $error . "</font>";
@@ -265,7 +281,7 @@
                         echo "<font color='red'>" . $bills->errors->on('employee_reference_id') . "</font>";
                     }
                 }
-                ?>
+                */?>
 
                 <br><br>
 
