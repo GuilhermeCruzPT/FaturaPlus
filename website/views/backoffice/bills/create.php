@@ -7,9 +7,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<section class="home-section">
+<section class="home-section" >
     <div class="container">
-        <div class="box" style="margin: 100px; background: white;">
+        <div class="box" style="margin: 100px; background: white;
+            width: 1000px;
+            padding: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
                 <h4 class="display-4 text-center">Criar Fatura</h4><hr><br>
                 <label for="client_reference_id">Referência Cliente:</label>
@@ -52,57 +55,51 @@
                            role="button"
                            aria-pressed="true">Cancel</a>
 
-
                 <br><br>
-                <form action="router.php?c=bills&a=save" method="post" style="
-            width: 1000px;
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                <div class="form-group">
-                    <label for="product_id">Referência Produto:</label>
-                    <datalist id="product_id">
-                        <?php foreach($products as $product){?>
-                        <?php if ($product->stock != 0){ ?>
-                        <option value="P<?= $product->reference . ' - ' . $product->title ?>">
-                            <?php  }} ?>
-                    </datalist>
-                    <input placeholder="Nenhum" class="form-control" autoComplete="on" list="product_id"/>
-                </div>
 
-                <?php
-                if(isset($bills->errors)) {
-                    if (is_array($bills->errors->on('employee_reference_id'))) {
-                        foreach ($bills->errors->on('employee_reference_id') as $error) {
-                            echo "<font color='red'>" . $error . "</font>";
-                        }
-                    } else {
-                        echo "<font color='red'>" . $bills->errors->on('employee_reference_id') . "</font>";
+            <label for="product_id">Referência Produto:</label>
+
+            <datalist id="product_id">
+                <?php foreach($products as $product){?>
+                <?php if ($product->stock != 0){ ?>
+                <option value="P<?= $product->reference . ' - ' . $product->title ?>">
+                    <?php  }} ?>
+            </datalist>
+            <input style="width: 50%" placeholder="Nenhum" class="form-control" autoComplete="on" list="product_id"/>
+
+            <?php
+            if(isset($bills->errors)) {
+                if (is_array($bills->errors->on('employee_reference_id'))) {
+                    foreach ($bills->errors->on('employee_reference_id') as $error) {
+                        echo "<font color='red'>" . $error . "</font>";
                     }
+                } else {
+                    echo "<font color='red'>" . $bills->errors->on('employee_reference_id') . "</font>";
                 }
-                ?>
+            }
+            ?>
 
-                <br>
-
-                <a href=""
-                   class=" btn btn-primary"
-                   role="button"
-                   aria-pressed="true">Adicionar</a>
-
-                <a href=""
-                   class=" btn btn-success"
-                   role="button"
-                   aria-pressed="true">Criar</a>
-
-                <br><br><br>
+            <a href=""
+               name="btn_adicionar"
+               class=" btn btn-primary"
+               role="button"
+               aria-pressed="true"
+            >Adicionar</a>
 
 
+            <a data-toggle="modal" data-target="#Modalproduct"
+               class="btn_adicionar_produto btn btn-success"
+               role="button" name="btn_adicionar_produto" id="btn_adicionar_produto"
+               aria-pressed="true" >Criar</a>
 
+            <a href=""
+               class=" btn btn-danger"
+               role="button"
+               aria-pressed="true">Cancel</a>
 
+            <br><br>
 
-
-
-
-
+                    <form action="router.php?c=bills&a=save" method="post" >
 
 
 
@@ -307,7 +304,7 @@
 </html>
 
 <?php include('popup_client.php');?>
-
+<?php include('popup_product.php');?>
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -318,16 +315,31 @@
 
         });
 
+        $(document).on('click', '.btn_adicionar_produto', function(){
+
+            $('#Modalproduct').modal('show');//load modal
+
+        });
+
     });
 </script>
 
-<?php if (!empty($attributes_client)) {
+<?php
 
-    echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    if (!empty($attributes_client)) {
+
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>';
-    echo '<script>$("#Modalclient").modal("show")</script>';
+        echo '<script>$("#Modalclient").modal("show")</script>';
 
- }
+    }
+    if (!empty($attributes_product)) {
+
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>';
+        echo '<script>$("#Modalproduct").modal("show")</script>';
+        var_dump($attributes_product);
+    }
 ?>
 
 

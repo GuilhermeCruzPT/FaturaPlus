@@ -1,8 +1,6 @@
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <body>
 
@@ -10,15 +8,16 @@
 <!-- Modal -->
 <div class="modal fade" id="Modalclient" style="width: 100%;" role="dialog">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content" >
+        <div class="modal-content">
             <div class="modal-header">
 
                 <h4 class="modal-title">Criar utilizador</h4>
-                <button  type="button" class="close" data-dismiss="modal" style="size: A4; display:flex; justify-content:flex-end; width:100%; padding:0;">&times;</button>
+                <button type="button" class="close" data-dismiss="modal"
+                        style="size: A4; display:flex; justify-content:flex-end; width:100%; padding:0;">&times;
+                </button>
             </div>
-            <div class="modal-body" >
-                <form id="contactForm" action="router.php?c=users&a=save&p=popup" method="post" >
-
+            <div class="modal-body">
+                <form id="contactForm" action="router.php?c=users&a=save&p=popup" method="post">
 
 
                     <div class="form-group">
@@ -41,13 +40,14 @@ border-color: #006d77;
                                placeholder="Inserir Username"
                                onkeydown="return /[a-zA-Z0-9]/i.test(event.key)"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['username']);} ?>">
+                               print_r($attributes_client['username']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('username'))) {
                             foreach ($users->errors->on('username') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -80,7 +80,7 @@ border-color: #006d77;
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('password'))) {
                             foreach ($users->errors->on('password') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -112,13 +112,14 @@ border-color: #006d77;
                                placeholder="Inserir Nome"
                                onkeydown="return /[a-zA-Z ]/i.test(event.key)"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['name']);} ?>">
+                               print_r($attributes_client['name']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('name'))) {
                             foreach ($users->errors->on('name') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -149,13 +150,14 @@ border-color: #006d77;
                                name="email"
                                placeholder="Inserir E-mail"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['email']);} ?>">
+                               print_r($attributes_client['email']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('email'))) {
                             foreach ($users->errors->on('email') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -189,13 +191,14 @@ border-color: #006d77;
                                oninput="this.value=this.value.slice(0,this.maxLength)"
                                onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['phone']);} ?>">
+                               print_r($attributes_client['phone']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('phone'))) {
                             foreach ($users->errors->on('phone') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -229,13 +232,14 @@ border-color: #006d77;
                                oninput="this.value=this.value.slice(0,this.maxLength)"
                                onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['nif']);} ?>">
+                               print_r($attributes_client['nif']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('nif'))) {
                             foreach ($users->errors->on('nif') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -267,13 +271,14 @@ border-color: #006d77;
                                maxlength="8"
                                placeholder="Inserir Código Postal"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['postal_code']);} ?>">
+                               print_r($attributes_client['postal_code']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('postal_code'))) {
                             foreach ($users->errors->on('postal_code') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -304,13 +309,14 @@ border-color: #006d77;
                                name="birth"
                                placeholder="Inserir Data de Nascimento"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['birth']);} ?>">
+                               print_r($attributes_client['birth']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('birth'))) {
                             foreach ($users->errors->on('birth') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -343,7 +349,7 @@ border-color: #006d77;
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('genre'))) {
                             foreach ($users->errors->on('genre') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -374,13 +380,14 @@ border-color: #006d77;
                                name="country"
                                placeholder="Inserir País"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['country']);} ?>">
+                               print_r($attributes_client['country']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('country'))) {
                             foreach ($users->errors->on('country') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -411,13 +418,14 @@ border-color: #006d77;
                                name="city"
                                placeholder="Inserir Cidade"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['city']);} ?>">
+                               print_r($attributes_client['city']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('city'))) {
                             foreach ($users->errors->on('city') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -448,13 +456,14 @@ border-color: #006d77;
                                name="locale"
                                placeholder="Inserir Localidade"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['locale']);} ?>">
+                               print_r($attributes_client['locale']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('locale'))) {
                             foreach ($users->errors->on('locale') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -485,13 +494,14 @@ border-color: #006d77;
                                name="address"
                                placeholder="Inserir Morada"
                             <?php
-                            if(isset($users->errors)) {?>
+                            if (isset($users->errors)) { ?>
                                value="<?php
-                               print_r($attributes_client['address']);} ?>">
+                               print_r($attributes_client['address']);
+                               } ?>">
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('address'))) {
                             foreach ($users->errors->on('address') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -527,7 +537,7 @@ border-color: #006d77;
                     </div>
 
                     <?php
-                    if(isset($users->errors)) {
+                    if (isset($users->errors)) {
                         if (is_array($users->errors->on('role'))) {
                             foreach ($users->errors->on('role') as $error) {
                                 echo "<font color='red'>" . $error . "</font>";
@@ -542,7 +552,8 @@ border-color: #006d77;
             <div class="modal-footer">
                 <button type="submit"
                         class="btn btn-primary"
-                        name="create">Criar</button>
+                        name="create">Criar
+                </button>
 
                 </form>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

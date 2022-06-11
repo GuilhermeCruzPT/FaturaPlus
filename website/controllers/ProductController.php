@@ -53,36 +53,75 @@ class ProductController extends BaseController
     {
 
         if (isset($_POST['reference'], $_POST['title'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['iva_id'])) {
-            $attributes = array(
-                'reference' => sprintf('%06d', $_POST['reference']),
-                'title' => $_POST['title'],
-                'description' => $_POST['description'],
-                'price' => ((float)$_POST['price']),
-                'stock' => ((int)$_POST['stock']),
-                'iva_id' => $_POST['iva_id']);
 
-            $products = new Product($attributes);
-            $iva = Iva::all();
-            if ($products->is_valid()) {
-                $products->save();
-                header('Location: router.php?c=products&a=index');
-            } else {
-                // *** Retorna os erros presentes no model *** \\
+            if (isset($_GET[('p1')])) {
 
-                //print_r($bills->errors->full_messages());
+                $attributes_product = array(
+                    'reference' => sprintf('%06d', $_POST['reference']),
+                    'title' => $_POST['title'],
+                    'description' => $_POST['description'],
+                    'price' => ((float)$_POST['price']),
+                    'stock' => ((int)$_POST['stock']),
+                    'iva_id' => $_POST['iva_id']);
 
-                $this->renderViewBackend('products/create', [
-                    'products' => $products,
-                    'iva' => $iva,
-                    'attributes' => $attributes
-                ]);
+                $products = new Product($attributes_product);
+                $iva = Iva::all();
+                if ($products->is_valid()) {
+                    $products->save();
+                    header('Location: router.php?c=bills&a=index');
+                } else {
+                    // *** Retorna os erros presentes no model *** \\
+
+                    //print_r($bills->errors->full_messages());
+
+                    $this->renderViewBackend('bills/create', [
+                        'products' => $products,
+                        'iva' => $iva,
+                        'attributes_product' => $attributes_product
+                    ]);
+                }
+
+
+            }
+            else {
+
+                $attributes = array(
+                    'reference' => sprintf('%06d', $_POST['reference']),
+                    'title' => $_POST['title'],
+                    'description' => $_POST['description'],
+                    'price' => ((float)$_POST['price']),
+                    'stock' => ((int)$_POST['stock']),
+                    'iva_id' => $_POST['iva_id']);
+
+                $products = new Product($attributes);
+                $iva = Iva::all();
+                if ($products->is_valid()) {
+                    $products->save();
+                    header('Location: router.php?c=products&a=index');
+                } else {
+                    // *** Retorna os erros presentes no model *** \\
+
+                    //print_r($bills->errors->full_messages());
+
+                    $this->renderViewBackend('products/create', [
+                        'products' => $products,
+                        'iva' => $iva,
+                        'attributes' => $attributes
+                    ]);
+                }
             }
         } else {
+            if (isset($_GET[('p1')])) {
             $iva = Iva::all();
-            $this->renderViewBackend('products/create',[
+            $this->renderViewBackend('bills/create',[
                 'iva' => $iva
             ]);
-        }
+        }else{
+                $iva = Iva::all();
+                $this->renderViewBackend('products/create',[
+                    'iva' => $iva
+                ]);
+            }}
     }
     public function edit($id)
     {
