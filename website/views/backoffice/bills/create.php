@@ -2,57 +2,62 @@
 <html>
 <head>
     <title>Criar Fatura</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= DIRCSS ?>backoffice.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <section class="home-section">
     <div class="container">
         <div class="box" style="margin: 100px; background: white;">
 
-            <form action="router.php?c=bills&a=save" method="post" style="
-            width: 1000px;
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-
                 <h4 class="display-4 text-center">Criar Fatura</h4><hr><br>
-                <div class="form-group">
-                    <label for="client_reference_id">Referência Cliente:</label>
+                <label for="client_reference_id">Referência Cliente:</label>
+
                     <datalist id="client_reference_id">
                         <?php foreach($users as $user){?>
                         <?php if ($user->role == 'c'){ ?>
                         <option value="<?= $user->username ?>">
                             <?php  }} ?>
                     </datalist>
-                    <input placeholder="Nenhum" class="form-control" autoComplete="on" list="client_reference_id"/>
-                </div>
+                    <input style="width: 50%" placeholder="Nenhum" class="form-control" autoComplete="on" list="client_reference_id"/>
 
-                <?php
-                if(isset($bills->errors)) {
-                    if (is_array($bills->errors->on('client_reference_id'))) {
-                        foreach ($bills->errors->on('client_reference_id') as $error) {
-                            echo "<font color='red'>" . $error . "</font>";
+                    <?php
+                    if(isset($bills->errors)) {
+                        if (is_array($bills->errors->on('client_reference_id'))) {
+                            foreach ($bills->errors->on('client_reference_id') as $error) {
+                                echo "<font color='red'>" . $error . "</font>";
+                            }
+                        } else {
+                            echo "<font color='red'>" . $bills->errors->on('client_reference_id') . "</font>";
                         }
-                    } else {
-                        echo "<font color='red'>" . $bills->errors->on('client_reference_id') . "</font>";
                     }
-                }
-                ?>
+                    ?>
 
-                <br>
+                        <a href=""
+                           name="btn_adicionar"
+                           class=" btn btn-primary"
+                           role="button"
+                           aria-pressed="true"
+                        >Adicionar</a>
 
-                <a href=""
-                   class=" btn btn-primary"
-                   role="button"
-                   aria-pressed="true">Adicionar</a>
 
-                <a href=""
-                   class=" btn btn-success"
-                   role="button"
-                   aria-pressed="true">Criar</a>
+                        <a data-toggle="modal" data-target="#Modalclient"
+                           class="btn_adicionar_cliente btn btn-success"
+                           role="button" name="btn_adicionar_cliente" id="btn_adicionar_cliente"
+                           aria-pressed="true" >Criar</a>
+
+                        <a href=""
+                           class=" btn btn-danger"
+                           role="button"
+                           aria-pressed="true">Cancel</a>
+
 
                 <br><br>
-
+                <form action="router.php?c=bills&a=save" method="post" style="
+            width: 1000px;
+            padding: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                 <div class="form-group">
                     <label for="product_id">Referência Produto:</label>
                     <datalist id="product_id">
@@ -300,3 +305,34 @@
 </section>
 </body>
 </html>
+
+<?php include('popup_client.php');?>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $(document).on('click', '.btn_adicionar_cliente', function(){
+
+            $('#Modalclient').modal('show');//load modal
+
+        });
+
+    });
+</script>
+
+<?php if (!empty($attributes_client)) {
+
+    echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>';
+    echo '<script>$("#Modalclient").modal("show")</script>';
+
+ }
+?>
+
+
+
+
+
+
+

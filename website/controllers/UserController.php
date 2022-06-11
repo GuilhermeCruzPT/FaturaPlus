@@ -70,6 +70,41 @@ class UserController extends BaseController
             $_POST['postal_code'], $_POST['birth'], $_POST['genre'], $_POST['country'], $_POST['city'], $_POST['locale'],
             $_POST['address'], $_POST['role'])) {
 
+            if (isset($_GET[('p')])) {
+
+                $attributes_client = array(
+                    'username' => $_POST['username'],
+                    'password' => $_POST['password'],
+                    'name' => $_POST['name'],
+                    'email' => $_POST['email'],
+                    'phone' => ((int)$_POST['phone']),
+                    'nif' => ((int)$_POST['nif']),
+                    'postal_code' => $_POST['postal_code'],
+                    'birth' => $_POST['birth'],
+                    'genre' => $_POST['genre'],
+                    'country' => $_POST['country'],
+                    'city' => $_POST['city'],
+                    'locale' => $_POST['locale'],
+                    'address' => $_POST['address'],
+                    'role' => $_POST['role']);
+                $users = new User($attributes_client);
+                if ($users->is_valid()) {
+                    $attributes['password'] = md5($_POST['password']);
+                    $users->update_attributes($attributes);
+                    $users->save(false);
+                    header('Location: router.php?c=bills&a=create');
+                } else {
+                    // *** Retorna os erros presentes no model *** \\
+
+                    //print_r($bills->errors->full_messages());
+
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'attributes_client' => $attributes_client
+                    ]);
+                }
+
+            }else{
             $attributes = array(
                 'username' => $_POST['username'],
                 'password' => $_POST['password'],
@@ -100,9 +135,13 @@ class UserController extends BaseController
                     'users' => $users,
                     'attributes' => $attributes
                 ]);
-            }
+            }}
         } else {
+            if (isset($_GET[('p')])) {
+            $this->renderViewBackend('bills/create');
+        }else{
             $this->renderViewBackend('users/create');
+        }
         }
     }
 
