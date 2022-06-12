@@ -335,4 +335,9 @@ class SiteController extends BaseController
 
         return $html;
     }
+
+    public function terms()
+    {
+        $this->renderView('site/terms');
+    }
 }

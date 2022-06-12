@@ -12,7 +12,7 @@
                                 <a href="router.php?c=site&a=index">Início</a>
                             </li>
                             <li>
-                                <a href="#">Termos de Uso</a>
+                                <a href="router.php?c=site&a=terms">Termos de Uso</a>
                             </li>
                             <li>
                                 <a href="#">Política de Privacidade</a>
