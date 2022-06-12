@@ -340,4 +340,9 @@ class SiteController extends BaseController
     {
         $this->renderView('site/terms');
     }
+
+    public function privacy()
+    {
+        $this->renderView('site/privacy');
+    }
 }

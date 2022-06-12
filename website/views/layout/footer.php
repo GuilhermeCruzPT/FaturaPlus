@@ -15,7 +15,7 @@
                                 <a href="router.php?c=site&a=terms">Termos de Uso</a>
                             </li>
                             <li>
-                                <a href="#">Política de Privacidade</a>
+                                <a href="router.php?c=site&a=privacy">Política de Privacidade</a>
                             </li>
                         </ul>
                     </div>
