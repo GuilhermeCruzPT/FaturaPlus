@@ -26,7 +26,7 @@ class SiteController extends BaseController
 
     public function about()
     {
-        $this->renderView('site/about');
+        $this->renderView('site/about_us');
     }
 
     public function demo()

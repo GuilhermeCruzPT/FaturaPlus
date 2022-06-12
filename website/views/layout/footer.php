@@ -9,7 +9,7 @@
                 Projeto realizador por:
                 <p>Cláudia Correia</p>
                 <p>Guilherme Cruz</p>
-                <p>Tiago</p>
+                <p>Tiago Santos</p>
             </div>
 
         </small>
