@@ -24,9 +24,14 @@ class SiteController extends BaseController
         $this->renderView('site/index');
     }
 
-    public function about()
+    public function terms()
     {
-        $this->renderView('site/about_us');
+        $this->renderView('site/terms');
+    }
+
+    public function privacy()
+    {
+        $this->renderView('site/privacy');
     }
 
     public function demo()
@@ -334,15 +339,5 @@ class SiteController extends BaseController
         $html .= '</div>';
 
         return $html;
-    }
-
-    public function terms()
-    {
-        $this->renderView('site/terms');
-    }
-
-    public function privacy()
-    {
-        $this->renderView('site/privacy');
     }
 }

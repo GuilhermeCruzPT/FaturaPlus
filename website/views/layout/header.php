@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= APP_NAME ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="<?= DIRCSS ?>style.css" rel="stylesheet">
 </head>
 <body>
@@ -26,7 +27,7 @@
                         <a class="nav-link" href="<?= DIRPAGE ?>" data-tooltip="tooltip" title="Pagina inicial">Pagina inicial</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="router.php?c=site&a=about" data-tooltip="tooltip" title="Sobre nós">Sobre nós</a>
+                        <a class="nav-link" href="#about" data-tooltip="tooltip" title="Sobre nós">Sobre nós</a>
                     </li>
                 </ul>
 

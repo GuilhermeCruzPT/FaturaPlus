@@ -77,10 +77,6 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'privacy':
                     $siteController->privacy();
                     break;
-
-                case 'about':
-                    $siteController->about();
-                    break;
             }
             break;
 

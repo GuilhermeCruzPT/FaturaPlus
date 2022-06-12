@@ -22,9 +22,6 @@
 </div>
 
 
-
-
-
 <div class="container p-5">
     <div class="row">
         <div class="col-md-8">
@@ -44,6 +41,35 @@
 </div>
 
 
-<!--<a href="http://localhost/pws_202122/MVCTemplate/router.php?c=site&a=show">Show()</a>-->
-<!--<a href="<?= APP_BASE_URL ?>?c=site&a=show">Show()</a>-->
+<section class="about-section">
+    <div class="container p-5">
+        <a name="about" id="about"><h1 class="text-center">Sobre Nós</h1></a><br><hr><br><br>
+        <div class="row">
+            <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
+                <div class="inner-column">
+                    <div class="sec-title">
+                        <span class="title">------------------------</span>
+                        <h2>Somos Líderes no <br> Mercado de Faturação <br> Deste 2007</h2>
+                    </div>
+                    <div class="text">Apesar de só existir no mercado com a marca Fatura Plus desde 2007,
+                        a qualidade, caraterísticas inovadoras e os elevados padrões de performance fazem
+                        com que actualmente o nosso programa seja conhecido e reconhecido por clientes, parceiros
+                        e concorrentes como líder no segmento do software de faturação online em Portugal.</div>
+                    <ul class="list-style-one">
+                        <li><i class='bx bxs-chevrons-right bx-tada' ></i><span>Simples</span></li>
+                        <li><i class='bx bxs-chevrons-right bx-tada' ></i><span>Seguro</span></li>
+                        <li><i class='bx bxs-chevrons-right bx-tada' ></i><span>Acessível</span></li>
+                    </ul>
+                </div>
+            </div>
 
+            <!-- Image Column -->
+            <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                <div class="inner-column wow fadeInLeft">
+                    <figure class="image-1"><img src="<?= DIRIMG ?>mockup1.PNG" alt=""></figure>
+                    <figure class="image-2"><img src="<?= DIRIMG ?>mockup2.PNG" alt=""></figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
