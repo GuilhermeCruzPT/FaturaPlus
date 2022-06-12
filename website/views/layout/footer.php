@@ -5,6 +5,13 @@
             <div class="border-top mt-3">
                 &COPY; <?= date('Y') ?> <?= APP_NAME ?>
             </div>
+            <div class="border-top mt-3">
+                Projeto realizador por:
+                <p>Cláudia Correia</p>
+                <p>Guilherme Cruz</p>
+                <p>Tiago</p>
+            </div>
+
         </small>
     </div>
 </footer>
