@@ -30,7 +30,6 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
             $siteController = new SiteController();
             switch ($action) {
                 case 'index':
-                    $siteController = new SiteController();
                     $siteController->index();
                     break;
                 /*case 'show':
@@ -71,6 +70,12 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                 case 'pdftrans':
                     $id = $_GET[('id')];
                     $siteController->pdftrans($id);
+                    break;
+                case 'terms':
+                    $siteController->terms();
+                    break;
+                case 'privacy':
+                    $siteController->privacy();
                     break;
             }
             break;

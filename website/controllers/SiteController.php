@@ -24,6 +24,16 @@ class SiteController extends BaseController
         $this->renderView('site/index');
     }
 
+    public function terms()
+    {
+        $this->renderView('site/terms');
+    }
+
+    public function privacy()
+    {
+        $this->renderView('site/privacy');
+    }
+
     public function demo()
     {
         //call model and get data

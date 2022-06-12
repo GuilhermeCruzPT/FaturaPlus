@@ -28,7 +28,7 @@
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                         <?php
-                        if(isset($users->errors)) {?>
+                        if(isset($products->errors)) {?>
                            value="<?php
                            print_r($attributes['reference']);} ?>">
                 </div>
@@ -56,7 +56,7 @@
                            placeholder="Inserir Título"
                            onkeydown="return /[a-zA-Z ]/i.test(event.key)"
                         <?php
-                        if(isset($users->errors)) {?>
+                        if(isset($products->errors)) {?>
                            value="<?php
                            print_r($attributes['title']);} ?>">
                 </div>
@@ -83,7 +83,7 @@
                            name="description"
                            placeholder="Inserir Descrição"
                         <?php
-                        if(isset($users->errors)) {?>
+                        if(isset($products->errors)) {?>
                            value="<?php
                            print_r($attributes['description']);} ?>">
                 </div>
@@ -112,7 +112,7 @@
                            maxlength="14"
                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                         <?php
-                        if(isset($users->errors)) {?>
+                        if(isset($products->errors)) {?>
                            value="<?php
                            print_r($attributes['price']);} ?>">
                 </div>
@@ -142,7 +142,7 @@
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                         <?php
-                        if(isset($users->errors)) {?>
+                        if(isset($products->errors)) {?>
                            value="<?php
                            print_r($attributes['stock']);} ?>">
                 </div>
