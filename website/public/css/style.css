@@ -669,3 +669,26 @@ section {
 .about-section .image-column .video-link .link:hover {
     background-color: #191e34;
 }
+
+
+
+
+.testimonials {
+    padding: 100px 0;
+}
+.testimonials h3 {
+    margin-bottom: 20px;
+}
+.testimonials .card {
+    border-bottom: 3px #f36958 solid !important;
+    transition: 0.5s;
+    margin-top: 60px;
+}
+.testimonials .card i {
+    background-color: #f36958;
+    color: #ffffff;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    margin: -40px auto 0 auto;
+}

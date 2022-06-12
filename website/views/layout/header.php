@@ -27,10 +27,12 @@
                         <a class="nav-link" href="<?= DIRPAGE ?>" data-tooltip="tooltip" title="Pagina inicial">Pagina inicial</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#testimonials" data-tooltip="tooltip" title="Testemunhos">Testemunhos</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#about" data-tooltip="tooltip" title="Sobre nós">Sobre nós</a>
                     </li>
                 </ul>
-
             </div>
             <div class="header-right">
                 <!--<a class="custom-btn btn-5" href="#" data-tooltip="tooltip" title="Não tens uma conta? Regista-te">Registar</a>
