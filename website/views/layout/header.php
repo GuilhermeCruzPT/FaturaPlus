@@ -26,7 +26,7 @@
                         <a class="nav-link" href="<?= DIRPAGE ?>" data-tooltip="tooltip" title="Pagina inicial">Pagina inicial</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-tooltip="tooltip" title="Sobre nós">Sobre nós</a>
+                        <a class="nav-link" href="about_us" data-tooltip="tooltip" title="Sobre nós">Sobre nós</a>
                     </li>
                 </ul>
 
