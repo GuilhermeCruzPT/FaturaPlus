@@ -390,3 +390,31 @@ img {
      0 0 40px #ecf0f1;
      transition: text-shadow .15s ease-in-out;
  }
+
+/*---------- copyright ----------*/
+
+.copyright span,
+.copyright a {
+    color: #878787;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.copyright span:hover,
+.copyright a:hover {
+    color: #ecf0f1;
+    text-shadow: 0 0 5px #ecf0f1,
+    0 0 10px #ecf0f1,
+    0 0 20px #ecf0f1,
+    0 0 40px #ecf0f1;
+    transition: text-shadow .15s ease-in-out;
+}
+
+.copyright-menu ul {
+    text-align: right;
+    margin: 0; }
+
+.copyright-menu li {
+    display: inline-block;
+    padding-left: 20px; }

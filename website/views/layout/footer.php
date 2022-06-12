@@ -1,18 +1,27 @@
 <footer class="bg-dark p-4 text-light" id="footer">
-    <div class="">
-        <small>
-            Projeto <?= APP_NAME ?>
-            <div class="border-top mt-3">
-                &COPY; <?= date('Y') ?> <?= APP_NAME ?>
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span>Copyright &COPY; <?= date('Y') ?>, All Right Reserved <?= APP_NAME ?></span>
+                </div>
+                <div class="col-md-6">
+                    <div class="copyright-menu">
+                        <ul>
+                            <li>
+                                <a href="router.php?c=site&a=index">Início</a>
+                            </li>
+                            <li>
+                                <a href="#">Termos de Uso</a>
+                            </li>
+                            <li>
+                                <a href="#">Política de Privacidade</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="border-top mt-3">
-                Projeto realizador por:
-                <p>Cláudia Correia</p>
-                <p>Guilherme Cruz</p>
-                <p>Tiago Santos</p>
-            </div>
-
-        </small>
+        </div>
     </div>
 </footer>
 

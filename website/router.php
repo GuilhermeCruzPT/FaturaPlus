@@ -30,7 +30,6 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
             $siteController = new SiteController();
             switch ($action) {
                 case 'index':
-                    $siteController = new SiteController();
                     $siteController->index();
                     break;
                 /*case 'show':
