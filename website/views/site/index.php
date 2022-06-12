@@ -41,6 +41,55 @@
 </div>
 
 
+<section class="">
+    <div class="testimonials text-center">
+        <div class="container">
+            <a name="testimonials" id="testimonials"><h1 class="text-center">Testemunhos</h1></a><br><hr><br><br>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-light bg-light text-center">
+                        <i class='bx bxs-quote-alt-right bx-tada card-img-top rounded-circle' aria-hidden="true"></i>
+                        <div class="card-body blockquote">
+                            <p class="card-text">Com a integração do Software de Gestão de Faturação da Fatura Plus,
+                                na nossa empresa, passamos a ter um metodo de trabalho mais linear,
+                                com a gestão de faturas. Isto com um apoio e suporte fundamental da Fatura Plus.</p>
+                            <br>
+                            <footer class="blockquote-footer"><cite title="Source Title">Leonardo Ferreira</cite></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-light bg-light text-center">
+                        <i class='bx bxs-quote-alt-right bx-tada card-img-top rounded-circle' aria-hidden="true"></i>
+                        <div class="card-body blockquote">
+                            <p class="card-text">Tínhamos uma falta de controlo com a gestão de faturação, até contactar
+                                a Fatura Plus e nos terem apresentado o Software Fatura Plus, com funções de controlo de
+                                faturas, produtos e stock. Agora com dados concretos é nos mais fácil.</p>
+                            <br>
+                            <footer class="blockquote-footer"><cite title="Source Title">Daniela Ribeiro</cite></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-light bg-light text-center">
+                        <i class='bx bxs-quote-alt-right bx-tada card-img-top rounded-circle' aria-hidden="true"></i>
+                        <div class="card-body blockquote">
+                            <p class="card-text">O Software de Gestão de Faturação da Fatura Plus é fantástico! A sua
+                                usabilidade é excelente e ajuda-me a ser mais rápido, produtivo e eficaz. Ajusta-se
+                                perfeitamente ao meu trabalho e permite que eu lance faturas em poucos minutos.</p>
+                            <br>
+                            <footer class="blockquote-footer"><cite title="Source Title">Luís Soares</cite></footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <section class="about-section">
     <div class="container p-5">
         <a name="about" id="about"><h1 class="text-center">Sobre Nós</h1></a><br><hr><br><br>
