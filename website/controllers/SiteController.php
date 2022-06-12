@@ -24,6 +24,11 @@ class SiteController extends BaseController
         $this->renderView('site/index');
     }
 
+    public function about()
+    {
+        $this->renderView('site/about');
+    }
+
     public function demo()
     {
         //call model and get data

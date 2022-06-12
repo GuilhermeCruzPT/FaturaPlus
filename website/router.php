@@ -72,6 +72,10 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                     $id = $_GET[('id')];
                     $siteController->pdftrans($id);
                     break;
+
+                case 'about':
+                    $siteController->about();
+                    break;
             }
             break;
 
