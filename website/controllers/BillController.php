@@ -51,12 +51,61 @@ class BillController extends BaseController
 
     public function create()
     {
-        $users = User::all();
-        $products = Product::all();
-        $this->renderViewBackend('bills/create', [
-            'users' => $users,
-            'products' => $products
-        ]);
+        if (empty($products_array)) {
+            $products_array = [];
+           /* fake data
+                $products_array = [
+                ['quantity' => 'quantity1', 'unitary_value' => 'valor1', 'iva_value' => 'iva_id1', 'product_id' => 'product1', 'bill_id' => 'fica vazio por enquanto'],
+                ['quantity' => 'quantity2', 'unitary_value' => 'valor2', 'iva_value' => 'iva_id2', 'product_id' => 'product2', 'bill_id' => 'fica vazio por enquanto'],
+                ['quantity' => 'quantity3', 'unitary_value' => 'valor3', 'iva_value' => 'iva_id3', 'product_id' => 'product3', 'bill_id' => 'fica vazio por enquanto']
+            ];*/
+            if(isset($_POST['btn_adicionar'])) {
+
+                $product = $_POST['product_id'];
+                $products_array = unserialize($_POST['products_array']);
+                $product_one = Product::find_by_id($product);
+                $users = User::all();
+                $products = Product::all();
+                $ivas = Iva::all();
+
+
+                $attributes = array(
+                    'quantity' => 1,
+                    'unitary_value' => $product_one->price,
+                    'product_id' => $product_one->id,
+                    'iva_value' => $product_one->iva_id,
+                    'bill_id' => 'fica vazio por enquanto');
+                array_push($products_array,$attributes);
+                $this->renderViewBackend('bills/create', [
+                    'users' => $users,
+                    'products' => $products,
+                    'products_array' => $products_array,
+                    'ivas' => $ivas
+                ]);
+            }
+            else{
+                $users = User::all();
+                $products = Product::all();
+                $ivas = Iva::all();
+                $this->renderViewBackend('bills/create', [
+                    'users' => $users,
+                    'products' => $products,
+                    'products_array' => $products_array,
+                    'ivas' => $ivas
+                ]);
+            }
+        }else{
+            $products_array = [];
+            $ivas = Iva::all();
+            $users = User::all();
+            $products = Product::all();
+            $this->renderViewBackend('bills/create', [
+                'users' => $users,
+                'products' => $products,
+                'products_array' => $products_array,
+                'ivas' => $ivas
+            ]);
+        }
     }
 
     public function store()

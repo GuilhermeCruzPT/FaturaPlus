@@ -25,17 +25,6 @@
                     </datalist>
                     <input style="width: 50%" placeholder="Nenhum" class="form-control" autoComplete="on" list="client_reference_id"/>
 
-                    <?php
-                    if(isset($bills->errors)) {
-                        if (is_array($bills->errors->on('client_reference_id'))) {
-                            foreach ($bills->errors->on('client_reference_id') as $error) {
-                                echo "<font color='red'>" . $error . "</font>";
-                            }
-                        } else {
-                            echo "<font color='red'>" . $bills->errors->on('client_reference_id') . "</font>";
-                        }
-                    }
-                    ?>
 
                         <a href=""
                            name="btn_adicionar"
@@ -58,33 +47,20 @@
                 <br><br>
 
             <label for="product_id">Referência Produto:</label>
-
-            <datalist id="product_id">
+            <form method="post" action="router.php?c=bills&a=create">
+            <select style="width: 50%" id="product_id" name="product_id" >
                 <?php foreach($products as $product){?>
                 <?php if ($product->stock != 0){ ?>
-                <option value="P<?= $product->reference . ' - ' . $product->title ?>">
+
+                <option name="product_id" value="<?= $product->id?>"> <?= $product->reference  . " - " . $product->title;?></option>
                     <?php  }} ?>
-            </datalist>
-            <input style="width: 50%" placeholder="Nenhum" class="form-control" autoComplete="on" list="product_id"/>
-
-            <?php
-            if(isset($bills->errors)) {
-                if (is_array($bills->errors->on('employee_reference_id'))) {
-                    foreach ($bills->errors->on('employee_reference_id') as $error) {
-                        echo "<font color='red'>" . $error . "</font>";
-                    }
-                } else {
-                    echo "<font color='red'>" . $bills->errors->on('employee_reference_id') . "</font>";
-                }
-            }
-            ?>
-
-            <a href=""
+            </select>
+                <input type="hidden" name="products_array" value="<?php echo htmlentities(serialize($products_array));  ?>"/>
+            <button
                name="btn_adicionar"
                class=" btn btn-primary"
                role="button"
-               aria-pressed="true"
-            >Adicionar</a>
+               aria-pressed="true">Adicionar</button>
 
 
             <a data-toggle="modal" data-target="#Modalproduct"
@@ -96,26 +72,70 @@
                class=" btn btn-danger"
                role="button"
                aria-pressed="true">Cancel</a>
-
+            </form>
             <br><br>
 
+            <table class="table table-striped" style="background: white">
+                <thead>
+                <tr>
+
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Valor Unitário</th>
+                    <th scope="col">Valor do Iva</th>
+                    <th scope="col">Referência Produto</th>
+                    <th scope="col">Referência Fatura</th>
+                    <th scope="col">Ações Disponiveis</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                if (empty($products_array)){
+                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td><td></td></td></td></td>";
+                }else{
+                foreach ($products_array as $products_a) { ?>
+
+                <td><?= $products_a['quantity']?></td>
+                <td><?= $products_a['unitary_value']?></td>
+                <td><?php
+                    foreach ($ivas as $iva) {
+                        if ($products_a['iva_value'] == $iva->id) {
+                            echo $iva->percentage." - ".$iva->description;
+                        }
+                    }
+                     ?></td>
+                <td><?php
+                    foreach($products as $product){
+
+                        if ($products_a['product_id'] == $product->id){
+                            echo $product->title;
+                        }
+                    }
+                    ?></td>
+                <td><?= $products_a['bill_id']?></td>
+
+                <td>
+                    <a <?php //var_dump($products_a['quantity']); ?>
+                            class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon'></i></a>
+                    <button  class="btn-del-lines btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon'></i>
+                    </button>
+
+                </td>
+                </tr>
+                </tbody>
+                <?php } }?> </table>
+
+
+
+
+
+
+
+
+
+
+
+
                     <form action="router.php?c=bills&a=save" method="post" >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 <!--<div class="form-group">
                     <label for="reference">Referência:</label>
