@@ -28,6 +28,9 @@
                         <a class="nav-link white-effect" href="router.php?c=site&a=index" data-tooltip="tooltip" title="Pagina inicial">Início</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link white-effect" href="#presentation" data-tooltip="tooltip" title="Apresentação">Apresentação</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link white-effect" href="#steps" data-tooltip="tooltip" title="Etapas">Etapas</a>
                     </li>
                     <li class="nav-item">
