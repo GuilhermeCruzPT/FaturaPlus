@@ -41,6 +41,52 @@
 </div>
 
 
+<section class="card-3">
+    <div class="container">
+        <a name="steps" id="steps"><h1 class="text-center">Descomplique em 3 passos</h1></a><br><hr><br><br>
+        <div class="row">
+            <div class="grid">
+                <div class="card__box card__one">
+                    <figure class="card__img">
+                        <img src="<?= DIRIMG ?>card1.svg" width="340" height="280" />
+                    </figure>
+                    <div class="card__title">
+                        <h4>Crie uma conta grátis</h4>
+                    </div>
+                    <div class="card__desc">
+                        Crie uma conta grátis e emita faturas e sem compromissos.
+                    </div>
+                </div>
+
+                <div class="card__box card__one">
+                    <figure class="card__img">
+                        <img src="<?= DIRIMG ?>card2.svg" width="340" height="280" />
+                    </figure>
+                    <div class="card__title">
+                        <h4>Preencha a fatura</h4>
+                    </div>
+                    <div class="card__desc">
+                        Passe imediatamente para a criação da fatura. Assim que a finalizar, está válida e pronta a enviar.
+                    </div>
+                </div>
+
+                <div class="card__box card__one">
+                    <figure class="card__img">
+                        <img src="<?= DIRIMG ?>card3.svg" width="340" height="280" />
+                    </figure>
+                    <div class="card__title">
+                        <h4>Envie a fatura</h4>
+                    </div>
+                    <div class="card__desc">
+                        Envie a fatura ao cliente e o assunto está tratado. Fácil, rápido e simples. Como deve ser.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <section class="">
     <div class="testimonials text-center">
         <div class="container">
