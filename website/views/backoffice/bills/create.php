@@ -55,14 +55,13 @@
                 <option name="product_id" value="<?= $product->id?>"> <?= $product->reference  . " - " . $product->title;?></option>
                     <?php  }} ?>
             </select>
-                <input type="hidden" name="products_array" value="<?php echo htmlentities(serialize($products_array));  ?>"/>
+
             <button
                name="btn_adicionar"
                class=" btn btn-primary"
                role="button"
                aria-pressed="true">Adicionar</button>
-
-
+                <input type="hidden" name="products_array" value="<?php echo htmlentities(serialize($products_array));  ?>"/>
             <a data-toggle="modal" data-target="#Modalproduct"
                class="btn_adicionar_produto btn btn-success"
                role="button" name="btn_adicionar_produto" id="btn_adicionar_produto"
@@ -72,7 +71,7 @@
                class=" btn btn-danger"
                role="button"
                aria-pressed="true">Cancel</a>
-            </form>
+
             <br><br>
 
             <table class="table table-striped" style="background: white">
@@ -94,6 +93,7 @@
                 }else{
                 foreach ($products_array as $products_a) { ?>
 
+
                 <td><?= $products_a['quantity']?></td>
                 <td><?= $products_a['unitary_value']?></td>
                 <td><?php
@@ -107,24 +107,25 @@
                     foreach($products as $product){
 
                         if ($products_a['product_id'] == $product->id){
-                            echo $product->title;
+                            echo $product->title.$product->id;
                         }
                     }
                     ?></td>
                 <td><?= $products_a['bill_id']?></td>
 
                 <td>
+
                     <a <?php //var_dump($products_a['quantity']); ?>
                             class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon'></i></a>
-                    <button  class="btn-del-lines btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon'></i>
-                    </button>
+                    <button value ="<?= $products_a['id'] ?>"  name="btn_apagar" class="btn-del-lines btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon'></i></button>
+
 
                 </td>
                 </tr>
                 </tbody>
                 <?php } }?> </table>
 
-
+            </form>
 
 
 

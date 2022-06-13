@@ -22,23 +22,23 @@
 </div>
 
 
-<div class="container p-5">
-    <div class="row">
-        <div class="col-md-8">
-            <h1 class="my-5"><?= APP_NAME ?> é a melhor empresa de faturação do mundo!</h1>
-            <p>
-                O melhor programa de faturação do mercado! Tenha tudo na ponta dos dedos para criar a sua fatura.
-                Com o Fatura Plus terá mais facilidade de encontrar os seus clientes e associar os produtos para uma faturação
-                mais rápida.
-            </p>
-        </div>
-        <div class="col-md-4 text-center">
-            <div class="img-fluid logo">
-                <img class="rounded-circle img-fit" src="<?= DIRIMG ?>FaturaPlus.png" alt="<?= APP_NAME ?>" title="<?= APP_NAME ?>" >
+<section class="presentation-section">
+    <div class="container">
+        <br>
+        <a name="presentation" id="presentation"><h1 class="text-center">Melhor Empresa de Faturação do Mundo!</h1></a><br><hr><br><br>
+        <div class="row">
+            <div class="col-sm-7 presentation-box">
+                <h4>O melhor programa de faturação do mercado! Tenha tudo na ponta dos dedos para
+                    criar a sua fatura. <br><br>Com o Software de Gestão de Faturação da Fatura Plus
+                    terá mais facilidade de encontrar os seus clientes e associar os produtos para
+                    uma faturação mais rápida.</h4>
+            </div>
+            <div class="col-sm-5">
+                <span class="slideanim"><img src="<?= DIRIMG ?>mockup7.png" class="presentation-radius" width="340" height="280" /></span>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 
 <section class="card-section">
@@ -168,7 +168,7 @@
 
 
 <section class="about-section">
-    <div class="container p-5">
+    <div class="container">
         <a name="about" id="about"><h1 class="text-center">Sobre Nós</h1></a><br><hr><br><br>
         <div class="row">
             <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">

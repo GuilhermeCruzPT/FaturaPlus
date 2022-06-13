@@ -68,20 +68,103 @@ class BillController extends BaseController
                 $products = Product::all();
                 $ivas = Iva::all();
 
+                if (!$products_array){
+                    $attributes = array(
+                        'id' => 0,
+                        'quantity' => 1,
+                        'unitary_value' => $product_one->price,
+                        'product_id' => $product_one->id,
+                        'iva_value' => $product_one->iva_id,
+                        'bill_id' => 'fica vazio por enquanto');
+                    array_push($products_array, $attributes);
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'ivas' => $ivas
+                    ]);
+                }else{
+                    foreach ($products_array as $array ) {
+                        $id = $array['id'];
+                    }
+                    $attributes = array(
+                        'id' => $id + 1,
+                        'quantity' => 1,
+                        'unitary_value' => $product_one->price,
+                        'product_id' => $product_one->id,
+                        'iva_value' => $product_one->iva_id,
+                        'bill_id' => 'fica vazio por enquanto');
+                    array_push($products_array, $attributes);
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'ivas' => $ivas
+                    ]);
+                }
+            }elseif(isset($_POST['btn_apagar'])){
+                $products_array = unserialize($_POST['products_array']);
+                $key2 = $_POST['btn_apagar'];
 
-                $attributes = array(
-                    'quantity' => 1,
-                    'unitary_value' => $product_one->price,
-                    'product_id' => $product_one->id,
-                    'iva_value' => $product_one->iva_id,
-                    'bill_id' => 'fica vazio por enquanto');
-                array_push($products_array,$attributes);
-                $this->renderViewBackend('bills/create', [
-                    'users' => $users,
-                    'products' => $products,
-                    'products_array' => $products_array,
-                    'ivas' => $ivas
-                ]);
+                if (array_key_exists($key2,$products_array)) {
+
+                    unset($products_array[$key2]);
+                    //var_dump($key2);
+                    $users = User::all();
+                    $products = Product::all();
+                    $ivas = Iva::all();
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'ivas' => $ivas
+                    ]);
+
+                }else{
+                   $users = User::all();
+                    $products = Product::all();
+                    $ivas = Iva::all();
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'ivas' => $ivas
+                    ]);
+                }
+                /*
+                        if ((($key = array_search($key2, array_column($products_array, 'product_id'))) !== false)) {
+                            //unset($products_array[$key]);
+                            $count = array_count_values(array_column($products_array, 'product_id'))[$key2];
+                            unset($products_array[$key]);
+                            if ($count != 0) {
+                                unset($products_array[$key]);
+                            }
+
+
+
+                            $users = User::all();
+                            $products = Product::all();
+                            $ivas = Iva::all();
+                            $this->renderViewBackend('bills/create', [
+                                'users' => $users,
+                                'products' => $products,
+                                'products_array' => $products_array,
+                                'ivas' => $ivas
+                            ]);
+
+
+                        } else {
+                var_dump('ds');
+                            /*$users = User::all();
+                            $products = Product::all();
+                            $ivas = Iva::all();
+                            $this->renderViewBackend('bills/create', [
+                                'users' => $users,
+                                'products' => $products,
+                                'products_array' => $products_array,
+                                'ivas' => $ivas
+                            ]);
+                        }*/
             }
             else{
                 $users = User::all();
