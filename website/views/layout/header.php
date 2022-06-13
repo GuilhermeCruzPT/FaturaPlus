@@ -6,6 +6,7 @@
     <title><?= APP_NAME ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="<?= DIRCSS ?>style.css" rel="stylesheet">
 </head>
 <body>
@@ -21,7 +22,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse nav-content" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link white-effect" href="router.php?c=site&a=index" data-tooltip="tooltip" title="Pagina inicial">Início</a>
@@ -31,6 +32,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link white-effect" href="#testimonials" data-tooltip="tooltip" title="Testemunhos">Testemunhos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link white-effect" href="#software" data-tooltip="tooltip" title="Software">Software</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link white-effect" href="#about" data-tooltip="tooltip" title="Sobre nós">Sobre nós</a>

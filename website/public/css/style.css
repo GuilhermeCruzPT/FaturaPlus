@@ -15,6 +15,10 @@ html, body {
     margin-left: 25px;
 }
 
+.nav-content {
+    margin-left: 30px;
+}
+
 .header-right {
     float: right;
     margin-right: 25px;
@@ -697,7 +701,7 @@ section {
 
 
 
-.card-3{
+.card-section{
     display: flex;
     align-items: center;
     min-height: 100vh;
@@ -843,4 +847,57 @@ section {
 
 .card__three:hover::before, .card__three:focus::before, .card__three:hover::after, .card__three:focus::after {
     transform: scale3d(1, 1, 1);
+}
+
+
+/*---------- Software Section ----------*/
+
+.software-section{
+    background-color: #f5f5f5;
+}
+
+.software-box{
+    padding: 55px;
+    background-color: #f36958;
+    border-radius: 50px 20px;
+    color: white;
+}
+
+.software-radius{
+    width: 75%;
+    border-radius: 10%;
+}
+
+.slideanim {
+    visibility:hidden;
+}
+
+.slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(70%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
 }
