@@ -61,6 +61,7 @@ class BillController extends BaseController
             ];*/
             if(isset($_POST['btn_adicionar'])) {
 
+                $client_i = $_POST['client_id'];
                 $product = $_POST['product_id'];
                 $products_array = unserialize($_POST['products_array']);
                 $product_one = Product::find_by_id($product);
@@ -81,12 +82,14 @@ class BillController extends BaseController
                         'users' => $users,
                         'products' => $products,
                         'products_array' => $products_array,
-                        'ivas' => $ivas
+                        'ivas' => $ivas,
+                        'client_i' => $client_i
                     ]);
                 }else{
                     foreach ($products_array as $array ) {
                         $id = $array['id'];
                     }
+                    $client_i = $_POST['client_id'];
                     $attributes = array(
                         'id' => $id + 1,
                         'quantity' => 1,
@@ -99,12 +102,14 @@ class BillController extends BaseController
                         'users' => $users,
                         'products' => $products,
                         'products_array' => $products_array,
+                        'client_i' => $client_i,
                         'ivas' => $ivas
                     ]);
                 }
             }elseif(isset($_POST['btn_apagar'])){
                 $products_array = unserialize($_POST['products_array']);
                 $key2 = $_POST['btn_apagar'];
+                $client_i = $_POST['client_id'];
 
                 if (array_key_exists($key2,$products_array)) {
 
@@ -117,10 +122,12 @@ class BillController extends BaseController
                         'users' => $users,
                         'products' => $products,
                         'products_array' => $products_array,
+                        'client_i' => $client_i,
                         'ivas' => $ivas
                     ]);
 
                 }else{
+                    $client_i = $_POST['client_id'];
                    $users = User::all();
                     $products = Product::all();
                     $ivas = Iva::all();
@@ -128,6 +135,7 @@ class BillController extends BaseController
                         'users' => $users,
                         'products' => $products,
                         'products_array' => $products_array,
+                        'client_i' => $client_i,
                         'ivas' => $ivas
                     ]);
                 }
@@ -166,6 +174,118 @@ class BillController extends BaseController
                             ]);
                         }*/
             }
+            elseif(isset($_POST['btn_adicionar_client'])){
+
+                $client_i = $_POST['client_id'];
+                //var_dump($client_i);
+                $users = User::all();
+                $products = Product::all();
+                $ivas = Iva::all();
+                $this->renderViewBackend('bills/create', [
+                    'users' => $users,
+                    'products' => $products,
+                    'products_array' => $products_array,
+                    'client_i' => $client_i,
+                    'ivas' => $ivas
+                ]);
+
+            }
+            elseif(isset($_POST['btn_apagar_client'])){
+
+                $client_i = null;
+                $users = User::all();
+                $products = Product::all();
+                $ivas = Iva::all();
+                $this->renderViewBackend('bills/create', [
+                    'users' => $users,
+                    'products' => $products,
+                    'products_array' => $products_array,
+                    'client_i' => $client_i,
+                    'ivas' => $ivas
+                ]);
+
+            }elseif(isset($_POST['emitir_fatura'])){
+
+                $products_array = unserialize($_POST['products_array']);
+
+                $client_i = $_POST['client_id'];
+                $data = date('Y-m-d');
+                $total_value = $_POST['total'];
+                $iva_total = $_POST['iva_total'];
+                $emissao = 'e';
+                $referencia_empregado = $_SESSION["user_id"];
+
+                $attributes = array(
+                    'reference' => 000001,
+                    'date' => $data,
+                    'total_value' => $total_value,
+                    'total_iva' => $iva_total,
+                    'state' => $emissao,
+                    'client_reference_id' => $client_i,
+                    'employee_reference_id' => $referencia_empregado);
+                $bills = new Bill($attributes);
+
+                if ($bills->is_valid()) {
+                $bills->save();
+                    $client_i = null;
+                    $products_array = [];
+                    $users = User::all();
+                    $products = Product::all();
+                    $ivas = Iva::all();
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'client_i' => $client_i,
+                        'ivas' => $ivas
+                    ]);
+
+                }else{
+                    print_r($bills->errors->full_messages());
+                }
+
+            }elseif(isset($_POST['guardar_fatura'])){
+
+                $products_array = unserialize($_POST['products_array']);
+
+                $client_i = $_POST['client_id'];
+                $data = date('Y-m-d');
+                $total_value = $_POST['total'];
+                $iva_total = $_POST['iva_total'];
+                $emissao = 'l';
+                $referencia_empregado = $_SESSION["user_id"];
+
+                $attributes = array(
+                    'reference' => 000001,
+                    'date' => $data,
+                    'total_value' => $total_value,
+                    'total_iva' => $iva_total,
+                    'state' => $emissao,
+                    'client_reference_id' => $client_i,
+                    'employee_reference_id' => $referencia_empregado);
+                $bills = new Bill($attributes);
+
+                if ($bills->is_valid()) {
+                    $bills->save();
+                    $client_i = null;
+                    $products_array = [];
+                    $users = User::all();
+                    $products = Product::all();
+                    $ivas = Iva::all();
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'client_i' => $client_i,
+                        'ivas' => $ivas
+                    ]);
+
+                }else{
+                    // referencia está estatica por enquanto
+                    print_r($bills->errors->full_messages());
+                }
+
+            }
             else{
                 $users = User::all();
                 $products = Product::all();
@@ -179,6 +299,7 @@ class BillController extends BaseController
             }
         }else{
             $products_array = [];
+            $client_i = $_POST['client_id'];
             $ivas = Iva::all();
             $users = User::all();
             $products = Product::all();
@@ -186,6 +307,7 @@ class BillController extends BaseController
                 'users' => $users,
                 'products' => $products,
                 'products_array' => $products_array,
+                'client_i' => $client_i,
                 'ivas' => $ivas
             ]);
         }

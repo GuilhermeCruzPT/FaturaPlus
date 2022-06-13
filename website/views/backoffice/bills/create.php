@@ -16,22 +16,25 @@
 
                 <h4 class="display-4 text-center">Criar Fatura</h4><hr><br>
                 <label for="client_reference_id">Referência Cliente:</label>
+                <form method="post" action="router.php?c=bills&a=create">
 
-                    <datalist id="client_reference_id">
+                    <select style="width: 50%" id="client_id" name="client_id" >
+                        <?php if(isset($client_i)){?>
+                            <option value="<?= $client_i ?>"><?php foreach($users as $user){ if ($client_i == $user->id){ echo $user->username;}}?></option>
+                        <?php }else{ ?>
+                        <option value="0">Nenhum</option>
                         <?php foreach($users as $user){?>
-                        <?php if ($user->role == 'c'){ ?>
-                        <option value="<?= $user->username ?>">
-                            <?php  }} ?>
-                    </datalist>
-                    <input style="width: 50%" placeholder="Nenhum" class="form-control" autoComplete="on" list="client_reference_id"/>
+                            <?php if ($user->role == 'c'){  ?>
+                                <option value="<?= $user->id ?>"><?= $user->username;?></option>
+                            <?php  }}} ?>
+                    </select>
 
-
-                        <a href=""
-                           name="btn_adicionar"
+                        <button
+                           name="btn_adicionar_client"
                            class=" btn btn-primary"
                            role="button"
                            aria-pressed="true"
-                        >Adicionar</a>
+                        >Adicionar</button>
 
 
                         <a data-toggle="modal" data-target="#Modalclient"
@@ -39,15 +42,16 @@
                            role="button" name="btn_adicionar_cliente" id="btn_adicionar_cliente"
                            aria-pressed="true" >Criar</a>
 
-                        <a href=""
+                        <button
+                           name="btn_apagar_client"
                            class=" btn btn-danger"
                            role="button"
-                           aria-pressed="true">Cancel</a>
+                           aria-pressed="true">Cancel</button>
 
                 <br><br>
 
             <label for="product_id">Referência Produto:</label>
-            <form method="post" action="router.php?c=bills&a=create">
+            <br>
             <select style="width: 50%" id="product_id" name="product_id" >
                 <?php foreach($products as $product){?>
                 <?php if ($product->stock != 0){ ?>
@@ -67,13 +71,8 @@
                role="button" name="btn_adicionar_produto" id="btn_adicionar_produto"
                aria-pressed="true" >Criar</a>
 
-            <a href=""
-               class=" btn btn-danger"
-               role="button"
-               aria-pressed="true">Cancel</a>
-
             <br><br>
-
+                    <br><br>
             <table class="table table-striped" style="background: white">
                 <thead>
                 <tr>
@@ -94,7 +93,7 @@
                 foreach ($products_array as $products_a) { ?>
 
 
-                <td><?= $products_a['quantity']?></td>
+                <td><?= $products_a['id'],$products_a['quantity']?></td>
                 <td><?= $products_a['unitary_value']?></td>
                 <td><?php
                     foreach ($ivas as $iva) {
@@ -125,7 +124,44 @@
                 </tbody>
                 <?php } }?> </table>
 
-            </form>
+            <?php
+            if (empty($products_array)){
+                $total = 0;
+                $iva_total = 0;
+            }else {
+                $total = 0;
+                $iva_total = 0;
+                foreach ($products_array as $products_total) {
+                    $total += $products_total['unitary_value'];
+                    $ivas = Iva::all();
+                    foreach ($ivas as $iva) {
+                        if ($iva->id == $products_total['iva_value']) {
+                            $iva_total += $iva->percentage;
+                        }
+                    }
+                }
+
+            }
+            echo "Total: ".$total."€";
+            ?>
+
+                <input type="hidden" name="total" value="<?= $total ?>"/>
+                    <input type="hidden" name="iva_total" value="<?= $iva_total ?>"/>
+
+                    <div style="float: right;">
+                    <button type="submit"
+                            class="btn btn-primary"
+                            name="emitir_fatura">Emitir Fatura</button>
+                        <button type="submit"
+                                class="btn btn-primary"
+                                name="guardar_fatura">Guardar rascunho</button>
+
+                    <a href="router.php?c=bills&a=index"
+                       class=" btn btn-danger btn-back"
+                       role="button"
+                       aria-pressed="true">Voltar</a>
+        </div>
+                </form>
 
 
 
@@ -136,7 +172,7 @@
 
 
 
-                    <form action="router.php?c=bills&a=save" method="post" >
+
 
                 <!--<div class="form-group">
                     <label for="reference">Referência:</label>
@@ -308,16 +344,6 @@
 
                 <br><br>
 
-                <button type="submit"
-                        class="btn btn-primary"
-                        name="create">Criar</button>
-
-                <a href="router.php?c=bills&a=index"
-                   class=" btn btn-primary btn-back"
-                   role="button"
-                   aria-pressed="true">Voltar</a>
-
-            </form>
         </div>
     </div>
 </section>
