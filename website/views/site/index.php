@@ -41,7 +41,7 @@
 </div>
 
 
-<section class="card-3">
+<section class="card-section">
     <div class="container">
         <a name="steps" id="steps"><h1 class="text-center">Descomplique em 3 passos</h1></a><br><hr><br><br>
         <div class="row">
@@ -87,7 +87,7 @@
 </section>
 
 
-<section class="">
+<section class="testimonials-section">
     <div class="testimonials text-center">
         <div class="container">
             <a name="testimonials" id="testimonials"><h1 class="text-center">Testemunhos</h1></a><br><hr><br><br>
@@ -134,6 +134,37 @@
         </div>
     </div>
 </section>
+
+
+<section class="software-section">
+    <div class="container">
+        <a name="software" id="software"><h1 class="text-center">Software de Faturação</h1></a><br><hr><br><br>
+        <div class="row">
+            <div class="col-sm-5">
+                <span class="slideanim"><img src="<?= DIRIMG ?>mockup4.png" class="software-radius" width="340" height="280" /></span>
+            </div>
+            <div class="col-sm-7 software-box">
+                <h4>Quer poupar tempo e dinheiro, mantendo ao mesmo tempo uma gestão eficiente do seu negócio? Conheça o software de
+                    faturação da Fatura Plus, a solução ideal para negócios de todas as dimensões:<br><br> Restaurantes, Lojas, Startups, Serviços e muito mais...</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        $(window).scroll(function() {
+            $(".slideanim").each(function(){
+                var pos = $(this).offset().top;
+
+                var winTop = $(window).scrollTop();
+                if (pos < winTop + 600) {
+                    $(this).addClass("slide");
+                }
+            });
+        });
+    })
+</script>
 
 
 <section class="about-section">
