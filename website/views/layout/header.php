@@ -12,7 +12,7 @@
 <header class="bg-dark p-3 text-light">
     <div class="">
         <nav class="navbar navbar-expand-sm navbar-dark">
-            <a class="navbar-brand" href="<?= DIRPAGE ?>">
+            <a class="navbar-brand" href="router.php?c=site&a=index">
                 <img src="<?= DIRIMG ?>FaturaPlus_Logo_Oficial.png" class="d-inline-block align-top nav-logo" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -24,13 +24,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= DIRPAGE ?>" data-tooltip="tooltip" title="Pagina inicial">Pagina inicial</a>
+                        <a class="nav-link white-effect" href="router.php?c=site&a=index" data-tooltip="tooltip" title="Pagina inicial">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#testimonials" data-tooltip="tooltip" title="Testemunhos">Testemunhos</a>
+                        <a class="nav-link white-effect" href="#steps" data-tooltip="tooltip" title="Etapas">Etapas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about" data-tooltip="tooltip" title="Sobre nós">Sobre nós</a>
+                        <a class="nav-link white-effect" href="#testimonials" data-tooltip="tooltip" title="Testemunhos">Testemunhos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link white-effect" href="#about" data-tooltip="tooltip" title="Sobre nós">Sobre nós</a>
                     </li>
                 </ul>
             </div>
@@ -45,7 +48,7 @@
                 </div>
                 <?php } else { $user = User::find([$_SESSION["user_id"]]);?>
                     <div class="dropdown">
-                        <button class="dropbtn green-effect"><?= $userName ?>
+                        <button class="dropbtn red-effect"><?= $userName ?>
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content white-effect">
