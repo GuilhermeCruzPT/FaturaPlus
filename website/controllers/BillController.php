@@ -62,6 +62,8 @@ class BillController extends BaseController
             if(isset($_POST['btn_adicionar'])) {
 
                 $client_i = $_POST['client_id'];
+                if ($client_i != ''){
+
                 $product = $_POST['product_id'];
                 $products_array = unserialize($_POST['products_array']);
                 $product_one = Product::find_by_id($product);
@@ -75,8 +77,7 @@ class BillController extends BaseController
                         'quantity' => 1,
                         'unitary_value' => $product_one->price,
                         'product_id' => $product_one->id,
-                        'iva_value' => $product_one->iva_id,
-                        'bill_id' => 'fica vazio por enquanto');
+                        'iva_value' => $product_one->iva_id);
                     array_push($products_array, $attributes);
                     $this->renderViewBackend('bills/create', [
                         'users' => $users,
@@ -95,9 +96,23 @@ class BillController extends BaseController
                         'quantity' => 1,
                         'unitary_value' => $product_one->price,
                         'product_id' => $product_one->id,
-                        'iva_value' => $product_one->iva_id,
-                        'bill_id' => 'fica vazio por enquanto');
+                        'iva_value' => $product_one->iva_id);
                     array_push($products_array, $attributes);
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'client_i' => $client_i,
+                        'ivas' => $ivas
+                    ]);
+                }
+                }else{
+                    $client_i = null;
+                    $products_array = null;
+                    $users = User::all();
+                    $products = Product::all();
+                    $ivas = Iva::all();
+
                     $this->renderViewBackend('bills/create', [
                         'users' => $users,
                         'products' => $products,
@@ -216,7 +231,7 @@ class BillController extends BaseController
                 $referencia_empregado = $_SESSION["user_id"];
 
                 $attributes = array(
-                    'reference' => 000001,
+                    'reference' => '000001',
                     'date' => $data,
                     'total_value' => $total_value,
                     'total_iva' => $iva_total,
@@ -227,6 +242,24 @@ class BillController extends BaseController
 
                 if ($bills->is_valid()) {
                 $bills->save();
+
+                    $bills_find = Bill::find('id', array('conditions' => array('date = ? AND total_value = ? AND total_iva = ? AND state = ? AND client_reference_id = ? AND employee_reference_id = ?', $data, $total_value, $iva_total,
+                        $emissao, $client_i, $referencia_empregado)));
+
+                    foreach ($products_array as $products_array2){
+
+                        $attributes_lines = array(
+                            'quantity' => $products_array2['quantity'],
+                            'unitary_value' => $products_array2['unitary_value'],
+                            'iva_value' => $products_array2['iva_value'],
+                            'product_id' => $products_array2['product_id'],
+                            'bill_id' => $bills_find->id
+                        );
+                        $bills_lines = new Bill_line($attributes_lines);
+
+                        $bills_lines->save();
+                    }
+
                     $client_i = null;
                     $products_array = [];
                     $users = User::all();
@@ -267,6 +300,27 @@ class BillController extends BaseController
 
                 if ($bills->is_valid()) {
                     $bills->save();
+
+                    $bills_find = Bill::find('id', array('conditions' => array('date = ? AND total_value = ? AND total_iva = ? AND state = ? AND client_reference_id = ? AND employee_reference_id = ?', $data, $total_value, $iva_total,
+                        $emissao, $client_i, $referencia_empregado)));
+
+
+
+                    foreach ($products_array as $products_array2){
+
+                        $attributes_lines = array(
+                            'quantity' => $products_array2['quantity'],
+                            'unitary_value' => $products_array2['unitary_value'],
+                            'iva_value' => $products_array2['iva_value'],
+                            'product_id' => $products_array2['product_id'],
+                            'bill_id' => $bills_find->id
+                        );
+                        $bills_lines = new Bill_line($attributes_lines);
+
+                            $bills_lines->save();
+
+                    }
+
                     $client_i = null;
                     $products_array = [];
                     $users = User::all();
