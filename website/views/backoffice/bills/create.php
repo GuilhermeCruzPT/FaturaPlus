@@ -81,14 +81,13 @@
                     <th scope="col">Valor Unitário</th>
                     <th scope="col">Valor do Iva</th>
                     <th scope="col">Referência Produto</th>
-                    <th scope="col">Referência Fatura</th>
                     <th scope="col">Ações Disponiveis</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                 if (empty($products_array)){
-                    echo "<td><td><td><td>"."Ainda não foram inseridos dados"."</td></td></td></td>"."<td><td><td><td></td></td></td></td>";
+                    echo "<td><td><td>"."Ainda não foram inseridos dados"."</td></td></td>"."<td><td></td></td>";
                 }else{
                 foreach ($products_array as $products_a) { ?>
 
@@ -110,7 +109,6 @@
                         }
                     }
                     ?></td>
-                <td><?= $products_a['bill_id']?></td>
 
                 <td>
 
