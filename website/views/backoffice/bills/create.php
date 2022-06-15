@@ -15,8 +15,57 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
                 <h4 class="display-4 text-center">Criar Fatura</h4><hr><br>
+
+            <?php
+            if (isset($mensagem)){
+            ?>
+            <div class="alert" style="
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+
+">
+                <span style="  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;" class="closebtn"onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong>!</strong> <?php echo $mensagem?>
+            </div>
+
+                <?php }elseif (isset($mensagem_sucesso)){  ?>
+
+                <div class="alert" style="
+  padding: 20px;
+  background-color: green;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+
+">
+                <span style="  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;" class="closebtn"onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>!</strong> <?php echo $mensagem_sucesso?>
+                </div>
+
+            <?php } else{}?>
+
                 <label for="client_reference_id">Referência Cliente:</label>
                 <form method="post" action="router.php?c=bills&a=create">
+
 
                     <select style="width: 50%" id="client_id" name="client_id" >
                         <?php if(isset($client_i)){?>
@@ -52,13 +101,14 @@
 
             <label for="product_id">Referência Produto:</label>
             <br>
-            <select style="width: 50%" id="product_id" name="product_id" >
+                    <input style="width: 50%" list="product_ids" name="product_id" id="product_id">
+            <datalist id="product_ids" name="product_id" >
                 <?php foreach($products as $product){?>
                 <?php if ($product->stock != 0){ ?>
 
-                <option name="product_id" value="<?= $product->id?>"> <?= $product->reference  . " - " . $product->title;?></option>
+                <option name="product_id" value="<?= $product->id?>"> <?= $product->title  . " - " . $product->reference;?></option>
                     <?php  }} ?>
-            </select>
+            </datalist>
 
             <button
                name="btn_adicionar"
@@ -66,6 +116,7 @@
                role="button"
                aria-pressed="true">Adicionar</button>
                 <input type="hidden" name="products_array" value="<?php echo htmlentities(serialize($products_array));  ?>"/>
+
             <a data-toggle="modal" data-target="#Modalproduct"
                class="btn_adicionar_produto btn btn-success"
                role="button" name="btn_adicionar_produto" id="btn_adicionar_produto"
@@ -140,16 +191,13 @@
                 $iva_total = 0;
                 foreach ($products_array as $products_total) {
                     $total += $products_total['unitary_value'];
-                    $ivas = Iva::all();
-                    foreach ($ivas as $iva) {
-                        if ($iva->id == $products_total['iva_value']) {
-                            $iva_total += $iva->percentage;
-                        }
-                    }
+
+                    $iva_total += $products_total['iva_value'];
+
                 }
 
             }
-            echo "Total: ".$total."€";
+            echo "Total: ".$total."€".$iva_total;
             ?>
 
                 <input type="hidden" name="total" value="<?= $total ?>"/>
