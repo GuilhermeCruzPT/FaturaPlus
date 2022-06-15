@@ -62,11 +62,12 @@ class BillController extends BaseController
             if(isset($_POST['btn_adicionar'])) {
 
                 $client_i = $_POST['client_id'];
-                if ($client_i != ''){
+                if ($client_i != 0){
 
                 $product = $_POST['product_id'];
                 $products_array = unserialize($_POST['products_array']);
                 $product_one = Product::find_by_id($product);
+                $product_iva = Iva::find('percentage', array('conditions' => array('id = ?', $product_one->iva_id)));
                 $users = User::all();
                 $products = Product::all();
                 $ivas = Iva::all();
@@ -77,7 +78,7 @@ class BillController extends BaseController
                         'quantity' => 1,
                         'unitary_value' => $product_one->price,
                         'product_id' => $product_one->id,
-                        'iva_value' => $product_one->iva_id);
+                        'iva_value' => $product_iva->percentage);
                     array_push($products_array, $attributes);
                     $this->renderViewBackend('bills/create', [
                         'users' => $users,
@@ -86,18 +87,25 @@ class BillController extends BaseController
                         'ivas' => $ivas,
                         'client_i' => $client_i
                     ]);
-                }else{
+                }elseif(array_search($product, array_column($products_array, 'product_id')) !== false) {
+                    $product_price = Product::find('iva_id', array('conditions' => array('id = ?',$product)));
+                    $product_iva = Iva::find('percentage', array('conditions' => array('id = ?',$product_price->iva_id)));
                     foreach ($products_array as $array ) {
                         $id = $array['id'];
+
+                        if ($array['product_id'] == $product) {
+                            $quantidade_product = $array['quantity'];
+                            $price_product = $array['unitary_value'];
+                            $iva_product = $array['iva_value'];
+
+                            $products_array[$id]['quantity']=$quantidade_product + 1;
+                            $products_array[$id]['unitary_value']=$price_product + $product_price->price;
+                            $products_array[$id]['iva_value']=$iva_product + $product_iva->percentage;
+                        }
+
                     }
                     $client_i = $_POST['client_id'];
-                    $attributes = array(
-                        'id' => $id + 1,
-                        'quantity' => 1,
-                        'unitary_value' => $product_one->price,
-                        'product_id' => $product_one->id,
-                        'iva_value' => $product_one->iva_id);
-                    array_push($products_array, $attributes);
+
                     $this->renderViewBackend('bills/create', [
                         'users' => $users,
                         'products' => $products,
@@ -105,6 +113,30 @@ class BillController extends BaseController
                         'client_i' => $client_i,
                         'ivas' => $ivas
                     ]);
+
+                }else{
+                    $client_i = $_POST['client_id'];
+
+                    foreach ($products_array as $array ) {
+                        $id = $array['id'];
+                    }
+
+                    $attributes = array(
+                        'id' => $id + 1,
+                        'quantity' => 1,
+                        'unitary_value' => $product_one->price,
+                        'product_id' => $product_one->id,
+                        'iva_value' => $product_one->iva_id);
+                    array_push($products_array, $attributes);
+
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'client_i' => $client_i,
+                        'ivas' => $ivas
+                    ]);
+
                 }
                 }else{
                     $client_i = null;
@@ -230,14 +262,35 @@ class BillController extends BaseController
                 $emissao = 'e';
                 $referencia_empregado = $_SESSION["user_id"];
 
+
+                $bill_id = Bill::find('last');
+
+                if ($bill_id == ''){
+                    $bill_id_new = 1;
+                }else {
+                    $bill_id = Bill::find('last');
+                    $bill_id_new = $bill_id->reference + 1;
+                }
+                $count = mb_strlen((string)$bill_id_new);
+                if ($count = 1){
+                    $bill_id_new = '0000'.$bill_id_new;
+                }elseif ($count = 2){
+                    $bill_id_new = '000'.$bill_id_new;
+                }elseif ($count = 3){
+                    $bill_id_new = '00'.$bill_id_new;
+                }elseif ($count = 4){
+                    $bill_id_new = '0'.$bill_id_new;
+                }
+
                 $attributes = array(
-                    'reference' => '000001',
+                    'reference' => $bill_id_new,
                     'date' => $data,
                     'total_value' => $total_value,
                     'total_iva' => $iva_total,
                     'state' => $emissao,
                     'client_reference_id' => $client_i,
                     'employee_reference_id' => $referencia_empregado);
+
                 $bills = new Bill($attributes);
 
                 if ($bills->is_valid()) {
@@ -288,8 +341,29 @@ class BillController extends BaseController
                 $emissao = 'l';
                 $referencia_empregado = $_SESSION["user_id"];
 
+
+                $bill_id = Bill::find('last');
+
+                if ($bill_id == ''){
+                     $bill_id_new = 1;
+                }else {
+                    $bill_id = Bill::find('last');
+                     $bill_id_new = $bill_id->reference + 1;
+                }
+                $count = mb_strlen((string)$bill_id_new);
+                if ($count = 1){
+                    $bill_id_new = '0000'.$bill_id_new;
+                }elseif ($count = 2){
+                    $bill_id_new = '000'.$bill_id_new;
+                }elseif ($count = 3){
+                    $bill_id_new = '00'.$bill_id_new;
+                }elseif ($count = 4){
+                    $bill_id_new = '0'.$bill_id_new;
+                }
+
+
                 $attributes = array(
-                    'reference' => 000001,
+                    'reference' => $bill_id_new,
                     'date' => $data,
                     'total_value' => $total_value,
                     'total_iva' => $iva_total,
@@ -337,6 +411,93 @@ class BillController extends BaseController
                 }else{
                     // referencia está estatica por enquanto
                     print_r($bills->errors->full_messages());
+                }
+
+            }elseif(isset($_POST['btn_add'])){
+
+                $product1 = $_POST['btn_add'];
+                $products_array = unserialize($_POST['products_array']);
+
+                if(array_search($product1, array_column($products_array, 'product_id')) !== false) {
+
+                    $product_price1 = Product::find('iva_id', array('conditions' => array('id = ?', $product1)));
+
+                    $product_iva1 = Iva::find('percentage', array('conditions' => array('id = ?', $product_price1->iva_id)));
+
+                    foreach ($products_array as $array) {
+                        $id = $array['id'];
+
+                        if ($array['product_id'] == $product1) {
+
+                            $quantidade_product = $array['quantity'];
+                            $price_product = $array['unitary_value'];
+                            $iva_product = $array['iva_value'];
+                            $products_array[$id]['quantity'] = $quantidade_product + 1;
+                            $products_array[$id]['unitary_value'] = $price_product + $product_price1->price;
+                            $products_array[$id]['iva_value'] = $iva_product + $product_iva1->percentage;
+                        }
+
+                    }
+                    $client_i = $_POST['client_id'];
+
+                    $users = User::all();
+                    $products = Product::all();
+                    $ivas = Iva::all();
+
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'client_i' => $client_i,
+                        'ivas' => $ivas
+                    ]);
+                }else{
+
+                }
+
+            }elseif(isset($_POST['btn_delete'])){
+
+                $product1 = $_POST['btn_delete'];
+                $products_array = unserialize($_POST['products_array']);
+
+                if(array_search($product1, array_column($products_array, 'product_id')) !== false) {
+
+                    $product_price1 = Product::find('iva_id', array('conditions' => array('id = ?', $product1)));
+
+                    $product_iva1 = Iva::find('percentage', array('conditions' => array('id = ?', $product_price1->iva_id)));
+
+                    foreach ($products_array as $array) {
+                        $id = $array['id'];
+
+                        if ($array['product_id'] == $product1) {
+
+                            $quantidade_product = $array['quantity'];
+                            $price_product = $array['unitary_value'];
+                            $iva_product = $array['iva_value'];
+                            $products_array[$id]['quantity'] = $quantidade_product - 1;
+                            $products_array[$id]['unitary_value'] = $price_product - $product_price1->price;
+                            $products_array[$id]['iva_value'] = $iva_product - $product_iva1->percentage;
+                            if ($products_array[$id]['quantity'] == 0){
+                                unset($products_array[$id]);
+                            }
+                        }
+                    }
+
+                    $client_i = $_POST['client_id'];
+
+                    $users = User::all();
+                    $products = Product::all();
+                    $ivas = Iva::all();
+
+                    $this->renderViewBackend('bills/create', [
+                        'users' => $users,
+                        'products' => $products,
+                        'products_array' => $products_array,
+                        'client_i' => $client_i,
+                        'ivas' => $ivas
+                    ]);
+                }else{
+
                 }
 
             }
