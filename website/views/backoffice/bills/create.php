@@ -92,28 +92,37 @@
                 foreach ($products_array as $products_a) { ?>
 
 
-                <td><?= $products_a['id'],$products_a['quantity']?></td>
+                <td><?= $products_a['quantity']?></td>
                 <td><?= $products_a['unitary_value']?></td>
-                <td><?php
-                    foreach ($ivas as $iva) {
+                <td><?=
+                    $products_a['iva_value']
+                    /*foreach ($ivas as $iva) {
                         if ($products_a['iva_value'] == $iva->id) {
-                            echo $iva->percentage." - ".$iva->description;
+                            echo $iva->percentage;
                         }
-                    }
+                    }*/
                      ?></td>
                 <td><?php
                     foreach($products as $product){
 
                         if ($products_a['product_id'] == $product->id){
-                            echo $product->title.$product->id;
+                            echo $product->title;
                         }
                     }
                     ?></td>
 
                 <td>
 
-                    <a <?php //var_dump($products_a['quantity']); ?>
-                            class="btn btn-primary btn-icon-show btn-icon"><i class='bx bx-show-alt bx-tada action-icon'></i></a>
+                    <button value ="<?= $products_a['product_id'] ?>" name="btn_add" style=" text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: green;
+  color: white;"class="btn btn-primary btn-icon-show btn-icon">+<i class='bx bx-tada action-icon'></i></button>
+                    <button style=" text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: red;
+  color: white;" value ="<?= $products_a['product_id'] ?>" name="btn_delete" class="btn btn-primary btn-icon-show btn-icon">-<i class='bx bx-tada action-icon'></i></button>
                     <button value ="<?= $products_a['id'] ?>"  name="btn_apagar" class="btn-del-lines btn btn-danger btn-icon-delete btn-icon"><i class='bx bx-trash bx-tada action-icon'></i></button>
 
 
