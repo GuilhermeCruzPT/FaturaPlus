@@ -14,12 +14,40 @@
     <div class="container">
         <div class="box">
 
+            <?php
+            $lancamento = null;
+            $emitida = null;
+            foreach ($bills as $bill) {
+                if ($bill->state == 'l')
+                    $lancamento += 1;
+                else
+                    $emitida += 1;
+            }
+            ?>
+
             <h4 class="display-4 align-text-top" style="padding-top: 25px;">Faturas</h4><br>
 
             <form method="post" action="router.php?c=bills&a=index">
                 <input type="text" placeholder="Procurar.." name="search" class="search_bar">
                 <button name="search_btn" type="submit" class="search_btn"><i class="fa fa-search"></i></button>
+                <select id="dynamic_select">
+                    <option value="router.php?c=bills&a=index" <?= $emitida != 0 && $lancamento != 0 ? 'selected' : '' ?>>Todos</option>
+                    <option value="router.php?c=bills&a=index&state=l" <?= $emitida == 0 && $lancamento != 0 ? 'selected' : '' ?>>Em Lançamento</option>
+                    <option value="router.php?c=bills&a=index&state=e" <?= $emitida != 0 && $lancamento == 0 ? 'selected' : '' ?>>Emitida</option>
+                </select>
             </form>
+            <script>
+                $(function(){
+                    // bind change event to select
+                    $('#dynamic_select').on('change', function () {
+                        var url = $(this).val(); // get selected value
+                        if (url) { // require a URL
+                            window.location = url; // redirect
+                        }
+                        return false;
+                    });
+                });
+            </script>
             <br>
             <table class="table table-striped" style="background: white">
                 <thead>

@@ -50,7 +50,7 @@
                            class="form-control"
                            id="password"
                            name="password"
-                           placeholder="Inserir Password">
+                           placeholder="Caso pretenda mudar a sua palavra-pass escreva aqui.">
                 </div>
 
                 <?php

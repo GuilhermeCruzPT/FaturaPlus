@@ -41,6 +41,15 @@ class BillController extends BaseController
                 'bills' => $bills,
             ]);
 
+        } else if(isset($_GET[('state')])){
+
+            $state = $_GET['state'];
+            $bills = Bill::find('all',
+                array('conditions' => "state LIKE '%$state%'"));
+
+            $this->renderViewBackend('bills/index', [
+                'bills' => $bills,
+            ]);
         } else {
             $bills = Bill::all();
             $this->renderViewBackend('bills/index', [

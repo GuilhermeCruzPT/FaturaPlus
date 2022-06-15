@@ -142,8 +142,7 @@ img {
 
 /* ■ ■ Header Line Design ■ ■ */
 
-#footer:after,#footer:before
-{
+#footer:after,#footer:before {
     /* background: linear-gradient(90deg, rgba(190,78,114,1) 0%, rgba(254,117,98,1) 33.33%, rgba(86,72,105,1) 66.66%,  rgba(126,70,99,1) 100%) ;*/
     /* background-image: linear-gradient(90deg, rgba(107,208,228,1) 0%, rgba(96,78,177,1) 33%, rgba(200,142,102,1) 66%, rgba(201,85,169,1) 100%); */ /* w3c */
     background-image: linear-gradient(90deg, rgba(130, 204, 221, 1) 0%, rgba(96,78,177,1) 33%, rgba(201,85,169,1) 66%, rgba(243, 105, 88,1) 100%);
@@ -221,7 +220,7 @@ img {
 /* ║     Authentication Button Components     ║ */
 /* ╚══════════════════════════════════════════╝ */
 
-.btn-box-auth  {
+.btn-box-auth {
     box-sizing: border-box;
     float: left;
     text-align:center;
@@ -377,7 +376,7 @@ img {
 
 /*---------- Text Effect ----------*/
 
-.red-effect:hover{
+.red-effect:hover {
     color: #f36958;
     text-shadow: 0 0 5px #f36958,
     0 0 10px #f36958,
@@ -386,7 +385,7 @@ img {
     transition: text-shadow .15s ease-in-out;
 }
 
- .white-effect:hover{
+ .white-effect:hover {
      color: #ecf0f1;
      text-shadow: 0 0 5px #ecf0f1,
      0 0 10px #ecf0f1,
@@ -417,11 +416,13 @@ img {
 
 .copyright-menu ul {
     text-align: right;
-    margin: 0; }
+    margin: 0;
+}
 
 .copyright-menu li {
     display: inline-block;
-    padding-left: 20px; }
+    padding-left: 20px;
+}
 
 
 /*---------- About Section ----------*/
@@ -465,13 +466,13 @@ section {
     /* min-height: 100vh;*/
 }
 
-.sec-title{
+.sec-title {
     position:relative;
     z-index: 1;
     margin-bottom:60px;
 }
 
-.sec-title .title{
+.sec-title .title {
     position: relative;
     display: block;
     font-size: 18px;
@@ -481,7 +482,7 @@ section {
     margin-bottom: 15px;
 }
 
-.sec-title h2{
+.sec-title h2 {
     position: relative;
     display: block;
     font-size:40px;
@@ -491,7 +492,7 @@ section {
     padding-bottom:18px;
 }
 
-.sec-title h2:before{
+.sec-title h2:before {
     position:absolute;
     content:'';
     left:0px;
@@ -501,7 +502,7 @@ section {
     background-color:#d1d2d6;
 }
 
-.sec-title .text{
+.sec-title .text {
     position: relative;
     font-size: 16px;
     line-height: 26px;
@@ -510,20 +511,20 @@ section {
     margin-top: 35px;
 }
 
-.sec-title.light h2{
+.sec-title.light h2 {
     color: #ffffff;
 }
 
-.sec-title.text-center h2:before{
+.sec-title.text-center h2:before {
     left:50%;
     margin-left: -25px;
 }
 
-.list-style-one{
+.list-style-one {
     position:relative;
 }
 
-.list-style-one li{
+.list-style-one li {
     position:relative;
     font-size:16px;
     line-height:26px;
@@ -532,11 +533,11 @@ section {
     margin-bottom: 12px;
 }
 
-.list-style-one li i{
+.list-style-one li i {
     color: #f36958;
 }
 
-.list-style-one li span{
+.list-style-one li span {
     padding-left:25px;
 }
 
@@ -558,30 +559,30 @@ section {
     font-family: "Font Awesome 5 Free";
 }
 
-.list-style-one li a:hover{
+.list-style-one li a:hover {
     color: #44bce2;
 }
 
-.about-section{
+.about-section {
     position: relative;
     //padding: 120px 0 70px;
 }
 
-.about-section .sec-title{
+.about-section .sec-title {
     margin-bottom: 45px;
 }
 
-.about-section .content-column{
+.about-section .content-column {
     position: relative;
     margin-bottom: 50px;
 }
 
-.about-section .content-column .inner-column{
+.about-section .content-column .inner-column {
     position: relative;
     padding-left: 30px;
 }
 
-.about-section .text{
+.about-section .text {
     margin-bottom: 40px;
     font-size: 16px;
     line-height: 26px;
@@ -589,15 +590,15 @@ section {
     font-weight: 400;
 }
 
-.about-section .list-style-one{
+.about-section .list-style-one {
     margin-bottom: 45px;
 }
 
-.about-section .image-column{
+.about-section .image-column {
     position: relative;
 }
 
-.about-section .image-column .text-layer{
+.about-section .image-column .text-layer {
     position: absolute;
     right: -110px;
     top: 50%;
@@ -608,13 +609,13 @@ section {
     font-weight: 500;
 }
 
-.about-section .image-column .inner-column{
+.about-section .image-column .inner-column {
     position: relative;
     padding-left: 120px;
     padding-bottom: 125px;
 }
 
-.about-section .image-column .inner-column:before{
+.about-section .image-column .inner-column:before {
     position: absolute;
     left: -75px;
     top: 65px;
@@ -624,11 +625,11 @@ section {
     content: "";
 }
 
-.about-section .image-column .image-1{
+.about-section .image-column .image-1 {
     position: relative;
 }
 
-.about-section .image-column .image-2{
+.about-section .image-column .image-2 {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -637,7 +638,7 @@ section {
 }
 
 .about-section .image-column .image-2 img,
-.about-section .image-column .image-1 img{
+.about-section .image-column .image-1 img {
     box-shadow: 0 30px 50px rgba(8,13,62,.15);
 }
 
@@ -647,7 +648,7 @@ section {
     top: 170px;
 }
 
-.about-section .image-column .video-link .link{
+.about-section .image-column .video-link .link {
     position: relative;
     display: block;
     font-size: 22px;
@@ -697,7 +698,7 @@ section {
 
 /*---------- Card Section ----------*/
 
-.card-section{
+.card-section {
     display: flex;
     align-items: center;
     //min-height: 100vh;
@@ -848,18 +849,18 @@ section {
 
 /*---------- Software Section ----------*/
 
-.software-section{
+.software-section {
     background-color: #f5f5f5;
 }
 
-.software-box{
+.software-box {
     padding: 55px;
     background-color: #f36958;
     border-radius: 50px 20px;
     color: white;
 }
 
-.software-radius{
+.software-radius {
     width: 75%;
     border-radius: 10%;
 }
@@ -867,14 +868,14 @@ section {
 
 /*---------- Presentation Section ----------*/
 
-.presentation-box{
+.presentation-box {
     padding: 55px;
     background-color: #f36958;
     border-radius: 20px 50px;
     color: white;
 }
 
-.presentation-radius{
+.presentation-radius {
     width: 75%;
     border-radius: 10%;
     float: right;

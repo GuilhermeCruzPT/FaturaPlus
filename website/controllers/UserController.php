@@ -42,7 +42,7 @@ class UserController extends BaseController
                 'users' => $users,
             ]);
 
-        }elseif(isset($_GET[('role')])){
+        } else if(isset($_GET[('role')])){
 
             $role = $_GET['role'];
             $users = User::find('all',
@@ -51,7 +51,7 @@ class UserController extends BaseController
             $this->renderViewBackend('users/index', [
                 'users' => $users,
             ]);
-        }else{
+        } else{
             $users = User::all();
             $this->renderViewBackend('users/index', [
                 'users' => $users,
