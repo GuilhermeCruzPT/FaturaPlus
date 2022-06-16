@@ -15,9 +15,7 @@
             padding: 20px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                <h4 class="display-4 text-center">Criar Linha da Fatura</h4>
-                <hr>
-                <br>
+                <h4 class="display-4 text-center">Criar Linha da Fatura</h4><hr><br>
 
                 <div class="form-group">
                     <label for="quantity">Quantidade:</label>

@@ -51,7 +51,7 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="phone">Número:</label>
+                    <label for="phone">Número de Telemóvel:</label>
                     <input type="text"
                            class="form-control"
                            id="phone"
