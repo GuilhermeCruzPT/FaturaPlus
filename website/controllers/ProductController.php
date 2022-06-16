@@ -64,6 +64,8 @@ class ProductController extends BaseController
                     'stock' => ((int)$_POST['stock']),
                     'iva_id' => $_POST['iva_id']);
 
+                $products_array = unserialize($_POST['products_array']);
+
                 $products = new Product($attributes_product);
                 $iva = Iva::all();
                 if ($products->is_valid()) {
@@ -77,7 +79,8 @@ class ProductController extends BaseController
                     $this->renderViewBackend('bills/create', [
                         'products' => $products,
                         'iva' => $iva,
-                        'attributes_product' => $attributes_product
+                        'attributes_product' => $attributes_product,
+                        'products_array' => $products_array
                     ]);
                 }
 

@@ -22,9 +22,9 @@ class AuthController extends BaseController
                 $this->renderViewBackend('panel/index');
             }
         }
-        else
+        else{
             $this->renderViewfrontend('site/auth');
-    }
+    }}
 
     public function verify_login()
     {

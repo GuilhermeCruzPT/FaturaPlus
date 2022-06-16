@@ -147,19 +147,19 @@
 
                 <br>
 
-                <div class="form-group">
+              <!--  <div class="form-group">
                     <label for="employee_reference_id">Referência Funcionário:</label>
                     <select class="form-control" id="employee_reference_id" name="employee_reference_id">
-                        <?php foreach($user as $users){?>
-                            <?php if ($users->role == 'f'){ ?>
-                                <?php if ($users->id == $bill->employee_reference_id){ ?>
-                                    <option value="<?= $users->id?>" selected> <?= $users->username; ?></option>
-                                <?php  } else { ?>
-                                    <option value="<?= $users->id?>"> <?= $users->username; ?></option>
-                                <?php  }}} ?>
+                        <?php //foreach($user as $users){?>
+                            <?php //if ($users->role == 'f'){ ?>
+                                <?php // if ($users->id == $bill->employee_reference_id){ ?>
+                                    <option value="<?php // $users->id?>" selected> <?php // $users->username; ?></option>
+                                <?php  //} else { ?>
+                                    <option value="<?php // $users->id?>"> <?php // $users->username; ?></option>
+                                <?php // }}} ?>
                     </select>
-                </div>
-
+                </div>-->
+                    <input type="hidden" name="employee_reference_id" value="<?= $users->id?>">
                 <?php
                 if(isset($bill->errors)) {
                     if (is_array($bill->errors->on('employee_reference_id'))) {
@@ -177,6 +177,11 @@
                 <button type="submit"
                         class="btn btn-primary"
                         name="update">Atualizar</button>
+
+                <a href="router.php?c=bills&a=index_lines&billid=<?= $bill->id ?>"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Ver detalhes da fatura</a>
 
                 <a href="router.php?c=bills&a=index"
                    class="btn btn-secondary"
