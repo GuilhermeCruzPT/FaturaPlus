@@ -14,7 +14,7 @@
             padding: 20px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                <h4 class="display-4 text-center">Criar Fatura</h4><hr><br>
+                <h1 class="display-4 text-center">Criar Fatura</h1><hr><br>
 
             <?php
             if (isset($mensagem)){
@@ -207,12 +207,13 @@
                     <button type="submit"
                             class="btn btn-primary"
                             name="emitir_fatura">Emitir Fatura</button>
-                        <button type="submit"
-                                class="btn btn-primary"
-                                name="guardar_fatura">Guardar rascunho</button>
+
+                    <button type="submit"
+                            class="btn btn-primary"
+                            name="guardar_fatura">Guardar Rascunho</button>
 
                     <a href="router.php?c=bills&a=index"
-                       class=" btn btn-danger btn-back"
+                       class="btn btn-danger"
                        role="button"
                        aria-pressed="true">Voltar</a>
         </div>
