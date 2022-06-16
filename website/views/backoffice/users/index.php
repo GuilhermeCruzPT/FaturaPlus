@@ -25,7 +25,7 @@
                 <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Username</th>
+                    <th scope="col">Usuário</th>
                     <th scope="col">Nome</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Género</th>

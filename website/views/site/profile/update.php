@@ -335,7 +335,7 @@
                         name="update">Atualizar</button>
 
                 <a href="router.php?c=site&a=show&&id=<?= $user->id ?>"
-                   class=" btn btn-primary btn-back"
+                   class="btn btn-secondary"
                    role="button"
                    aria-pressed="true">Voltar</a>
 

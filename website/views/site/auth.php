@@ -26,7 +26,7 @@
         <form action="router.php?c=auth&a=verify_login" method="POST">
             <h1>Entrar</h1>
             <div class="sign-in-field-container">
-                <input name="username_login" type="text" placeholder="Username" />
+                <input name="username_login" type="text" placeholder="Introduza o nome de usuário" />
                 <?php
                 if (isset($user_username)) {
                     if (is_array($user_username)) {
@@ -41,7 +41,7 @@
 
                 }
                 ?>
-                <input name="password_login" type="password" placeholder="Password" />
+                <input name="password_login" type="password" placeholder="Introduza a palavra-passe" />
                 <?php
                 if (isset($user_password)) {
                     if (is_array($user_password)) {

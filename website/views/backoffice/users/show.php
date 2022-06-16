@@ -18,7 +18,7 @@
                 <h4 class="display-4 text-center">Mostrar Utilizador</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="username">Username:</label>
+                    <label for="username">Nome de Usuário:</label>
                     <input type="text"
                            class="form-control"
                            id="username"
@@ -161,7 +161,7 @@
                 <br><br>
 
                 <a href="router.php?c=users&a=index"
-                   class=" btn btn-primary btn-back"
+                   class="btn btn-secondary"
                    role="button"
                    aria-pressed="true">Voltar</a>
 

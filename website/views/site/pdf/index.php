@@ -14,7 +14,6 @@
             <table class="table table-striped" style="background: white">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Referência</th>
                     <th scope="col">Data</th>
                     <th scope="col">(€ s/IVA)<br>Valor Total</th>
@@ -31,7 +30,6 @@
                 foreach ($bills as $bill) {
                     if ($user == $bill->client_reference && $bill->state == 'e') { ?>
 
-                <td><?= $bill->id ?>
                 <td>F<?= $bill->reference?></td>
                 <td><?= $bill->date->format('d/m/Y'); ?></td>
                 <td><?= $bill->total_value ?>€</td>
@@ -40,18 +38,24 @@
 
                 <td>
                     <a href="router.php?c=site&a=pdfshow&id=<?= $bill->id ?>"
-                       class=" btn btn-primary"
+                       class="btn btn-primary"
                        role="button"
                        aria-pressed="true">Mostrar</a>
 
                     <a href="router.php?c=site&a=pdftrans&id=<?= $bill->id ?>"
-                       class=" btn btn-primary btn-back"
+                       class="btn btn-danger"
                        role="button"
                        aria-pressed="true">Transferir</a>
                 </td>
                 </tr>
                 </tbody>
                 <?php } } }?> </table>
+
+                <a href="router.php?c=site&a=index"
+                   class="btn btn-secondary"
+                   role="button"
+                   aria-pressed="true">Voltar</a>
+
         </div>
     </div>
 </section>

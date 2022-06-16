@@ -150,12 +150,12 @@
                 <br><br>
 
                 <a href="router.php?c=site&a=edit&id=<?= $user->id ?>"
-                   class=" btn btn-primary"
+                   class="btn btn-primary"
                    role="button"
                    aria-pressed="true">Editar Perfil</a>
 
                 <a href="router.php?c=site&a=index"
-                   class=" btn btn-primary btn-back"
+                   class="btn btn-secondary"
                    role="button"
                    aria-pressed="true">Voltar</a>
 

@@ -79,7 +79,7 @@
                 <br><br>
 
                 <a href="router.php?c=lines&a=index"
-                   class=" btn btn-primary btn-back"
+                   class="btn btn-secondary"
                    role="button"
                    aria-pressed="true">Voltar</a>
 

@@ -18,13 +18,13 @@
                 <h4 class="display-4 text-center">Criar Utilizador</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="username">Username:</label>
+                    <label for="username">Nome de Usuário:</label>
                     <input type="text"
                            class="form-control"
                            id="username"
                            name="username"
                            maxlength="10"
-                           placeholder="Inserir Username"
+                           placeholder="Inserir Nome de Usuário"
                            onkeydown="return /[a-zA-Z0-9]/i.test(event.key)"
                         <?php
                         if(isset($users->errors)) {?>
@@ -47,12 +47,12 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password">Palavra-Passe:</label>
                     <input type="password"
                            class="form-control"
                            id="password"
                            name="password"
-                           placeholder="Inserir Password">
+                           placeholder="Inserir Palavra-Passe">
                 </div>
 
                 <?php
@@ -401,7 +401,7 @@
                         name="create">Criar</button>
 
                 <a href="router.php?c=users&a=index"
-                   class=" btn btn-primary btn-back"
+                   class="btn btn-secondary"
                    role="button"
                    aria-pressed="true">Voltar</a>
 

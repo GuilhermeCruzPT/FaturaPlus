@@ -177,7 +177,7 @@
                         name="update">Atualizar</button>
 
                 <a href="router.php?c=products&a=index"
-                   class=" btn btn-primary btn-back"
+                   class="btn btn-secondary"
                    role="button"
                    aria-pressed="true">Voltar</a>
 
