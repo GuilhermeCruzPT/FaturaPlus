@@ -178,6 +178,11 @@
                         class="btn btn-primary"
                         name="update">Atualizar</button>
 
+                <a href="router.php?c=bills&a=index_lines&billid=<?= $bill->id ?>"
+                   class=" btn btn-primary"
+                   role="button"
+                   aria-pressed="true">Ver detalhes da fatura</a>
+
                 <a href="router.php?c=bills&a=index"
                    class="btn btn-secondary"
                    role="button"

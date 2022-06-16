@@ -168,6 +168,29 @@ if (!(isset($_GET['c']) && isset($_GET['a']))) {
                     $id = $_GET[('id')];
                     $BillController->pdftrans($id);
                     break;
+                case 'index_lines':
+                    $billid = $_GET[('billid')];
+                    $BillController->index_lines($billid);
+                    break;
+                case 'edit_lines':
+                    $id = $_GET[('id')];
+                    $BillController->edit_lines($id);
+                    break;
+                case 'update_lines':
+                    $id = $_GET[('id')];
+                    $BillController->update_lines($id);
+                    break;
+                case 'delete_lines':
+                    $id = $_GET[('id')];
+                    $BillController->delete_lines($id);
+                    break;
+                case 'create_lines':
+                    $id = $_GET[('id')];
+                    $BillController->create_lines($id);
+                    break;
+                case 'save_lines':
+                    $BillController->store_lines();
+                    break;
             }
             break;
 
