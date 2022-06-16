@@ -26,10 +26,8 @@
                            maxlength="10"
                            placeholder="Inserir Nome de Usuário"
                            onkeydown="return /[a-zA-Z0-9]/i.test(event.key)"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['username']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['username']);} ?>">
                 </div>
 
                 <?php
@@ -77,10 +75,8 @@
                            name="name"
                            placeholder="Inserir Nome"
                            onkeydown="return /[a-zA-Z ]/i.test(event.key)"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['name']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['name']);} ?>">
                 </div>
 
                 <?php
@@ -104,10 +100,8 @@
                            id="email"
                            name="email"
                            placeholder="Inserir E-mail"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['email']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['email']);} ?>">
                 </div>
 
                 <?php
@@ -134,10 +128,8 @@
                            placeholder="Inserir Número de Telemóvel"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['phone']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['phone']);} ?>">
                 </div>
 
                 <?php
@@ -164,10 +156,8 @@
                            placeholder="Inserir Nif"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['nif']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['nif']);} ?>">
                 </div>
 
                 <?php
@@ -192,10 +182,8 @@
                            name="postal_code"
                            maxlength="8"
                            placeholder="Inserir Código Postal"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['postal_code']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['postal_code']);} ?>">
                 </div>
 
                 <?php
@@ -219,10 +207,8 @@
                            id="birth"
                            name="birth"
                            placeholder="Inserir Data de Nascimento"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['birth']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['birth']);} ?>">
                 </div>
 
                 <?php
@@ -269,10 +255,8 @@
                            id="country"
                            name="country"
                            placeholder="Inserir País"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['country']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['country']);} ?>">
                 </div>
 
                 <?php
@@ -296,10 +280,8 @@
                            id="city"
                            name="city"
                            placeholder="Inserir Cidade"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['city']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['city']);} ?>">
                 </div>
 
                 <?php
@@ -323,10 +305,8 @@
                            id="locale"
                            name="locale"
                            placeholder="Inserir Localidade"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['locale']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['locale']);} ?>">
                 </div>
 
                 <?php
@@ -350,10 +330,8 @@
                            id="address"
                            name="address"
                            placeholder="Inserir Morada"
-                        <?php
-                        if(isset($users->errors)) {?>
-                           value="<?php
-                           print_r($attributes['address']);} ?>">
+                           <?php if(isset($users->errors)) { ?>
+                           value="<?php print_r($attributes['address']);} ?>">
                 </div>
 
                 <?php

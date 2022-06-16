@@ -27,10 +27,8 @@
                            placeholder="Inserir Referência"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
-                        <?php
-                        if(isset($products->errors)) {?>
-                           value="<?php
-                           print_r($attributes['reference']);} ?>">
+                           <?php if(isset($products->errors)) { ?>
+                           value="<?php print_r($attributes['reference']);} ?>">
                 </div>
 
                 <?php
@@ -55,10 +53,8 @@
                            name="title"
                            placeholder="Inserir Título"
                            onkeydown="return /[a-zA-Z ]/i.test(event.key)"
-                        <?php
-                        if(isset($products->errors)) {?>
-                           value="<?php
-                           print_r($attributes['title']);} ?>">
+                           <?php if(isset($products->errors)) { ?>
+                           value="<?php print_r($attributes['title']);} ?>">
                 </div>
 
                 <?php
@@ -82,10 +78,8 @@
                            id="description"
                            name="description"
                            placeholder="Inserir Descrição"
-                        <?php
-                        if(isset($products->errors)) {?>
-                           value="<?php
-                           print_r($attributes['description']);} ?>">
+                           <?php if(isset($products->errors)) { ?>
+                           value="<?php print_r($attributes['description']);} ?>">
                 </div>
 
                 <?php
@@ -111,10 +105,8 @@
                            placeholder="Inserir Preço"
                            maxlength="14"
                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                        <?php
-                        if(isset($products->errors)) {?>
-                           value="<?php
-                           print_r($attributes['price']);} ?>">
+                           <?php if(isset($products->errors)) { ?>
+                           value="<?php print_r($attributes['price']);} ?>">
                 </div>
 
                 <?php
@@ -141,10 +133,8 @@
                            maxlength="6"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
-                        <?php
-                        if(isset($products->errors)) {?>
-                           value="<?php
-                           print_r($attributes['stock']);} ?>">
+                           <?php if(isset($products->errors)) { ?>
+                           value="<?php print_r($attributes['stock']);} ?>">
                 </div>
 
                 <?php

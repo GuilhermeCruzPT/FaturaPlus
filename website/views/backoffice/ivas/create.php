@@ -27,10 +27,8 @@
                            placeholder="Inserir Percentagem"
                            oninput="this.value=this.value.slice(0,this.maxLength)"
                            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
-                        <?php
-                        if(isset($ivas->errors)) {?>
-                           value="<?php
-                           print_r($attributes['percentage']);} ?>">
+                           <?php if(isset($ivas->errors)) { ?>
+                           value="<?php print_r($attributes['percentage']);} ?>">
                 </div>
 
                 <?php
@@ -54,10 +52,8 @@
                            id="description"
                            name="description"
                            placeholder="Inserir Descrição"
-                        <?php
-                        if(isset($ivas->errors)) {?>
-                           value="<?php
-                           print_r($attributes['description']);} ?>">
+                           <?php if(isset($ivas->errors)) { ?>
+                           value="<?php print_r($attributes['description']);} ?>">
                 </div>
 
                 <?php
@@ -67,7 +63,7 @@
                             echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
-                        echo "<font color='red'>" . $ivas->errors->on('description') ."</font>";
+                        echo "<font color='red'>" . $ivas->errors->on('description') . "</font>";
                     }
                 }
                 ?>
@@ -87,7 +83,7 @@
                 if(isset($ivas->errors)) {
                     if (is_array($ivas->errors->on('vigour'))) {
                         foreach ($ivas->errors->on('vigour') as $error) {
-                            echo "<font color='red'>" . $error ."</font>";
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     } else {
                         echo "<font color='red'>" . $ivas->errors->on('vigour') . "</font>";

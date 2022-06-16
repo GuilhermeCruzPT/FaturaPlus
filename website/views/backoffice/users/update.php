@@ -50,20 +50,20 @@
                            class="form-control"
                            id="password"
                            name="password"
-                           placeholder="Inserir Palavra-Passe caso a pretenda mudar.">
+                           placeholder="Inserir Palavra-Passe caso a pretenda mudar">
                 </div>
 
                 <?php
-                    if (isset($user->errors)) {
-                        if (is_array($user->errors->on('password'))) {
-                            foreach ($user->errors->on('password') as $error) {
-                                echo "<font color='red'>" . $error . "</font>";
-                            }
-                        }
-                        else if ($user->errors->on('password')) {
-                            echo "<font color='red'>" . $user->errors->on('password') . "</font>";
+                if (isset($user->errors)) {
+                    if (is_array($user->errors->on('password'))) {
+                        foreach ($user->errors->on('password') as $error) {
+                            echo "<font color='red'>" . $error . "</font>";
                         }
                     }
+                    else if ($user->errors->on('password')) {
+                        echo "<font color='red'>" . $user->errors->on('password') . "</font>";
+                    }
+                }
                 ?>
 
                 <br>
@@ -75,7 +75,8 @@
                            id="name"
                            name="name"
                            placeholder="Inserir Nome"
-                           value="<?= $user->name ?>">
+                           value="<?= $user->name ?>"
+                           onkeydown="return /[a-zA-Z ]/i.test(event.key)">
                 </div>
 
                 <?php
@@ -117,13 +118,16 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="phone">Número:</label>
+                    <label for="phone">Número de Telemóvel:</label>
                     <input type="number"
                            class="form-control"
                            id="phone"
                            name="phone"
-                           placeholder="Inserir Número"
-                           value="<?= $user->phone ?>">
+                           maxlength="9"
+                           placeholder="Inserir Número de Telemóvel"
+                           value="<?= $user->phone ?>"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
@@ -146,8 +150,11 @@
                            class="form-control"
                            id="nif"
                            name="nif"
+                           maxlength="9"
                            placeholder="Inserir Nif"
-                           value="<?= $user->nif ?>">
+                           value="<?= $user->nif ?>"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
@@ -170,6 +177,7 @@
                            class="form-control"
                            id="postal_code"
                            name="postal_code"
+                           maxlength="8"
                            placeholder="Inserir Código Postal"
                            value="<?= $user->postal_code ?>">
                 </div>

@@ -19,13 +19,13 @@
                 <h4 class="display-4 text-center">Editar Perfil</h4><hr><br>
 
                 <div class="form-group">
-                    <label for="username">Username:</label>
+                    <label for="username">Nome de Usuário:</label>
                     <input type="text"
                            class="form-control"
                            id="username"
                            name="username"
                            maxlength="10"
-                           placeholder="Inserir Username"
+                           placeholder="Inserir Nome de Usuário"
                            value="<?= $user->username ?>"
                            onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
                 </div>
@@ -45,12 +45,12 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password">Palavra-Passe:</label>
                     <input type="password"
                            class="form-control"
                            id="password"
                            name="password"
-                           placeholder="Inserir Password">
+                           placeholder="Inserir Palavra-Passe caso a pretenda mudar">
                 </div>
 
                 <?php
@@ -75,7 +75,8 @@
                            id="name"
                            name="name"
                            placeholder="Inserir Nome"
-                           value="<?= $user->name ?>">
+                           value="<?= $user->name ?>"
+                           onkeydown="return /[a-zA-Z ]/i.test(event.key)">
                 </div>
 
                 <?php
@@ -117,13 +118,16 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="phone">Número:</label>
+                    <label for="phone">Número de Telemóvel:</label>
                     <input type="number"
                            class="form-control"
                            id="phone"
                            name="phone"
-                           placeholder="Inserir Número"
-                           value="<?= $user->phone ?>">
+                           maxlength="9"
+                           placeholder="Inserir Número de Telemóvel"
+                           value="<?= $user->phone ?>"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
@@ -146,8 +150,11 @@
                            class="form-control"
                            id="nif"
                            name="nif"
+                           maxlength="9"
                            placeholder="Inserir Nif"
-                           value="<?= $user->nif ?>">
+                           value="<?= $user->nif ?>"
+                           oninput="this.value=this.value.slice(0,this.maxLength)"
+                           onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
 
                 <?php
@@ -170,6 +177,7 @@
                            class="form-control"
                            id="postal_code"
                            name="postal_code"
+                           maxlength="8"
                            placeholder="Inserir Código Postal"
                            value="<?= $user->postal_code ?>">
                 </div>
