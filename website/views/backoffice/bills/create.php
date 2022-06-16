@@ -78,6 +78,10 @@
                             <?php  }}} ?>
                     </select>
 
+                    <?php
+                    if (!isset($client_i)){
+                    ?>
+
                         <button
                            name="btn_adicionar_client"
                            class=" btn btn-primary"
@@ -86,11 +90,12 @@
                         >Adicionar</button>
 
 
+
                         <a data-toggle="modal" data-target="#Modalclient"
                            class="btn_adicionar_cliente btn btn-success"
                            role="button" name="btn_adicionar_cliente" id="btn_adicionar_cliente"
                            aria-pressed="true" >Criar</a>
-
+                    <?php }?>
                         <button
                            name="btn_apagar_client"
                            class=" btn btn-danger"
@@ -115,7 +120,7 @@
                class=" btn btn-primary"
                role="button"
                aria-pressed="true">Adicionar</button>
-                <input type="hidden" name="products_array" value="<?php echo htmlentities(serialize($products_array));  ?>"/>
+                <input type="hidden" name="products_array" value="<?php if (isset($products_array)){echo htmlentities(serialize($products_array));}  ?>"/>
 
             <a data-toggle="modal" data-target="#Modalproduct"
                class="btn_adicionar_produto btn btn-success"
@@ -186,22 +191,26 @@
             if (empty($products_array)){
                 $total = 0;
                 $iva_total = 0;
+                $valorUni = 0;
+                $iva_euro = 0;
             }else {
                 $total = 0;
                 $iva_total = 0;
                 foreach ($products_array as $products_total) {
                     $total += $products_total['unitary_value'];
-
                     $iva_total += $products_total['iva_value'];
-
+                    $iva_euro =  ((float)$products_total['unitary_value']) * floatval('0.' .$products_total['iva_value']);
+                    $valorUni = ((float)$products_total['unitary_value']) - ((float)$iva_euro);
                 }
 
             }
-            echo "Total: ".$total."€".$iva_total;
+            echo "Total unitario: ".$valorUni."€"."<br>";
+            echo "Total Iva: ".$iva_euro."€"."<br>";
+            echo "Total: ".$total."€";
             ?>
 
-                <input type="hidden" name="total" value="<?= $total ?>"/>
-                    <input type="hidden" name="iva_total" value="<?= $iva_total ?>"/>
+                <input type="hidden" name="total" value="<?= $valorUni ?>"/>
+                    <input type="hidden" name="iva_total" value="<?= $iva_euro ?>"/>
 
                     <div style="float: right;">
                     <button type="submit"
@@ -441,7 +450,7 @@
         echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>';
         echo '<script>$("#Modalproduct").modal("show")</script>';
-        var_dump($attributes_product);
+
     }
 ?>
 

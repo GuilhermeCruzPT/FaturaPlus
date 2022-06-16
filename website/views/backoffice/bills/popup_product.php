@@ -47,7 +47,10 @@
                                } ?>">
                     </div>
 
+                    <input type="hidden" name="products_array" value="<?php if (isset($products_array)){echo htmlentities(serialize($products_array));}  ?>"/>
+
                     <?php
+
                     if (isset($products->errors)) {
                         if (is_array($products->errors->on('reference'))) {
                             foreach ($products->errors->on('reference') as $error) {

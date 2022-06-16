@@ -940,6 +940,7 @@ class BillController extends BaseController
         $products = Product::all();
         $bills = Bill::all();
         $bill_lines = Bill_line::find([$id]);
+        $bill_id = $bill_lines->id;
         //$bill_lines = Bill_line::find('all', array('conditions' => array('bill_id = ?', $billid)));
         //var_dump($bill_lines);
 
@@ -950,6 +951,7 @@ class BillController extends BaseController
                 'bill_lines' => $bill_lines,
                 'products' => $products,
                 'bills' => $bills,
+                'bill_id' => $bill_id
             ]);
         }
 
@@ -975,10 +977,10 @@ class BillController extends BaseController
                 $test = $product->stock;
 
                 $iva_percentage = Iva::find('percentage', array('conditions' => array('id = ?', $product->iva_id)));
-
+                $bill_change = Bill::find([$bill_id]);
                 if ($quantidade_recebido <= $test) {
 
-                    $bill_change = Bill::find([$bill_id]);
+
 
                     (int)$new_stock = $product->stock + $bill_lines->quantity - $quantidade_recebido;
 
@@ -1014,7 +1016,8 @@ class BillController extends BaseController
                         'bill_lines' => $bill_lines,
                         'products' => $products,
                         'bills' => $bills,
-                        'mensagem' => $mensagem
+                        'mensagem' => $mensagem,
+                        'bill_id' => $bill_id
                     ]);
                 }
 
@@ -1065,7 +1068,8 @@ class BillController extends BaseController
                         'bill_lines' => $bill_lines,
                         'products' => $products,
                         'bills' => $bills,
-                        'mensagem' => $mensagem
+                        'mensagem' => $mensagem,
+                        'bill_id' => $bill_id
                     ]);
                 }
             }
@@ -1076,7 +1080,7 @@ class BillController extends BaseController
             $this->renderViewBackend('bills/update_lines', [
                 'bill_lines' => $bill_lines,
                 'products' => $products,
-                'bills' => $bills,
+                'bills' => $bills
             ]);
         }
 

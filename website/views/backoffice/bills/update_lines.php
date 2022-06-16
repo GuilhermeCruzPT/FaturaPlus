@@ -99,7 +99,7 @@
                         class="btn btn-primary"
                         name="update">Atualizar</button>
 
-                <a href="router.php?c=lines&a=index"
+                <a href="router.php?c=bills&a=index"
                    class=" btn btn-primary btn-back"
                    role="button"
                    aria-pressed="true">Voltar</a>

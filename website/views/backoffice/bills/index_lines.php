@@ -42,8 +42,12 @@
 
                 <td><?= $bill_line->id ?></td>
                 <td>Q x <?= $bill_line->quantity ?></td>
-                <td><?= $bill_line->unitary_value ?>€</td>
-                <td><?= $bill_line->iva_value ?>€</td>
+                <?php
+                $iva_euro =  ((float)$bill_line->unitary_value) * floatval('0.' .$bill_line->iva_value);
+                $valorUni = ((float)$bill_line->unitary_value) - ((float)$iva_euro);
+                ?>
+                <td><?= $valorUni ?>€</td>
+                <td><?= $iva_euro ?>€</td>
                 <td>P<?= $bill_line->product->reference ?></td>
                 <td>F<?= $bill_line->bill->reference ?></td>
 

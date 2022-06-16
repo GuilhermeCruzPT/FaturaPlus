@@ -42,13 +42,13 @@
             </a>
             <span class="tooltip">Faturas</span>
         </li>
-        <li>
+       <!-- <li>
             <a href="router.php?c=lines&a=index">
                 <i class='bx bx-list-plus' ></i>
                 <span class="links_name">Linhas das Faturas</span>
             </a>
             <span class="tooltip">Linhas das Faturas</span>
-        </li>
+        </li>-->
         <li>
             <a href="router.php?c=products&a=index">
                 <i class='bx bx-pie-chart-alt-2' ></i>
@@ -70,13 +70,13 @@
             </a>
             <span class="tooltip">Empresas</span>
         </li>
-        <li>
+        <!--<li>
             <a href="router.php?c=settings&a=index">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Definições</span>
             </a>
             <span class="tooltip">Definições</span>
-        </li>
+        </li>-->
         <li class="profile">
             <div class="profile-details">
                 <!--<img src="profile.jpg" alt="profileImg">-->

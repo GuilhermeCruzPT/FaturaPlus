@@ -21,17 +21,37 @@ class SiteController extends BaseController
 
     public function index()
     {
-        $this->renderView('site/index');
+
+            session_start();
+        if (isset($_SESSION["user_id"])) {
+            $user = User::find([$_SESSION["user_id"]]);
+            if ($user->role == 'c') {
+                $this->renderView('site/index', [
+                    'userName' => $user->name,
+                ]);
+            } else {
+                $this->renderViewBackend('panel/index');
+            }
+        }
+
     }
 
     public function terms()
     {
-        $this->renderView('site/terms');
+        session_start();
+        $user = User::find([$_SESSION["user_id"]]);
+        $this->renderView('site/terms', [
+                'userName' => $user->name
+        ]);
     }
 
     public function privacy()
     {
-        $this->renderView('site/privacy');
+        session_start();
+        $user = User::find([$_SESSION["user_id"]]);
+        $this->renderView('site/privacy', [
+            'userName' => $user->name
+        ]);
     }
 
     public function demo()
