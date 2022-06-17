@@ -149,7 +149,7 @@
 
 
                 <td><?= $products_a['quantity']?></td>
-                <td><?= $products_a['unitary_value']?></td>
+                <td><?= $products_a['unitary_value']?> €</td>
                 <td><?=
                     $products_a['iva_value']
                     /*foreach ($ivas as $iva) {
@@ -157,7 +157,7 @@
                             echo $iva->percentage;
                         }
                     }*/
-                     ?></td>
+                     ?> %</td>
                 <td><?php
                     foreach($products as $product){
 
