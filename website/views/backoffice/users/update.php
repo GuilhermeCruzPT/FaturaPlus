@@ -244,12 +244,7 @@
 
                 <div class="form-group">
                     <label for="country">País:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="country"
-                           name="country"
-                           placeholder="Inserir País"
-                           value="<?= $user->country ?>">
+                    <select class="form-control" id="country" name="country" onchange="getCities()"></select>
                 </div>
 
                 <?php
@@ -268,12 +263,7 @@
 
                 <div class="form-group">
                     <label for="city">Cidade:</label>
-                    <input type="text"
-                           class="form-control"
-                           id="city"
-                           name="city"
-                           placeholder="Inserir Cidade"
-                           value="<?= $user->city ?>">
+                    <select class="form-control" id="city" name="city"></select>
                 </div>
 
                 <?php
@@ -384,5 +374,64 @@
         </div>
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let selectElementCountry = document.getElementById('country');
+    let pais = '<?= $user->country; ?>';
+    // Make a request for a user with a given ID
+    axios.get('https://countriesnow.space/api/v0.1/countries/flag/images')
+        .then(async function (response) {
+            // handle success
+            //console.log(response);
+            const {data:{data: countries}} = await response;
+            countries.map((country, index)=>{
+                //console.log(country.flag);
+                let option = document.createElement("OPTION");
+                option.innerHTML = country.name;
+                option.value = country.name;
+                selectElementCountry.options.add(option);
+                //console.log(pais);
+                //console.log(country.name);
+                if (pais == country.name) {
+                    selectElementCountry.selectedIndex = index;
+                }
+            });
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+
+    function getCities(){
+        let selectElementCity = document.getElementById('city');
+        selectElementCity.innerHTML = null;
+        axios.post('https://countriesnow.space/api/v0.1/countries/cities', {country:selectElementCountry.options[selectElementCountry.selectedIndex] ? selectElementCountry.options[selectElementCountry.selectedIndex].value : pais})
+            .then(async function (response) {
+                // handle success
+                //console.log(response);
+                let cidade = '<?= $user->city; ?>';
+                const {data:{data: cities}} = await response;
+                cities.map((city, index)=>{
+                    let option = document.createElement("OPTION");
+                    option.innerHTML = city;
+                    option.value = city;
+                    selectElementCity.options.add(option);
+                    if (cidade == city) {
+                        selectElementCity.selectedIndex = index;
+                    }
+                });
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+    }
+
+    window.onload = function(){
+        getCities();
+    }
+</script>
+
 </body>
 </html>

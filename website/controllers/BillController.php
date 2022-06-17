@@ -266,7 +266,7 @@ class BillController extends BaseController
                                 'ivas' => $ivas
                             ]);
                         }*/
-            } elseif (isset($_POST['btn_adicionar_client'])) {
+            } else if (isset($_POST['btn_adicionar_client'])) {
 
                 $client_i = $_POST['client_id'];
                 //var_dump($client_i);
@@ -281,7 +281,7 @@ class BillController extends BaseController
                     'ivas' => $ivas
                 ]);
 
-            } elseif (isset($_POST['btn_apagar_client'])) {
+            } else if (isset($_POST['btn_apagar_client'])) {
 
                 $client_i = null;
                 $users = User::all();
@@ -309,7 +309,9 @@ class BillController extends BaseController
 
                 $bill_id = Bill::find('last');
 
-                if ($bill_id == '') {
+                $bill_id_new = sprintf('%06d', $bill_id->reference  + 1);
+
+                /*if ($bill_id == '') {
                     $bill_id_new = 1;
                 } else {
                     $bill_id = Bill::find('last');
@@ -324,7 +326,7 @@ class BillController extends BaseController
                     $bill_id_new = '00' . $bill_id_new;
                 } elseif ($count = 4) {
                     $bill_id_new = '0' . $bill_id_new;
-                }
+                }*/
 
                 $attributes = array(
                     'reference' => $bill_id_new,
@@ -407,7 +409,9 @@ class BillController extends BaseController
 
                 $bill_id = Bill::find('last');
 
-                if ($bill_id == '') {
+                $bill_id_new = sprintf('%06d', $bill_id->reference  + 1);
+
+                /*if ($bill_id == '') {
                     $bill_id_new = 1;
                 } else {
                     $bill_id = Bill::find('last');
@@ -422,7 +426,7 @@ class BillController extends BaseController
                     $bill_id_new = '00' . $bill_id_new;
                 } elseif ($count = 4) {
                     $bill_id_new = '0' . $bill_id_new;
-                }
+                }*/
 
 
                 $attributes = array(
