@@ -337,45 +337,68 @@ class BillController extends BaseController
                     'client_reference_id' => $client_i,
                     'employee_reference_id' => $referencia_empregado);
 
-                $bills = new Bill($attributes);
+                if (!isset($_POST['total']) && !isset($_POST['iva_total'])) {
 
-                if ($bills->is_valid()) {
-                    $bills->save();
+                    $bills = new Bill($attributes);
 
-                    $bills_find = Bill::find('id', array('conditions' => array('date = ? AND total_value = ? AND total_iva = ? AND state = ? AND client_reference_id = ? AND employee_reference_id = ?', $data, $total_value, $iva_total,
-                        $emissao, $client_i, $referencia_empregado)));
+                    if ($bills->is_valid()) {
+                        $bills->save();
 
-                    foreach ($products_array as $products_array2) {
+                        $bills_find = Bill::find('id', array('conditions' => array('date = ? AND total_value = ? AND total_iva = ? AND state = ? AND client_reference_id = ? AND employee_reference_id = ?', $data, $total_value, $iva_total,
+                            $emissao, $client_i, $referencia_empregado)));
 
-                        $attributes_lines = array(
-                            'quantity' => $products_array2['quantity'],
-                            'unitary_value' => $products_array2['unitary_value'],
-                            'iva_value' => $products_array2['iva_value'],
-                            'product_id' => $products_array2['product_id'],
-                            'bill_id' => $bills_find->id
-                        );
+                        foreach ($products_array as $products_array2) {
 
-                        $bills_lines = new Bill_line($attributes_lines);
+                            $attributes_lines = array(
+                                'quantity' => $products_array2['quantity'],
+                                'unitary_value' => $products_array2['unitary_value'],
+                                'iva_value' => $products_array2['iva_value'],
+                                'product_id' => $products_array2['product_id'],
+                                'bill_id' => $bills_find->id
+                            );
 
-                        $bills_lines->save();
+                            $bills_lines = new Bill_line($attributes_lines);
 
-                        $product = Product::find([$products_array2['product_id']]);
+                            $bills_lines->save();
 
-                        $new_stock = $product->stock - $products_array2['quantity'];
+                            $product = Product::find([$products_array2['product_id']]);
 
-                        $attributes = array(
-                            'reference' => $product->reference,
-                            'title' => $product->title,
-                            'description' => $product->description,
-                            'price' => $product->price,
-                            'stock' => (int)$new_stock,
-                            'iva_id' => $product->iva_id);
+                            $new_stock = $product->stock - $products_array2['quantity'];
 
-                        $product->update_attributes($attributes);
-                        $product->save(false);
+                            $attributes = array(
+                                'reference' => $product->reference,
+                                'title' => $product->title,
+                                'description' => $product->description,
+                                'price' => $product->price,
+                                'stock' => (int)$new_stock,
+                                'iva_id' => $product->iva_id);
 
+                            $product->update_attributes($attributes);
+                            $product->save(false);
+
+                        }
+                        $mensagem_sucesso = "Fatura emitida com sucesso";
+
+                        $client_i = null;
+                        $products_array = [];
+                        $users = User::all();
+                        $products = Product::all();
+                        $ivas = Iva::all();
+                        $this->renderViewBackend('bills/create', [
+                            'users' => $users,
+                            'products' => $products,
+                            'products_array' => $products_array,
+                            'client_i' => $client_i,
+                            'ivas' => $ivas,
+                            'mensagem_sucesso' => $mensagem_sucesso
+                        ]);
+
+
+                    } else {
+                        print_r($bills->errors->full_messages());
                     }
-                    $mensagem_sucesso = "Fatura emitida com sucesso";
+                }else{
+                    $mensagem = "Fatura sem produtos";
 
                     $client_i = null;
                     $products_array = [];
@@ -388,11 +411,8 @@ class BillController extends BaseController
                         'products_array' => $products_array,
                         'client_i' => $client_i,
                         'ivas' => $ivas,
-                        'mensagem_sucesso' => $mensagem_sucesso
+                        'mensagem' => $mensagem
                     ]);
-
-                } else {
-                    print_r($bills->errors->full_messages());
                 }
 
             } elseif (isset($_POST['guardar_fatura'])) {
@@ -689,7 +709,7 @@ class BillController extends BaseController
                     $totalIva += $bill_line1->iva_value;
 
                 }
-
+                
                 $attributes = array(
                     'reference' => $_POST['reference'],
                     'date' => date('Y-m-d'),
@@ -706,7 +726,7 @@ class BillController extends BaseController
                     $bill->save();
                     header('Location: router.php?c=bills&a=index');
                 } else {
-                    $this->renderViewBackend('bills/', [
+                    $this->renderViewBackend('bills/index', [
                         'bill' => $bill,
                     ]);
                 }
