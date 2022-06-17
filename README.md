@@ -1,4 +1,4 @@
-![alt text](https://github.com/GuilhermeCruzPT/FaturaPlus/blob/master/documentation/default.png?raw=true)
+![alt text](https://github.com/GuilhermeCruzPT/FaturaPlus/blob/main/documentation/default.png?raw=true)
 
 # FaturaPlus
 
