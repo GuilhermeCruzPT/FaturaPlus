@@ -1,3 +1,5 @@
+![alt text](https://github.com/GuilhermeCruzPT/FaturaPlus/blob/main/documentation/default.png?raw=true)
+
 # FaturaPlus
 
 Este é o Repositório do Website do Projeto FaturaPlus.

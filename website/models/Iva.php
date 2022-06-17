@@ -27,6 +27,6 @@ class Iva extends \ActiveRecord\Model
     /* ╚════════════════════════════════╝ */
 
     static $validates_size_of = array(
-        array('percentage', 'minimum' => 2, 'too_short' => 'Percentagem com formatação incorreta'.'<br>')
+        array('percentage', 'minimum' => 1, 'too_short' => 'Percentagem com formatação incorreta'.'<br>')
     );
 }
