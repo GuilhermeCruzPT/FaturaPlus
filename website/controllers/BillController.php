@@ -337,14 +337,14 @@ class BillController extends BaseController
                     'client_reference_id' => $client_i,
                     'employee_reference_id' => $referencia_empregado);
 
-                if (isset($_POST['total']) && isset($_POST['iva_total'])) {
+                if (!isset($_POST['total']) && !isset($_POST['iva_total'])) {
 
                     $bills = new Bill($attributes);
 
                     if ($bills->is_valid()) {
                         $bills->save();
 
-                        $bills_find = Bill::find('id', array('conditions' => array('date = ? OR total_value = ? OR total_iva = ? OR state = ? OR client_reference_id = ? OR employee_reference_id = ?', $data, $total_value, $iva_total,
+                        $bills_find = Bill::find('id', array('conditions' => array('date = ? AND total_value = ? AND total_iva = ? AND state = ? AND client_reference_id = ? AND employee_reference_id = ?', $data, $total_value, $iva_total,
                             $emissao, $client_i, $referencia_empregado)));
 
                         foreach ($products_array as $products_array2) {
@@ -462,8 +462,7 @@ class BillController extends BaseController
                 if ($bills->is_valid()) {
                     $bills->save();
 
-                    $bills_find = Bill::find('id', array('conditions' => array('date = ? OR total_value = ? OR 
-                    total_iva = ? OR state = ? OR client_reference_id = ? OR employee_reference_id = ?', $data, $total_value, $iva_total,
+                    $bills_find = Bill::find('id', array('conditions' => array('date = ? AND total_value = ? AND total_iva = ? AND state = ? AND client_reference_id = ? AND employee_reference_id = ?', $data, $total_value, $iva_total,
                         $emissao, $client_i, $referencia_empregado)));
 
 
@@ -710,7 +709,7 @@ class BillController extends BaseController
                     $totalIva += $bill_line1->iva_value;
 
                 }
-
+                
                 $attributes = array(
                     'reference' => $_POST['reference'],
                     'date' => date('Y-m-d'),

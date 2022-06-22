@@ -17,7 +17,6 @@
                 <h1 class="display-4 text-center">Criar Fatura</h1><hr><br>
 
             <?php
-
             if (isset($mensagem)){
             ?>
             <div class="alert" style="
@@ -197,26 +196,21 @@
             }else {
                 $total = 0;
                 $iva_total = 0;
-                $valorUni = 0;
-                $ivateste = 0;
-                $uniteste = 0;
                 foreach ($products_array as $products_total) {
                     $total += $products_total['unitary_value'];
                     $iva_total += $products_total['iva_value'];
                     $iva_euro =  ((float)$products_total['unitary_value']) * floatval('0.' .$products_total['iva_value']);
-                    $ivateste += $iva_euro;
                     $valorUni = ((float)$products_total['unitary_value']) - ((float)$iva_euro);
-                    $uniteste += $valorUni;
                 }
 
             }
-            echo "Total unitario: ".$uniteste."€"."<br>";
-            echo "Total Iva: ".$ivateste."€"."<br>";
+            echo "Total unitario: ".$valorUni."€"."<br>";
+            echo "Total Iva: ".$iva_euro."€"."<br>";
             echo "Total: ".$total."€";
             ?>
 
-                <input type="hidden" name="total" value="<?= $uniteste ?>"/>
-                    <input type="hidden" name="iva_total" value="<?= $ivateste ?>"/>
+                <input type="hidden" name="total" value="<?= $valorUni ?>"/>
+                    <input type="hidden" name="iva_total" value="<?= $iva_euro ?>"/>
 
                     <div style="float: right;">
                     <button type="submit"
